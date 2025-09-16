@@ -1,0 +1,39 @@
+body {
+    background-color: #e6e8d3;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario-de-entrada {
+    display: flex;
+    width: 60%;
+    padding: 20px 30px;
+    align-items: center;
+    margin: 0;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 20px;
+
+}
+
+form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.img {
+    background-color: #f28c28;
+    width: 45%
+}
+
+.img img {
+    width: 100%;
+}
