@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,11 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <!--css-->
-    <link rel="stylesheet" href="cadastro.html">
+    <link rel="stylesheet" href="css/reset.html">
     <link rel="stylesheet" href="css/login.css">
 
     <!--js-->
-    <script src="js/cadastro.js" defer></script>
+    <script src="js/login.js" defer></script>
     <script src="js/all.js" defer></script>
 
 </head>
@@ -28,14 +28,21 @@
     <div class="formulario-de-entrada">
         <form action="" id="login_form">
             <h1 class="tittle">Login</h1>
-
-            <label for="cpf">CPF</label>
-            <input id="cpf" type="number">
-
-            <label for="senha">Senha</label>
-            <input id="senha" type="text">
+            
+            <div class="inputs-label">
+                <label for="cpf">CPF</label>
+                <input class="cpf" id="cpf" type="text" maxlength="14" placeholder="000.000.000-00">
+            </div>
+            
+            <div class="inputs-label">
+                <label for="senha">Senha</label>
+                <input id="senha" type="text" placeholder="********">
+            </div>
+            
 
             <button class="btn-login" type="submit">ENTRAR</button>
+            <p>Não tem uma conta? <a href="cadastro.html">cadastre-se</a></p>
+
         </form>
 
         <div class="img">
