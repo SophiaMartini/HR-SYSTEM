@@ -14,8 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <!--css-->
-    <link rel="stylesheet" href="css/reset.html">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="/src/css/reset.css">
+    <link rel="stylesheet" href="/src/css/login.css">
 
     <!--js-->
     <script src="js/login.js" defer></script>
@@ -23,6 +23,7 @@
 
 </head>
 <body>
+<header id="header-login">Ç</header>
 
 <main class="main-content">
     <div class="formulario-de-entrada">
@@ -31,27 +32,29 @@
             
             <div class="inputs-label">
                 <label for="cpf">CPF</label>
-                <input class="cpf" id="cpf" type="text" maxlength="14" placeholder="000.000.000-00">
+                <input class="cpf" id="cpf" type="text" maxlength="14" placeholder="000.000.000-00 required">
             </div>
             
             <div class="inputs-label">
                 <label for="senha">Senha</label>
-                <input id="senha" type="text" placeholder="********">
+                <input id="senha" type="password" placeholder="********" required>
             </div>
-            
 
-            <button class="btn-login" type="submit">ENTRAR</button>
+            <div class="remember-me">
+                <input type="checkbox" id="remember"><label for="remember">Lembrar de mim</label>
+            </div>
+
+            <button id="btn-login" type="submit" onclick="logar()">ENTRAR</button>
             <p>Não tem uma conta? <a href="cadastro.html">cadastre-se</a></p>
 
         </form>
 
         <div class="img">
-            <img src="assets/imgs/foto-pagina-de-login.png" alt="imagem que fica ao lado do formulario de entrada">
+            <img src="assets/imgs/img-login.png" alt="Imagem do Login">
         </div>
 
     </div>
 </main>
-
 
 </body>
 </html>
