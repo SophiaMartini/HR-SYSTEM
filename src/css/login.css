@@ -1,38 +1,47 @@
 body {
     background-color: #e6e8d3;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    height: 100vh; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-main {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 a {
     text-decoration: none;
+    color: #f28c28;
 }
 
 p {
+    margin-top: 15px;
     font-size: 14px;
+}
+
+#header-login {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    max-height: 100px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    max-width: 100px;
+    margin-top: 5px;
+}
+
+.volta {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+}
+
+.volta:hover{
+    border-bottom: 2.5px solid #f28c28;
+    transition: 0.3s transform ease-in-out
 }
 
 .formulario-de-entrada {
     display: flex;
-    width: 85vh;
+    width: 100vh;
     max-width: auto;
-    max-height: 500px;
-    align-items: center;
-    justify-content: space-between;
+    max-height: 520px;
     background-color: #fff;
     border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -54,10 +63,10 @@ p {
 }
 
 .inputs-label input {
-    width: 65%;
+    width: 81%;
     padding: 16px 12px 8px 12px;
     margin-bottom: 15px;
-    font-size: 16px;
+    font-size: 13px;
     border: 1px solid #000;
     border-radius: 4px;
     outline: none;
@@ -69,11 +78,60 @@ p {
 .inputs-label label {
     position: absolute;
     top: -5px; 
-    left: 60px;
+    left: 11.5%;
     font-size: 16px;
     background: #fff;
     padding: 0 4px;
     pointer-events: none;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 14px;
+    width: 80%;
+}
+
+input[type="checkbox"]{
+    appearance: none;
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    background-color: #fff;
+    border: 0.125rem solid #f28c28;
+    border-radius: 0.25rem;
+    margin-right: 10px;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.75rem;
+    height: 0.75rem;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: center;
+    transition: 0.125s transform ease-in-out;
+    box-shadow: inset 1rem 1rem #fff;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #f28c28;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+input[type="checkbox"]:disabled {
+    opacity: 0.25;
+}
+
+input[type="checkbox"]:focus {
+    border-color: #f28c28;
 }
 
 form {
@@ -86,27 +144,34 @@ form {
 }
 
 .img {
+    flex: 1;
+    max-width: 320px;
+    max-height: 450px;
     display: flex;
-    height: 100%;
     align-items: center;
     justify-content: center;
     background-color: #f28c28;
-    flex: 1;
 }
 
 .img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
+    margin: 0px 0px 0 auto;
+    width: 320px;
+    height: 400px;
+    max-height: 450px;
+
 }
 
-.btn-login {
+#btn-login {
     background-color: #f28c28;
-    padding: 15px 70px;
-    margin-top: 20px;
+    padding: 15px 100px;
+    margin-top: 15px;
     border: none;
     border-radius: 50px;
     font-size: 20px;
     font-weight: 600;
     cursor: pointer;
+}
+#btn-login:hover {
+    background-color: #f27228;
+    transform:scale(102%);;
 }
