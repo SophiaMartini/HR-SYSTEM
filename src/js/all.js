@@ -1,26 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const loadComponent = (selector, file) => {
+    const target = document.querySelector(selector);
+    if (!target) return;
 
-  const target = document.querySelector("header[id^='header-']");
-  if (!target) return;
+    const type = target.id;
 
-  const headerType = target.id;
+    fetch(file)
+      .then(response => {
+        if (!response.ok) throw new Error(`Erro ao carregar ${selector}`);
+        return response.text();
+      })
+      .then(data => {
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = data;
 
-  fetch('/src/components/footer-header.html')
-    .then(response => {
-      if (!response.ok) throw new Error("Erro ao carregar header");
-      return response.text();
-    })
-    .then(data => {
-      const tempDiv = document.createElement("div");
-      tempDiv.innerHTML = data;
+        const selected = tempDiv.querySelector(`#${type}`);
+        if (selected) {
+          target.innerHTML = selected.innerHTML;
+        }
+      })
+      .catch(error => console.error(error));
+  };
 
-      const selectedHeader = tempDiv.querySelector(`#${headerType}`);
-      if (selectedHeader) {
-        target.innerHTML = selectedHeader.innerHTML;
-      }
-    })
-    .catch(error => console.error(error));
+
+  loadComponent("header[id^='header-']", "/src/components/footer-header.html");
+  loadComponent("footer[id^='footer-']", "/src/components/footer-header.html");
 });
+
 
 
   //tentano arrumar essa bosta de menu mobile
