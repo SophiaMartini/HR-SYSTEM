@@ -26,13 +26,3 @@ document.addEventListener("DOMContentLoaded", () => {
   loadComponent("header[id^='header-']", "/src/components/footer-header.html");
   loadComponent("footer[id^='footer-']", "/src/components/footer-header.html");
 });
-
-
-
-  //tentano arrumar essa bosta de menu mobile
-$(document).ready(function( ){
-    $('#mobile_bt').on('click', function(){
-        $('#mobile_menu').toggleClass('active');
-        $('#mobile_btn').find('i').toggleClass('fa-x')
-    });
-});
