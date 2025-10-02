@@ -33,7 +33,7 @@ a {
 header {
     width: 100%;
     padding: 10px 2%;
-    position: sticky;
+    position: absolute;
     top: 0;
     background-color:#f4f4f4;
     z-index: 3;
@@ -76,12 +76,14 @@ header {
 
 .formas-de-entrada {
     display: flex;
-    align-items: center
+    align-items: center;
 }
 
 .btn-cad {
     color: #4285f4;
-    text-decoration: none;}
+    text-decoration: none;
+    margin-right: 15px;
+}
 
 .btn-cad:hover {
     border-bottom: solid 1.5px #4285f4;
@@ -96,7 +98,7 @@ header {
     align-items: center;
     justify-content: center;
     background: #f28c28;
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: background-color .3s ease;
     font-size: 20px;
@@ -104,49 +106,9 @@ header {
 
 .btn-defaunt:hover {
     background-color: #f27228;
-    transform:scale(102%);
+    transform:scale(101%);
 }
 
-
-
-@media screen and (max-width: 1150px){
-    #nav_list, #navbar .formas-de-entrada {
-        display: none;
-    }
-    
-    #mobile_menu{
-    display: flex;
-    }
-
-    #mobile_btn  {
-        display: block;
-        margin-right: 28px;
-        border: none;
-        background: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
-
-    #mobile_menu .active {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #mobile_nav_list .nav-item {
-        list-style: none;
-        text-align: center;
-        bottom: 14px;
-    }
-
-    #mobile_nav_list {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin: 12px 0px;
-    }
-
-}
 
 a {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
