@@ -1,0 +1,42 @@
+
+.hero-section {
+
+    background: #e6e8d3;
+    width: 100%;
+    height: 400px;
+    margin: 110px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}   
+
+.hero-section img {
+    width: 450px; 
+    margin-bottom: 0;
+    align-self: last baseline;
+}
+
+.hero-msg {
+    justify-self: right;
+    text-align: center;
+    margin-right: 10%;
+    margin-left: 25px;
+    
+}
+
+.hero-msg h1 {
+    max-width: 500px;
+    font-family: "Playwrite US Modern", cursive;
+    color: #f28c28;
+    margin-bottom: 20px;
+}
+
+.hero-msg p {
+    font-size: 22px;
+    max-width: 400px;
+    justify-self: center;
+}
+
+
+.curriculo img
