@@ -39,9 +39,10 @@ p {
 }
 
 .formulario-de-entrada {
+    margin: 10px 20px;
     display: flex;
     width: 100vh;
-    max-width: auto;
+    max-width:  780px;
     max-height: 520px;
     background-color: #fff;
     border-radius: 20px;
@@ -179,7 +180,8 @@ form {
 
 #btn-login {
     background-color: #f28c28;
-    padding: 15px 100px;
+    width: 70%;
+    padding: 15px 50px;
     margin-top: 15px;
     border: none;
     border-radius: 50px;
@@ -189,5 +191,5 @@ form {
 }
 #btn-login:hover {
     background-color: #f27228;
-    transform:scale(102%);;
+    transform:scale(101%);;
 }
