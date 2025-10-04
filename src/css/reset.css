@@ -28,6 +28,8 @@ main {
 
 a {
     text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    text-decoration: none;
 }
 
 header {
@@ -148,7 +150,3 @@ header {
 
 }
 
-a {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    text-decoration: none;
-}
