@@ -26,26 +26,26 @@
 <header id="header-login">Ç</header>
     <div class="formulario-de-entrada">
         <form action="" id="login_form">
-            <h1 class="tittle">Login</h1>
+            <h1 class="tittle">Faça seu Login</h1>
             
             <div class="inputs-label">
                 <label for="cpf">CPF</label>
-                <input class="cpf" id="cpf" type="text" maxlength="14" placeholder="000.000.000-00 required">
+                <input class="cpf" id="cpf" type="text" maxlength="14" placeholder="000.000.000-00">
             </div>
             
             <div class="inputs-label">
                 <label for="senha">Senha</label>
-                <input id="senha" type="password" placeholder="********" required>
+                <input id="senha" type="password" placeholder="********">
+                <i class="fa fas-eye" id="togglePassoword"></i>
             </div>
 
             <div class="remember-me">
                 <input type="checkbox" id="remember"><label for="remember">Lembrar de mim</label>
+                <a href="esqueci-minha-senha.html">Esqueci minha senha</a>
             </div>
 
             <button id="btn-login" type="submit" onclick="logar()">ENTRAR</button>
-            <p>Não tem uma conta? <a href="cadastro.html">cadastre-se</a></p>
-
-        </form>
+            <p>Não tem uma conta? <a href="cadastro.html">cadastre-se</a></p>        </form>
 
         <div class="img">
             <img src="assets/imgs/img-login.png" alt="Imagem do Login">
