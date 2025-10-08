@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="assets/logos/logo-sozinha.png">
 ngc 
     <!--css-->
-    <link rel="stylesheet" href="cadastro.html">
+    <link rel="stylesheet" href="css/cadastro.css">
     <link rel="stylesheet" href="login.html">
 
     <!--js-->
@@ -18,6 +18,78 @@ ngc
 
 </head>
 <body>
-    
+    <header id="header-login"></header>
+    <main>
+        <h1>Cadastro</h1>
+        <p>Já tem uma conta? <a href="src/login">Entre</a>.</p>
+        <form action="" id="form_cad">
+            <section class="dados-pessoa">
+                <div class="inputs-label">
+                    <label for="nome">Nome</label>
+                    <input id="nome" type="password" placeholder="********">
+                    
+                </div>
+                <div class="inputs-label">
+                    <label for="cpf">CPF</label>
+                    <input id="cpf" type="password" placeholder="********">
+                    
+                </div>
+
+                <div class="inputs-label">
+                    <label for="cpf">Email</label>
+                    <input id="cpf" type="password" placeholder="********">
+                </div>
+
+                <div class="inputs-label">
+                    <label for="estado_civil">Estado Civil</label>
+                    <select name="estado-civil" id="estado_civil">
+                        <option value="solteiro">Solteiro(a)</option>
+                        <option value="casado">Casado(a)</option>
+                        <option value="separado_judicialmente">Separado(a) Judicialmente</option>
+                        <option value="divorciado">Divorciado(a)</option>
+                        <option value="viuvo">Viúvo(a)</option>
+                    </select>                    
+                </div>
+
+                <div class="inputs-label">
+                    <label for="cpf">Data de Nascimento</label>
+                    <input id="cpf" type="password" placeholder="********">
+                    <i class="fa fas-eye" id="togglePassoword"></i>
+                </div>
+
+                <div class="inputs-label">
+                    <label for="cpf">Nacionalidade</label>
+                    <select name="nacionalidade" id="nacionalidade">
+                        
+                    </select>
+                </div>
+
+                <div class="inputs-label">
+                    <label for="cpf">Celular</label>
+                    <input id="cpf" type="password" placeholder="********">
+                </div>
+
+                <div class="inputs-label">
+                    <label for="cpf">Naturalidade</label>
+                    <input id="cpf" type="password" placeholder="********">
+                </div>
+
+            </section>
+
+            <section class="dados-endereco">
+
+            </section>
+            
+            <section class="dados-formacao">
+
+            </section>
+
+            <section class="dados-trabalho">
+
+            </section>
+        </form>
+    </main>
+
+
 </body>
 </html>
