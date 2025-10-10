@@ -1,0 +1,32 @@
+* [33m1ccab3e[m[33m ([m[1;36mHEAD[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m estrutura incial do cadastro
+*   [33m43fb62e[m Merge branch 'main' of https://github.com/SophiaMartini/HR-SYSTEM
+[32m|[m[33m\[m  
+[32m|[m *   [33maa0bb46[m Merge branch 'main' of https://github.com/SophiaMartini/HR-SYSTEM
+[32m|[m [34m|[m[35m\[m  
+[32m|[m * [35m|[m [33mdc8fba1[m commit para pull
+* [35m|[m [35m|[m [33me481f6a[m commit 07/10 pra pull
+[35m|[m [35m|[m[35m/[m  
+[35m|[m[35m/[m[35m|[m   
+* [35m|[m [33md7f8b74[m colocando h1 padrao
+* [35m|[m [33m2a8799f[m estilizando a section curriculo e um pouquinho da section de aboutus
+* [35m|[m [33mc4a6477[m pequenas mudanças na estrutura
+* [35m|[m [33mf85acd2[m exclusão da tentativa de um mecanismo mobile
+* [35m|[m [33m3cc8639[m excluindo a tag main e alguma alteração minima no css
+* [35m|[m [33mc905ffc[m pequena mudança no body, header e na main
+* [35m|[m [33m56b6b06[m landing page com a hero-section estilizada
+* [35m|[m [33ma3573b5[m arrumando o header da landing page
+[35m|[m[35m/[m  
+* [33mfd569f9[m criação do arquivo
+* [33me1fcdb1[m adição de imagens e logo
+* [33m9a0d7fb[m criando arquivo
+* [33mdb7f509[m alterando o codigo para que footers sejam puxados tbm
+* [33mb02b8c4[m Estruturação html base da landing page do sistema
+* [33mfae4ded[m troca de img do login
+* [33m4282782[m adição do codigo do header do login
+* [33m4d6b0ca[m adição de body e main completas no  reset
+* [33m6afac9f[m usando fetch pra puxar a navbar de cada tela
+* [33me25137d[m estilização do login rente ao prototipo
+* [33m21d19aa[m pagina de login pronta rente ao prototipo
+* [33me020f3b[m tela de login 80% finalizada
+* [33me074df5[m commit geral pra ter dps eu vou indicando tudo certinho
+* [33mf30d81f[m estrutura do header da landing page
