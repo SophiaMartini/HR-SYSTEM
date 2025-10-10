@@ -22,12 +22,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" /><!--fontawesome-->
 
     <!--JS-->
+    <script src="/src/js/landing.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     <script src="js/all.js" defer></script>
 </head>
-
+<body>
 <header id="header-landing"></header>
-
 <main class="main-content">
     <section class="hero-section">
         <img src="assets/imgs/Imagem Landing Page.png" alt="imagem do banner">
@@ -37,7 +37,7 @@
         </div>
     </section>
 
-    <section class="curriculo">
+    <section id="vagas" class="curriculo">
         <div class="mgs-content">
             <p>Precisa de uma oportunidade?</p>
             <h1>Nós conectamos você ao seu próximo emprego</h1>
@@ -51,41 +51,43 @@
     
        
 
-    <section class="sobre">  
+    <section id="sobre" class="sobre">  
         <div class="about">
             <span>Sobre</span>&nbsp;&nbsp;&nbsp;<span class="laranja">Nós</span>
         </div> 
 
         <div class="sobre-content">
-            <p class="txt-aboutus">
+            <div class="principal">
+                <p class="txt-aboutus">
                 No<span class="laranja"> Sistema Web de RH</span>, acreditamos que as pessoas são o maior patrimônio de qualquer organização.
-            </p>
-
-            <div class="aboutus-content">
+                </p>
                 <div class="img-aboutus">
                     <img src="assets/imgs/img-aboutus.png" alt="imagem do cara do sobre nos">
                 </div>
-                
-                <div class="caixa-laranja 1">
+            </div>
+            
+
+            <div class="descricao">
+                <div class="caixa-laranja um">
                     <p>
                         Nosso sistema foi criado para facilitar processo, otimizar o tempo da equipe de RH e proporcionar uma expêriencia mais humana e integrada para colaboradores e gestores.<br>Desde o recrutamento e seleção até a gestão da folha, benefícios e desempenho, oferecemos ferramentas que ajudam sua empresa a crescer de forma organizada e estratégica.
                     </p>
                 </div>
-                
-                <div class="caixa-laranja 2">
+            
+                <div class="caixa-laranja dois">
                     <p>
                         Mais do que um sistema, somos parceiros na jornada de evolução da sua equipe. <br>Estamos comprometidos em oferecer inovação, segurança e suporte de qualidade, para que você possa focar no que realmente importa: o desenvolvimento das pessoas e o sucesso do seu negócio.
                     </p>
                 </div>
+            
             </div>
 
             
        
 
+    
     </section>
 </main>
-
-
-<footer id="RHFoot"></footer>
+<footer id="footer-RHFoot"></footer>
 
 </body>
