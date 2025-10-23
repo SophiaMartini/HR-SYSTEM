@@ -22,7 +22,7 @@
    <!--JS-->
    <script src="/src/js/cadastro.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-   <script src="js/all.js" defer></script>
+   <script src="/src/js/all.js" defer></script>
 </head>
 <body>
 
@@ -34,23 +34,27 @@
             <p class="login-prompt">Já tem uma conta? <a href="login.html">Entre.</a></p> 
             <form id="registration-form" novalidate> 
                 <fieldset class="dados-pessoa">
+
                     <div class="form-row">
                         <div class="inputs-label full-width">
                             <label for="nome">Nome</label>
                             <input type="text" id="nome" name="nome" required>
                         </div>
                     </div>
+                    
                     <div class="form-row">
                         <div class="inputs-label">
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" placeholder="exemplo@email
                             .com.br" required>
                         </div>
+
                         <div class="inputs-label">
                             <label for="cpf">CPF</label>
                             <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14" required>
                         </div>
                     </div>
+
                     <div class="form-row">
                         <div class="inputs-label">
                             <label for="data-nascimento">Data de Nascimento</label>
@@ -68,6 +72,7 @@
                             </select>
                         </div>
                     </div>
+
                     <div class="form-row">
                         <div class="inputs-label">
                             <label for="celular">Celular</label>
@@ -80,6 +85,7 @@
                             </select>
                         </div>
                     </div>
+
                     <div class="form-row">
                         <div class="inputs-label">
                             <label for="genero">Gênero</label>
@@ -98,9 +104,11 @@
                             </select>
                         </div>
                     </div>
+
                     <div class="form-row">
-                        <div class="inputs-label switch-group">
+                        <div class="switch-group">
                             <label>Tem alguma deficiência?</label>
+
                             <div class="switch-container">
                                 <span class="switch-label-text">Não</span>
                                 <label class="switch-toggle">
@@ -170,9 +178,12 @@
                 </fieldset>
 
                 <fieldset>
-                    
+                    <div class="cabecalho">
                         <h2>Formações</h2>
                         <button type="button" id="add-education" class="btn-add">+</button>
+
+                    </div>
+                        
                         <div id="education-list">
                         <div class="education-entry dynamic-entry">
                             <div class="form-row">
@@ -223,16 +234,20 @@
                 </fieldset>
 
                 <fieldset>
+                    <div class="cabecalho">
                         <h2>Experiências Profissionais</h2>
                         <button type="button" id="add-experience" class="btn-add">+</button>
-                    <div id="experience-list">
+                    </div>
+                        
+                    
+                        <div id="experience-list">
                         <div class="experience-entry dynamic-entry">
                             <div class="form-row">
                                 <div class="inputs-label">
                                     <label for="exp-empresa-0">Empresa</label>
                                     <input type="text" id="exp-empresa-0" name="exp_empresa[]" required>
                                 </div>
-                                <div class="inputs-label radio-group">
+                                <div class="radio-group">
                                     <label>Emprego atual?</label>
                                     <div>
                                         <input type="radio" id="exp-atual-sim-0" name="exp_atual_0" value="sim" class="exp-atual-radio">
@@ -240,8 +255,10 @@
                                         <input type="radio" id="exp-atual-nao-0" name="exp_atual_0" value="nao" class="exp-atual-radio" checked>
                                         <label for="exp-atual-nao-0">Não</label>
                                     </div>
+                                    
                                 </div>
                             </div>
+                            <div class="form-row">
                                 <div class="inputs-label">
                                     <label for="exp-admissao-0">Data admissão</label>
                                     <input type="text" id="exp-admissao-0" name="exp_admissao[]" placeholder="mês/ano" maxlength="7" required>
@@ -267,7 +284,7 @@
                 </fieldset>
 
                 <fieldset>
-                    <div class="inputs-label upload-group">
+                    <div class="upload-group">
                         <label>Envie seu currículo original no campo ao lado:</label>
                         <div class="file-upload-wrapper">
                             <input type="file" id="curriculo-file" name="curriculo" accept=".pdf,.doc,.docx">
