@@ -1,191 +1,197 @@
-document.addEventListener('DOMContentLoaded', () => {
 
-    // --- SELETORES DE ELEMENTOS ---
-    const form = document.getElementById('registration-form');
-    
-    // API CEP
-    const cepInput = document.getElementById('cep');
-    // ... (outros seletores de endereço)
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("registration-form");
+  const cepInput = document.getElementById("cep");
+  const btnBuscarCep = document.getElementById("btn-buscar-cep");
+  const estadoSelect = document.getElementById("naturalidade");
+  const nacionalidadeSelect = document.getElementById("nacionalidade");
+  const senhaInput = document.getElementById("senha");
+  const confirmarSenhaInput = document.getElementById("confirmar-senha");
+  const senhaError = document.getElementById("senha-error");
+  const confirmarSenhaError = document.getElementById("confirmar-senha-error");
 
-    // API Selects
-    // ... (seletores de nacionalidade, etc.)
-    
-    // Inputs com Máscara
-    const cpfInput = document.getElementById('cpf');
-    const celularInput = document.getElementById('celular');
-    // O input de data de nascimento foi removido daqui
+  async function carregarEstados() {
+    try {
+      const response = await fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome");
+      const estados = await response.json();
 
-    // ========== [ SELETORES ADICIONADOS ] ==========
-    const senhaInput = document.getElementById('senha');
-    const confirmarSenhaInput = document.getElementById('confirmar-senha');
-    const senhaError = document.getElementById('senha-error');
-    const confirmarSenhaError = document.getElementById('confirmar-senha-error');
-    // =============================================
+      estadoSelect.innerHTML = `<option value="" disabled selected>Selecione</option>`;
+      estados.forEach((estado) => {
+        const option = document.createElement("option");
+        option.value = estado.sigla;
+        option.textContent = estado.nome;
+        estadoSelect.appendChild(option);
+      });
+    } catch (error) {
+      console.error("Erro ao carregar estados:", error);
+      estadoSelect.innerHTML = `<option value="" disabled selected>Erro ao carregar</option>`;
+    }
+  }
 
-    // ... (outros seletores: upload, seções dinâmicas)
+    async function carregarNacionalidades() {
+    nacionalidadeSelect.innerHTML = `<option value="" disabled selected>Carregando...</option>`;
 
+    const urlUmpirsky = "https://raw.githubusercontent.com/umpirsky/country-list/master/data/pt_BR/country.json";
 
-    // --- FUNÇÕES DE MÁSCARA ---
-    const maskCPF = (value) => {
-        return value
-            .replace(/\D/g, '')
-            .replace(/(\d{3})(\d)/, '$1.$2')
-            .replace(/(\d{3})(\d)/, '$1.$2')
-            .replace(/(\d{3})(\d{1,2})/, '$1-$2')
-            .slice(0, 14);
-    };
+    const urlRestCountries = "https://restcountries.com/v3.1/all";
 
-    // A máscara de data foi removida, pois usamos type="date"
-    
-    const maskPhone = (value) => {
-        return value
-            .replace(/\D/g, '')
-            .replace(/(\d{2})(\d)/, '($1) $2')
-            .replace(/(\d{5})(\d)/, '$1-$2')
-            .slice(0, 15);
-    };
+    const localFallback = [
+        "Brasil", "Portugal", "Angola", "Moçambique", "Estados Unidos", "Canadá",
+        "Reino Unido", "Espanha", "França", "Alemanha", "Itália", "Japão",
+        "China", "Índia", "Argentina", "Uruguai", "Paraguai", "Venezuela"
+    ];
 
-    // ========== [ MÁSCARA ADICIONADA ] ==========
-    const maskCEP = (value) => {
-        return value
-            .replace(/\D/g, '')
-            .replace(/(\d{5})(\d)/, '$1-$2')
-            .slice(0, 9);
-    };
-    // ============================================
+    try {
+        const r = await fetch(urlUmpirsky);
+        if (!r.ok) throw new Error("Umpirsky fetch falhou");
+        const obj = await r.json(); // objeto { "AF": "Afeganistão", "AL": "Albânia", ... }
 
-    const maskMonthYear = (value) => {
-        return value
-            .replace(/\D/g, '')
-            .replace(/(\d{2})(\d)/, '$1/$2')
-            .slice(0, 7);
-    };
+        const nomes = Object.values(obj).sort((a, b) => a.localeCompare(b, "pt", { sensitivity: "base" }));
 
-    // Aplicando máscaras no evento 'input' (enquanto digita)
-    cpfInput.addEventListener('input', (e) => e.target.value = maskCPF(e.target.value));
-    celularInput.addEventListener('input', (e) => e.target.value = maskPhone(e.target.value));
-    cepInput.addEventListener('input', (e) => e.target.value = maskCEP(e.target.value));
-
-    // ... (Função applyDynamicMasks sem mudanças) ...
-    applyDynamicMasks(document); 
-
-    // --- (Funções de API: ViaCEP, IBGE, Countries, Universidades - Sem mudanças) ---
-    // ...
-    // ...
-
-    // --- (Lógica de Seções Dinâmicas: Adicionar/Remover, Emprego Atual - Sem mudanças) ---
-    // ...
-    // ...
-    
-    // --- (Lógica de Upload de Arquivo - Sem mudanças) ---
-    // ...
-    
-    // ========== [ VALIDAÇÃO DE SENHA EM TEMPO REAL ] ==========
-    const validatePassword = () => {
-        let isValid = true;
-        
-        // 1. Valida Força da Senha (mínimo 8 caracteres)
-        if (senhaInput.value.length > 0 && senhaInput.value.length < 8) {
-            senhaError.style.display = 'block';
-            senhaInput.classList.add('input-error');
-            isValid = false;
-        } else {
-            senhaError.style.display = 'none';
-            senhaInput.classList.remove('input-error');
-        }
-
-        // 2. Valida Correspondência de Senhas
-        if (confirmarSenhaInput.value.length > 0 && senhaInput.value !== confirmarSenhaInput.value) {
-            confirmarSenhaError.style.display = 'block';
-            confirmarSenhaInput.classList.add('input-error');
-            isValid = false;
-        } else {
-            confirmarSenhaError.style.display = 'none';
-            confirmarSenhaInput.classList.remove('input-error');
-        }
-        
-        return isValid;
-    };
-
-    // Adiciona listeners para validar enquanto digita
-    senhaInput.addEventListener('keyup', validatePassword);
-    confirmarSenhaInput.addEventListener('keyup', validatePassword);
-    // =========================================================
-
-    // --- LÓGICA: SUBMISSÃO DO FORMULÁRIO ---
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Roda a validação de senha uma última vez
-        const isPasswordValid = validatePassword();
-        
-        // Validação geral do navegador (campos 'required', 'minlength', etc.)
-        if (!form.checkValidity()) {
-            alert('Por favor, preencha todos os campos obrigatórios corretamente.');
-            form.reportValidity(); // Mostra quais campos falharam
-            return;
-        }
-        
-        // Validação específica das senhas
-        if (!isPasswordValid) {
-             alert('Por favor, corrija os erros na sua senha.');
-             return;
-        }
-        
-        // Coleta de dados
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        
-        // ... (Tratamento do switch 'deficiencia', igual ao anterior)
-        data.deficiencia = formData.has('deficiencia') ? 'sim' : 'nao';
-        
-        // ... (Coleta de Formações e Experiências, igual ao anterior)
-        data.formacoes = [];
-        document.querySelectorAll('.education-entry').forEach(entry => {
-            data.formacoes.push({
-                nivel: entry.querySelector('[name="edu_level[]"]').value,
-                status: entry.querySelector('[name="edu_status[]"]').value,
-                instituicao: entry.querySelector('[name="edu_instituicao[]"]').value,
-                inicio: entry.querySelector('[name="edu_inicio[]"]').value,
-                conclusao: entry.querySelector('[name="edu_conclusao[]"]').value,
-            });
+        nacionalidadeSelect.innerHTML = `<option value="" disabled selected>Selecione</option>`;
+        nomes.forEach((nome) => {
+        const option = document.createElement("option");
+        option.value = nome;
+        option.textContent = nome;
+        nacionalidadeSelect.appendChild(option);
         });
 
-        data.experiencias = [];
-        document.querySelectorAll('.experience-entry').forEach((entry, index) => {
-            data.experiencias.push({
-                empresa: entry.querySelector('[name="exp_empresa[]"]').value,
-                emprego_atual: entry.querySelector(`[name="exp_atual_${index}"]:checked`).value,
-                admissao: entry.querySelector('[name="exp_admissao[]"]').value,
-                demissao: entry.querySelector('[name="exp_demissao[]"]').value,
-                cargo: entry.querySelector('[name="exp_cargo[]"]').value,
-                descricao: entry.querySelector('[name="exp_descricao[]"]').value,
-            });
+
+        return;
+    } catch (err1) {
+        console.warn("Falha ao carregar nacionalidades do umpirsky:", err1);
+    }
+
+    try {
+        const r2 = await fetch(urlRestCountries);
+        if (!r2.ok) throw new Error("RestCountries fetch falhou");
+        const countries = await r2.json();
+
+        const nomes = countries.map(country => {
+        return (country.translations && country.translations.por && country.translations.por.common)
+            ? country.translations.por.common
+            : country.name && country.name.common
+            ? country.name.common
+            : null;
+        }).filter(Boolean);
+
+        nomes.sort((a, b) => a.localeCompare(b, "pt", { sensitivity: "base" }));
+
+        nacionalidadeSelect.innerHTML = `<option value="" disabled selected>Selecione</option>`;
+        nomes.forEach((nome) => {
+        const option = document.createElement("option");
+        option.value = nome;
+        option.textContent = nome;
+        nacionalidadeSelect.appendChild(option);
         });
-        
-        // Limpa os campos de array
-        // ... (delete data['...[]'], igual ao anterior)
-        
-        // Exibe o resultado (para fins de demonstração)
-        console.log('Dados do Formulário Coletados:');
-        
-        // Não queremos a senha no log, então removemos
-        delete data.senha;
-        delete data.confirmar_senha;
-        
-        console.log(JSON.stringify(data, null, 2));
-        
-        // ========== [ REDIRECIONAMENTO ] ==========
-        alert('Cadastro realizado com sucesso! Você será redirecionado para o login.');
-        
-        // Redireciona para a página de login após 2 segundos
-        setTimeout(() => {
-            window.location.href = 'login.html'; // Altere para a URL correta da sua página de login
-        }, 2000);
-        // ===========================================
+        return;
+    } catch (err2) {
+        console.warn("Falha ao carregar nacionalidades do restcountries:", err2);
+    }
+
+    nacionalidadeSelect.innerHTML = `<option value="" disabled selected>Selecione</option>`;
+    localFallback.sort((a, b) => a.localeCompare(b, "pt", { sensitivity: "base" }));
+    localFallback.forEach((nome) => {
+        const option = document.createElement("option");
+        option.value = nome;
+        option.textContent = nome;
+        nacionalidadeSelect.appendChild(option);
     });
+    }
 
-    // --- CARREGAMENTO INICIAL DAS APIs ---
-    loadStates();
-    loadNationalities();
+  cepInput.addEventListener("input", async (e) => {
+    let cep = e.target.value.replace(/\D/g, "");
+    if (cep.length === 8) {
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+        const data = await response.json();
+
+        if (data.erro) {
+          alert("CEP não encontrado!");
+          return;
+        }
+
+        document.getElementById("endereco").value = data.logradouro || "";
+        document.getElementById("bairro").value = data.bairro || "";
+        document.getElementById("cidade").value = data.localidade || "";
+        document.getElementById("estado").value = data.uf || "";
+      } catch (error) {
+        console.error("Erro ao buscar CEP:", error);
+        alert("Erro ao consultar o CEP.");
+      }
+    }
+  });
+
+  btnBuscarCep.addEventListener("click", () => {
+    window.open("https://buscacepinter.correios.com.br/app/endereco/index.php", "_blank");
+  });
+
+  function validarSenha() {
+    const senhaValida = senhaInput.value.length >= 8;
+    senhaError.style.display = senhaValida ? "none" : "block";
+    return senhaValida;
+  }
+
+  function confirmarSenha() {
+    const iguais = senhaInput.value === confirmarSenhaInput.value;
+    confirmarSenhaError.style.display = iguais ? "none" : "block";
+    return iguais;
+  }
+
+  senhaInput.addEventListener("input", validarSenha);
+  confirmarSenhaInput.addEventListener("input", confirmarSenha);
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const senhaOk = validarSenha();
+    const confirmOk = confirmarSenha();
+    if (!senhaOk || !confirmOk) {
+      alert("Corrija os erros antes de enviar o formulário.");
+      return;
+    }
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    data.edu_level = formData.getAll("edu_level[]");
+    data.edu_status = formData.getAll("edu_status[]");
+    data.edu_instituicao = formData.getAll("edu_instituicao[]");
+    data.edu_inicio = formData.getAll("edu_inicio[]");
+    data.edu_conclusao = formData.getAll("edu_conclusao[]");
+
+    data.exp_empresa = formData.getAll("exp_empresa[]");
+    data.exp_admissao = formData.getAll("exp_admissao[]");
+    data.exp_demissao = formData.getAll("exp_demissao[]");
+    data.exp_cargo = formData.getAll("exp_cargo[]");
+    data.exp_descricao = formData.getAll("exp_descricao[]");
+
+    console.log("Dados enviados:", data);
+
+    try {
+      // substituir a url pela do servido
+      const response = await fetch("http://localhost:3000/api/cadastro", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) throw new Error("Erro ao enviar cadastro");
+
+      const result = await response.json();
+      alert("Cadastro realizado com sucesso!");
+      console.log("Resposta do servidor:", result);
+
+      // Redirecionar para próxima página ou login
+      window.location.href = "login.html";
+
+    } catch (error) {
+      console.error("Erro no envio:", error);
+      alert("Erro ao enviar dados. Verifique sua conexão ou tente novamente.");
+    }
+  });
+
+  // Inicialização
+  carregarEstados();
+  carregarNacionalidades();
 });

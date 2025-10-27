@@ -1,52 +1,42 @@
-let campoCPF = document.querySelector("#cpf");
-let senha = document.querySelector("#senha");
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("login-form");
 
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-campoCPF.addEventListener("keypress", ()=>{
-    let tamanhoCampo = campoCPF.value.length
-
-    if (tamanhoCampo == 3 || tamanhoCampo == 7 ){
-        campoCPF.value += ".";
-    } else if (tamanhoCampo == 11)
-         campoCPF.value += "-"
-
-});
-
-campoCPF.addEventListener("input", function(e){
-    this.value = this.value.replace(/[^0-9.-]/g,'');
-});
-
-
-function logar() {
-    const cpf = document.getElementById('cpf').value.trim();
-    const senha = document.getElementById('senha').value.trim();
-    const lembre = document.getElementById('remember').checked;
-    const mensagem = document.getElementById('mensagem');
-
-    if (cpf === '' || senha === '') {
-        alert('Preencha todos os campos solicitados.');
-        return;
-    }
-
-    if (!cpfsValidos.includes(cpf) || cpf.length !== 14 || senha !== senhaCorreta) {
-        alert('CPF e/ou senha incorretos.');
-        return;
-    }        
-
-
-    if (lembre) {
-        localStorage.setItem('cpfLembrado', cpf);
-      } else {
-        localStorage.removeItem('cpfLembrado');
-    }
-
-    window.location.href = 'dashboard.html';
-    }
-
-    window.onload = function() {
-      const cpfSalvo = localStorage.getItem('cpfLembrado');
-      if (cpfSalvo) {
-        document.getElementById('cpf').value = cpfSalvo;
-        document.getElementById('remember').checked = true;
-      }
+    const data = {
+      email: form.email.value.trim(),
+      senha: form.senha.value.trim(),
     };
+
+    if (!data.email || !data.senha) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const err = await response.json();
+        throw new Error(err.message || "Falha no login.");
+      }
+
+      const result = await response.json();
+      alert("Login realizado com sucesso!");
+
+      if (result.token) {
+        localStorage.setItem("token", result.token);
+      }
+
+      window.location.href = "dashboard.html";
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
+      alert("Erro: " + error.message);
+    }
+  });
+});
