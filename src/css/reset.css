@@ -33,6 +33,12 @@ a {
     color: #fff
 }
 
+button {
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
 h1 {
     font-size: 40px;
 }
