@@ -39,17 +39,6 @@ h1 {
     text-decoration: none;
 }
 
-
-form {
-    width: 100%;
-}
-
-fieldset {
-    display: grid;
-    grid-template-columns:  1fr 1fr;
-
-}
-
 form {
     width: 100%;
     padding: 20px;
@@ -141,15 +130,20 @@ textarea {
 
 .radio-group {
     width: 250px;
-    padding: 20px 4dvb;
+    padding: 20px 4px;
     align-items: center;
     justify-content: end;
+}
+
+.radio-group input[type]{
+
 }
 
 .radio-group label {
     font-weight: 500;
     font-size: 18px;
 }
+
 .radio-group div {
     display: flex;
     align-items: center;

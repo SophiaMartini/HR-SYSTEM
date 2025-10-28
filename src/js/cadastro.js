@@ -132,14 +132,12 @@ document.addEventListener('DOMContentLoaded', () => {
              return;
         }
         
-        // Coleta de dados
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
         
-        // ... (Tratamento do switch 'deficiencia', igual ao anterior)
         data.deficiencia = formData.has('deficiencia') ? 'sim' : 'nao';
         
-        // ... (Coleta de Formações e Experiências, igual ao anterior)
+
         data.formacoes = [];
         document.querySelectorAll('.education-entry').forEach(entry => {
             data.formacoes.push({
@@ -163,29 +161,23 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         
-        // Limpa os campos de array
-        // ... (delete data['...[]'], igual ao anterior)
         
-        // Exibe o resultado (para fins de demonstração)
         console.log('Dados do Formulário Coletados:');
         
-        // Não queremos a senha no log, então removemos
         delete data.senha;
         delete data.confirmar_senha;
         
         console.log(JSON.stringify(data, null, 2));
         
-        // ========== [ REDIRECIONAMENTO ] ==========
         alert('Cadastro realizado com sucesso! Você será redirecionado para o login.');
         
-        // Redireciona para a página de login após 2 segundos
+    
         setTimeout(() => {
-            window.location.href = 'login.html'; // Altere para a URL correta da sua página de login
+            window.location.href = 'login.html'; // 
         }, 2000);
-        // ===========================================
+        
     });
 
-    // --- CARREGAMENTO INICIAL DAS APIs ---
     loadStates();
     loadNationalities();
 });
