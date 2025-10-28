@@ -151,20 +151,14 @@ textarea {
     padding-top: 10px;
 }
 
-button {
-    cursor: pointer;
-    font-weight: 600;
-    border-radius: 5px;
-    border: none;
-}
 
 .btn-primary {
     display: flex;
     justify-self: center;
-    padding: 15px 20px;
+    padding: 22px 34px;
     background:#f28c28;
     color: white;
-    font-size: 30px;
+    font-size: 26px;
     margin-top: 1rem;
     border-radius: 100px;
     transition: background-color 0.3s ease;
