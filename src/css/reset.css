@@ -122,6 +122,38 @@ header {
 }
 
 
+/*header de entrada */
+
+#header-entrada {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    max-height: 100px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.logo {
+    max-width: 100px;
+    margin-top: 5px;
+}
+
+.volta {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    
+}
+
+.volta:hover{
+    border-bottom: 2.5px solid #f28c28;
+    transition: 1s transform  ease-in;
+}
+
+
+
+
 /*footer*/
 footer {
     margin-top: 50px;
