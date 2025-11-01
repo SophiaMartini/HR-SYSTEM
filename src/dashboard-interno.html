@@ -17,13 +17,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+US+Modern:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"><!--Playwrite
      USA Modern-->
 
+    <!--bibliotecas-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" /><!--fontawesome-->
+
+
     <!--css-->
     <link rel="stylesheet" href="/src/css/reset.css">
     <link rel="stylesheet" href="/src/css/dashboard.css">
 
     <!--js-->
-    <script src="js/dashboard.js" defer></script>
-    <script src="js/all.js" defer></script>
+    <script src="/src/js/dashboard-interno.js" defer></script>
+    <script src="/src/js/all.js" defer></script>
 
 </head>
 <body>
@@ -35,45 +39,45 @@
         </section>
 
         <section class="dashboard-content">
-            <div class="categoria">
+            <div class="item">
                 <i class="fa-solid fa-list-check"></i>
-                <h3 class="name-category">Candidaturas</h3>
-                <button class="category-btn">Gerenciar Vagas</button>
+                <h3 >Candidaturas</h3>
+                <button id="vagas-btn">Gerenciar Vagas</button>
             </div>
-
-            <div class="categoria">
+            <div class="divisor"></div>
+            <div class="item">
                 <i class="fa-solid fa-graduation-cap"></i>
-                <h3 class="name-category">Treinamentos</h3>
-                <button class="category-btn">Gerencia Treinamentos</button>
+                <h3>Treinamentos</h3>
+                <button id="treinamentos-btn">Gerencia Treinamentos</button>
             </div>
-
-            <div class="categoria">
+            <div class="divisor"></div>     
+            <div class="item">
                 <i class="fa-solid fa-user"></i>
-                <h3 class="name-category">Perfil</h3>
-                <button class="category-btn">Gerenciar Perfil</button>
+                <h3>Perfil</h3>
+                <button id="perfil-btn">Gerenciar Perfil</button>
             </div>
 
-            <div class="categoria">
+            <div class="item">
                 <i class="fa-solid fa-people-group"></i>
-                <h3 class="name-category">Departamentos</h3>
-                <button class="category-btn">Gerenciar Departamentos</button>
+                <h3>Departamentos</h3>
+                <button id="departamentos-btn">Gerenciar Departamentos</button>
             </div>
-
-            <div class="categoria">
+            <div class="divisor"></div>
+            <div class="item">
                 <i class="fa-solid fa-id-card"></i>
-                <h3 class="name-category">Colaboradores</h3>
-                <button class="category-btn">Gerenciar Colaboradores</button>
+                <h3>Colaboradores</h3>
+                <button id="colaboradores-btn" >Gerenciar Colaboradores</button>
             </div>
-
-            <div class="categoria">
+            <div class="divisor"></div>
+            <div class="item">
                 <i class="fa-solid fa-hand-holding-dollar"></i>
-                <h3 class="name-category">Folha de Pagamento</h3>
-                <button class="category-btn">Gerenciar Folha</button>
+                <h3>Folha de Pagamento</h3>
+                <button id="folha-btn">Gerenciar Folha</button>
             </div>
 
         </section>
     </main>
 
-<footer id="#"></footer>
+<footer id="footer-RHFoot"></footer>
 </body>
 </html>

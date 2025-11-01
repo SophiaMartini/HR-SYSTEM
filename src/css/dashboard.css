@@ -1,17 +1,88 @@
 main {
-    background: #F0912F;
-    padding: 20px;
+    background: #fff;
     margin-top: 90px;
+    display: flex;
+    flex-direction: column;
 }
 
 .hero-section {
-    background: linear-gradient(#f09538, #edab62, #e8db87, #e1d3b8);
+    background: linear-gradient(to right, #f09538 20%, #edab62, #e8db87, #e1d3b8);
     width: 100%;
-    height: 400px;
-}
-.hero-section h1{
-    font-family: 'Playwrite US Modern', cursive;
-    font-size: 40px;
-    font-weight: 600;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+.hero-section h1{
+    margin: auto 50px;
+    font-family: 'Playwrite US Modern', cursive;
+    font-size: 70px;
+    font-weight: 500;
+}
+
+
+.hero-section img {
+    width: 570px;
+    margin: 45px 50px 10px ;
+    object-fit: cover;
+}
+
+.dashboard-content {
+    background:#f4f4f4;
+    margin: 40px;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.item {
+    height: auto;
+    margin: 45px 60px;
+    text-align: center;
+}
+
+.item i {
+    margin-bottom: 35px;
+    font-size: 60px;
+}
+
+.item h3 {
+    font-size: 36px;
+    margin-bottom: 25px;
+}
+
+.item button {
+    background-color: #F0912F;
+    width: 270px;
+    margin: 15px;
+    padding: 10px 8px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 22px;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.item button:hover {
+    background-color: #db8229;
+}
+
+.divisor {
+    background-color: #000;
+    width: 2.5px;
+    height: 155px;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .dashboard-content {
+        grid-template-columns: auto auto;
+    }
+
+    .divisor {
+        display: none;
+    }
+}
