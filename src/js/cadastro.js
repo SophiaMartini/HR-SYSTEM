@@ -9,6 +9,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const confirmarSenhaInput = document.getElementById("confirmar-senha");
   const senhaError = document.getElementById("senha-error");
   const confirmarSenhaError = document.getElementById("confirmar-senha-error");
+  const cpfInput = document.getElementById("cpf");
+  const celularInput = document.getElementById("celular");
+
+  const maskCPF = (value) => {
+        return value
+            .replace(/\D/g, '')
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d{1,2})/, '$1-$2')
+            .slice(0, 14);
+    };
+
+  const maskPhone = (value) => {
+        return value
+            .replace(/\D/g, '')
+            .replace(/(\d{2})(\d)/, '($1) $2')
+            .replace(/(\d{5})(\d)/, '$1-$2')
+            .slice(0, 15);
+    };
+
+  const maskCEP = (value) => {
+        return value
+            .replace(/\D/g, '')
+            .replace(/(\d{5})(\d)/, '$1-$2')
+            .slice(0, 9);
+    };
+
+   cpfInput.addEventListener('input', (e) => e.target.value = maskCPF(e.target.value));
+    celularInput.addEventListener('input', (e) => e.target.value = maskPhone(e.target.value));
+    cepInput.addEventListener('input', (e) => e.target.value = maskCEP(e.target.value));
+    
 
   async function carregarEstados() {
     try {
@@ -195,3 +226,5 @@ document.addEventListener("DOMContentLoaded", () => {
   carregarEstados();
   carregarNacionalidades();
 });
+
+
