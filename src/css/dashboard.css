@@ -33,7 +33,7 @@ main {
     margin: 40px;
     padding: 50px;
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: 400px auto 400px auto 400px;
     justify-content: center;
     align-items: center;
     border-radius: 15px;
@@ -80,9 +80,31 @@ main {
 @media screen and (max-width: 1200px) {
     .dashboard-content {
         grid-template-columns: auto auto;
+        margin: 20px;
+        overflow-x: hidden;
     }
 
     .divisor {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .hero-section img {
+        display: none;
+    }
+
+    .dashboard-content {
+        grid-template-columns: auto;
+        margin: 20px;
+        overflow-x: hidden;
+    }
+
+    .divisor {
+        display: none;
+    }
+
+    footer {
         display: none;
     }
 }
