@@ -1,4 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const cpfInput = document.getElementById("cpf");
+  const maskCPF = (value) => {
+        return value
+            .replace(/\D/g, '')
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d{1,2})/, '$1-$2')
+            .slice(0, 14);
+    };
+  
+    cpfInput.addEventListener('input', (e) => e.target.value = maskCPF(e.target.value));
+
   const form = document.getElementById("login-form");
 
   form.addEventListener("submit", async (e) => {
