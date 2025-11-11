@@ -82,24 +82,26 @@
             <h1>Treinamentos</h1>
             <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
         </section>
-        <section class="treinamento-content">
-            <div class="ordenacao">
-                    <label for="orderby">Treinamentos</label>
-                    <select name="" id="orderby">
-                        <option value="">Ordernar por:</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-            </div>
-            
-            <button class="add-treinamento">Adicionar novo treinamento</button>
+        <div class="treinamentos">
+            <label for="treinamento">Treinamentos Cadastrados</label>
+            <select name="treinamentos_cad" id="treinamentos_cad">
+                <option value="">Ordenar por:</option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+            </select>
+        </div>
 
-            <div class="treinamentos-list"></div>
-        </section>
+        <button type="button">Adicionar novo Treinamento</button>
+
+        <div id="treinamentos_grid">
+            <div class="card_treinamento"></div>
+        </div>
     </div>
+
+    #form_cadastro_de_treinamentos>(.)
 <footer id="footer-RHFoot"></footer>
 </body>
 </html>
