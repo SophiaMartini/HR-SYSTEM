@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+US+Modern:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');/*Pra fonte Roboto*/
 @import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+US+Modern:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');/*Momo Trust*/
 
+
+
+
 .momo-trust-display-regular {
   font-family: "Momo Trust Display", sans-serif;
   font-weight: 400;
@@ -49,6 +52,41 @@ button {
 
 h1 {
     font-size: 40px;
+}
+
+/*inputs e labels geral*/
+
+.inputs-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    
+}
+
+.inputs-label input, select, textarea {
+    width: 100%;
+    padding: 18px 12px 8px 12px;
+    margin: 0px 15px 10px;
+    font-size: 16px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    outline: none;
+    background: none;
+    transition: border-color 0.2s;
+}
+
+
+.inputs-label label {
+    position: absolute;
+    top: -5px; 
+    left: 32px;
+    font-size: 16px;
+    background: #fff;
+    padding: 0 4px;
+    pointer-events: none;
+    border-radius: 5px;
 }
 
 
