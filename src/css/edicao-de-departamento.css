@@ -1,0 +1,474 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
+
+* {
+    font-family: 'Roboto', serif;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}   
+
+body {
+    display: flex;
+    flex-direction: column; 
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    padding-top: 90px;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    width: 100%;
+    padding: 10px 2%;
+    position: fixed;
+    top: 0;
+    background-color:#f4f4f4;
+    z-index: 3;
+    padding: clamp(0.6rem, 1.8vw, 1rem);
+    display: flex;
+    align-items: center;
+}
+
+header.scrolled {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); 
+    transition: border-bottom 0.5s ease; 
+  }
+
+#navbar {
+    width: 100% ;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    position: absolute;
+}
+
+#nav_list {
+    display: flex;
+    list-style: none;
+    gap: 48px;
+}
+
+.nav-item a, .btn-cad{
+    text-decoration: none;
+    color: #1d1d1d;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.nav-item:hover {
+    border-bottom: solid 1.5px #1d1d1d;
+    transition: border-bottom .3s ease;
+}
+
+.nav-item .active a {
+    color: #1d1d1d;
+    border-bottom: solid 3px #f28c28 ;
+}
+
+.formas-de-entrada {
+    display: flex;
+    align-items: center;
+}
+
+a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    text-decoration: none;
+}
+
+.hero-section {
+    background: linear-gradient(to right, #f09538 20%, #edab62, #e8db87, #e1d3b8);
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-section h1{
+    margin: auto 50px;
+    font-family: 'Playwrite US Modern', cursive;
+    font-size: 70px;
+    font-weight: 500;
+}
+
+
+.hero-section img {
+    width: 570px;
+    margin: 45px 50px 10px ;
+    object-fit: cover;
+}
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.subtitulo-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    margin: 100px auto;
+    width: 100%;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 45px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    margin-top: -80px;
+}
+
+.title-page {
+    padding: 50px;
+}
+
+.title2-page {
+    margin-top: 0px;
+    padding: 20px;
+}
+
+form {
+    width: 100%;
+}
+
+fieldset {
+    border: none;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+fieldset:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+legend {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+button {
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #f28c28;
+    color: white;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #e65100; 
+}
+
+.login-link-bottom {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ .colab-container {
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    height: auto;
+    width: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+ }
+
+ .add-colaborador-button {
+    background-color: #f28c28;
+    padding:  7px;
+    width: 200px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px auto;
+    margin-top: 50px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.add-colaborador-button:hover {
+    transform:scale(110%);
+}
+
+ .colaborador-card {
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin: 22px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 15px;
+    margin-top: 30px;
+    align-items: center;
+ }
+
+ .nome-colaborador {
+    color: #191919;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.info-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.nome-colaborador {
+    color: #191919;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px; 
+    background-image: url('');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px; 
+}
+
+.trash-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.trash-button:hover {
+    transform:scale(120%);
+}
+
+.cargo-colab {
+    margin-left: auto;
+    white-space: nowrap;
+    color: #888;
+    font-size: 0.8em;
+    margin: 0;
+    flex-shrink: 1; 
+}
+
+.departamento-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.departamento-colabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.departamento-section-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+ .cargos-e-vagas-container {
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    height: auto;
+    width: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+ }
+
+ .cargos-e-vagas {
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin: 22px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 15px;
+    margin-top: 30px;
+    align-items: center;
+ }
+ 
+ .titulo-vaga {
+    color: #191919;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.info-card-content {
+    background-color: #e6e6e6;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    width: 400px;
+    gap: 10px;
+}
+
+.vagas {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cargo-card-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px; 
+    gap: 10px;
+}
+
+.right-card-cargos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-left: 120px;
+}
+
+.card-buttons {
+    background-color: #e6e6e6;
+    display: flex;
+    width: 60px;
+    padding: 5px;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 170px;
+}
+
+.info-button:hover {
+    transform:scale(120%);
+}
+
+.apagar-button:hover {
+    transform:scale(120%);
+}
+
+.add-vaga-button {
+    background-color: #f28c28;
+    padding: 7px;
+    width: 150px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px auto;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.add-vaga-button:hover {
+    transform:scale(110%);
+}
+
+.desc-departamento-container {
+    background: #f4f4f4;
+    border: 1px solid #eee;
+    height: 400px;
+    width: 1000px;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-area-desc {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.desc-departamento {
+    display: flex;
+    border: none;
+    background-color: #ffffff;
+    height: 250px;
+    width: 900px;
+    vertical-align: top;
+    text-align: left;
+    padding: 10px;
+}
