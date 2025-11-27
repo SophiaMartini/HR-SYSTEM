@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--tituloe frufrus-->
+    <title>Dashboard</title>
+    <link rel="icon" type="image/png" href="/src/assets/logos/logo-sozinha.png">
+    
+    <!--fontes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+US+Modern:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"><!--Playwrite
+     USA Modern-->
+
+    <!--bibliotecas-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--css-->
+    <link rel="stylesheet" href="/src/css/reset.css">
+    <link rel="stylesheet" href="/src/css/dashboard.css">
+
+    <!--js-->
+    <script src="/src/js/dashboard-interno.js" defer></script>
+    <script src="/src/js/all.js" defer></script>
+
+</head>
+<body>
+<header id="header-dash-intcolab"></header>
+    <main>
+        <section class="hero-section">
+            <h1>HR System</h1>
+            <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
+        </section>
+
+        <section class="dashboard-content">
+            <div class="item">
+                <i class="fa-solid fa-list-check"></i>
+                <h3 >Candidaturas</h3>
+                <button id="candidaturas-btn">Gerenciar Candidaturas</button>
+            </div>
+            <div class="divisor"></div>
+            <div class="item">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h3>Treinamentos</h3>
+                <button id="treinamentos-btn">Gerencia Treinamentos</button>
+            </div>
+            <div class="divisor"></div>     
+            <div class="item">
+                <i class="fa-solid fa-user"></i>
+                <h3>Perfil</h3>
+                <button id="perfil-btn">Gerenciar Perfil</button>
+            </div>
+
+            <div class="item">
+                <i class="fa-solid fa-people-group"></i>
+                <h3>Departamentos</h3>
+                <button id="departamentos-btn" onclick="window.location.href='http:http://127.0.0.1:5501/HR-SYSTEM-main/src/cadastrar-departamento.html'"></button>>Gerenciar Departamentos</button>
+            </div>
+            <div class="divisor"></div>
+            <div class="item">
+                <i class="fa-solid fa-id-card"></i>
+                <h3>Colaboradores</h3>
+                <button id="colaboradores-btn" onclick="window.location.href='http:http:http://127.0.0.1:5501/HR-SYSTEM-main/src/edicao-de-departamento.html'"></button>">Gerenciar Colaboradores</button>
+            </div>
+            <div class="divisor"></div>
+            <div class="item">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <h3>Folha de Pagamento</h3>
+                <button id="folha-btn" onclick="window.location.href='http://127.0.0.1:5500/HR-SYSTEM-main/src/folha-de-pagamento.html'">Gerenciar Folha</button>
+            </div>
+
+        </section>
+    </main>
+
+    <div id="treinamentos-screen" class="treinamentos" style="display: none;">
+        <section class="hero-section">
+            <h1>Treinamentos</h1>
+            <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
+        </section>
+        <div class="treinamentos-header">
+        <div class="filtros">
+            <label for="ordenar">Treinamentos Cadastrados</label>
+            <select id="ordenar">
+                <option>Ordenar por:</option>
+                <option value="titulo">Título</option>
+                <option value="data">Data de criação</option>
+                <option value="instrutor">Instrutor</option>
+            </select>
+        </div>
+        <button id="novoTreinamentoBtn"><i class="fa-solid fa-plus"></i> Adicionar novo treinamento</button>
+
+        <div id="treinamentos_grid"></div>
+
+        <div id="formTreinamento" class="form-popup" style="display:none;">
+            <form action="" id="cadastroTreinamento">
+                <h2>Novo Treinamento</h2>
+
+                <div class="inputs-label">
+                    <label class="inputs-label" for="tituloCurso">Titulo:</label>
+                    <input class="inputs-label" type="text" id="tituloCurso" required="required">
+                </div>
+
+                <div class="inputs-label">
+                    <label class="inputs-label" for="descricaoCurso">Descrição:</label>
+                    <input class="inputs-label" type="text" id="descricaoCurso" rows="3" required="required">
+                </div>
+                    
+                <div class="inputs-label">
+                    <label for="instrutorCurso">Instrutor</label>
+                    <select id="instrutorCurso" required>
+                        <option value="">Selecione um instrutor</option>              
+                    </select>
+                </div>
+
+                <label class="inputs-label" for="imagemCurso">Imagem da Capa:</label>
+                <input class="inputs-label" type="file" id="imagemCurso" accept="imagem/*" required="required">
+
+                <div class="aulas-container">
+                    <h3>Aulas</h3>
+                    <div id="listaAulas"></div>
+
+                    <button id="addAulaBtn" type="button">
+                        <i class="fa-solid fa-plus"></i> Adicionar aula</button>
+                </div>
+
+                <div class="botoes-form">
+                    <button type="submit">Salvar Curso</button>
+                    <button id="canvelarFormBtn0" type="button">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<footer id="footer-RHFoot"></footer>
+</body>
+</html>

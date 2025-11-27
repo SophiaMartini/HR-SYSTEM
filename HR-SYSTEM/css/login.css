@@ -1,0 +1,136 @@
+body {
+    background-color: #e6e8d3;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #f28c28;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+
+.formulario-de-entrada {
+    margin: 10px 20px;
+    display: flex;
+    width: 100%;
+    max-width: 920px;
+    height: 620px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.formulario-de-entrada h1 {
+    font-size: 36px;
+    margin-bottom: 60px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    width: 90%;
+    cursor: pointer;
+}
+
+.remember-me a {
+    color: black;
+    transition: all 0.4s ease-out;
+}
+
+.remember-me a:hover {
+        text-decoration:underline;
+}
+
+.remember-me label{
+   margin-left: -30%;
+}
+
+input[type="checkbox"]{
+    appearance: none;
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    background-color: #fff;
+    border: 0.125rem solid #f28c28;
+    border-radius: 0.25rem;
+    margin-right: 10px;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.75rem;
+    height: 0.75rem;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: center;
+    transition: 0.125s transform ease-in-out;
+    box-shadow: inset 1rem 1rem #fff;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #f28c28;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+input[type="checkbox"]:disabled {
+    opacity: 0.25;
+}
+
+input[type="checkbox"]:focus {
+    border-color: #f28c28;
+}
+
+form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 40px;
+}
+
+.img {
+    flex: 1;
+    max-width: 500px;
+    max-height: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f28c28;
+}
+
+.img img {
+    margin: 0px 0px 0 auto;
+    width: 100%;
+    height: 620px;
+    object-fit: cover;
+}
+
+#btn-login {
+    display: flex;
+    justify-self: center;
+    padding: 22px 90px;
+    background:#f28c28;
+    color: white;
+    font-size: 26px;
+    margin-top: 30px;
+    border-radius: 100px;
+    transition: background-color 0.3s ease;
+}
+#btn-login:hover {
+    background-color: #e65100; 
+}
