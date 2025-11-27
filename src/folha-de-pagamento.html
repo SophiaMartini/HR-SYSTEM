@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/css/folha-de-pagamento.css">
+    <script src="../js/all.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header id="header-landing-afterLogin"></header>
+    
+    <main>
+        <section class="hero-section">
+            <h1>Folha de Pagamentos</h1>
+            <img src="/src/assets/imgs/homemdashboard.png" alt="Homem da dashboard">
+        </section>
+        <section id="content" style="padding: 2rem;">
+            <section class="topics">
+                
+                <h1 class="topics-title">Colaboradores</h1>
+
+                <div class="input-group">
+                    <div class="input-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input id="search" type="text" class="input-field" placeholder="pesquisar por nome">
+                </div>
+
+                <div class="colab-container" id="container">
+
+                    <div class="div-de-organizacao">
+
+                        <div class="colaborador-card">
+                            <div class="fp-perfil-info">
+                                <div class="fp-profile-pic">
+                                    </div>
+                                <div class="fp-textos">
+                                    <p class="fp-nome">Eduardo Ribeiro</p>
+                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
+                                </div>
+                            </div>
+
+                            <div class="fp-botoes-acao">
+                                <button class="fp-btn-laranja download">
+                                    <i class="fas fa-download"></i> Gerar folha de pagamento
+                                </button>
+                                <button class="fp-btn-laranja view">
+                                    <i class="fas fa-eye"></i> Ver folha de pagamento
+                                </button>
+                            </div>
+
+                            <div class="fp-status-pagamento">
+                                <p class="fp-status-titulo">Status de pagamento</p>
+                                <div class="fp-status-lista">
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
+                                        <label for="pendente" class="status-pendente">Pendente</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
+                                        <label for="emitido" class="status-emitido">Emitido</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pago" disabled>
+                                        <label for="pago" class="status-pago">Pago</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="colaborador-card">
+                            <div class="fp-perfil-info">
+                                <div class="fp-profile-pic">
+                                    </div>
+                                <div class="fp-textos">
+                                    <p class="fp-nome">Eduardo Ribeiro</p>
+                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
+                                </div>
+                            </div>
+
+                            <div class="fp-botoes-acao">
+                                <button class="fp-btn-laranja download">
+                                    <i class="fas fa-download"></i> Gerar folha de pagamento
+                                </button>
+                                <button class="fp-btn-laranja view">
+                                    <i class="fas fa-eye"></i> Ver folha de pagamento
+                                </button>
+                            </div>
+
+                            <div class="fp-status-pagamento">
+                                <p class="fp-status-titulo">Status de pagamento</p>
+                                <div class="fp-status-lista">
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
+                                        <label for="pendente" class="status-pendente">Pendente</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
+                                        <label for="emitido" class="status-emitido">Emitido</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pago" disabled>
+                                        <label for="pago" class="status-pago">Pago</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="div-de-organizacao">
+
+                        <div class="colaborador-card">
+                            <div class="fp-perfil-info">
+                                <div class="fp-profile-pic">
+                                    </div>
+                                <div class="fp-textos">
+                                    <p class="fp-nome">Eduardo Ribeiro</p>
+                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
+                                </div>
+                            </div>
+
+                            <div class="fp-botoes-acao">
+                                <button class="fp-btn-laranja download">
+                                    <i class="fas fa-download"></i> Gerar folha de pagamento
+                                </button>
+                                <button class="fp-btn-laranja view">
+                                    <i class="fas fa-eye"></i> Ver folha de pagamento
+                                </button>
+                            </div>
+
+                            <div class="fp-status-pagamento">
+                                <p class="fp-status-titulo">Status de pagamento</p>
+                                <div class="fp-status-lista">
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
+                                        <label for="pendente" class="status-pendente">Pendente</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
+                                        <label for="emitido" class="status-emitido">Emitido</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pago" disabled>
+                                        <label for="pago" class="status-pago">Pago</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="colaborador-card">
+                            <div class="fp-perfil-info">
+                                <div class="fp-profile-pic">
+                                    </div>
+                                <div class="fp-textos">
+                                    <p class="fp-nome">Eduardo Ribeiro</p>
+                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
+                                </div>
+                            </div>
+
+                            <div class="fp-botoes-acao">
+                                <button class="fp-btn-laranja download">
+                                    <i class="fas fa-download"></i> Gerar folha de pagamento
+                                </button>
+                                <button class="fp-btn-laranja view">
+                                    <i class="fas fa-eye"></i> Ver folha de pagamento
+                                </button>
+                            </div>
+
+                            <div class="fp-status-pagamento">
+                                <p class="fp-status-titulo">Status de pagamento</p>
+                                <div class="fp-status-lista">
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
+                                        <label for="pendente" class="status-pendente">Pendente</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
+                                        <label for="emitido" class="status-emitido">Emitido</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pago" disabled>
+                                        <label for="pago" class="status-pago">Pago</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="div-de-organizacao">
+
+                        <div class="colaborador-card">
+                            <div class="fp-perfil-info">
+                                <div class="fp-profile-pic">
+                                    </div>
+                                <div class="fp-textos">
+                                    <p class="fp-nome">Eduardo Ribeiro</p>
+                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
+                                </div>
+                            </div>
+
+                            <div class="fp-botoes-acao">
+                                <button class="fp-btn-laranja download">
+                                    <i class="fas fa-download"></i> Gerar folha de pagamento
+                                </button>
+                                <button class="fp-btn-laranja view">
+                                    <i class="fas fa-eye"></i> Ver folha de pagamento
+                                </button>
+                            </div>
+
+                            <div class="fp-status-pagamento">
+                                <p class="fp-status-titulo">Status de pagamento</p>
+                                <div class="fp-status-lista">
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
+                                        <label for="pendente" class="status-pendente">Pendente</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
+                                        <label for="emitido" class="status-emitido">Emitido</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pago" disabled>
+                                        <label for="pago" class="status-pago">Pago</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="colaborador-card">
+                            <div class="fp-perfil-info">
+                                <div class="fp-profile-pic">
+                                    </div>
+                                <div class="fp-textos">
+                                    <p class="fp-nome">Eduardo Ribeiro</p>
+                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
+                                </div>
+                            </div>
+
+                            <div class="fp-botoes-acao">
+                                <button class="fp-btn-laranja download">
+                                    <i class="fas fa-download"></i> Gerar folha de pagamento
+                                </button>
+                                <button class="fp-btn-laranja view">
+                                    <i class="fas fa-eye"></i> Ver folha de pagamento
+                                </button>
+                            </div>
+
+                            <div class="fp-status-pagamento">
+                                <p class="fp-status-titulo">Status de pagamento</p>
+                                <div class="fp-status-lista">
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
+                                        <label for="pendente" class="status-pendente">Pendente</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
+                                        <label for="emitido" class="status-emitido">Emitido</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pago" disabled>
+                                        <label for="pago" class="status-pago">Pago</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="div-de-organizacao">
+
+                        <div class="colaborador-card">
+                            <div class="fp-perfil-info">
+                                <div class="fp-profile-pic">
+                                    </div>
+                                <div class="fp-textos">
+                                    <p class="fp-nome">Eduardo Ribeiro</p>
+                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
+                                </div>
+                            </div>
+
+                            <div class="fp-botoes-acao">
+                                <button class="fp-btn-laranja download">
+                                    <i class="fas fa-download"></i> Gerar folha de pagamento
+                                </button>
+                                <button class="fp-btn-laranja view">
+                                    <i class="fas fa-eye"></i> Ver folha de pagamento
+                                </button>
+                            </div>
+
+                            <div class="fp-status-pagamento">
+                                <p class="fp-status-titulo">Status de pagamento</p>
+                                <div class="fp-status-lista">
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
+                                        <label for="pendente" class="status-pendente">Pendente</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
+                                        <label for="emitido" class="status-emitido">Emitido</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pago" disabled>
+                                        <label for="pago" class="status-pago">Pago</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="colaborador-card">
+                            <div class="fp-perfil-info">
+                                <div class="fp-profile-pic">
+                                    </div>
+                                <div class="fp-textos">
+                                    <p class="fp-nome">Eduardo Ribeiro</p>
+                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
+                                </div>
+                            </div>
+
+                            <div class="fp-botoes-acao">
+                                <button class="fp-btn-laranja download">
+                                    <i class="fas fa-download"></i> Gerar folha de pagamento
+                                </button>
+                                <button class="fp-btn-laranja view">
+                                    <i class="fas fa-eye"></i> Ver folha de pagamento
+                                </button>
+                            </div>
+
+                            <div class="fp-status-pagamento">
+                                <p class="fp-status-titulo">Status de pagamento</p>
+                                <div class="fp-status-lista">
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
+                                        <label for="pendente" class="status-pendente">Pendente</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
+                                        <label for="emitido" class="status-emitido">Emitido</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pago" disabled>
+                                        <label for="pago" class="status-pago">Pago</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="div-de-organizacao">
+
+                        <div class="colaborador-card">
+                            <div class="fp-perfil-info">
+                                <div class="fp-profile-pic">
+                                    </div>
+                                <div class="fp-textos">
+                                    <p class="fp-nome">Eduardo Ribeiro</p>
+                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
+                                </div>
+                            </div>
+
+                            <div class="fp-botoes-acao">
+                                <button class="fp-btn-laranja download">
+                                    <i class="fas fa-download"></i> Gerar folha de pagamento
+                                </button>
+                                <button class="fp-btn-laranja view">
+                                    <i class="fas fa-eye"></i> Ver folha de pagamento
+                                </button>
+                            </div>
+
+                            <div class="fp-status-pagamento">
+                                <p class="fp-status-titulo">Status de pagamento</p>
+                                <div class="fp-status-lista">
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
+                                        <label for="pendente" class="status-pendente">Pendente</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
+                                        <label for="emitido" class="status-emitido">Emitido</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pago" disabled>
+                                        <label for="pago" class="status-pago">Pago</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="colaborador-card">
+                            <div class="fp-perfil-info">
+                                <div class="fp-profile-pic">
+                                    </div>
+                                <div class="fp-textos">
+                                    <p class="fp-nome">Eduardo Ribeiro</p>
+                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
+                                </div>
+                            </div>
+
+                            <div class="fp-botoes-acao">
+                                <button class="fp-btn-laranja download">
+                                    <i class="fas fa-download"></i> Gerar folha de pagamento
+                                </button>
+                                <button class="fp-btn-laranja view">
+                                    <i class="fas fa-eye"></i> Ver folha de pagamento
+                                </button>
+                            </div>
+
+                            <div class="fp-status-pagamento">
+                                <p class="fp-status-titulo">Status de pagamento</p>
+                                <div class="fp-status-lista">
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
+                                        <label for="pendente" class="status-pendente">Pendente</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
+                                        <label for="emitido" class="status-emitido">Emitido</label>
+                                    </div>
+                                    <div class="fp-status-item">
+                                        <input type="radio" name="status-eduardo" id="pago" disabled>
+                                        <label for="pago" class="status-pago">Pago</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+            </section>
+        </section>
+    </main>
+    <script src="../src/js/departamentos.js"></script>
+
+    <footer id="footer-RHFoot"></footer>
+
+</body>
+</html>
