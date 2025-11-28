@@ -1,8 +1,14 @@
 main {
     background: #fff;
-    margin-top: 90px;
     display: flex;
     flex-direction: column;
+}
+
+.screen {
+    margin-top: 90px;
+    display: flex;
+    max-width: 100%;
+    min-height: 100vh;
 }
 
 .hero-section {

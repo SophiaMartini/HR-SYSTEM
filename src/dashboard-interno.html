@@ -31,7 +31,7 @@
 </head>
 <body>
 <header id="header-dash-intcolab"></header>
-    <main>
+    <main id="dashboard-screen" class="screen">
         <section class="hero-section">
             <h1>HR System</h1>
             <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
@@ -47,7 +47,7 @@
             <div class="item">
                 <i class="fa-solid fa-graduation-cap"></i>
                 <h3>Treinamentos</h3>
-                <button id="treinamentos-btn">Gerencia Treinamentos</button>
+                <button id="treinamentos-btn">Gerenciar Treinamentos</button>
             </div>
             <div class="divisor"></div>     
             <div class="item">
@@ -77,64 +77,59 @@
         </section>
     </main>
 
-    <div id="treinamentos-screen" class="treinamentos" style="display: none;">
-        <section class="hero-section">
-            <h1>Treinamentos</h1>
-            <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
-        </section>
-        <div class="treinamentos-header">
-        <div class="filtros">
-            <label for="ordenar">Treinamentos Cadastrados</label>
-            <select id="ordenar">
-                <option>Ordenar por:</option>
-                <option value="titulo">Título</option>
-                <option value="data">Data de criação</option>
-                <option value="instrutor">Instrutor</option>
-            </select>
-        </div>
-        <button id="novoTreinamentoBtn"><i class="fa-solid fa-plus"></i> Adicionar novo treinamento</button>
-
-        <div id="treinamentos_grid"></div>
-
-        <div id="formTreinamento" class="form-popup" style="display:none;">
-            <form action="" id="cadastroTreinamento">
-                <h2>Novo Treinamento</h2>
-
-                <div class="inputs-label">
-                    <label class="inputs-label" for="tituloCurso">Titulo:</label>
-                    <input class="inputs-label" type="text" id="tituloCurso" required="required">
-                </div>
-
-                <div class="inputs-label">
-                    <label class="inputs-label" for="descricaoCurso">Descrição:</label>
-                    <input class="inputs-label" type="text" id="descricaoCurso" rows="3" required="required">
-                </div>
-                    
-                <div class="inputs-label">
-                    <label for="instrutorCurso">Instrutor</label>
-                    <select id="instrutorCurso" required>
-                        <option value="">Selecione um instrutor</option>              
-                    </select>
-                </div>
-
-                <label class="inputs-label" for="imagemCurso">Imagem da Capa:</label>
-                <input class="inputs-label" type="file" id="imagemCurso" accept="imagem/*" required="required">
-
-                <div class="aulas-container">
-                    <h3>Aulas</h3>
-                    <div id="listaAulas"></div>
-
-                    <button id="addAulaBtn" type="button">
-                        <i class="fa-solid fa-plus"></i> Adicionar aula</button>
-                </div>
-
-                <div class="botoes-form">
-                    <button type="submit">Salvar Curso</button>
-                    <button id="canvelarFormBtn0" type="button">Cancelar</button>
-                </div>
-            </form>
-        </div>
+<div id="treinamentos-screen" class="screen">
+    <div class="topo_treinamentos">
+        <h2>Treinamentos</h2>
+        <button id="novoTreinamentoBtn">+ Novo treinamento</button>
     </div>
+
+    <!-- FILTROS -->
+    <div class="filtros_treinamentos">
+        <input type="text" id="buscaTreinamento" placeholder="Buscar por nome...">
+        <select id="categoriaFiltro">
+            <option value="">Categoria</option>
+            <option value="Soft Skills">Soft Skills</option>
+            <option value="Segurança">Segurança</option>
+            <option value="Compliance">Compliance</option>
+        </select>
+        <select id="statusFiltro">
+            <option value="">Status</option>
+            <option value="ativo">Ativo</option>
+            <option value="inativo">Inativo</option>
+        </select>
+    </div>
+
+    <!-- GRID -->
+    <div id="treinamentos_grid"></div>
+
+    <!-- FORMULÁRIO -->
+    <div id="formTreinamento" style="display:none;">
+        <form id="cadastroTreinamento">
+            <h3>Cadastrar Treinamento</h3>
+
+            <label>Título</label>
+            <input type="text" id="tituloCurso" name="tituloCurso" required>
+
+            <label>Descrição</label>
+            <textarea id="descricaoCurso" name="descricaoCurso"></textarea>
+
+            <label>Instrutor</label>
+            <select id="instrutorCurso" name="instrutorCurso"></select>
+
+            <label>Imagem de capa</label>
+            <input type="file" id="imagemCurso">
+
+            <h4>Aulas</h4>
+            <div id="listaAulas"></div>
+            <button type="button" id="addAulaBtn">Adicionar aula</button>
+
+            <div class="btns-form">
+                <button type="submit" id="salvarTreinamento">Salvar</button>
+                <button type="button" id="canvelarFormBtn0">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 <footer id="footer-RHFoot"></footer>
 </body>
