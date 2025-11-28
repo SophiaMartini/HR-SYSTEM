@@ -74,26 +74,19 @@
     max-width: 500px;
 }
 
-.curriculo-btn {
-    background-color: #f28c28;
-    margin-top: 30px;
-    padding: 15px 12px;
-    font-size: 18px;
+.curriculo .btn-defaunt {
+    display: flex;
+    padding: 20px ;
+    margin-top: 50px;
+    font-size: 20px;
     font-weight: 600;
     border-radius: 30px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 1px 0.1px 0px rgba(0, 0, 0, 0.5);
+    justify-self: center;
 }
-
-.curriculo-btn:hover {
-    background-color: #e37d23;
-}
-
 
 .sobre {
     padding: 30px 0px;
-    margin-top: 200px;
+    margin-top: 150px;
     justify-content: center;
     align-items: center;
 }
@@ -135,7 +128,7 @@
 
 .img-aboutus img {
     width: 350px;
-    margin: 60px 200px 0px auto;
+    margin: 60px 20px 0px auto;
 }
 
 .descricao {
@@ -150,6 +143,8 @@
 .caixa-laranja {
     background: #f28c28;
     padding: 40px;
+    color: white;
+    font-size: 16px;    
 }
 
 .um {
@@ -160,10 +155,268 @@
 
 .dois {
     max-width: 55%;
-    margin-top: 50px;
     border-radius: 30px 0px 0px 30px;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+.screen { display: none; }
+
+@media screen and (max-width: 1024px) {
+    .hero-section {
+        margin: 80px auto;
+    }
+
+    .hero-msg h1 {
+        font-size: 32px;
+    }
+
+    .hero-msg p {
+        font-size: 20px;
+    }
+
+    .principal {
+        margin: 50px 20px;
+    }
+
+    .img-aboutus img {
+        width: 300px;
+        margin: 0px 20px 0px auto;
+    }
+
+    .txt-aboutus {
+        font-size: 28px;
+    }
+
+    .descricao {
+        font-size: 22px;
+    }
+
+    .caixa-laranja {
+        padding: 30px;
+    }
+
+    .um {
+        margin-top: -100px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        height: auto;
+        margin: 1000px auto 30px;
+        padding: 30px 20px;
+    }
+
+    .hero-section img {
+        width: 100%;
+        max-width: 320px;
+        order: 2;
+        margin-top: 30px;
+        align-self: center;
+    }
+
+    .hero-msg {
+        order: 1;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-msg h1 {
+        font-size: 28px;
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .hero-msg p {
+        font-size: 18px;
+        max-width: 100%;
+    }
+
+   
+    .curriculo {
+        flex-direction: column-reverse;
+        margin: 30px 0;
+    }
+
+    .curriculo-img {
+        border-radius: 30px 30px 0 0;
+        padding: 30px 20px;
+        max-height: 350px;
+        width: 100%;
+    }
+
+    .curriculo-img img {
+        max-width: 250px;
+        height: auto;
+    }
+
+    .mgs-content {
+        margin: 30px 20px;
+        max-width: 100%;
+    }
+
+    .curriculo h1 {
+        font-size: 26px;
+    }
+
+    .curriculo p {
+        font-size: 18px;
+    }
+
+    .curriculo-btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 15px;
+        font-size: 18px;
+        margin: 20px auto;
+        display: block;
+    }
+
+
+    .sobre {
+        margin-top: 100px;
+        padding: 20px;
+    }
+
+    .about span {
+        font-size: 32px;
+        display: block;
+    }
+
+    .principal {
+        flex-direction: column;
+        margin: 40px 15px;
+    }
+
+    .txt-aboutus {
+        max-width: 100%;
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .img-aboutus img {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .descricao {
+        flex-direction: column;
+        font-size: 18px;
+        gap: 30px;
+    }
+
+    .caixa-laranja {
+        padding: 25px 20px;
+    }
+
+    .um,
+    .dois {
+        max-width: 100%;
+        border-radius: 20px;
+        margin-top: 0;
+    }
+
+    .um {
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-section {
+        padding: 20px 15px;
+        margin: 30px auto 20px;
+    }
+
+    .hero-section img {
+        max-width: 260px;
+    }
+
+    .hero-msg h1 {
+        font-size: 24px;
+    }
+
+    .hero-msg p {
+        font-size: 16px;
+    }
+
+    .curriculo-img {
+        padding: 20px 15px;
+        max-height: 300px;
+    }
+
+    .curriculo-img img {
+        max-width: 200px;
+    }
+
+    .mgs-content {
+        margin: 20px 15px;
+    }
+
+    .curriculo h1 {
+        font-size: 22px;
+    }
+
+    .curriculo p {
+        font-size: 16px;
+    }
+
+    .curriculo-btn {
+        max-width: 100%;
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .about span {
+        font-size: 26px;
+    }
+
+    .txt-aboutus {
+        font-size: 20px;
+    }
+
+    .descricao {
+        font-size: 16px;
+        text-align: left;
+    }
+
+    .caixa-laranja {
+        padding: 20px 15px;
+    }
+
+    .um,
+    .dois {
+        border-radius: 15px;
+    }
+}
+
+
+@media screen and (max-width: 320px) {
+    .hero-msg h1 {
+        font-size: 20px;
+    }
+
+    .hero-msg p {
+        font-size: 14px;
+    }
+
+    .curriculo h1 {
+        font-size: 20px;
+    }
+
+    .about span {
+        font-size: 22px;
+    }
+
+    .txt-aboutus {
+        font-size: 18px;
+    }
 }
