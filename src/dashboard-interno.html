@@ -78,30 +78,51 @@
     </main>
 
 <div id="treinamentos-screen" class="screen">
-    <div class="topo_treinamentos">
+    <section class="hero-section">
+            <h1>HR System</h1>
+            <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
+    </section>
+
+    <div class="treinamentos-content">
+        <div class="topo-treinamentos">
         <h2>Treinamentos</h2>
-        <button id="novoTreinamentoBtn">+ Novo treinamento</button>
+        <button id="novoTreinamentoBtn" class="btn-defaunt">+ Novo treinamento</button>
     </div>
 
     <!-- FILTROS -->
-    <div class="filtros_treinamentos">
-        <input type="text" id="buscaTreinamento" placeholder="Buscar por nome...">
-        <select id="categoriaFiltro">
-            <option value="">Categoria</option>
-            <option value="Soft Skills">Soft Skills</option>
-            <option value="Segurança">Segurança</option>
-            <option value="Compliance">Compliance</option>
-        </select>
-        <select id="statusFiltro">
-            <option value="">Status</option>
-            <option value="ativo">Ativo</option>
-            <option value="inativo">Inativo</option>
-        </select>
+    <div class="filtros-treinamentos">
+        <div class="input-search-filter">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="buscaTreinamento" placeholder="Buscar por nome...">
+        </div>
+        
+        <div class="filtros">
+            <div class="inputs-search-filter">
+                <select id="categoriaFiltro">
+                    <option value="">Categoria</option>
+                    <option value="Soft Skills">Soft Skills</option>
+                    <option value="Segurança">Segurança</option>
+                    <option value="Compliance">Compliance</option>
+                </select>
+            </div>
+            
+            <div class="inputs-search-filter">
+                <select id="statusFiltro">
+                    <option value="">Status</option>
+                    <option value="ativo">Ativo</option>
+                    <option value="inativo">Inativo</option>
+                </select>
+            </div>
+        </div>
+        
+        
     </div>
 
     <!-- GRID -->
     <div id="treinamentos_grid"></div>
 
+    </div>
+    
     <!-- FORMULÁRIO -->
     <div id="formTreinamento" style="display:none;">
         <form id="cadastroTreinamento">

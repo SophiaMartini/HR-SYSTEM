@@ -23,63 +23,73 @@
 </head>
 <body>
     <header id="header-landing">
-       <nav id="navbar" class="dashboard-int-colab">
-        
-            <a href="/src/index.html">           
-                <img class="logo" src="/src/assets/logos/logo-sozinha.png" alt="logo do projeto">             
-            </a>  
-            <div class="itens">
-                <a href="#vagas" class="navitem">Vagas</a>            
-                <a href="#sobre" class="navitem">Sobre Nós</a> 
+        <nav id="navbar" class="dashboard-int-colab">
+
+            <a href="/src/index.html">
+                <img class="logo" src="/src/assets/logos/logo-sozinha.png" alt="logo do projeto">
+            </a>
+
+            <button class="menu-btn" id="menu-landing-btn">☰</button>
+
+            <div class="itens" id="menu-landing">
+                <a href="#vagas" class="navitem">Vagas</a>
+                <a href="#sobre" class="navitem">Sobre Nós</a>
             </div>
-             
-            
-            <div class="formas-de-entrada">  
+
+            <div class="formas-de-entrada" id="menu-landing-extra">
                 <a class="navitem" href="/src/cadastro.html">Cadastrar</a>
-                
+
                 <a href="/src/login.html">
-                    <button class="btn-defaunt">
-                        <h3>Entrar</h3>
-                    </button>
-
+                    <button class="btn-defaunt"><h3>Entrar</h3></button>
                 </a>
-            </div> 
-</nav>
-</header>
+            </div>
+        </nav>
+    </header>
 
 
-<header id="header-entrada">
+
+
+    <header id="header-entrada">
         <a href="index.html">
             <img class="logo" src="/src/assets/logos/logo-sozinha.png" alt="logo do projeto">
         </a>
 
-        <a  class="navitem" href="index.html">Voltar ao Início</a>
-</header>
+        <a class="navitem" id="menu-entrada" href="index.html">Voltar ao Início</a>
+    </header>
 
-  <header id="header-dash-intcolab">      
-    <a href="/src/dashboard-interno.html">
-        <img class="logo" src="/src/assets/logos/logo-sozinha.png" alt="Logo">
-    </a>
-    <nav id="nav
-    bar" class="dashboard-int-colab">
-            <a id="dashboard-btn" href="#" class="navitem active">Início</a>            
+
+
+  <header id="header-dash-intcolab">
+
+        <a href="/src/dashboard-interno.html">
+            <img class="logo" src="/src/assets/logos/logo-sozinha.png" alt="Logo">
+        </a>
+
+        <button class="menu-btn" id="menu-dash-btn">☰</button>
+
+        <nav id="nav-dash" class="dashboard-int-colab">
+            <a id="dashboard-btn" href="#" class="navitem active">Início</a>
             <a id="candidaturas-btn" href="#" class="navitem">Candidaturas</a>
             <a id="treinamentos-btn" href="#" class="navitem">Treinamentos</a>
             <a id="perfil-btn" href="#" class="navitem">Perfil</a>
             <a id="departamentos-btn" href="#" class="navitem">Departamentos</a>
             <a id="colaboradores-btn" href="#" class="navitem">Colaboradores</a>
-            <a id="folha-btn" href="#" class="navitem">Folha de pagamento</a>    
-    </nav>
-    <div class="profile">
-        <img src="" alt="Foto do Usuário" id="profile-btn">
+            <a id="folha-btn" href="#" class="navitem">Folha de pagamento</a>
+        </nav>
 
-        <div class="dropdown" id="dropdown-menu">
-            <a href="#">Meu Perfil</a>
-            <a href="#">Configurações</a>
-            <a href="#">Sair</a>
+        <div class="profile">
+            <img src="" alt="Foto do Usuário" id="profile-btn">
+
+            <div class="dropdown" id="dropdown-menu">
+                <a href="#"><i class="fa-solid fa-user"></i> Meu Perfil</a>
+                <a href="#"><i class="fa-solid fa-gear"></i> Configurações</a>
+                <a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sair</a>
+            </div>
         </div>
-    </div>
-  </header>
+
+    </header>
+
+
 
 <footer id="footer-RHFoot">
             <div class="conteudo-footer">
