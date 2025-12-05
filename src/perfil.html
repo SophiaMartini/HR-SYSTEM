@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - HR System</title>
+    <link rel="stylesheet" href="/src/css/reset.css">
+    <link rel="stylesheet" href="/src/css/perfil.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div id="header-dash-intcolab">      
+            <a href="/src/dashboard-interno.html">
+                <img class="logo" src="/src/assets/logos/logo-sozinha.png" alt="Logo">
+            </a>
+            <nav id="navbar" class="dashboard-int-colab">
+                <a id="dashboard-btn" href="/src/dashboard-interno.html" class="navitem">Início</a>            
+                <a id="candidaturas-btn" href="/src/candidaturas.html" class="navitem">Candidaturas</a>
+                <a id="treinamentos-btn" href="/src/treinamentos.html" class="navitem">Treinamentos</a>
+                <a id="perfil-btn" href="/src/perfil.html" class="navitem active">Perfil</a>
+                <a id="departamentos-btn" href="/src/departamentos.html" class="navitem">Departamentos</a>
+                <a id="colaboradores-btn" href="/src/colaboradores.html" class="navitem">Colaboradores</a>
+                <a id="folha-btn" href="/src/folha.html" class="navitem">Folha de pagamento</a>    
+            </nav>
+            <div class="profile">
+                <img src="/src/assets/imgs/images.jpg" alt="Foto do Usuário" id="profile-btn">
+
+                <div class="dropdown" id="dropdown-menu">
+                    <a href="/src/perfil.html">Meu Perfil</a>
+                    <a href="/src/configuracoes.html">Configurações</a>
+                    <a href="/src/login.html">Sair</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="profile-main-content">
+
+        <section class="info-section personal-info">
+            <h2>Informações Pessoais</h2>
+            
+            <!-- Foto de perfil -->
+            <div class="profile-picture-section">
+                <img src="/src/assets/imgs/images.jpg" alt="Foto de Perfil" class="profile-picture" id="profile-main-picture">
+                <span id="change-photo-trigger">Mudar foto de perfil</span>
+            </div>
+
+            <input type="file" id="photo-upload-input" accept="image/*" style="display: none;">
+
+            <div class="info-grid" id="personal-info-container">
+                <div class="info-item">
+                    <label>Nome Completo</label>
+                    <p data-field="nome-completo" class="display-mode">João da Silva</p>
+                </div>
+                <div class="info-item">
+                    <label>E-mail</label>
+                    <p data-field="email" class="display-mode">joao.silva@email.com</p>
+                </div>
+                <div class="info-item">
+                    <label>Telefone</label>
+                    <p data-field="telefone" class="display-mode">(11) 99999-9999</p>
+                </div>
+                <div class="info-item">
+                    <label>Localização</label>
+                    <p data-field="localizacao" class="display-mode">qe 45 conjunto e casa 10</p>
+                </div>
+            </div>
+            <button class="edit-button" id="edit-save-button">Editar</button>
+        </section>
+
+        <section class="info-section professional-experience">
+            <h2>Experiência Profissional</h2>
+            <div class="experience-item">
+                <h3>Desenvolvedor Full Stack</h3>
+                <p class="company">Tech Solutions Ltd.</p>
+                <p class="period">Jan 2022 - Presente</p>
+                <p class="description">Desenvolvimento de aplicações web usando React, Node.js e PostgreSQL.</p>
+            </div>
+            <div class="experience-item">
+                <h3>Desenvolvedor Junior</h3>
+                <p class="company">StartXYZ</p>
+                <p class="period">Abr 2020 - Dez 2021</p>
+                <p class="description">Desenvolvimento de aplicações web usando React, Node.js e PostgreSQL.</p>
+            </div>
+        </section>
+
+        <section class="info-section academic-education">
+            <h2>Formação Acadêmica</h2>
+            <div class="education-item">
+                <h3>Bacharelado em Ciência da Computação</h3>
+                <p class="institution">Universidade de São Paulo</p>
+                <p class="period">2016 - 2020</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-RHFoot">
+        <div class="conteudo-footer">
+            <div class="links">
+                <div class="menu-content">
+                    <h4 class="title">Menu</h4>
+                    <a href="/src/index.html#vagas">Vagas</a>
+                    <a href="/src/index.html#sobre">Sobre</a>
+                </div>
+
+                <div class="legal-content">
+                    <h4 class="title">Legal</h4>
+                    <a href="/src/privacidade.html">Políticas de Privacidade</a>
+                    <a href="/src/termos.html">Termos de Uso</a>
+                </div>
+            </div>
+            
+            <div class="outros-trem">
+                <img src="/src/assets/logos/logo-inteira.png" alt="Logo HR System">
+                <p>Solução completa em gestão de Recursos Humanos, unindo tecnologia e praticidade para valorizar pessoas e impulsionar empresas.</p>
+
+                <div class="contatos">
+                    <a href="mailto:contato@hrsystem.com">
+                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 117.88 122.88"><title>email-symbol</title><path d="M102.31,30.86,78,5.74V5.49H12.44V46h0L46.66,76.6l.15.14L58.36,87.06,105,46.36v-10l-2.64-5.49ZM64.07,28.44l.09-.41.56-2.47h6.83L67.62,44.1c-.07.33-.14.63-.19.9h0a9.34,9.34,0,0,0-.18,1.42,1.43,1.43,0,0,0,.29.94,1,1,0,0,0,.72.33c.93,0,2.14-.61,3.61-1.82a16.05,16.05,0,0,0,3.85-5,15.19,15.19,0,0,0,.47-12.71,13.86,13.86,0,0,0-3.4-4.76,16,16,0,0,0-5.5-3.15,22.48,22.48,0,0,0-7.41-1.14,25.87,25.87,0,0,0-7.73,1.11A19.49,19.49,0,0,0,46,23.41a17.46,17.46,0,0,0-4.45,5.08,22.14,22.14,0,0,0-2.4,5.84,25.72,25.72,0,0,0-.83,6.54A18.36,18.36,0,0,0,40.07,49a16.3,16.3,0,0,0,5.14,6.18,21,21,0,0,0,8.16,3.55,34.53,34.53,0,0,0,10.8.42A25.52,25.52,0,0,0,72.27,57a15.69,15.69,0,0,0,5.63-4.5h5.51a18.14,18.14,0,0,1-3.5,5,20.31,20.31,0,0,1-5.06,3.66,26.25,26.25,0,0,1-6.49,2.26,36.89,36.89,0,0,1-7.84.77,36.4,36.4,0,0,1-11.44-1.67,23.41,23.41,0,0,1-8.58-4.81,20.32,20.32,0,0,1-5.27-7.5,25.24,25.24,0,0,1-1.77-9.62A28.31,28.31,0,0,1,35.3,30.22,23.54,23.54,0,0,1,49,16.39a29.27,29.27,0,0,1,11-2,27,27,0,0,1,9,1.44A19.93,19.93,0,0,1,76,20a18.12,18.12,0,0,1,4.47,6.38A21,21,0,0,1,82,34.46a19.13,19.13,0,0,1-1.24,6.78,19.37,19.37,0,0,1-3.56,6,17.25,17.25,0,0,1-5.44,4.19A15.06,15.06,0,0,1,65,53a6.17,6.17,0,0,1-3.25-.72A3.48,3.48,0,0,1,60.22,50,12,12,0,0,1,59,51a10.61,10.61,0,0,1-1.06.68,9.49,9.49,0,0,1-2.89,1.07,9.65,9.65,0,0,1-5.67-.55A9.38,9.38,0,0,1,45,48.44a12,12,0,0,1-1.69-6.56,19.55,19.55,0,0,1,1.74-8,16.59,16.59,0,0,1,5-6.44,11.56,11.56,0,0,1,7.29-2.51A7.46,7.46,0,0,1,64,28.25l.12.19ZM49.93,41.83a7.62,7.62,0,0,0,1.29,4.76,4.1,4.1,0,0,0,3.38,1.66,5.75,5.75,0,0,0,4.28-2,10,10,0,0,0,1-1.23,10.61,10.61,0,0,0,.6-.93,13.67,13.67,0,0,0,1.2-2.74,18.71,18.71,0,0,0,1-5.66v-.07a10.84,10.84,0,0,0-.06-1.16,7.48,7.48,0,0,0-.26-1.3,5.92,5.92,0,0,0-1-1.93A4.18,4.18,0,0,0,59.84,30a4.76,4.76,0,0,0-2-.42,5.74,5.74,0,0,0-4.1,1.78,11.34,11.34,0,0,0-2.78,4.54h0l0,0a17.92,17.92,0,0,0-1,5.86Zm60.51-.26a3.59,3.59,0,0,1,2.43-.93,4,4,0,0,1,2.06.6,5.09,5.09,0,0,1,1.26,1.07,7.06,7.06,0,0,1,1.69,4.26v70.64a5.71,5.71,0,0,1-1.66,4h0a5.67,5.67,0,0,1-4,1.66H5.67a5.71,5.71,0,0,1-4-1.66h0a5.62,5.62,0,0,1-1.66-4V46.57a7.1,7.1,0,0,1,1.73-4.32,5.5,5.5,0,0,1,1.26-1,4,4,0,0,1,2-.58,3.59,3.59,0,0,1,2,.57V2.74A2.74,2.74,0,0,1,9.7,0H78.9A2.71,2.71,0,0,1,81,1l28.65,29.59a2.71,2.71,0,0,1,.78,1.9h0v.79c0,.11,0,.22,0,.34s0,.22,0,.33v7.63ZM56.52,92.74,44.9,82.36,5.49,116.9v.31a.17.17,0,0,0,0,.13h0a.22.22,0,0,0,.13,0H112.21a.22.22,0,0,0,.13,0h0a.17.17,0,0,0,0-.13V117L72.45,82,60.15,92.76h0a2.73,2.73,0,0,1-3.62,0Zm-15.73-14L5.49,47.15v62.48l35.3-30.94Zm71.6,31.06V47.12L76.6,78.39l35.79,31.36Z"/></svg>
+                    </a>
+
+                    <a href="https://instagram.com">
+                        <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 512"><path fill-rule="nonzero" d="M170.663 256.157c-.083-47.121 38.055-85.4 85.167-85.482 47.121-.092 85.407 38.029 85.499 85.159.091 47.13-38.047 85.4-85.176 85.492-47.112.09-85.399-38.039-85.49-85.169zm-46.108.092c.141 72.602 59.106 131.327 131.69 131.185 72.592-.14 131.35-59.089 131.209-131.691-.141-72.577-59.114-131.336-131.715-131.194-72.585.141-131.325 59.114-131.184 131.7zm237.104-137.092c.033 16.954 13.817 30.682 30.772 30.649 16.961-.034 30.689-13.811 30.664-30.765-.033-16.954-13.818-30.69-30.78-30.656-16.962.033-30.689 13.818-30.656 30.772zm-208.696 345.4c-24.958-1.086-38.511-5.234-47.543-8.709-11.961-4.628-20.496-10.177-29.479-19.093-8.966-8.951-14.532-17.461-19.202-29.397-3.508-9.033-7.73-22.569-8.9-47.527-1.269-26.983-1.559-35.078-1.683-103.433-.133-68.338.116-76.434 1.294-103.441 1.069-24.941 5.242-38.512 8.709-47.536 4.628-11.977 10.161-20.496 19.094-29.478 8.949-8.983 17.459-14.532 29.403-19.202 9.025-3.526 22.561-7.715 47.511-8.9 26.998-1.278 35.085-1.551 103.423-1.684 68.353-.133 76.448.108 103.456 1.294 24.94 1.086 38.51 5.217 47.527 8.709 11.968 4.628 20.503 10.145 29.478 19.094 8.974 8.95 14.54 17.443 19.21 29.413 3.524 8.999 7.714 22.552 8.892 47.494 1.285 26.998 1.576 35.094 1.7 103.432.132 68.355-.117 76.451-1.302 103.442-1.087 24.957-5.226 38.52-8.709 47.56-4.629 11.953-10.161 20.488-19.103 29.471-8.941 8.949-17.451 14.531-29.403 19.201-9.009 3.517-22.561 7.714-47.494 8.9-26.998 1.269-35.086 1.56-103.448 1.684-68.338.133-76.424-.124-103.431-1.294zM149.977 1.773c-27.239 1.286-45.843 5.648-62.101 12.019-16.829 6.561-31.095 15.353-45.286 29.603C28.381 57.653 19.655 71.944 13.144 88.79c-6.303 16.299-10.575 34.912-11.778 62.168C.172 178.264-.102 186.973.031 256.489c.133 69.508.439 78.234 1.741 105.548 1.302 27.231 5.649 45.827 12.019 62.092 6.569 16.83 15.353 31.089 29.611 45.289 14.25 14.2 28.55 22.918 45.404 29.438 16.282 6.294 34.902 10.583 62.15 11.777 27.305 1.203 36.022 1.468 105.521 1.336 69.532-.133 78.25-.44 105.555-1.734 27.239-1.302 45.826-5.664 62.1-12.019 16.829-6.585 31.095-15.353 45.288-29.611 14.191-14.251 22.917-28.55 29.428-45.404 6.304-16.282 10.592-34.904 11.777-62.134 1.195-27.323 1.478-36.049 1.344-105.557-.133-69.516-.447-78.225-1.741-105.522-1.294-27.256-5.657-45.844-12.019-62.118-6.577-16.829-15.352-31.08-29.602-45.288-14.25-14.192-28.55-22.935-45.404-29.429-16.29-6.304-34.903-10.6-62.15-11.778C333.747.164 325.03-.101 255.506.031c-69.507.133-78.224.431-105.529 1.742z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>Created and developed by NexaCode. All rights reserved © 2024</p>
+        </div>
+    </footer>
+
+    <!-- Modal de Edição -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Editar Informações Pessoais</h2>
+            
+            <form id="edit-form">
+                <div class="form-group">
+                    <label for="modal-nome-completo">Nome Completo</label>
+                    <input type="text" id="modal-nome-completo" name="nome-completo">
+                </div>
+                
+                <div class="form-group">
+                    <label for="modal-email">E-mail</label>
+                    <input type="email" id="modal-email" name="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-telefone">Telefone</label>
+                    <input type="tel" id="modal-telefone" name="telefone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="modal-localizacao">Localização</label>
+                    <input type="text" id="modal-localizacao" name="localizacao">
+                </div>
+
+                <button type="submit" id="save-modal-button" class="modal-save-button">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/src/js/perfil.js"></script>
+    <script>
+        // Inicializa o dropdown do perfil
+        const profileBtn = document.getElementById('profile-btn');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        
+        if (profileBtn && dropdownMenu) {
+            profileBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('show');
+            });
+            
+            window.addEventListener('click', function(event) {
+                if (!event.target.matches('#profile-btn')) {
+                    if (dropdownMenu.classList.contains('show')) {
+                        dropdownMenu.classList.remove('show');
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

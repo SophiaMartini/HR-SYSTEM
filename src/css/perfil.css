@@ -1,0 +1,911 @@
+/* Variáveis de Cor */
+
+
+
+:root {
+
+    --primary-color: #ffffff;
+
+    --secondary-color: #f27228;
+
+    --text-dark: #333;
+
+    --text-light: #ffffff;
+
+    --text-label: #666;
+
+    --save-color: #4CAF50;
+
+}
+
+
+
+/* Estilos Globais */
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    color: var(--text-dark);
+
+    padding-top: 90px;
+
+    background-image: url('/src/assets/imgs/background-cad.png');
+
+    background-size: cover;
+
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+
+    background-position: center center;
+
+    background-color: var(--secondary-color);
+
+}
+
+
+
+a {
+
+    text-decoration: none;
+
+    color: inherit;
+
+}
+
+
+
+ul {
+
+    list-style: none;
+
+}
+
+
+
+/* Header */
+
+header {
+
+    display: flex;
+
+    width: 100%;
+
+    padding: 10px 2%;
+
+    position: fixed;
+
+    top: 0;
+
+    background-color: #f4f4f4;
+
+    z-index: 3;
+
+}
+
+
+
+#header-dash-intcolab {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    width: 100%;
+
+    gap: 30px;
+
+    height: 90px;
+
+}
+
+
+
+.logo {
+
+    width: 100px;
+
+}
+
+
+
+.dashboard-int-colab {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+
+.navitem {
+
+    margin: 18px;
+
+    position: relative;
+
+    text-decoration: none;
+
+    color: #111;
+
+    font-weight: 500;
+
+    transition: color 0.3s ease;
+
+}
+
+
+
+.navitem::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: -4px;
+
+    width: 100%;
+
+    height: 2px;
+
+    background-color: #e26a1d;
+
+    transform: translateX(-50%) scaleX(0);
+
+    transform-origin: center;
+
+    transition: transform 0.4s ease;
+
+}
+
+
+
+.navitem:hover::after {
+
+    transform: translateX(-50%) scaleX(1);
+
+}
+
+
+
+.dashboard-int-colab .active {
+
+    background: #e9943b;
+
+    color: white;
+
+    padding: 6px 20px;
+
+    border-radius: 25px;
+
+    font-weight: 600;
+
+}
+
+
+
+.profile {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+
+.profile img {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    object-fit: cover;
+
+    font-size: 0;
+
+    background-color: #f0f0f0;
+
+}
+
+
+
+.dropdown {
+
+    position: absolute;
+
+    right: 0;
+
+    top: 55px;
+
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+    display: none;
+
+    flex-direction: column;
+
+    width: 160px;
+
+    overflow: hidden;
+
+    z-index: 100;
+
+}
+
+
+
+.dropdown a {
+
+    padding: 10px 15px;
+
+    text-decoration: none;
+
+    color: #333;
+
+    font-size: 14px;
+
+    transition: background 0.3s;
+
+}
+
+
+
+.dropdown a:hover {
+
+    background: #f0f0f0;
+
+}
+
+
+
+.dropdown.show {
+
+    display: flex;
+
+}
+
+
+
+/* Footer */
+
+#footer-RHFoot {
+
+    margin-top: 50px;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: auto;
+
+    background-color: black;
+
+    color: #fff;
+
+}
+
+
+
+.conteudo-footer {
+
+    display: flex;
+
+    padding: 30px 60px;
+
+    justify-content: space-between;
+
+}
+
+
+
+.links {
+
+    justify-content: space-between;
+
+    display: flex;
+
+    margin: 20px;
+
+}
+
+
+
+.menu-content, .legal-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    margin-right: 100px;
+
+    font-size: 18px;
+
+    gap: 15px;
+
+}
+
+
+
+.outros-trem {
+
+    flex-direction: column;
+
+    width: 300px;
+
+    justify-self: right;
+
+}
+
+
+
+.outros-trem img {
+
+    width: 200px;
+
+}
+
+
+
+.copyright {
+
+    background-color: #f28c28;
+
+    text-align: center;
+
+    padding: 5px 0;
+
+}
+
+
+
+svg {
+
+    margin: 20px auto auto;
+
+    justify-self: right;
+
+    max-width: 40px;
+
+    filter: invert(100%);
+
+}
+
+
+
+.contatos {
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+
+
+/* Estilos do Perfil */
+
+.profile-main-content {
+
+    max-width: 900px;
+
+    margin: 30px auto;
+
+    padding: 0 20px;
+
+}
+
+
+
+.profile-picture-section {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+}
+
+.profile-picture {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: none; /* Borda removida */
+    font-size: 0;
+    background-color: #f0f0f0;
+}
+
+#change-photo-trigger {
+
+    cursor: pointer;
+
+    text-decoration: underline;
+
+    font-size: 0.95em;
+
+    font-weight: 600;
+
+    color: var(--secondary-color);
+
+    transition: color 0.3s;
+
+}
+
+
+
+#change-photo-trigger:hover {
+
+    color: #c06a00;
+
+}
+
+
+
+.info-section {
+
+    background-color: var(--primary-color);
+
+    color: var(--text-dark);
+
+    padding: 25px;
+
+    margin-bottom: 30px;
+
+    border-radius: 15px;
+
+    position: relative;
+
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+}
+
+
+
+.info-section h2 {
+
+    color: var(--text-dark);
+
+    font-size: 1.5em;
+
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    padding-bottom: 10px;
+
+}
+
+
+
+.info-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.info-item label {
+
+    font-size: 0.9em;
+
+    color: var(--text-label);
+
+    display: block;
+
+    margin-bottom: 2px;
+
+}
+
+
+
+.info-item p {
+
+    font-weight: bold;
+
+    font-size: 1.1em;
+
+    color: var(--text-dark);
+
+}
+
+
+
+.edit-button {
+
+    background-color: #e07b00;
+
+    color: var(--text-light);
+
+    border: none;
+
+    padding: 8px 20px;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    position: absolute;
+
+    top: 25px;
+
+    right: 25px;
+
+    transition: background-color 0.3s;
+
+}
+
+
+
+.edit-button:hover {
+
+    background-color: #c06a00;
+
+}
+
+
+
+.experience-item, .education-item {
+
+    padding: 10px 0;
+
+    margin-bottom: 15px;
+
+    border-left: 3px solid var(--secondary-color);
+
+    padding-left: 15px;
+
+}
+
+
+
+.experience-item h3, .education-item h3 {
+
+    font-size: 1.2em;
+
+    color: var(--text-dark);
+
+    margin-bottom: 5px;
+
+}
+
+
+
+.company, .institution {
+
+    font-weight: bold;
+
+    color: var(--text-dark);
+
+    margin-bottom: 3px;
+
+}
+
+
+
+.period {
+
+    font-size: 0.9em;
+
+    color: var(--text-label);
+
+    margin-bottom: 5px;
+
+}
+
+
+
+.description {
+
+    font-size: 0.95em;
+
+    line-height: 1.4;
+
+    color: var(--text-dark);
+
+}
+
+
+
+/* Estilos para o MODAL */
+
+.modal {
+
+    display: none;
+
+    position: fixed;
+
+    z-index: 20;
+
+    left: 0;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: auto;
+
+    background-color: rgba(0, 0, 0, 0.7);
+
+}
+
+
+
+.modal-content {
+
+    background-color: var(--primary-color);
+
+    margin: 10% auto;
+
+    padding: 30px;
+
+    border: 1px solid var(--secondary-color);
+
+    width: 80%;
+
+    max-width: 500px;
+
+    border-radius: 8px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+
+    position: relative;
+
+}
+
+
+
+.modal-content h2 {
+
+    color: var(--text-dark);
+
+    font-size: 1.8em;
+
+    margin-bottom: 25px;
+
+}
+
+
+
+.close-button {
+
+    color: #aaa;
+
+    float: right;
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    transition: color 0.3s;
+
+}
+
+
+
+.close-button:hover,
+
+.close-button:focus {
+
+    color: var(--secondary-color);
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+}
+
+
+
+.form-group {
+
+    margin-bottom: 15px;
+
+}
+
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 0.9em;
+
+    color: var(--text-label);
+
+}
+
+
+
+.form-group input {
+
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 4px;
+
+    font-size: 1em;
+
+    color: var(--text-dark);
+
+    background-color: var(--primary-color);
+
+}
+
+
+
+.modal-save-button {
+
+    width: 100%;
+
+    background-color: var(--save-color);
+
+    color: var(--text-light);
+
+    border: none;
+
+    padding: 10px 20px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    margin-top: 20px;
+
+    transition: background-color 0.3s;
+
+}
+
+
+
+.modal-save-button:hover {
+
+    background-color: #3e8e41;
+
+}
+
+
+
+/* Responsividade Básica */
+
+@media (max-width: 768px) {
+
+    .info-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+
+    .edit-button {
+
+        position: static;
+
+        width: 100%;
+
+        margin-top: 15px;
+
+    }
+
+
+
+    .profile-picture-section {
+
+        flex-direction: column;
+
+        text-align: center;
+
+    }
+
+
+
+    .conteudo-footer {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        text-align: center;
+
+        padding: 30px 20px;
+
+    }
+
+
+
+    .links {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        margin-bottom: 20px;
+
+    }
+
+
+
+    .menu-content, .legal-content {
+
+        margin-right: 0;
+
+        margin-bottom: 20px;
+
+    }
+
+
+
+    .outros-trem {
+
+        width: 100%;
+
+        text-align: center;
+
+    }
+
+
+
+    .contatos {
+
+        justify-content: center;
+
+    }
+
+}
