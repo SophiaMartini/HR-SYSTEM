@@ -1,0 +1,93 @@
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.image-section {
+  width: 50%;
+  padding: 20px 40px 0;
+  align-items: self-end;
+  justify-content: center;
+  display: flex;
+  background-color: #f5f1e8;
+}
+
+.image-section img {
+  max-width: 800px;
+  width: 100%;
+}
+
+.form-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.form-wrapper {
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.form-wrapper p {
+  margin: 60px auto 60px;
+  font-size: 18px;
+}
+
+.login-link p {
+  margin: 20px;
+  font-size: 18px;
+}
+
+.login-link a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #f28c28;
+}
+
+.btn-defaunt {
+  margin: 20px auto 0;
+  width: 65%;
+  padding: 12px !important;
+  font-size: 20px !important;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none; /* Oculto por padrão */
+}
+
+.success-message {
+  display: none; /* Começa oculto */
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #a5d6a7; /* Verde claro */
+  color: #1b5e20; /* Verde escuro para o texto */
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none; /* Oculto por padrão */
+}
+
+@media screen and (max-width: 1200px) {
+  .image-section {
+    display: none;
+  }
+}
