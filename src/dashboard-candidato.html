@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="/src/assets/logos/logo-sozinha.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--bibliotecas-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--css-->
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+
+    <link rel="stylesheet" href="./css/perfil.css">
+
+    <!--js-->
+    <script src="/src/js/dashboard-candidato.js" defer></script>
+    <script src="/src/js/all.js" defer></script>
+
+    <script src="./js/candidaturas-interno.js"></script>
+    <script src="./js/perfil.js"></script>
+    <script src="./js/treinamentos-interno.js"></script>
+    <script src="./js/departamentos-interno.js"></script>
+    <script src="./js/folha-de-pagamento.js"></script>
+
+</head>
+<body>
+    <header id="header-dash-candidato"></header>
+    <main id="dashboard-screen" class="screen">
+        <section class="hero-section">
+            <h1>HR System</h1>
+            <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
+        </section>
+
+      <section class="dashboard-content">
+        <div class="item">
+          <i class="fa-solid fa-briefcase"></i>
+          <h3>Vagas</h3>
+          <button id="vagas-btn">Explore nossa vagas disponíveis</button>
+        </div>
+
+        <div class="divisor"></div>
+
+        <div class="item">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h3>Treinamentos</h3>
+          <button id="treinamentos-btn">Conheça nossos melhores treinamentos</button>
+        </div>
+
+        <div class="divisor"></div>
+
+        <div class="item">
+          <i class="fa-solid fa-user"></i>
+          <h3>Perfil</h3>
+          <button id="perfil-btn">Acessar perfil</button>
+        </div>
+        </section>
+    </main>
+
+    <div id="perfil-screen" class="screen">
+        <section class="info-section personal-info">
+        <div class="topo">
+                <h2>Informações Pessoais</h2>
+                <button class="edit-button" id="edit-save-button">
+                    <i class="fas fa-edit"></i> Editar
+                </button>
+        </div>
+            
+            <!-- Foto de perfil -->
+            <div class="profile-picture-section">
+                <img src="/src/assets/imgs/images.jpg" alt="Foto de Perfil" class="profile-picture" id="profile-main-picture">
+                <span id="change-photo-trigger">Mudar foto de perfil</span>
+            </div>
+
+            <input type="file" id="photo-upload-input" accept="image/*" style="display: none;">
+
+            <div class="info-grid" id="personal-info-container">
+                <div class="info-item">
+                    <label>Nome Completo</label>
+                    <p data-field="nome-completo" class="display-mode">Carregando...</p>
+                </div>
+                <div class="info-item">
+                    <label>E-mail</label>
+                    <p data-field="email" class="display-mode">Carregando...</p>
+                </div>
+                <div class="info-item">
+                    <label>Telefone</label>
+                    <p data-field="telefone" class="display-mode">Carregando...</p>
+                </div>
+                <div class="info-item">
+                    <label>Localização</label>
+                    <p data-field="localizacao" class="display-mode">Carregando...</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section professional-experience">
+            <h2 class="topo">Experiência Profissional</h2>
+            <!-- As experiências serão carregadas dinamicamente aqui -->
+        </section>
+
+        <section class="info-section academic-education">
+            <h2 class="topo">Formação Acadêmica</h2>
+            <!-- As formações serão carregadas dinamicamente aqui -->
+        </section>
+    </div>
+
+
+
+    <footer id="footer-RHFoot"></footer>
+</body>
+</html>
