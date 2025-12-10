@@ -26,35 +26,39 @@
       rel="stylesheet"
     />
 
-    <!--bibliotecas-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-    <!--css-->
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/dashboard.css">
-    <link rel="stylesheet" href="./css/dapartamentos-interno.css">
-    <link rel="stylesheet" href="./css/treinamentos.css">
-    <link rel="stylesheet" href="./css/perfil.css">
-    <link rel="stylesheet" href="./css/folha-de-pagamento.css">
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link rel="stylesheet" href="./css/departamentos-interno.css" />
+    <link rel="stylesheet" href="./css/treinamentos.css" />
+    <link rel="stylesheet" href="./css/perfil.css" />
+    <link rel="stylesheet" href="./css/folha-de-pagamento.css" />
 
-    <!--js-->
     <script src="/src/js/dashboard-interno.js" defer></script>
     <script src="/src/js/all.js" defer></script>
 
-    <script src="./js/candidaturas-interno.js"></script>
-    <script src="./js/perfil.js"></script>
-    <script src="./js/treinamentos-interno.js"></script>
-    <script src="./js/departamentos-interno.js"></script>
-    <script src="./js/folha-de-pagamento.js"></script>
+    <script src="./js/candidaturas-interno.js" defer></script>
+    <script src="./js/perfil.js" defer></script>
+    <script src="./js/treinamentos-interno.js" defer></script>
+    <script src="./js/folha-de-pagamento.js" defer></script>
 
-</head>
-<body>
-<header id="header-dash-intcolab"></header>
-<main id="dashboard-screen" class="screen">
-        <section class="hero-section">
-            <h1>HR System</h1>
-            <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
-        </section>
+    <script src="./js/departamentos-interno.js" defer></script>
+  </head>
+  <body>
+    <header id="header-dash-intcolab"></header>
+
+    <main id="dashboard-screen" class="screen">
+      <section class="hero-section">
+        <h1>HR System</h1>
+        <img
+          src="/src/assets/imgs/Homem Dashboard.png"
+          alt="Homem da dashboard"
+        />
+      </section>
 
       <section class="dashboard-content">
         <div class="item">
@@ -75,1492 +79,795 @@
           <button id="perfil-btn">Gerenciar Perfil</button>
         </div>
 
-            <div class="item">
-                <i class="fa-solid fa-people-group"></i>
-                <h3>Departamentos</h3>
-                <button id="departamentos-btn">Gerenciar Departamentos</button>
-            </div>
-            <div class="divisor"></div>
-            <div class="item">
-                <i class="fa-solid fa-id-card"></i>
-                <h3>Colaboradores</h3>
-                <button id="colaboradores-btn" >Gerenciar Colaboradores</button>
-            </div>
-            <div class="divisor"></div>
-            <div class="item">
-                <i class="fa-solid fa-hand-holding-dollar"></i>
-                <h3>Folha de Pagamento</h3>
-                <button id="folha-btn">Gerenciar Folha</button>
-            </div>
+        <div class="item">
+          <i class="fa-solid fa-people-group"></i>
+          <h3>Departamentos</h3>
+          <button id="departamentos-btn">Gerenciar Departamentos</button>
+        </div>
+        <div class="divisor"></div>
+        <div class="item">
+          <i class="fa-solid fa-id-card"></i>
+          <h3>Colaboradores</h3>
+          <button id="colaboradores-btn">Gerenciar Colaboradores</button>
+        </div>
+        <div class="divisor"></div>
+        <div class="item">
+          <i class="fa-solid fa-hand-holding-dollar"></i>
+          <h3>Folha de Pagamento</h3>
+          <button id="folha-btn">Gerenciar Folha</button>
+        </div>
+      </section>
+    </main>
 
-        </section>
-</main>
-
-<div id="candidaturas-screen" class="screen">
- <section class="hero-section">
+    <div id="candidaturas-screen" class="screen" style="display: none">
+      <section class="hero-section">
         <h1>Candidaturas</h1>
-        <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
-    </section>
-</div>
+        <img
+          src="/src/assets/imgs/Homem Dashboard.png"
+          alt="Homem da dashboard"
+        />
+      </section>
+    </div>
 
-<div id="treinamentos-screen" class="screen">
-    <section class="hero-section">
+    <div id="treinamentos-screen" class="screen" style="display: none">
+      <section class="hero-section">
         <h1>Treinamentos</h1>
-        <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
-    </section>
+        <img
+          src="/src/assets/imgs/Homem Dashboard.png"
+          alt="Homem da dashboard"
+        />
+      </section>
 
-    <div class="treinamentos-content">
+      <div class="treinamentos-content">
         <div class="topo-treinamentos">
-            <h2>Gerenciar Treinamentos</h2>
-            <button id="novoTreinamentoBtn" class="btn-defaunt" onclick="document.getElementById('treinamentos-screen').style.display='none'; document.getElementById('cadastro-treinamento-screen').style.display='block';">
-                <i class="fas fa-plus"></i> Novo Treinamento
-            </button>
+          <h2>Gerenciar Treinamentos</h2>
+          <button
+            id="novoTreinamentoBtn"
+            class="btn-defaunt"
+            onclick="document.getElementById('treinamentos-screen').style.display='none'; document.getElementById('cadastro-treinamento-screen').style.display='block';"
+          >
+            <i class="fas fa-plus"></i> Novo Treinamento
+          </button>
         </div>
 
-        <!-- filtros -->
         <div class="filtros-treinamentos">
-            <div class="input-search-filter">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="buscaTreinamento" placeholder="Buscar por nome ou instrutor...">
+          <div class="input-search-filter">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="text"
+              id="buscaTreinamento"
+              placeholder="Buscar por nome ou instrutor..."
+            />
+          </div>
+
+          <div class="filtros">
+            <div class="inputs-search-filter">
+              <select id="categoriaFiltro">
+                <option value="">Todas Categorias</option>
+                <option value="tecnologia">Tecnologia</option>
+                <option value="gestao">Gestão</option>
+                <option value="compliance">Compliance</option>
+                <option value="soft-skills">Soft Skills</option>
+              </select>
             </div>
-            
-            <div class="filtros">
-                <div class="inputs-search-filter">
-                    <select id="categoriaFiltro">
-                        <option value="">Todas Categorias</option>
-                        <option value="tecnologia">Tecnologia</option>
-                        <option value="gestao">Gestão</option>
-                        <option value="compliance">Compliance</option>
-                        <option value="soft-skills">Soft Skills</option>
-                    </select>
-                </div>
-                
-                <div class="inputs-search-filter">
-                    <select id="statusFiltro">
-                        <option value="">Todos Status</option>
-                        <option value="ativo">Ativo</option>
-                        <option value="inativo">Inativo</option>
-                        <option value="concluido">Concluído</option>
-                    </select>
-                </div>
+
+            <div class="inputs-search-filter">
+              <select id="statusFiltro">
+                <option value="">Todos Status</option>
+                <option value="ativo">Ativo</option>
+                <option value="inativo">Inativo</option>
+                <option value="concluido">Concluído</option>
+              </select>
             </div>
+          </div>
         </div>
 
-        <!-- GRID DE TREINAMENTOS -->
-        <div id="treinamentos_grid">
-        </div>
+        <div id="treinamentos_grid"></div>
+      </div>
     </div>
-</div>
 
-<!-- cadastro-treinamento-screen.html -->
-<div id="cadastro-treinamento-screen" class="screen" style="display: none;">
-    <div class="form-container-treinamento">
+    <div id="cadastro-treinamento-screen" class="screen" style="display: none">
+      <div class="form-container-treinamento">
         <form id="cadastroTreinamentoForm">
-            <div class="form-header">
-                <button type="button" class="btn-voltar" 
-                        onclick="document.getElementById('cadastro-treinamento-screen').style.display='none'; document.getElementById('treinamentos-screen').style.display='block';">
-                    <i class="fas fa-arrow-left"></i> Voltar
-                </button>
-                <h2 id="tituloForm">Novo Treinamento</h2>
-            </div>
-
-            <div class="form-section">
-                <h3><i class="fas fa-info-circle"></i> Informações Básicas</h3>
-                
-                <div class="form-grid">
-                    <div class="inputs-label">
-                        <label for="tituloTreinamento">Título do Treinamento *</label>
-                        <input type="text" id="tituloTreinamento" name="tituloTreinamento" required 
-                               placeholder="Ex: Liderança Eficaz">
-                    </div>
-                    
-                    <div class="inputs-label">
-                        <label for="cargaHoraria">Carga Horária (horas) *</label>
-                        <input type="number" id="cargaHoraria" name="cargaHoraria" 
-                               min="1" max="200" value="20" required>
-                    </div>
-                    
-                    <div class="inputs-label">
-                        <label for="instrutorTreinamento">Instrutor *</label>
-                            <select id="instrutorTreinamento" name="instrutorTreinamento" required>
-                                <option value="">Selecione o instrutor</option>
-                            <!-- Preenchido via JavaScript -->
-                            </select>
-                    </div>
-                    
-                    <div class="inputs-label">
-                            <label for="categoriaTreinamento">Categoria</label>
-                            <select id="categoriaTreinamento" name="categoriaTreinamento">
-                                <option value="">Selecione uma categoria</option>
-                                <option value="lideranca">Liderança</option>
-                                <option value="tecnologia">Tecnologia</option>
-                                <option value="compliance">Compliance</option>
-                                <option value="soft-skills">Soft Skills</option>
-                                <option value="seguranca">Segurança do Trabalho</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-section">
-                <h3><i class="fas fa-align-left"></i> Descrição</h3>
-                <div class="inputs-label">
-                    <label for="descricaoTreinamento">Descrição Detalhada *</label>
-                    <textarea id="descricaoTreinamento" name="descricaoTreinamento" rows="6" required
-                              placeholder="Descreva os objetivos, conteúdo e benefícios deste treinamento..."></textarea>
-                </div>
-            </div>
-
-            <div class="form-section">
-                <h3><i class="fas fa-image"></i> Imagem de Capa</h3>
-                <div class="form-group">
-                    <label for="imagemTreinamento">Upload da Imagem</label>
-                    <div class="upload-container">
-                        <div class="upload-area" id="uploadArea">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <input type="file" id="imagemTreinamento" accept="image/*" class="file-input">
-                            <span>Recomendado: 1200x600 pixels, JPG ou PNG</span>
-                        </div>
-                        <div class="preview-container" id="previewContainer" style="display: none;">
-                            <img id="previewImage" src="" alt="Preview">
-                            <button type="button" class="btn-remover-imagem" onclick="removerImagem()">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-section">
-                <h3><i class="fas fa-layer-group"></i> Módulos e Aulas</h3>
-                <div class="form-group">
-                    <label>Organize o treinamento em módulos e aulas</label>
-                    <p class="form-help">Crie módulos para organizar o conteúdo e adicione aulas dentro de cada módulo.</p>
-                    
-                    <!-- Botão para adicionar módulo -->
-                    <button type="button" class="btn-defaunt btn-plus-modulo" onclick="adicionarModulo()">
-                        <i class="fas fa-plus"></i> Adicionar Módulo
-                    </button>
-                    
-                    <!-- Lista de módulos -->
-                    <div id="listaModulos">
-                        <!-- Módulos serão adicionados dinamicamente aqui -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button type="submit" class="btn-defaunt">
-                    <i class="fas fa-save"></i> Salvar Treinamento
-                </button>
-                <button type="button" class="btn-cancelar" onclick="navegarPara('treinamentos-screen')">
-                    <i class="fas fa-times"></i> Cancelar
-                </button>
-            </div>
-            
-            <input type="hidden" id="treinamentoId" name="treinamentoId">
-        </form>
-    </div>
-</div>
-
-<!-- visualizar-treinamento-screen.html -->
-<div id="visualizar-treinamento-screen" class="screen" style="display: none;">
-    <div class="conteudo-treinamento-container">
-        <!-- Cabeçalho com botão voltar -->
-        <div class="cabecalho-visualizacao">
-            <div class="hero-content-visualizacao">
-                <div class="hero-text-visualizacao">
-                    <div class="cabeca">
-                        <button class="btn-voltar" onclick="mostrarTela('treinamentos-screen')">
-                            <i class="fas fa-arrow-left"></i> Voltar
-                        </button>
-                        <h1 id="tituloTreinamentoVisualizar">Treinamento</h1>
-                    </div>
-                    <div class="hero-info">
-                        <span><i class="fas fa-chalkboard-teacher"></i> <span id="instrutorTreinamentoVisualizar"></span></span>
-                        <span><i class="fas fa-clock"></i> <span id="cargaHorariaVisualizar"></span> horas</span>
-                        <span><i class="fas fa-book"></i> <span id="totalMateriaisVisualizar">0</span> materiais</span>
-                        <span><i class="fas fa-users"></i> <span id="totalAlunosVisualizar">0</span> alunos</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Abas -->
-        <div class="abas-treinamento">
-            <button class="aba-treinamento active" data-aba="conteudo" onclick="mudarAba('conteudo')">
-                <i class="fas fa-book"></i> Conteúdo
+          <div class="form-header">
+            <button
+              type="button"
+              class="btn-voltar"
+              onclick="document.getElementById('cadastro-treinamento-screen').style.display='none'; document.getElementById('treinamentos-screen').style.display='block';"
+            >
+              <i class="fas fa-arrow-left"></i> Voltar
             </button>
-            <button class="aba-treinamento" data-aba="colaboradores" onclick="mudarAba('colaboradores')">
-                <i class="fas fa-users"></i> Colaboradores
-            </button>
-            <button class="aba-treinamento" data-aba="presenca" onclick="mudarAba('presenca')">
-                <i class="fas fa-clipboard-check"></i> Controle de Presença
-            </button>
-        </div>
+            <h2 id="tituloForm">Novo Treinamento</h2>
+          </div>
 
-        <!-- Aba de Conteúdo -->
-        <div id="aba-conteudo" class="aba-conteudo-treinamento active">
-            <div class="descricao-treinamento">
-                <h3>Descrição</h3>
-                <p id="descricaoTreinamentoVisualizar"></p>
-            </div>
-            
-            <!-- Lista de Módulos expansíveis -->
-            <div class="modulos-treinamento">
-                <h3>Conteúdo do Treinamento</h3>
-                <div id="listaModulosVisualizar">
-                    <!-- Módulos serão carregados aqui -->
-                </div>
-            </div>
-            
-            <div class="acoes-visualizacao">
-                <button class="btn-editar-treinamento" onclick="editarTreinamentoAtual()">
-                    <i class="fas fa-edit"></i> Editar Treinamento
-                </button>
-                <button class="btn-atribuir-treinamento" onclick="mostrarModalAtribuirColaboradores()">
-                    <i class="fas fa-user-plus"></i> Atribuir Colaboradores
-                </button>
-            </div>
-        </div>
+          <div class="form-section">
+            <h3><i class="fas fa-info-circle"></i> Informações Básicas</h3>
 
-        <!-- Aba de Colaboradores -->
-        <div id="aba-colaboradores" class="aba-conteudo-treinamento">
-            <div class="cabecalho-colaboradores">
-                <h2>Colaboradores Atribuídos</h2>
-                    <button class="btn-defaunt" onclick="mostrarModalAtribuirColaboradores()">
-                        <i class="fas fa-user-plus"></i> Adicionar Colaboradores
-                    </button>
-                </div>
-            </div>
-            
-            <div id="listaColaboradoresTreinamento">
-                <!-- Lista de colaboradores será carregada aqui -->
-            </div>
-        </div>
+            <div class="form-grid">
+              <div class="inputs-label">
+                <label for="tituloTreinamento">Título do Treinamento *</label>
+                <input
+                  type="text"
+                  id="tituloTreinamento"
+                  name="tituloTreinamento"
+                  required
+                  placeholder="Ex: Liderança Eficaz"
+                />
+              </div>
 
-        <!-- Aba de Controle de Presença -->
-        <div id="aba-presenca" class="aba-conteudo-treinamento">
-            <div class="cabecalho-presenca">
-                <h2>Controle de Presença</h2>
-                <div class="controles-presenca">
-                    <select id="filtroAulaPresenca" onchange="filtrarAulaPresenca()">
-                        <option value="">Todas as Aulas</option>
-                        <!-- Opções serão preenchidas dinamicamente -->
-                    </select>
-                    <button class="btn-exportar-presenca" onclick="exportarRelatorioPresenca()">
-                        <i class="fas fa-download"></i> Exportar Relatório
-                    </button>
-                </div>
-            </div>
-            
-            <div id="tabelaPresencaContainer">
-                <!-- Tabela de presença será carregada aqui -->
-            </div>
-        </div>
-    </div>
-</div>
+              <div class="inputs-label">
+                <label for="cargaHoraria">Carga Horária (horas) *</label>
+                <input
+                  type="number"
+                  id="cargaHoraria"
+                  name="cargaHoraria"
+                  min="1"
+                  max="200"
+                  value="20"
+                  required
+                />
+              </div>
 
-<!-- Modal para Atribuir Colaboradores -->
-<div class="atribuir-modal">
-    <div id="modalAtribuirColaboradores" class="modal" style="display: none;">
-    <div class=".visu">
-        <div class="modal-header">
-            <h3>Atribuir Colaboradores ao Treinamento</h3>
-            <button class="btn-fechar-modal" onclick="fecharModalAtribuir()">&times;</button>
-        </div>
-        
-        <div class="modal-body">
+              <div class="inputs-label">
+                <label for="instrutorTreinamento">Instrutor *</label>
+                <select
+                  id="instrutorTreinamento"
+                  name="instrutorTreinamento"
+                  required
+                >
+                  <option value="">Selecione o instrutor</option>
+                </select>
+              </div>
+
+              <div class="inputs-label">
+                <label for="categoriaTreinamento">Categoria</label>
+                <select id="categoriaTreinamento" name="categoriaTreinamento">
+                  <option value="">Selecione uma categoria</option>
+                  <option value="lideranca">Liderança</option>
+                  <option value="tecnologia">Tecnologia</option>
+                  <option value="compliance">Compliance</option>
+                  <option value="soft-skills">Soft Skills</option>
+                  <option value="seguranca">Segurança do Trabalho</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3><i class="fas fa-align-left"></i> Descrição</h3>
             <div class="inputs-label">
-                <div class="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="buscaColaborador" placeholder="Buscar por nome...">
-                </div>
-                
-                <div class="inputs-label">
-                    <select id="filtroModalDepartamento">
-                        <option value="">Todos Departamentos</option>
-                        <option value="TI">TI</option>
-                        <option value="RH">RH</option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="Financeiro">Financeiro</option>
-                    </select>
-                    
-                    <select id="filtroModalContratacao">
-                        <option value="">Tempo de Contratação</option>
-                        <option value="recente">Mais Recente</option>
-                        <option value="antigo">Mais Antigo</option>
-                        <option value="ultimo-mes">Último Mês</option>
-                        <option value="ultimos-3-meses">Últimos 3 Meses</option>
-                    </select>
-                    
-                    <select id="filtroModalMes">
-                        <option value="">Mês de Contratação</option>
-                        <option value="1">Janeiro</option>
-                        <option value="2">Fevereiro</option>
-                        <option value="3">Março</option>
-                        <option value="4">Abril</option>
-                        <option value="5">Maio</option>
-                        <option value="6">Junho</option>
-                        <option value="7">Julho</option>
-                        <option value="8">Agosto</option>
-                        <option value="9">Setembro</option>
-                        <option value="10">Outubro</option>
-                        <option value="11">Novembro</option>
-                        <option value="12">Dezembro</option>
-                    </select>
-                </div>
+              <label for="descricaoTreinamento">Descrição Detalhada *</label>
+              <textarea
+                id="descricaoTreinamento"
+                name="descricaoTreinamento"
+                rows="6"
+                required
+                placeholder="Descreva os objetivos, conteúdo e benefícios deste treinamento..."
+              ></textarea>
             </div>
-            
-            <div class="lista-colaboradores-modal" id="listaColaboradoresModal">
-                <!-- Lista de colaboradores disponíveis -->
-            </div>
-            
-            <div class="selecionados-info">
-                <h4>Selecionados: <span id="contadorSelecionados">0</span> colaboradores</h4>
-                <div id="listaSelecionadosModal">
-                    <!-- Colaboradores selecionados aparecerão aqui -->
+          </div>
+
+          <div class="form-section">
+            <h3><i class="fas fa-image"></i> Imagem de Capa</h3>
+            <div class="form-group">
+              <label for="imagemTreinamento">Upload da Imagem</label>
+              <div class="upload-container">
+                <div class="upload-area" id="uploadArea">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                  <input
+                    type="file"
+                    id="imagemTreinamento"
+                    accept="image/*"
+                    class="file-input"
+                  />
+                  <span>Recomendado: 1200x600 pixels, JPG ou PNG</span>
                 </div>
+                <div
+                  class="preview-container"
+                  id="previewContainer"
+                  style="display: none"
+                >
+                  <img id="previewImage" src="" alt="Preview" />
+                  <button
+                    type="button"
+                    class="btn-remover-imagem"
+                    onclick="removerImagem()"
+                  >
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
             </div>
-        </div>
-        
-        <div class="modal-footer">
-            <button class="btn-cancelar" onclick="fecharModalAtribuir()">Cancelar</button>
-            <button class="btn-defaunt" onclick="atribuirColaboradoresSelecionados()">Atribuir Colaboradores</button>
-        </div>
+          </div>
+
+          <div class="form-section">
+            <h3><i class="fas fa-layer-group"></i> Módulos e Aulas</h3>
+            <div class="form-group">
+              <label>Organize o treinamento em módulos e aulas</label>
+              <p class="form-help">
+                Crie módulos para organizar o conteúdo e adicione aulas dentro
+                de cada módulo.
+              </p>
+
+              <button
+                type="button"
+                class="btn-defaunt btn-plus-modulo"
+                onclick="adicionarModulo()"
+              >
+                <i class="fas fa-plus"></i> Adicionar Módulo
+              </button>
+
+              <div id="listaModulos"></div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-defaunt">
+              <i class="fas fa-save"></i> Salvar Treinamento
+            </button>
+            <button
+              type="button"
+              class="btn-cancelar"
+              onclick="navegarPara('treinamentos-screen')"
+            >
+              <i class="fas fa-times"></i> Cancelar
+            </button>
+          </div>
+
+          <input type="hidden" id="treinamentoId" name="treinamentoId" />
+        </form>
+      </div>
     </div>
-</div>
-</div>
 
-
-<!-- controle-presenca-screen.html -->
-<div id="controle-presenca-screen" class="screen" style="display: none;">
-
-    <div class="controle-presenca-container">
-        <div class="info-aula-presenca">
-            <h3 id="nomeAulaPresenca">Aula</h3>
-            <div class="detalhes-aula">
-                <p><strong>Treinamento:</strong> <span id="treinamentoAulaPresenca"></span></p>
-                <p><strong>Descrição:</strong> <span id="descricaoAulaPresenca"></span></p>
-                <p><strong>Material:</strong> <span id="materialAulaPresenca"></span></p>
+    <div
+      id="visualizar-treinamento-screen"
+      class="screen"
+      style="display: none"
+    >
+      <div class="conteudo-treinamento-container">
+        <div class="cabecalho-visualizacao">
+          <div class="hero-content-visualizacao">
+            <div class="hero-text-visualizacao">
+              <div class="cabeca">
+                <button
+                  class="btn-voltar"
+                  onclick="mostrarTela('treinamentos-screen')"
+                >
+                  <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+                <h1 id="tituloTreinamentoVisualizar">Treinamento</h1>
+              </div>
+              <div class="hero-info">
+                <span
+                  ><i class="fas fa-chalkboard-teacher"></i>
+                  <span id="instrutorTreinamentoVisualizar"></span
+                ></span>
+                <span
+                  ><i class="fas fa-clock"></i>
+                  <span id="cargaHorariaVisualizar"></span> horas</span
+                >
+                <span
+                  ><i class="fas fa-book"></i>
+                  <span id="totalMateriaisVisualizar">0</span> materiais</span
+                >
+                <span
+                  ><i class="fas fa-users"></i>
+                  <span id="totalAlunosVisualizar">0</span> alunos</span
+                >
+              </div>
             </div>
+          </div>
+        </div>
+
+        <div class="abas-treinamento">
+          <button
+            class="aba-treinamento active"
+            data-aba="conteudo"
+            onclick="mudarAba('conteudo')"
+          >
+            <i class="fas fa-book"></i> Conteúdo
+          </button>
+          <button
+            class="aba-treinamento"
+            data-aba="colaboradores"
+            onclick="mudarAba('colaboradores')"
+          >
+            <i class="fas fa-users"></i> Colaboradores
+          </button>
+          <button
+            class="aba-treinamento"
+            data-aba="presenca"
+            onclick="mudarAba('presenca')"
+          >
+            <i class="fas fa-clipboard-check"></i> Controle de Presença
+          </button>
+        </div>
+
+        <div id="aba-conteudo" class="aba-conteudo-treinamento active">
+          <div class="descricao-treinamento">
+            <h3>Descrição</h3>
+            <p id="descricaoTreinamentoVisualizar"></p>
+          </div>
+
+          <div class="modulos-treinamento">
+            <h3>Conteúdo do Treinamento</h3>
+            <div id="listaModulosVisualizar"></div>
+          </div>
+
+          <div class="acoes-visualizacao">
+            <button
+              class="btn-editar-treinamento"
+              onclick="editarTreinamentoAtual()"
+            >
+              <i class="fas fa-edit"></i> Editar Treinamento
+            </button>
+            <button
+              class="btn-atribuir-treinamento"
+              onclick="mostrarModalAtribuirColaboradores()"
+            >
+              <i class="fas fa-user-plus"></i> Atribuir Colaboradores
+            </button>
+          </div>
+        </div>
+
+        <div id="aba-colaboradores" class="aba-conteudo-treinamento">
+          <div class="cabecalho-colaboradores">
+            <h2>Colaboradores Atribuídos</h2>
+            <button
+              class="btn-defaunt"
+              onclick="mostrarModalAtribuirColaboradores()"
+            >
+              <i class="fas fa-user-plus"></i> Adicionar Colaboradores
+            </button>
+          </div>
+
+          <div id="listaColaboradoresTreinamento"></div>
+        </div>
+
+        <div id="aba-presenca" class="aba-conteudo-treinamento">
+          <div class="cabecalho-presenca">
+            <h2>Controle de Presença</h2>
+            <div class="controles-presenca">
+              <select id="filtroAulaPresenca" onchange="filtrarAulaPresenca()">
+                <option value="">Todas as Aulas</option>
+              </select>
+              <button
+                class="btn-exportar-presenca"
+                onclick="exportarRelatorioPresenca()"
+              >
+                <i class="fas fa-download"></i> Exportar Relatório
+              </button>
+            </div>
+          </div>
+
+          <div id="tabelaPresencaContainer"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="atribuir-modal">
+      <div id="modalAtribuirColaboradores" class="modal" style="display: none">
+        <div class=".visu">
+          <div class="modal-header">
+            <h3>Atribuir Colaboradores ao Treinamento</h3>
+            <button class="btn-fechar-modal" onclick="fecharModalAtribuir()">
+              &times;
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <div class="inputs-label">
+              <div class="">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  type="text"
+                  id="buscaColaborador"
+                  placeholder="Buscar por nome..."
+                />
+              </div>
+
+              <div class="inputs-label">
+                <select id="filtroModalDepartamento">
+                  <option value="">Todos Departamentos</option>
+                  <option value="TI">TI</option>
+                  <option value="RH">RH</option>
+                  <option value="Marketing">Marketing</option>
+                  <option value="Financeiro">Financeiro</option>
+                </select>
+
+                <select id="filtroModalContratacao">
+                  <option value="">Tempo de Contratação</option>
+                  <option value="recente">Mais Recente</option>
+                  <option value="antigo">Mais Antigo</option>
+                  <option value="ultimo-mes">Último Mês</option>
+                  <option value="ultimos-3-meses">Últimos 3 Meses</option>
+                </select>
+
+                <select id="filtroModalMes">
+                  <option value="">Mês de Contratação</option>
+                  <option value="1">Janeiro</option>
+                  <option value="2">Fevereiro</option>
+                  <option value="3">Março</option>
+                  <option value="4">Abril</option>
+                  <option value="5">Maio</option>
+                  <option value="6">Junho</option>
+                  <option value="7">Julho</option>
+                  <option value="8">Agosto</option>
+                  <option value="9">Setembro</option>
+                  <option value="10">Outubro</option>
+                  <option value="11">Novembro</option>
+                  <option value="12">Dezembro</option>
+                </select>
+              </div>
+            </div>
+
+            <div
+              class="lista-colaboradores-modal"
+              id="listaColaboradoresModal"
+            ></div>
+
+            <div class="selecionados-info">
+              <h4>
+                Selecionados:
+                <span id="contadorSelecionados">0</span> colaboradores
+              </h4>
+              <div id="listaSelecionadosModal"></div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn-cancelar" onclick="fecharModalAtribuir()">
+              Cancelar
+            </button>
+            <button
+              class="btn-defaunt"
+              onclick="atribuirColaboradoresSelecionados()"
+            >
+              Atribuir Colaboradores
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="controle-presenca-screen" class="screen" style="display: none">
+      <div class="controle-presenca-container">
+        <div class="info-aula-presenca">
+          <h3 id="nomeAulaPresenca">Aula</h3>
+          <div class="detalhes-aula">
+            <p>
+              <strong>Treinamento:</strong>
+              <span id="treinamentoAulaPresenca"></span>
+            </p>
+            <p>
+              <strong>Descrição:</strong>
+              <span id="descricaoAulaPresenca"></span>
+            </p>
+            <p>
+              <strong>Material:</strong> <span id="materialAulaPresenca"></span>
+            </p>
+          </div>
         </div>
 
         <div class="tabela-presenca-container">
-            <div class="cabecalho-tabela-presenca">
-                <h4>Lista de Alunos</h4>
-                <div class="acoes-presenca">
-                    <button class="btn-marcar-todos" onclick="marcarTodos('presente')">
-                        <i class="fas fa-check-circle"></i> Marcar Todos Presentes
-                    </button>
-                    <button class="btn-salvar-presenca" onclick="salvarPresenca()">
-                        <i class="fas fa-save"></i> Salvar Presença
-                    </button>
-                </div>
+          <div class="cabecalho-tabela-presenca">
+            <h4>Lista de Alunos</h4>
+            <div class="acoes-presenca">
+              <button
+                class="btn-marcar-todos"
+                onclick="marcarTodos('presente')"
+              >
+                <i class="fas fa-check-circle"></i> Marcar Todos Presentes
+              </button>
+              <button class="btn-salvar-presenca" onclick="salvarPresenca()">
+                <i class="fas fa-save"></i> Salvar Presença
+              </button>
             </div>
-            
-            <table class="tabela-presenca-detalhada">
-                <thead>
-                    <tr>
-                        <th>Cód. Aluno</th>
-                        <th>Aluno</th>
-                        <th>Cargo</th>
-                        <th>Presença (%)</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="corpoTabelaPresenca">
-                    <!-- Linhas serão preenchidas dinamicamente -->
-                </tbody>
-            </table>
-            
-            <div class="paginacao-presenca">
-                <button class="btn-pagina" onclick="mudarPaginaPresenca(-1)">
-                    <i class="fas fa-chevron-left"></i> Anterior
-                </button>
-                <div class="numeros-pagina">
-                    <span class="pagina-ativa">1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
-                    <span>...</span>
-                    <span>8</span>
-                </div>
-                <button class="btn-pagina" onclick="mudarPaginaPresenca(1)">
-                    Próxima <i class="fas fa-chevron-right"></i>
-                </button>
-                <span class="info-pagina">1 de 8</span>
-            </div>
-        </div>
-        
-        <div class="estatisticas-presenca">
-            <div class="estatistica-card">
-                <h4>Presentes</h4>
-                <span class="numero-estatistica" id="totalPresentes">0</span>
-            </div>
-            <div class="estatistica-card">
-                <h4>Ausentes</h4>
-                <span class="numero-estatistica" id="totalAusentes">0</span>
-            </div>
-            <div class="estatistica-card">
-                <h4>Percentual</h4>
-                <span class="numero-estatistica" id="percentualPresenca">0%</span>
-            </div>
-        </div>
-    </div>
-</div>
+          </div>
 
-<div id="perfil-screen" class="screen">
-    <section class="info-section personal-info">
-       <div class="topo">
-            <h2>Informações Pessoais</h2>
-            <button class="edit-button" id="edit-save-button">
-                <i class="fas fa-edit"></i> Editar
+          <table class="tabela-presenca-detalhada">
+            <thead>
+              <tr>
+                <th>Cód. Aluno</th>
+                <th>Aluno</th>
+                <th>Cargo</th>
+                <th>Presença (%)</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="corpoTabelaPresenca"></tbody>
+          </table>
+
+          <div class="paginacao-presenca">
+            <button class="btn-pagina" onclick="mudarPaginaPresenca(-1)">
+              <i class="fas fa-chevron-left"></i> Anterior
             </button>
-       </div>
-        
-        <!-- Foto de perfil -->
-        <div class="profile-picture-section">
-            <img src="/src/assets/imgs/images.jpg" alt="Foto de Perfil" class="profile-picture" id="profile-main-picture">
-            <span id="change-photo-trigger">Mudar foto de perfil</span>
+            <div class="numeros-pagina">
+              <span class="pagina-ativa">1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+              <span>...</span>
+              <span>8</span>
+            </div>
+            <button class="btn-pagina" onclick="mudarPaginaPresenca(1)">
+              Próxima <i class="fas fa-chevron-right"></i>
+            </button>
+            <span class="info-pagina">1 de 8</span>
+          </div>
         </div>
 
-        <input type="file" id="photo-upload-input" accept="image/*" style="display: none;">
+        <div class="estatisticas-presenca">
+          <div class="estatistica-card">
+            <h4>Presentes</h4>
+            <span class="numero-estatistica" id="totalPresentes">0</span>
+          </div>
+          <div class="estatistica-card">
+            <h4>Ausentes</h4>
+            <span class="numero-estatistica" id="totalAusentes">0</span>
+          </div>
+          <div class="estatistica-card">
+            <h4>Percentual</h4>
+            <span class="numero-estatistica" id="percentualPresenca">0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="perfil-screen" class="screen" style="display: none">
+      <section class="info-section personal-info">
+        <div class="topo">
+          <h2>Informações Pessoais</h2>
+          <button class="edit-button" id="edit-save-button">
+            <i class="fas fa-edit"></i> Editar
+          </button>
+        </div>
+
+        <div class="profile-picture-section">
+          <img
+            src="/src/assets/imgs/images.jpg"
+            alt="Foto de Perfil"
+            class="profile-picture"
+            id="profile-main-picture"
+          />
+          <span id="change-photo-trigger">Mudar foto de perfil</span>
+        </div>
+
+        <input
+          type="file"
+          id="photo-upload-input"
+          accept="image/*"
+          style="display: none"
+        />
 
         <div class="info-grid" id="personal-info-container">
-            <div class="info-item">
-                <label>Nome Completo</label>
-                <p data-field="nome-completo" class="display-mode">Carregando...</p>
-            </div>
-            <div class="info-item">
-                <label>E-mail</label>
-                <p data-field="email" class="display-mode">Carregando...</p>
-            </div>
-            <div class="info-item">
-                <label>Telefone</label>
-                <p data-field="telefone" class="display-mode">Carregando...</p>
-            </div>
-            <div class="info-item">
-                <label>Localização</label>
-                <p data-field="localizacao" class="display-mode">Carregando...</p>
-            </div>
+          <div class="info-item">
+            <label>Nome Completo</label>
+            <p data-field="nome-completo" class="display-mode">Carregando...</p>
+          </div>
+          <div class="info-item">
+            <label>E-mail</label>
+            <p data-field="email" class="display-mode">Carregando...</p>
+          </div>
+          <div class="info-item">
+            <label>Telefone</label>
+            <p data-field="telefone" class="display-mode">Carregando...</p>
+          </div>
+          <div class="info-item">
+            <label>Localização</label>
+            <p data-field="localizacao" class="display-mode">Carregando...</p>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <section class="info-section professional-experience">
+      <section class="info-section professional-experience">
         <h2 class="topo">Experiência Profissional</h2>
-        <!-- As experiências serão carregadas dinamicamente aqui -->
-    </section>
+      </section>
 
-    <section class="info-section academic-education">
+      <section class="info-section academic-education">
         <h2 class="topo">Formação Acadêmica</h2>
-        <!-- As formações serão carregadas dinamicamente aqui -->
-    </section>
-</div>
+      </section>
+    </div>
 
-<div id="departamentos-screen" class="screen">
-        <section class="hero-section">
-            <h1>Departamentos (Interno)</h1>
-            <img src="/src/assets/imgs/homemdashboard.png" alt="Homem da dashboard">
-        </section>
+    <div id="departamentos-screen" class="screen" style="display: none">
+      <section class="dt-hero">
+        <h1>Departamentos (Interno)</h1>
+        <img
+          src="/src/assets/imgs/homemdashboard.png"
+          alt="Homem da dashboard"
+        />
+      </section>
 
-                <button onclick="window.location.href='http://127.0.0.1:5501/src/html/cadastrar-departamento.html'" class="add-departamento-button">
-                    <h3>Adicionar novo departamento</h3>
-                </button>
-        <section id="content" style="padding: 2rem;">
-            <section class="topics">
-                
-                <h1 class="topics-title">Selecione um departamento</h1>
-
-                <div class="input-group">
-                    <div class="input-icon">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                    <input id="search" type="text" class="input-field" placeholder="pesquisar por nome">
-                </div>
-
-                <div id="container">
-
-                    <ul class="items-list" id="items-list">
-                        <li class="items">
-                            <div class="item">
-                                <div class="item-content">
-                                    <h2 class="item-title">
-                                            Lorem ipsum dolor, 
-                                    </h2>
-
-                                    <span class="item-desc">    
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, voluptatem. 
-                                        Aperiam autem aliquid hic, adipisci rerum ex beatae itaque vero laborum. Tenetur 
-                                        porro nam sit nisi ea ducimus consequatur explicabo!
-                                    </span>
-
-                                    <button class="button-default_02">
-                                        <h3>Mais informações</h3>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="buttons-container">
-                                <button class="trash-button">
-                                    <h3>
-                                        <i class="fa-solid fa-trash"></i>
-                                    </h3>
-                                </button>        
-
-                                <button class="edit-button">
-                                    <h3>
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </h3>
-                                </button>
-                            </div>
-                        </li>
-
-
-                        <li class="items">
-                            <div class="item">
-                                <div class="item-content">
-                                    <h2 class="item-title">
-                                            Lorem ipsum dolor, 
-                                    </h2>
-
-                                    <span class="item-desc">    
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, voluptatem. 
-                                        Aperiam autem aliquid hic, adipisci rerum ex beatae itaque vero laborum. Tenetur 
-                                        porro nam sit nisi ea ducimus consequatur explicabo!
-                                    </span>
-
-                                    <button class="button-default_02">
-                                        <h3>Mais informações</h3>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="buttons-container">
-                                <button class="trash-button">
-                                    <h3>
-                                        <i class="fa-solid fa-trash"></i>
-                                    </h3>
-                                </button>        
-
-                                <button class="edit-button">
-                                    <h3>
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </h3>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="items">
-                            <div class="item">
-                                <div class="item-content">
-                                    <h2 class="item-title">
-                                            Lorem ipsum dolor, 
-                                    </h2>
-
-                                    <span class="item-desc">    
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, voluptatem. 
-                                        Aperiam autem aliquid hic, adipisci rerum ex beatae itaque vero laborum. Tenetur 
-                                        porro nam sit nisi ea ducimus consequatur explicabo!
-                                    </span>
-
-                                    <button class="button-default_02">
-                                        <h3>Mais informações</h3>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="buttons-container">
-                                <button class="trash-button">
-                                    <h3>
-                                        <i class="fa-solid fa-trash"></i>
-                                    </h3>
-                                </button>        
-
-                                <button class="edit-button">
-                                    <h3>
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </h3>
-                                </button>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="pagination" id="pagination"></div>
-                </div>
-            </section>
-        </section>
-</div>
-
-<div id="edicao-departamentos-screen" class="screen">
-    <section class="hero-section">
-            <div class="titles">
-            <h1>Departamento de Tecnologia</h1>
-            <h4 class="subtitulo-hero">Formulário de edição de departamento</h4>
-            </div>
-            <img src="/src/assets/imgs/headerdepartamentoint.png" alt="Homem da dashboard">
-        </section>
-        <div class="form-container">
-                <fieldset>
-                        <div class="colab-container">
-                            <h4 class="title2-page">Colaboradores Associados</h4>
-                            <div class="button">
-                                <button class="add-colaborador-button">
-                                    Adicionar novo colaborador
-                                </button>
-                            </div>
-                            <div class="departamento-section">
-                            <div class="departamento-section-content">
-                                <div class="colaborador-card">
-                                    <div class="card-header">
-                                        <div class="info-text">
-                                        <p class="nome-colaborador">Eduardo Ribeiro</p> 
-                                        <p class="telefone-colaborador">456884456</p>
-                                        <p class="cargo-colab">Analista de Recursos Humanos</p>  
-                                        </div>
-                                        <div class="profile-pic">
-                                        <i class="fa-solid fa-circle-user"></i>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button class="trash-button">
-                                            <h3>
-                                                <i class="fa-solid fa-trash"></i>
-                                            </h3>
-                                        </button>
-                                    </div> 
-                                </div>
-
-                                <div class="colaborador-card">
-                                    <div class="card-header">
-                                        <div class="info-text">
-                                        <p class="nome-colaborador">Eduardo Ribeiro</p> 
-                                        <p class="telefone-colaborador">456884456</p>
-                                        <p class="cargo-colab">Analista de Recursos Humanos</p>  
-                                        </div>
-                                        <div class="profile-pic">
-                                        <i class="fa-solid fa-circle-user"></i>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button class="trash-button">
-                                            <h3>
-                                                <i class="fa-solid fa-trash"></i>
-                                            </h3>
-                                        </button>
-                                    </div> 
-                                </div>
-
-                                <div class="colaborador-card">
-                                    <div class="card-header">
-                                        <div class="info-text">
-                                        <p class="nome-colaborador">Eduardo Ribeiro</p> 
-                                        <p class="telefone-colaborador">456884456</p>
-                                        <p class="cargo-colab">Analista de Recursos Humanos</p>  
-                                        </div>
-                                        <div class="profile-pic">
-                                        <i class="fa-solid fa-circle-user"></i>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button class="trash-button">
-                                            <h3>
-                                                <i class="fa-solid fa-trash"></i>
-                                            </h3>
-                                        </button>
-                                    </div> 
-                                </div>
-
-                            </div>
-                                
-                        </div>
-                </fieldset>
-                <fieldset>
-                    <div class="cargos-e-vagas-container">
-                        <h4 class="title2-page">Cargos e vagas associados</h4>
-                            <div class="departamento-section">
-                            <div class="departamento-section-content">
-                                <div class="cargos-e-vagas">
-                                    <div class="card-header">
-                                        <div class="info-text">
-                                        <p class="titulo-vaga">Infraestrutura e Suporte</p> 
-                                        <p class="title-descricao">Descrição de cargo:</p>
-                                        <p class="desc-cargo">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                             Nihil quia magnam error sunt explicabo nostrum libero 
-                                             perferendis adipisci ut, quibusdam dolorem tempore iste 
-                                             cupiditate laboriosam sequi nobis incidunt ipsum? Dolorum.</p>  
-                                        </div>  
-                                        
-                                    </div>
-                                    <div class="cargo-card-footer">
-                                        <div class="vagas">
-                                            <div class="vaga-card">
-                                                <div class="info-card-content">
-                                                    <p class="titulo-vaga">Administrador de redes</p>
-                                                    <div class="right-card-cargos">
-                                                    <i class="fa-solid fa-user"></i>
-                                                    <p class="numero-de-vagas">1</p>
-                                                    </div>
-                                                </div>
-                                                <div class="card-buttons">
-                                                    <button class="info-button">
-                                                        <i class="fa-solid fa-circle-info"></i>
-                                                    </button>
-                                                    <button class="apagar-button">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <div class="vaga-card">
-                                                <div class="info-card-content">
-                                                    <p class="titulo-vaga">Administrador de redes</p>
-                                                    <div class="right-card-cargos">
-                                                    <i class="fa-solid fa-user"></i>
-                                                    <p class="numero-de-vagas">1</p>
-                                                    </div>
-                                                </div>
-                                                <div class="card-buttons">
-                                                    <button class="info-button">
-                                                        <i class="fa-solid fa-circle-info"></i>
-                                                    </button>
-                                                    <button class="apagar-button">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <button class="add-vaga-button">
-                                            <h3>Adicionar vaga</h3>
-                                        </button>
-                                    </div> 
-                                </div>
-
-                                <div class="cargos-e-vagas">
-                                    <div class="card-header">
-                                        <div class="info-text">
-                                        <p class="titulo-vaga">Infraestrutura e Suporte</p> 
-                                        <p class="title-descricao">Descrição de cargo:</p>
-                                        <p class="desc-cargo">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                             Nihil quia magnam error sunt explicabo nostrum libero 
-                                             perferendis adipisci ut, quibusdam dolorem tempore iste 
-                                             cupiditate laboriosam sequi nobis incidunt ipsum? Dolorum.</p>  
-                                        </div>  
-                                        
-                                    </div>
-                                    <div class="cargo-card-footer">
-                                        <div class="vagas">
-                                            <div class="vaga-card">
-                                                <div class="info-card-content">
-                                                    <p class="titulo-vaga">Administrador de redes</p>
-                                                    <div class="right-card-cargos">
-                                                    <i class="fa-solid fa-user"></i>
-                                                    <p class="numero-de-vagas">1</p>
-                                                    </div>
-                                                </div>
-                                                <div class="card-buttons">
-                                                    <button class="info-button">
-                                                        <i class="fa-solid fa-circle-info"></i>
-                                                    </button>
-                                                    <button class="apagar-button">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <div class="vaga-card">
-                                                <div class="info-card-content">
-                                                    <p class="titulo-vaga">Administrador de redes</p>
-                                                    <div class="right-card-cargos">
-                                                    <i class="fa-solid fa-user"></i>
-                                                    <p class="numero-de-vagas">1</p>
-                                                    </div>
-                                                </div>
-                                                <div class="card-buttons">
-                                                    <button class="info-button">
-                                                        <i class="fa-solid fa-circle-info"></i>
-                                                    </button>
-                                                    <button class="apagar-button">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <button class="add-vaga-button">
-                                            <h3>Adicionar vaga</h3>
-                                        </button>
-                                    </div> 
-
-                            </div>
-                                
-                        </div>
-                </fieldset>
-                <fieldset>
-                        <div class="desc-departamento-container">
-                            <h4 class="title2-page">Descrição do departamento</h4>
-                            
-                            <div class="text-area-desc">
-                                <textarea id="desc-departamento" class="desc-departamento">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quia magnam error sunt explicabo nostrum libero perferendis adipisci ut, quibusdam dolorem tempore iste cupiditate laboriosam sequi nobis incidunt ipsum? Dolorum.
-                                </textarea>
-                            </div>
-                                
-                        </div>
-
-                </fieldset>
-
-                <button type="submit" class="btn-primary">Salvar</button>
-                <a onclick="window.location.href='http://127.0.0.1:5501/src/dashboard-interno.htrml#departamentos-screen'" class="login-link-bottom">Voltar</a> </form>
-        </div><section class="hero-section">
-            <div class="titles">
-            <h1>Departamento de Tecnologia</h1>
-            <h4 class="subtitulo-hero">Formulário de edição de departamento</h4>
-            </div>
-            <img src="./assets/imgs/homemdashboard.png" alt="Homem da dashboard">
-        </section>
-        <div class="form-container">
-                <fieldset>
-                        <div class="colab-container">
-                            <h4 class="title2-page">Colaboradores Associados</h4>
-                            <div class="button">
-                                <button class="add-colaborador-button">
-                                    Adicionar novo colaborador
-                                </button>
-                            </div>
-                            <div class="departamento-section">
-                            <div class="departamento-section-content">
-                                <div class="colaborador-card">
-                                    <div class="card-header">
-                                        <div class="info-text">
-                                        <p class="nome-colaborador">Eduardo Ribeiro</p> 
-                                        <p class="telefone-colaborador">456884456</p>
-                                        <p class="cargo-colab">Analista de Recursos Humanos</p>  
-                                        </div>
-                                        <div class="profile-pic">
-                                        <i class="fa-solid fa-circle-user"></i>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button class="trash-button">
-                                            <h3>
-                                                <i class="fa-solid fa-trash"></i>
-                                            </h3>
-                                        </button>
-                                    </div> 
-                                </div>
-
-                                <div class="colaborador-card">
-                                    <div class="card-header">
-                                        <div class="info-text">
-                                        <p class="nome-colaborador">Eduardo Ribeiro</p> 
-                                        <p class="telefone-colaborador">456884456</p>
-                                        <p class="cargo-colab">Analista de Recursos Humanos</p>  
-                                        </div>
-                                        <div class="profile-pic">
-                                        <i class="fa-solid fa-circle-user"></i>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button class="trash-button">
-                                            <h3>
-                                                <i class="fa-solid fa-trash"></i>
-                                            </h3>
-                                        </button>
-                                    </div> 
-                                </div>
-
-                                <div class="colaborador-card">
-                                    <div class="card-header">
-                                        <div class="info-text">
-                                        <p class="nome-colaborador">Eduardo Ribeiro</p> 
-                                        <p class="telefone-colaborador">456884456</p>
-                                        <p class="cargo-colab">Analista de Recursos Humanos</p>  
-                                        </div>
-                                        <div class="profile-pic">
-                                        <i class="fa-solid fa-circle-user"></i>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button class="trash-button">
-                                            <h3>
-                                                <i class="fa-solid fa-trash"></i>
-                                            </h3>
-                                        </button>
-                                    </div> 
-                                </div>
-
-                            </div>
-                                
-                        </div>
-                </fieldset>
-                <fieldset>
-                    <div class="cargos-e-vagas-container">
-                        <h4 class="title2-page">Cargos e vagas associados</h4>
-                            <div class="departamento-section">
-                            <div class="departamento-section-content">
-                                <div class="cargos-e-vagas">
-                                    <div class="card-header">
-                                        <div class="info-text">
-                                        <p class="titulo-vaga">Infraestrutura e Suporte</p> 
-                                        <p class="title-descricao">Descrição de cargo:</p>
-                                        <p class="desc-cargo">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                             Nihil quia magnam error sunt explicabo nostrum libero 
-                                             perferendis adipisci ut, quibusdam dolorem tempore iste 
-                                             cupiditate laboriosam sequi nobis incidunt ipsum? Dolorum.</p>  
-                                        </div>  
-                                        
-                                    </div>
-                                    <div class="cargo-card-footer">
-                                        <div class="vagas">
-                                            <div class="vaga-card">
-                                                <div class="info-card-content">
-                                                    <p class="titulo-vaga">Administrador de redes</p>
-                                                    <div class="right-card-cargos">
-                                                    <i class="fa-solid fa-user"></i>
-                                                    <p class="numero-de-vagas">1</p>
-                                                    </div>
-                                                </div>
-                                                <div class="card-buttons">
-                                                    <button class="info-button">
-                                                        <i class="fa-solid fa-circle-info"></i>
-                                                    </button>
-                                                    <button class="apagar-button">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <div class="vaga-card">
-                                                <div class="info-card-content">
-                                                    <p class="titulo-vaga">Administrador de redes</p>
-                                                    <div class="right-card-cargos">
-                                                    <i class="fa-solid fa-user"></i>
-                                                    <p class="numero-de-vagas">1</p>
-                                                    </div>
-                                                </div>
-                                                <div class="card-buttons">
-                                                    <button class="info-button">
-                                                        <i class="fa-solid fa-circle-info"></i>
-                                                    </button>
-                                                    <button class="apagar-button">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <button class="add-vaga-button">
-                                            <h3>Adicionar vaga</h3>
-                                        </button>
-                                    </div> 
-                                </div>
-
-                                <div class="cargos-e-vagas">
-                                    <div class="card-header">
-                                        <div class="info-text">
-                                        <p class="titulo-vaga">Infraestrutura e Suporte</p> 
-                                        <p class="title-descricao">Descrição de cargo:</p>
-                                        <p class="desc-cargo">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                             Nihil quia magnam error sunt explicabo nostrum libero 
-                                             perferendis adipisci ut, quibusdam dolorem tempore iste 
-                                             cupiditate laboriosam sequi nobis incidunt ipsum? Dolorum.</p>  
-                                        </div>  
-                                        
-                                    </div>
-                                    <div class="cargo-card-footer">
-                                        <div class="vagas">
-                                            <div class="vaga-card">
-                                                <div class="info-card-content">
-                                                    <p class="titulo-vaga">Administrador de redes</p>
-                                                    <div class="right-card-cargos">
-                                                    <i class="fa-solid fa-user"></i>
-                                                    <p class="numero-de-vagas">1</p>
-                                                    </div>
-                                                </div>
-                                                <div class="card-buttons">
-                                                    <button class="info-button">
-                                                        <i class="fa-solid fa-circle-info"></i>
-                                                    </button>
-                                                    <button class="apagar-button">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <div class="vaga-card">
-                                                <div class="info-card-content">
-                                                    <p class="titulo-vaga">Administrador de redes</p>
-                                                    <div class="right-card-cargos">
-                                                    <i class="fa-solid fa-user"></i>
-                                                    <p class="numero-de-vagas">1</p>
-                                                    </div>
-                                                </div>
-                                                <div class="card-buttons">
-                                                    <button class="info-button">
-                                                        <i class="fa-solid fa-circle-info"></i>
-                                                    </button>
-                                                    <button class="apagar-button">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <button class="add-vaga-button">
-                                            <h3>Adicionar vaga</h3>
-                                        </button>
-                                    </div> 
-
-                            </div>
-                                
-                        </div>
-                </fieldset>
-                <fieldset>
-                        <div class="desc-departamento-container">
-                            <h4 class="title2-page">Descrição do departamento</h4>
-                            
-                            <div class="text-area-desc">
-                                <textarea id="desc-departamento" class="desc-departamento">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quia magnam error sunt explicabo nostrum libero perferendis adipisci ut, quibusdam dolorem tempore iste cupiditate laboriosam sequi nobis incidunt ipsum? Dolorum.
-                                </textarea>
-                            </div>
-                                
-                        </div>
-
-                </fieldset>
-
-                <button type="submit" class="btn-primary">Salvar</button>
-                <a onclick="window.location.href='http://127.0.0.1:5501/src/html/dashboard-interno.htrml#departamentos-screen'" class="login-link-bottom">Voltar</a> </form>
+      <div class="dt-content-area">
+        <div class="dt-top-actions">
+          <button class="dt-btn-add" onclick="window.openModal()">
+            Adicionar novo departamento
+          </button>
         </div>
-</div>
 
-<div id="colaboradores-screen" class="screen">
-     <section class="hero-section">
+        <div class="dt-search-box">
+          <i class="fa-solid fa-magnifying-glass dt-search-icon"></i>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Pesquisar por nome"
+            onkeyup="window.filterDepartments()"
+          />
+        </div>
+
+        <div class="dt-grid-wrapper" id="cardsContainer"></div>
+      </div>
+    </div>
+
+    <div id="departmentModal" class="dt-modal-overlay">
+      <div class="dt-modal-box">
+        <div class="dt-modal-header">
+          <h2 id="modalTitle">Novo Departamento</h2>
+          <span
+            style="cursor: pointer; font-size: 1.5rem"
+            onclick="window.closeModal()"
+            >&times;</span
+          >
+        </div>
+        <form id="deptForm" onsubmit="window.saveDepartment(event)">
+          <input type="hidden" id="deptId" />
+
+          <div class="dt-input-group">
+            <label for="nome">Nome do Departamento</label>
+            <input
+              type="text"
+              id="nome"
+              required
+              placeholder="Ex: Tecnologia"
+            />
+          </div>
+
+          <div class="dt-input-group">
+            <label for="sigla">Sigla</label>
+            <input type="text" id="sigla" required placeholder="Ex: TI" />
+          </div>
+
+          <div class="dt-input-group">
+            <label for="telefone">Telefone</label>
+            <input
+              type="text"
+              id="telefone"
+              required
+              placeholder="(XX) XXXX-XXXX"
+            />
+          </div>
+
+          <div class="dt-input-group">
+            <label for="localizacao">Localização</label>
+            <input
+              type="text"
+              id="localizacao"
+              placeholder="Ex: Bloco A - 2º Andar"
+            />
+          </div>
+
+          <div class="dt-input-group">
+            <label for="descricao">Descrição</label>
+            <textarea
+              id="descricao"
+              rows="4"
+              required
+              placeholder="Descrição das atividades..."
+            ></textarea>
+          </div>
+
+          <div class="dt-modal-footer">
+            <button
+              type="button"
+              class="dt-btn-cancel"
+              onclick="window.closeModal()"
+            >
+              Cancelar
+            </button>
+            <button type="submit" class="dt-btn-save">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="colaboradores-screen" class="screen" style="display: none">
+      <section class="hero-section">
         <h1>Colaboradores</h1>
-        <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
-    </section>
-</div>
+        <img
+          src="/src/assets/imgs/Homem Dashboard.png"
+          alt="Homem da dashboard"
+        />
+      </section>
+    </div>
 
-<div id="folha-screen" class="screen">
-     <section class="hero-section">
-            <h1>Folha de Pagamentos</h1>
-            <img src="/src/assets/imgs/homemdashboard.png" alt="Homem da dashboard">
-        </section>
-        <section id="content" style="padding: 2rem;">
-            <section class="topics">
-                
-                <h1 class="topics-title">Colaboradores</h1>
+    <div id="folha-screen" class="screen" style="display: none">
+      <section class="hero-section">
+        <h1>Folha de Pagamentos</h1>
+        <img
+          src="/src/assets/imgs/homemdashboard.png"
+          alt="Homem da dashboard"
+        />
+      </section>
+      <section id="content" style="padding: 2rem">
+        <section class="topics">
+          <h1 class="topics-title">Colaboradores</h1>
 
-                <div class="input-group">
-                    <div class="input-icon">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                    <input id="search" type="text" class="input-field" placeholder="pesquisar por nome">
+          <div class="input-group">
+            <div class="input-icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <input
+              id="search"
+              type="text"
+              class="input-field"
+              placeholder="pesquisar por nome"
+            />
+          </div>
+
+          <div class="colab-container" id="container">
+            <div class="div-de-organizacao">
+              <div class="colaborador-card">
+                <div class="fp-perfil-info">
+                  <div class="fp-profile-pic"></div>
+                  <div class="fp-textos">
+                    <p class="fp-nome">Eduardo Ribeiro</p>
+                    <p class="fp-cargo">Analista de Recursos Humanos</p>
+                  </div>
                 </div>
 
-                <div class="colab-container" id="container">
-
-                    <div class="div-de-organizacao">
-
-                        <div class="colaborador-card">
-                            <div class="fp-perfil-info">
-                                <div class="fp-profile-pic">
-                                    </div>
-                                <div class="fp-textos">
-                                    <p class="fp-nome">Eduardo Ribeiro</p>
-                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
-                                </div>
-                            </div>
-
-                            <div class="fp-botoes-acao">
-                                <button class="fp-btn-laranja download">
-                                    <i class="fas fa-download"></i> Gerar folha de pagamento
-                                </button>
-                                <button class="fp-btn-laranja view">
-                                    <i class="fas fa-eye"></i> Ver folha de pagamento
-                                </button>
-                            </div>
-
-                            <div class="fp-status-pagamento">
-                                <p class="fp-status-titulo">Status de pagamento</p>
-                                <div class="fp-status-lista">
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
-                                        <label for="pendente" class="status-pendente">Pendente</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
-                                        <label for="emitido" class="status-emitido">Emitido</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pago" disabled>
-                                        <label for="pago" class="status-pago">Pago</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="colaborador-card">
-                            <div class="fp-perfil-info">
-                                <div class="fp-profile-pic">
-                                    </div>
-                                <div class="fp-textos">
-                                    <p class="fp-nome">Eduardo Ribeiro</p>
-                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
-                                </div>
-                            </div>
-
-                            <div class="fp-botoes-acao">
-                                <button class="fp-btn-laranja download">
-                                    <i class="fas fa-download"></i> Gerar folha de pagamento
-                                </button>
-                                <button class="fp-btn-laranja view">
-                                    <i class="fas fa-eye"></i> Ver folha de pagamento
-                                </button>
-                            </div>
-
-                            <div class="fp-status-pagamento">
-                                <p class="fp-status-titulo">Status de pagamento</p>
-                                <div class="fp-status-lista">
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
-                                        <label for="pendente" class="status-pendente">Pendente</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
-                                        <label for="emitido" class="status-emitido">Emitido</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pago" disabled>
-                                        <label for="pago" class="status-pago">Pago</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="div-de-organizacao">
-
-                        <div class="colaborador-card">
-                            <div class="fp-perfil-info">
-                                <div class="fp-profile-pic">
-                                    </div>
-                                <div class="fp-textos">
-                                    <p class="fp-nome">Eduardo Ribeiro</p>
-                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
-                                </div>
-                            </div>
-
-                            <div class="fp-botoes-acao">
-                                <button class="fp-btn-laranja download">
-                                    <i class="fas fa-download"></i> Gerar folha de pagamento
-                                </button>
-                                <button class="fp-btn-laranja view">
-                                    <i class="fas fa-eye"></i> Ver folha de pagamento
-                                </button>
-                            </div>
-
-                            <div class="fp-status-pagamento">
-                                <p class="fp-status-titulo">Status de pagamento</p>
-                                <div class="fp-status-lista">
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
-                                        <label for="pendente" class="status-pendente">Pendente</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
-                                        <label for="emitido" class="status-emitido">Emitido</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pago" disabled>
-                                        <label for="pago" class="status-pago">Pago</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="colaborador-card">
-                            <div class="fp-perfil-info">
-                                <div class="fp-profile-pic">
-                                    </div>
-                                <div class="fp-textos">
-                                    <p class="fp-nome">Eduardo Ribeiro</p>
-                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
-                                </div>
-                            </div>
-
-                            <div class="fp-botoes-acao">
-                                <button class="fp-btn-laranja download">
-                                    <i class="fas fa-download"></i> Gerar folha de pagamento
-                                </button>
-                                <button class="fp-btn-laranja view">
-                                    <i class="fas fa-eye"></i> Ver folha de pagamento
-                                </button>
-                            </div>
-
-                            <div class="fp-status-pagamento">
-                                <p class="fp-status-titulo">Status de pagamento</p>
-                                <div class="fp-status-lista">
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
-                                        <label for="pendente" class="status-pendente">Pendente</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
-                                        <label for="emitido" class="status-emitido">Emitido</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pago" disabled>
-                                        <label for="pago" class="status-pago">Pago</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="div-de-organizacao">
-
-                        <div class="colaborador-card">
-                            <div class="fp-perfil-info">
-                                <div class="fp-profile-pic">
-                                    </div>
-                                <div class="fp-textos">
-                                    <p class="fp-nome">Eduardo Ribeiro</p>
-                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
-                                </div>
-                            </div>
-
-                            <div class="fp-botoes-acao">
-                                <button class="fp-btn-laranja download">
-                                    <i class="fas fa-download"></i> Gerar folha de pagamento
-                                </button>
-                                <button class="fp-btn-laranja view">
-                                    <i class="fas fa-eye"></i> Ver folha de pagamento
-                                </button>
-                            </div>
-
-                            <div class="fp-status-pagamento">
-                                <p class="fp-status-titulo">Status de pagamento</p>
-                                <div class="fp-status-lista">
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
-                                        <label for="pendente" class="status-pendente">Pendente</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
-                                        <label for="emitido" class="status-emitido">Emitido</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pago" disabled>
-                                        <label for="pago" class="status-pago">Pago</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="colaborador-card">
-                            <div class="fp-perfil-info">
-                                <div class="fp-profile-pic">
-                                    </div>
-                                <div class="fp-textos">
-                                    <p class="fp-nome">Eduardo Ribeiro</p>
-                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
-                                </div>
-                            </div>
-
-                            <div class="fp-botoes-acao">
-                                <button class="fp-btn-laranja download">
-                                    <i class="fas fa-download"></i> Gerar folha de pagamento
-                                </button>
-                                <button class="fp-btn-laranja view">
-                                    <i class="fas fa-eye"></i> Ver folha de pagamento
-                                </button>
-                            </div>
-
-                            <div class="fp-status-pagamento">
-                                <p class="fp-status-titulo">Status de pagamento</p>
-                                <div class="fp-status-lista">
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
-                                        <label for="pendente" class="status-pendente">Pendente</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
-                                        <label for="emitido" class="status-emitido">Emitido</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pago" disabled>
-                                        <label for="pago" class="status-pago">Pago</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="div-de-organizacao">
-
-                        <div class="colaborador-card">
-                            <div class="fp-perfil-info">
-                                <div class="fp-profile-pic">
-                                    </div>
-                                <div class="fp-textos">
-                                    <p class="fp-nome">Eduardo Ribeiro</p>
-                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
-                                </div>
-                            </div>
-
-                            <div class="fp-botoes-acao">
-                                <button class="fp-btn-laranja download">
-                                    <i class="fas fa-download"></i> Gerar folha de pagamento
-                                </button>
-                                <button class="fp-btn-laranja view">
-                                    <i class="fas fa-eye"></i> Ver folha de pagamento
-                                </button>
-                            </div>
-
-                            <div class="fp-status-pagamento">
-                                <p class="fp-status-titulo">Status de pagamento</p>
-                                <div class="fp-status-lista">
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
-                                        <label for="pendente" class="status-pendente">Pendente</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
-                                        <label for="emitido" class="status-emitido">Emitido</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pago" disabled>
-                                        <label for="pago" class="status-pago">Pago</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="colaborador-card">
-                            <div class="fp-perfil-info">
-                                <div class="fp-profile-pic">
-                                    </div>
-                                <div class="fp-textos">
-                                    <p class="fp-nome">Eduardo Ribeiro</p>
-                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
-                                </div>
-                            </div>
-
-                            <div class="fp-botoes-acao">
-                                <button class="fp-btn-laranja download">
-                                    <i class="fas fa-download"></i> Gerar folha de pagamento
-                                </button>
-                                <button class="fp-btn-laranja view">
-                                    <i class="fas fa-eye"></i> Ver folha de pagamento
-                                </button>
-                            </div>
-
-                            <div class="fp-status-pagamento">
-                                <p class="fp-status-titulo">Status de pagamento</p>
-                                <div class="fp-status-lista">
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
-                                        <label for="pendente" class="status-pendente">Pendente</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
-                                        <label for="emitido" class="status-emitido">Emitido</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pago" disabled>
-                                        <label for="pago" class="status-pago">Pago</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="div-de-organizacao">
-
-                        <div class="colaborador-card">
-                            <div class="fp-perfil-info">
-                                <div class="fp-profile-pic">
-                                    </div>
-                                <div class="fp-textos">
-                                    <p class="fp-nome">Eduardo Ribeiro</p>
-                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
-                                </div>
-                            </div>
-
-                            <div class="fp-botoes-acao">
-                                <button class="fp-btn-laranja download">
-                                    <i class="fas fa-download"></i> Gerar folha de pagamento
-                                </button>
-                                <button class="fp-btn-laranja view">
-                                    <i class="fas fa-eye"></i> Ver folha de pagamento
-                                </button>
-                            </div>
-
-                            <div class="fp-status-pagamento">
-                                <p class="fp-status-titulo">Status de pagamento</p>
-                                <div class="fp-status-lista">
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
-                                        <label for="pendente" class="status-pendente">Pendente</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
-                                        <label for="emitido" class="status-emitido">Emitido</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pago" disabled>
-                                        <label for="pago" class="status-pago">Pago</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="colaborador-card">
-                            <div class="fp-perfil-info">
-                                <div class="fp-profile-pic">
-                                    </div>
-                                <div class="fp-textos">
-                                    <p class="fp-nome">Eduardo Ribeiro</p>
-                                    <p class="fp-cargo">Analista de Recursos Humanos</p>
-                                </div>
-                            </div>
-
-                            <div class="fp-botoes-acao">
-                                <button class="fp-btn-laranja download">
-                                    <i class="fas fa-download"></i> Gerar folha de pagamento
-                                </button>
-                                <button class="fp-btn-laranja view">
-                                    <i class="fas fa-eye"></i> Ver folha de pagamento
-                                </button>
-                            </div>
-
-                            <div class="fp-status-pagamento">
-                                <p class="fp-status-titulo">Status de pagamento</p>
-                                <div class="fp-status-lista">
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pendente" checked disabled>
-                                        <label for="pendente" class="status-pendente">Pendente</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="emitido" disabled>
-                                        <label for="emitido" class="status-emitido">Emitido</label>
-                                    </div>
-                                    <div class="fp-status-item">
-                                        <input type="radio" name="status-eduardo" id="pago" disabled>
-                                        <label for="pago" class="status-pago">Pago</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    
-
+                <div class="fp-botoes-acao">
+                  <button class="fp-btn-laranja download">
+                    <i class="fas fa-download"></i> Gerar folha de pagamento
+                  </button>
+                  <button class="fp-btn-laranja view">
+                    <i class="fas fa-eye"></i> Ver folha de pagamento
+                  </button>
                 </div>
-            </section>
+
+                <div class="fp-status-pagamento">
+                  <p class="fp-status-titulo">Status de pagamento</p>
+                  <div class="fp-status-lista">
+                    <div class="fp-status-item">
+                      <input
+                        type="radio"
+                        name="status-eduardo"
+                        id="pendente"
+                        checked
+                        disabled
+                      />
+                      <label for="pendente" class="status-pendente"
+                        >Pendente</label
+                      >
+                    </div>
+                    <div class="fp-status-item">
+                      <input
+                        type="radio"
+                        name="status-eduardo"
+                        id="emitido"
+                        disabled
+                      />
+                      <label for="emitido" class="status-emitido"
+                        >Emitido</label
+                      >
+                    </div>
+                    <div class="fp-status-item">
+                      <input
+                        type="radio"
+                        name="status-eduardo"
+                        id="pago"
+                        disabled
+                      />
+                      <label for="pago" class="status-pago">Pago</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
-</div>
+      </section>
+    </div>
 
     <footer id="footer-RHFoot"></footer>
   </body>
