@@ -12,40 +12,6 @@
   padding-bottom: 50px;
 }
 
-/* --- HERO SECTION (GRADIENTE CORRIGIDO) --- */
-.dt-hero {
-  background: linear-gradient(90deg, #efa64e 0%, #f4bc42 100%);
-  padding: 0 80px; /* Removi padding vertical excessivo, controlamos via Flex */
-  height: 320px; /* Aumentado de 250px para 320px */
-  min-height: 320px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Centraliza verticalmente o texto e a imagem */
-  position: relative;
-  margin-bottom: 40px; /* Aumentado espaço abaixo do banner */
-  overflow: hidden; /* Garante que nada saia das bordas arredondadas */
-}
-
-.dt-hero h1 {
-  color: #1a1a1a;
-  font-size: 3rem; /* Fonte ligeiramente maior */
-  font-weight: 700;
-  margin: 0;
-  z-index: 2; /* Garante que o texto fique sobre qualquer detalhe */
-  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3); /* Leve destaque */
-}
-
-.dt-hero img {
-  height: auto;
-  max-height: 90%; /* A imagem ocupa 90% da altura do banner */
-  width: auto;
-  display: block;
-  object-fit: contain;
-  margin-top: auto; /* Alinha a imagem na base do banner */
-}
-
 /* --- CONTEÚDO --- */
 .dt-content-area {
   max-width: 1200px;
@@ -63,23 +29,6 @@
   margin-bottom: 20px;
 }
 
-.dt-btn-add {
-  background-color: #ea9638;
-  color: white;
-  border: none;
-  padding: 14px 28px; /* Botão um pouco mais robusto */
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(234, 150, 56, 0.4); /* Sombra colorida */
-  transition: all 0.3s ease;
-}
-
-.dt-btn-add:hover {
-  background-color: #d6852d;
-  transform: translateY(-2px); /* Efeito de levitação leve */
-}
 
 /* BARRA DE PESQUISA */
 .dt-search-box {
@@ -249,19 +198,6 @@
   margin-bottom: 8px;
   font-weight: 600;
   color: #444;
-}
-
-.edit-button {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.edit-button:hover {
-    background-color: #e6e8d3;
-    transform:scale(120%);
 }
 
 .dt-modal-footer {

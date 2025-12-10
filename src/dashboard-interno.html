@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="./css/dashboard.css">
 
     <link rel="stylesheet" href="./css/css.interno/departamentos-interno.css">
+    <link rel="stylesheet" href="./css/css.interno/candidaturas-interno.css">
     <link rel="stylesheet" href="./css/css.interno/treinamentos.css">
     <link rel="stylesheet" href="./css/perfil.css">
     <link rel="stylesheet" href="./css/folha-de-pagamento.css">
@@ -101,13 +102,63 @@
     </main>
 
     <div id="candidaturas-screen" class="screen" style="display: none">
-      <section class="hero-section">
-        <h1>Candidaturas</h1>
-        <img
-          src="/src/assets/imgs/Homem Dashboard.png"
-          alt="Homem da dashboard"
-        />
-      </section>
+        <section class="hero-section">
+            <h1>Candidaturas</h1>
+            <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard"/>
+        </section>
+
+        <div class="cand-container">
+            <div class="cand-card">
+            <div class="cand-search-row">
+                <i class="fa fa-search cand-search-icon"></i>
+                <input type="text" placeholder="Pesquise por palavra chave" />
+            </div>
+            <div class="cand-filters">
+                <div class="cand-filter-group">
+                <label>Organizar por:</label>
+                <select>
+                    <option>Ordem crescente</option>
+                    <option>Ordem decrescente</option>
+                </select>
+                </div>
+                <div class="cand-filter-group">
+                <label>Filtrar por:</label>
+                <select>
+                    <option>Vaga</option>
+                    <option>Nome</option>
+                </select>
+                </div>
+            </div>
+            </div>
+
+            <div class="cand-card cand-table-wrap">
+            <div class="cand-table-header">Candidaturas</div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Candidato</th>
+                    <th>CPF</th>
+                    <th>Cód. candidato</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody id="tableBodyCandidaturas"></tbody>
+            </table>
+            </div>
+
+            <div class="cand-pagination">
+            <div class="cand-pages">
+                <span>Páginas: </span>
+                <span class="active">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>Próxima</span>
+            </div>
+            <div>1 de 8</div>
+            </div>
+        </div>
+
     </div>
 
     <div id="treinamentos-screen" class="screen" style="display: none">
@@ -320,8 +371,7 @@
       </div>
     </div>
 
-    <div
-      id="visualizar-treinamento-screen"
+    <div id="visualizar-treinamento-screen"
       class="screen"
       style="display: none"
     >
@@ -672,7 +722,7 @@
     </div>
 
     <div id="departamentos-screen" class="screen" style="display: none">
-      <section class="dt-hero">
+      <section class="hero-section">
         <h1>Departamentos (Interno)</h1>
         <img
           src="/src/assets/imgs/homemdashboard.png"
@@ -682,7 +732,7 @@
 
       <div class="dt-content-area">
         <div class="dt-top-actions">
-          <button class="dt-btn-add" onclick="window.openModal()">
+          <button class="btn-defaunt" onclick="window.openModal()">
             Adicionar novo departamento
           </button>
         </div>
@@ -714,7 +764,7 @@
         <form id="deptForm" onsubmit="window.saveDepartment(event)">
           <input type="hidden" id="deptId" />
 
-          <div class="dt-input-group">
+          <div class="inputs-label">
             <label for="nome">Nome do Departamento</label>
             <input
               type="text"
@@ -724,12 +774,12 @@
             />
           </div>
 
-          <div class="dt-input-group">
+          <div class="inputs-label">
             <label for="sigla">Sigla</label>
             <input type="text" id="sigla" required placeholder="Ex: TI" />
           </div>
 
-          <div class="dt-input-group">
+          <div class="inputs-label">
             <label for="telefone">Telefone</label>
             <input
               type="text"
@@ -739,7 +789,7 @@
             />
           </div>
 
-          <div class="dt-input-group">
+          <div class="inputs-label">
             <label for="localizacao">Localização</label>
             <input
               type="text"
@@ -748,7 +798,7 @@
             />
           </div>
 
-          <div class="dt-input-group">
+          <div class="inputs-label">
             <label for="descricao">Descrição</label>
             <textarea
               id="descricao"
