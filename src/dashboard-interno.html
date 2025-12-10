@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard Integrado</title>
+    <title>Dashboard</title>
     <link
       rel="icon"
       type="image/png"
@@ -97,7 +97,10 @@
 </main>
 
 <div id="candidaturas-screen" class="screen">
-
+ <section class="hero-section">
+        <h1>Candidaturas</h1>
+        <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
+    </section>
 </div>
 
 <div id="treinamentos-screen" class="screen">
@@ -265,12 +268,14 @@
     <div class="conteudo-treinamento-container">
         <!-- Cabeçalho com botão voltar -->
         <div class="cabecalho-visualizacao">
-            <button class="btn-voltar-hero" onclick="mostrarTela('treinamentos-screen')">
-                <i class="fas fa-arrow-left"></i> Voltar
-            </button>
             <div class="hero-content-visualizacao">
                 <div class="hero-text-visualizacao">
-                    <h1 id="tituloTreinamentoVisualizar">Treinamento</h1>
+                    <div class="cabeca">
+                        <button class="btn-voltar" onclick="mostrarTela('treinamentos-screen')">
+                            <i class="fas fa-arrow-left"></i> Voltar
+                        </button>
+                        <h1 id="tituloTreinamentoVisualizar">Treinamento</h1>
+                    </div>
                     <div class="hero-info">
                         <span><i class="fas fa-chalkboard-teacher"></i> <span id="instrutorTreinamentoVisualizar"></span></span>
                         <span><i class="fas fa-clock"></i> <span id="cargaHorariaVisualizar"></span> horas</span>
@@ -278,7 +283,6 @@
                         <span><i class="fas fa-users"></i> <span id="totalAlunosVisualizar">0</span> alunos</span>
                     </div>
                 </div>
-                <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
             </div>
         </div>
 
@@ -323,22 +327,8 @@
         <!-- Aba de Colaboradores -->
         <div id="aba-colaboradores" class="aba-conteudo-treinamento">
             <div class="cabecalho-colaboradores">
-                <h3>Colaboradores Atribuídos</h3>
-                <div class="filtros-colaboradores">
-                    <select id="filtroDepartamento" onchange="filtrarColaboradoresAtribuidos()">
-                        <option value="">Todos Departamentos</option>
-                        <option value="TI">TI</option>
-                        <option value="RH">RH</option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="Financeiro">Financeiro</option>
-                    </select>
-                    <select id="filtroStatus" onchange="filtrarColaboradoresAtribuidos()">
-                        <option value="">Todos Status</option>
-                        <option value="nao-iniciado">Não Iniciado</option>
-                        <option value="em-andamento">Em Andamento</option>
-                        <option value="concluido">Concluído</option>
-                    </select>
-                    <button class="btn-atribuir-colaborador" onclick="mostrarModalAtribuirColaboradores()">
+                <h2>Colaboradores Atribuídos</h2>
+                    <button class="btn-defaunt" onclick="mostrarModalAtribuirColaboradores()">
                         <i class="fas fa-user-plus"></i> Adicionar Colaboradores
                     </button>
                 </div>
@@ -352,7 +342,7 @@
         <!-- Aba de Controle de Presença -->
         <div id="aba-presenca" class="aba-conteudo-treinamento">
             <div class="cabecalho-presenca">
-                <h3>Controle de Presença</h3>
+                <h2>Controle de Presença</h2>
                 <div class="controles-presenca">
                     <select id="filtroAulaPresenca" onchange="filtrarAulaPresenca()">
                         <option value="">Todas as Aulas</option>
@@ -372,21 +362,22 @@
 </div>
 
 <!-- Modal para Atribuir Colaboradores -->
-<div id="modalAtribuirColaboradores" class="modal" style="display: none;">
-    <div class="modal-content">
+<div class="atribuir-modal">
+    <div id="modalAtribuirColaboradores" class="modal" style="display: none;">
+    <div class=".visu">
         <div class="modal-header">
             <h3>Atribuir Colaboradores ao Treinamento</h3>
             <button class="btn-fechar-modal" onclick="fecharModalAtribuir()">&times;</button>
         </div>
         
         <div class="modal-body">
-            <div class="filtros-modal">
-                <div class="input-search-filter">
+            <div class="inputs-label">
+                <div class="">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" id="buscaColaborador" placeholder="Buscar por nome...">
                 </div>
                 
-                <div class="filtros-avancados">
+                <div class="inputs-label">
                     <select id="filtroModalDepartamento">
                         <option value="">Todos Departamentos</option>
                         <option value="TI">TI</option>
@@ -435,10 +426,12 @@
         
         <div class="modal-footer">
             <button class="btn-cancelar" onclick="fecharModalAtribuir()">Cancelar</button>
-            <button class="btn-salvar" onclick="atribuirColaboradoresSelecionados()">Atribuir Colaboradores</button>
+            <button class="btn-defaunt" onclick="atribuirColaboradoresSelecionados()">Atribuir Colaboradores</button>
         </div>
     </div>
 </div>
+</div>
+
 
 <!-- controle-presenca-screen.html -->
 <div id="controle-presenca-screen" class="screen" style="display: none;">
@@ -567,13 +560,13 @@
 </div>
 
 <div id="departamentos-screen" class="screen">
-    <section class="hero-section">
+        <section class="hero-section">
             <h1>Departamentos (Interno)</h1>
             <img src="/src/assets/imgs/homemdashboard.png" alt="Homem da dashboard">
         </section>
+
                 <button onclick="window.location.href='http://127.0.0.1:5501/src/html/cadastrar-departamento.html'" class="add-departamento-button">
                     <h3>Adicionar novo departamento</h3>
-                    
                 </button>
         <section id="content" style="padding: 2rem;">
             <section class="topics">
@@ -1138,7 +1131,10 @@
 </div>
 
 <div id="colaboradores-screen" class="screen">
-    
+     <section class="hero-section">
+        <h1>Colaboradores</h1>
+        <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
+    </section>
 </div>
 
 <div id="folha-screen" class="screen">

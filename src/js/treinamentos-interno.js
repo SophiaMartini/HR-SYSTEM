@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="modulo-descricao">
                 <div class="inputs-label">
                     <textarea class="modulo-descricao-texto" placeholder="Descrição do módulo (opcional)" 
-                              rows="4""></textarea>
+                              rows="4"></textarea>
                 </div>
                     
                 </div>
@@ -404,8 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="campo-material inputs-label">
                         <label>Vídeo:</label>
                         <input type="file" class="material-url" placeholder="https://youtube.com/watch?v=...">
-                        <input type="url" class="material-url" placeholder="https://
-                        treinamento.com.br">
+                        <input type="url" class="material-url" placeholder="https://treinamento.com.br">
                     </div>
                 `;
                 break;
@@ -750,29 +749,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 const moduloId = modulo.id || `modulo-${Date.now()}-${contadorModulos}`;
                 
                 const moduloHTML = `
-                    <div class="modulo-item" data-modulo-id="${moduloId}" style="background: #f9f9f9; border: 1px solid #eee; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
-                        <div class="modulo-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                            <input type="text" class="modulo-titulo" placeholder="Nome do módulo" 
-                                   value="${modulo.titulo}" required 
-                                   style="flex: 1; padding: 0.8rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1.1rem; font-weight: 600;">
-                            <button type="button" class="btn-remover-modulo" onclick="removerModulo(this)" 
-                                    style="background: #ff6b6b; color: white; border: none; padding: 0.7rem 1.2rem; border-radius: 6px; cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-left: 1rem;">
-                                <i class="fas fa-trash"></i> Remover
+                    <div class="modulo-item" data-modulo-id="${moduloId}">
+                        <div class="modulo-header">
+                            <button type="button" class="btn-remover-modulo" onclick="removerModulo(this)" ><i class="fa-solid fa-xmark"></i> Remover
                             </button>
+
+                        <div class="inputs-label">
+                            <input type="text" class="modulo-titulo" placeholder="Título do módulo"
+                                   value="${modulo.titulo}" required>
+                        </div>
+                            
                         </div>
                         
                         <div class="modulo-descricao">
+                        <div class="inputs-label">
                             <textarea class="modulo-descricao-texto" placeholder="Descrição do módulo (opcional)" 
-                                      rows="2" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 6px; font-family: 'Roboto', sans-serif; resize: vertical;">${modulo.descricao || ''}</textarea>
+                                      rows="4">${modulo.descricao || ''}</textarea>
+                        </div>
+                            
                         </div>
                         
-                        <div class="aulas-container" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #eee;">
-                            <h5 style="margin: 0 0 1rem 0; color: #555; font-size: 1.1rem;">Aulas deste módulo:</h5>
+                        <div class="aulas-container">
+                            <h3>Aulas deste módulo:</h3>
                             <div class="lista-aulas" data-modulo-id="${moduloId}">
                                 <!-- Aulas serão adicionadas aqui -->
                             </div>
-                            <button type="button" class="btn-adicionar-aula" onclick="adicionarAula('${moduloId}')"
-                                    style="background: #4CAF50; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 6px; cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
+                            <button type="button" class="btn-defaunt" onclick="adicionarAula('${moduloId}')">
                                 <i class="fas fa-plus"></i> Adicionar Aula
                             </button>
                         </div>
@@ -804,27 +806,29 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const aulaId = aulaData.id || `aula-${Date.now()}-${contadorAulas}`;
         const aulaHTML = `
-            <div class="aula-item" data-aula-id="${aulaId}" style="background: white; border: 1px solid #ddd; border-radius: 8px; padding: 1.2rem; margin-bottom: 1rem;">
-                <div class="aula-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                    <input type="text" class="aula-titulo" placeholder="Título da aula" 
-                           value="${aulaData.titulo}" required 
-                           style="flex: 1; padding: 0.7rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem;">
-                    <button type="button" class="btn-remover-aula" onclick="removerAula(this)"
-                            style="background: #666; color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; margin-left: 0.5rem;">
-                        <i class="fas fa-times"></i>
+            <div class="aula-item" data-aula-id="${aulaId}">
+                <div class="aula-header">
+                    <button type="button" class="btn-remover-aula" onclick="removerAula(this)">
+                        <i class="fas fa-times"></i>Remover
                     </button>
+                <div class="inputs-label">
+                 <label>Título Aula:</label>   
+                 <input type="text" class="aula-titulo" placeholder="Título da aula" 
+                           value="${aulaData.titulo}" required>
+                </div>
+                    
                 </div>
                 
-                <div class="aula-conteudo" style="background: #f5f5f5; padding: 1rem; border-radius: 6px;">
-                    <div class="aula-descricao">
+                <div class="aula-conteudo">
+                    <div class="aula-descricao inputs-label">
+                        <label>Descrição da Aula</label>
                         <textarea class="aula-descricao-texto" placeholder="Descrição da aula (opcional)" 
-                                  rows="2" style="width: 100%; padding: 0.7rem; border: 1px solid #ddd; border-radius: 6px; font-family: 'Roboto', sans-serif; resize: vertical; margin-bottom: 1rem;">${aulaData.descricao || ''}</textarea>
+                                  rows="2">${aulaData.descricao || ''}</textarea>
                     </div>
                     
-                    <div class="aula-tipo">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Tipo de material:</label>
-                        <select class="tipo-material-select" onchange="atualizarCamposMaterial(this, '${aulaId}')"
-                                style="width: 100%; padding: 0.7rem; border: 1px solid #ddd; border-radius: 6px; background: white;">
+                    <div class="aula-tipo inputs-label">
+                        <label>Tipo de material:</label>
+                        <select class="tipo-material-select" onchange="atualizarCamposMaterial(this, '${aulaId}')">
                             <option value="texto" ${aulaData.tipo === 'texto' ? 'selected' : ''}>Texto</option>
                             <option value="video" ${aulaData.tipo === 'video' ? 'selected' : ''}>Vídeo</option>
                             <option value="pdf" ${aulaData.tipo === 'pdf' ? 'selected' : ''}>PDF/Documento</option>
@@ -849,46 +853,40 @@ document.addEventListener('DOMContentLoaded', function() {
         switch(tipo) {
             case 'video':
                 return `
-                    <div class="campo-material" style="margin-top: 1rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">URL do vídeo:</label>
-                        <input type="url" class="material-url" placeholder="https://youtube.com/watch?v=..." 
-                               value="${aulaData.url || ''}"
-                               style="width: 100%; padding: 0.7rem; border: 1px solid #ddd; border-radius: 6px;">
+                    <div class="campo-material inputs-label">
+                        <label>Vídeo:</label>
+                        <input type="file" class="material-url" placeholder="https://youtube.com/watch?v=...">
+                        <input type="url" class="material-url" placeholder="https://treinamento.com.br" value="${aulaData.url || ''}">
                     </div>
                 `;
             case 'pdf':
                 return `
-                    <div class="campo-material" style="margin-top: 1rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Arquivo PDF:</label>
-                        <input type="file" class="material-file" accept=".pdf" 
-                               style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; background: white;">
+                    <div class="campo-material inputs-label">
+                        <label>Arquivo PDF:</label>
+                        <input type="file" class="material-file" accept=".pdf">
                         ${aulaData.arquivo ? `<p style="margin-top: 0.5rem; color: #666;">Arquivo atual: ${aulaData.arquivo}</p>` : ''}
                     </div>
                 `;
             case 'link':
                 return `
-                    <div class="campo-material" style="margin-top: 1rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">URL do link:</label>
-                        <input type="url" class="material-url" placeholder="https://exemplo.com" 
-                               value="${aulaData.url || ''}"
-                               style="width: 100%; padding: 0.7rem; border: 1px solid #ddd; border-radius: 6px;">
+                    <div class="campo-material inputs-label">
+                        <label>URL do link:</label>
+                        <input type="url" class="material-url" placeholder="https://exemplo.com" value="${aulaData.url || ''}">
                     </div>
                 `;
             case 'forms':
                 return `
-                    <div class="campo-material" style="margin-top: 1rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">URL do Google Forms:</label>
-                        <input type="url" class="material-url" placeholder="https://forms.google.com/..." 
-                               value="${aulaData.url || ''}"
-                               style="width: 100%; padding: 0.7rem; border: 1px solid #ddd; border-radius: 6px;">
+                    <div class="campo-material inputs-label">
+                        <label>URL do Google Forms:</label>
+                        <input type="url" class="material-url" placeholder="https://forms.google.com/..." value="${aulaData.url || ''}">
                     </div>
                 `;
             default: // texto
                 return `
-                    <div class="campo-material" style="margin-top: 1rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Conteúdo textual:</label>
+                    <div class="campo-material inputs-label">
+                        <label>Conteúdo textual:</label>
                         <textarea class="material-texto" placeholder="Digite o conteúdo aqui..." 
-                                  rows="4" style="width: 100%; padding: 0.7rem; border: 1px solid #ddd; border-radius: 6px; font-family: 'Roboto', sans-serif; resize: vertical;">${aulaData.conteudo || ''}</textarea>
+                                  rows="4">${aulaData.conteudo || ''}</textarea>
                     </div>
                 `;
         }
@@ -904,474 +902,777 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // ============ TELA DE VISUALIZAÇÃO ============
-    // ============ FUNÇÕES PARA VISUALIZAÇÃO ============
-function carregarDadosVisualizacao() {
-    if (!treinamentoAtual) return;
-    
-    // Informações básicas
-    document.getElementById('tituloTreinamentoVisualizar').textContent = treinamentoAtual.titulo;
-    document.getElementById('instrutorTreinamentoVisualizar').textContent = treinamentoAtual.instrutorNome;
-    document.getElementById('cargaHorariaVisualizar').textContent = treinamentoAtual.cargaHoraria + 'h';
-    document.getElementById('descricaoTreinamentoVisualizar').textContent = treinamentoAtual.descricao;
-    
-    // Calcular totais
-    const totalAulas = calcularTotalAulas();
-    const totalAlunos = treinamentoAtual.colaboradoresAtribuidos?.length || 0;
-    
-    document.getElementById('totalMateriaisVisualizar').textContent = totalAulas;
-    document.getElementById('totalAlunosVisualizar').textContent = totalAlunos;
-    
-    // Carregar módulos
-    carregarModulosVisualizacao();
-    
-    // Configurar filtros
-    configurarFiltroAulasPresenca();
-}
-
-function carregarModulosVisualizacao() {
-    const container = document.getElementById('listaModulosVisualizar');
-    if (!container || !treinamentoAtual.modulos) {
-        container.innerHTML = '<p>Nenhum módulo disponível.</p>';
-        return;
-    }
-    
-    let html = '';
-    treinamentoAtual.modulos.forEach((modulo, moduloIndex) => {
-        const totalAulasModulo = modulo.aulas?.length || 0;
+    function carregarDadosVisualizacao() {
+        if (!treinamentoAtual) return;
         
-        html += `
-            <div class="modulo-visualizacao">
-                <div class="modulo-header-visualizacao" onclick="toggleModulo(this)">
-                    <h4>
-                        <i class="fas fa-folder"></i>
-                        Módulo ${moduloIndex + 1}: ${modulo.titulo}
-                        <span class="modulo-contador">${totalAulasModulo} aulas</span>
-                    </h4>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                
-                ${modulo.descricao ? `
-                    <div class="modulo-descricao-visualizacao">
-                        <p>${modulo.descricao}</p>
-                    </div>
-                ` : ''}
-                
-                <div class="aulas-container-visualizacao">
-                    ${carregarAulasModulo(modulo, moduloIndex)}
-                </div>
-            </div>
-        `;
-    });
-    
-    container.innerHTML = html || '<p>Nenhum módulo disponível.</p>';
-}
-
-function carregarAulasModulo(modulo, moduloIndex) {
-    if (!modulo.aulas || modulo.aulas.length === 0) {
-        return '<p class="sem-aulas">Nenhuma aula neste módulo.</p>';
+        // Informações básicas
+        document.getElementById('descricaoTreinamentoVisualizar').textContent = treinamentoAtual.descricao;
+        
+        // Calcular totais
+        const totalAulas = calcularTotalAulas();
+        const totalAlunos = treinamentoAtual.colaboradoresAtribuidos?.length || 0;
+        
+        document.getElementById('totalMateriaisVisualizar').textContent = totalAulas;
+        document.getElementById('totalAlunosVisualizar').textContent = totalAlunos;
+        
+        // Carregar módulos
+        carregarModulosVisualizacao();
+        
+        // Carregar colaboradores
+        carregarColaboradoresVisualizacao();
+        
+        // Configurar filtros
+        configurarFiltroAulasPresenca();
     }
-    
-    let html = '';
-    modulo.aulas.forEach((aula, aulaIndex) => {
-        html += `
-            <div class="aula-visualizacao" data-aula-id="${aula.id}">
-                <div class="aula-header-visualizacao">
-                    <h5>
-                        <i class="fas fa-play-circle"></i>
-                        Aula ${moduloIndex + 1}.${aulaIndex + 1}: ${aula.titulo}
-                    </h5>
-                    <div class="aula-info">
-                        <span><i class="fas fa-file"></i> ${aula.tipo}</span>
-                        <span><i class="fas fa-clock"></i></span>
-                    </div>
-                </div>
-                
-                ${aula.descricao ? `
-                    <div class="aula-descricao-visualizacao">
-                        <p>${aula.descricao}</p>
-                    </div>
-                ` : ''}
-                
-                <div class="aula-conteudo-visualizacao">
-                    ${gerarConteudoAula(aula)}
-                </div>
-                
-                <div class="progresso-aula-alunos">
-                    <h6>Progresso dos Alunos:</h6>
-                    <div class="lista-alunos-aula" id="progresso-aula-${aula.id}">
-                        ${gerarProgressoAlunosAula(aula.id)}
-                    </div>
-                </div>
-            </div>
-        `;
-    });
-    
-    return html;
-}
 
-function gerarConteudoAula(aula) {
-    switch(aula.tipo) {
-        case 'texto':
-            return `<div class="conteudo-texto">${aula.conteudo || 'Sem conteúdo textual.'}</div>`;
-        case 'video':
-            return `<div class="conteudo-video">
+    function carregarModulosVisualizacao() {
+        const container = document.getElementById('listaModulosVisualizar');
+        if (!container || !treinamentoAtual.modulos) {
+            container.innerHTML = '<p>Nenhum módulo disponível.</p>';
+            return;
+        }
+        
+        let html = '';
+        treinamentoAtual.modulos.forEach((modulo, moduloIndex) => {
+            const totalAulasModulo = modulo.aulas?.length || 0;
+            
+            html += `
+                <div class="modulo-visualizacao">
+                    <div class="modulo-header-visualizacao" onclick="toggleModulo(this)">
+                        <h4>
+                            <i class="fas fa-folder"></i>
+                            Módulo ${moduloIndex + 1}: ${modulo.titulo}
+                            <span class="modulo-contador">${totalAulasModulo} aulas</span>
+                        </h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    
+                    ${modulo.descricao ? `
+                        <div class="modulo-descricao-visualizacao">
+                            <p>${modulo.descricao}</p>
+                        </div>
+                    ` : ''}
+                    
+                    <div class="aulas-container-visualizacao">
+                        ${carregarAulasModulo(modulo, moduloIndex)}
+                    </div>
+                </div>
+            `;
+        });
+        
+        container.innerHTML = html || '<p>Nenhum módulo disponível.</p>';
+    }
+
+    function carregarAulasModulo(modulo, moduloIndex) {
+        if (!modulo.aulas || modulo.aulas.length === 0) {
+            return '<p class="sem-aulas">Nenhuma aula neste módulo.</p>';
+        }
+        
+        let html = '';
+        modulo.aulas.forEach((aula, aulaIndex) => {
+            html += `
+                <div class="aula-visualizacao" data-aula-id="${aula.id}">
+                    <div class="aula-header-visualizacao">
+                        <h5>
+                            <i class="fas fa-play-circle"></i>
+                            Aula ${moduloIndex + 1}.${aulaIndex + 1}: ${aula.titulo}
+                        </h5>
+                        <div class="aula-info">
+                            <span><i class="fas fa-file"></i> ${aula.tipo}</span>
+                        </div>
+                    </div>
+                    
+                    ${aula.descricao ? `
+                        <div class="aula-descricao-visualizacao">
+                            <p>${aula.descricao}</p>
+                        </div>
+                    ` : ''}
+                    
+                    <div class="aula-conteudo-visualizacao">
+                        ${gerarConteudoAula(aula)}
+                    </div>
+                    
+                    <div class="progresso-aula-alunos">
+                        <h6>Progresso dos Alunos:</h6>
+                        <div class="lista-alunos-aula" id="progresso-aula-${aula.id}">
+                            ${gerarProgressoAlunosAula(aula.id)}
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        
+        return html;
+    }
+
+    function gerarConteudoAula(aula) {
+        switch(aula.tipo) {
+            case 'texto':
+                return `<div class="conteudo-texto">${aula.conteudo || 'Sem conteúdo textual.'}</div>`;
+            case 'video':
+                return aula.url ? `
+                    <div class="conteudo-video">
                         <a href="${aula.url}" target="_blank" class="material-link">
                             <i class="fab fa-youtube"></i> Assistir vídeo
                         </a>
-                    </div>`;
-        case 'pdf':
-            return `<div class="conteudo-pdf">
-                        <a href="#" class="material-link">
-                            <i class="fas fa-file-pdf"></i> Baixar PDF
-                        </a>
-                    </div>`;
-        case 'link':
-            return `<div class="conteudo-link">
+                    </div>
+                ` : '<p>URL do vídeo não disponível.</p>';
+            case 'pdf':
+                return `<div class="conteudo-pdf">
+                            <a href="#" class="material-link">
+                                <i class="fas fa-file-pdf"></i> Baixar PDF
+                            </a>
+                        </div>`;
+            case 'link':
+                return aula.url ? `
+                    <div class="conteudo-link">
                         <a href="${aula.url}" target="_blank" class="material-link">
                             <i class="fas fa-external-link-alt"></i> Acessar link
                         </a>
-                    </div>`;
-        case 'forms':
-            return `<div class="conteudo-forms">
+                    </div>
+                ` : '<p>URL não disponível.</p>';
+            case 'forms':
+                return aula.url ? `
+                    <div class="conteudo-forms">
                         <a href="${aula.url}" target="_blank" class="material-link">
                             <i class="fab fa-google"></i> Preencher formulário
                         </a>
-                    </div>`;
-        default:
-            return '<p>Tipo de conteúdo não reconhecido.</p>';
+                    </div>
+                ` : '<p>URL do formulário não disponível.</p>';
+            default:
+                return '<p>Tipo de conteúdo não reconhecido.</p>';
+        }
     }
-}
 
-function gerarProgressoAlunosAula(aulaId) {
-    if (!treinamentoAtual.colaboradoresAtribuidos || treinamentoAtual.colaboradoresAtribuidos.length === 0) {
-        return '<p class="sem-alunos">Nenhum aluno atribuído.</p>';
-    }
-    
-    let html = '';
-    treinamentoAtual.colaboradoresAtribuidos.forEach(colaborador => {
-        const colaboradorCompleto = mockColaboradores.find(c => c.id === colaborador.id) || colaborador;
-        const progresso = Math.floor(Math.random() * 100); // Simulação
-        
-        let status, statusClass;
-        if (progresso === 0) {
-            status = 'Não Iniciado';
-            statusClass = 'status-nao-iniciado';
-        } else if (progresso < 100) {
-            status = 'Em Andamento';
-            statusClass = 'status-andamento';
-        } else {
-            status = 'Concluído';
-            statusClass = 'status-concluido';
+    function gerarProgressoAlunosAula(aulaId) {
+        if (!treinamentoAtual.colaboradoresAtribuidos || treinamentoAtual.colaboradoresAtribuidos.length === 0) {
+            return '<p class="sem-alunos">Nenhum aluno atribuído.</p>';
         }
         
-        html += `
-            <div class="aluno-aula-item">
-                <div class="aluno-info">
-                    <i class="fas fa-user-circle"></i>
-                    <div>
-                        <div class="aluno-nome">${colaboradorCompleto.nome}</div>
-                        <div class="aluno-departamento">${colaboradorCompleto.departamento}</div>
-                    </div>
-                </div>
-                <div class="aluno-status">
-                    <div class="barra-progresso">
-                        <div class="barra-progresso-fill" style="width: ${progresso}%"></div>
-                        <div class="barra-progresso-texto">${progresso}%</div>
-                    </div>
-                    <span class="status-badge ${statusClass}">${status}</span>
-                </div>
-            </div>
-        `;
-    });
-    
-    return html;
-}
-
-function toggleModulo(element) {
-    const modulo = element.closest('.modulo-visualizacao');
-    const aulasContainer = modulo.querySelector('.aulas-container-visualizacao');
-    const icone = element.querySelector('.fa-chevron-down');
-    
-    if (aulasContainer.style.display === 'block') {
-        aulasContainer.style.display = 'none';
-        icone.classList.remove('fa-chevron-up');
-        icone.classList.add('fa-chevron-down');
-    } else {
-        aulasContainer.style.display = 'block';
-        icone.classList.remove('fa-chevron-down');
-        icone.classList.add('fa-chevron-up');
-    }
-}
-
-// ============ FUNÇÕES PARA ATRIBUIR COLABORADORES ============
-function mostrarModalAtribuirColaboradores() {
-    const modal = document.getElementById('modalAtribuirColaboradores');
-    modal.style.display = 'flex';
-    carregarColaboradoresDisponiveis();
-}
-
-function fecharModalAtribuir() {
-    const modal = document.getElementById('modalAtribuirColaboradores');
-    modal.style.display = 'none';
-}
-
-function carregarColaboradoresDisponiveis() {
-    const container = document.getElementById('listaColaboradoresModal');
-    const colaboradoresAtribuidosIds = treinamentoAtual.colaboradoresAtribuidos?.map(c => c.id) || [];
-    
-    // Filtrar colaboradores já atribuídos
-    const colaboradoresDisponiveis = mockColaboradores.filter(colab => 
-        !colaboradoresAtribuidosIds.includes(colab.id)
-    );
-    
-    // Ordenar por data de admissão (mais recente primeiro)
-    colaboradoresDisponiveis.sort((a, b) => 
-        new Date(b.dataAdmissao) - new Date(a.dataAdmissao)
-    );
-    
-    if (colaboradoresDisponiveis.length === 0) {
-        container.innerHTML = `
-            <div style="text-align: center; padding: 3rem; color: #666; grid-column: 1 / -1;">
-                <i class="fas fa-users-slash" style="font-size: 3rem; margin-bottom: 1rem; color: #ddd;"></i>
-                <h4 style="margin: 0 0 0.5rem 0;">Todos os colaboradores já estão atribuídos</h4>
-                <p style="margin: 0;">Não há colaboradores disponíveis para atribuição</p>
-            </div>
-        `;
-        return;
-    }
-    
-    let html = '';
-    colaboradoresDisponiveis.forEach(colab => {
-        const dataAdmissao = new Date(colab.dataAdmissao);
-        const hoje = new Date();
-        const mesesContratacao = Math.floor((hoje - dataAdmissao) / (1000 * 60 * 60 * 24 * 30));
-        
-        html += `
-            <div class="colaborador-item-modal" data-colab-id="${colab.id}">
-                <input type="checkbox" class="colaborador-checkbox" value="${colab.id}" 
-                       onchange="toggleColaboradorSelecionado(this)">
-                <div class="colaborador-info-modal">
-                    <h4>${colab.nome}</h4>
-                    <p><strong>Cargo:</strong> ${colab.cargo}</p>
-                    <p><strong>Departamento:</strong> ${colab.departamento}</p>
-                    <p class="colaborador-data">
-                        <strong>Contratado:</strong> ${formatarData(dataAdmissao)} 
-                        (${mesesContratacao} meses)
-                    </p>
-                </div>
-                <i class="fas fa-user-circle" style="font-size: 2rem; color: #666;"></i>
-            </div>
-        `;
-    });
-    
-    container.innerHTML = html;
-    
-    // Configurar eventos de filtro
-    configurarFiltrosModal();
-}
-
-function configurarFiltrosModal() {
-    const filtroDepartamento = document.getElementById('filtroModalDepartamento');
-    const filtroContratacao = document.getElementById('filtroModalContratacao');
-    const filtroMes = document.getElementById('filtroModalMes');
-    const buscaInput = document.getElementById('buscaColaborador');
-    
-    const aplicarFiltros = () => {
-        const departamento = filtroDepartamento.value;
-        const contratacao = filtroContratacao.value;
-        const mes = filtroMes.value;
-        const busca = buscaInput.value.toLowerCase();
-        
-        document.querySelectorAll('.colaborador-item-modal').forEach(item => {
-            const nome = item.querySelector('h4').textContent.toLowerCase();
-            const dept = item.querySelector('p:nth-child(2)').textContent.toLowerCase();
-            const dataText = item.querySelector('.colaborador-data').textContent;
+        let html = '';
+        treinamentoAtual.colaboradoresAtribuidos.forEach(colaborador => {
+            const colaboradorCompleto = mockColaboradores.find(c => c.id === colaborador.id) || colaborador;
             
-            let mostrar = true;
+            // Para simular progresso, usamos dados aleatórios
+            const progresso = colaborador.progresso || Math.floor(Math.random() * 100);
             
-            // Filtro por busca
-            if (busca && !nome.includes(busca)) {
-                mostrar = false;
+            let status, statusClass;
+            if (progresso === 0) {
+                status = 'Não Iniciado';
+                statusClass = 'status-nao-iniciado';
+            } else if (progresso < 100) {
+                status = 'Em Andamento';
+                statusClass = 'status-andamento';
+            } else {
+                status = 'Concluído';
+                statusClass = 'status-concluido';
             }
             
-            // Filtro por departamento
-            if (departamento && !dept.includes(departamento.toLowerCase())) {
-                mostrar = false;
-            }
+            html += `
+                <div class="aluno-aula-item">
+                    <div class="aluno-info">
+                        <i class="fas fa-user-circle"></i>
+                        <div>
+                            <div class="aluno-nome">${colaboradorCompleto.nome}</div>
+                            <div class="aluno-departamento">${colaboradorCompleto.departamento}</div>
+                        </div>
+                    </div>
+                    <div class="aluno-status">
+                        <div class="barra-progresso">
+                            <div class="barra-progresso-fill" style="width: ${progresso}%"></div>
+                            <div class="barra-progresso-texto">${progresso}%</div>
+                        </div>
+                        <span class="status-badge ${statusClass}">${status}</span>
+                    </div>
+                </div>
+            `;
+        });
+        
+        return html;
+    }
+
+    window.toggleModulo = function(element) {
+        const modulo = element.closest('.modulo-visualizacao');
+        const aulasContainer = modulo.querySelector('.aulas-container-visualizacao');
+        const icone = element.querySelector('.fa-chevron-down');
+        
+        if (aulasContainer.style.display === 'block') {
+            aulasContainer.style.display = 'none';
+            icone.classList.remove('fa-chevron-up');
+            icone.classList.add('fa-chevron-down');
+        } else {
+            aulasContainer.style.display = 'block';
+            icone.classList.remove('fa-chevron-down');
+            icone.classList.add('fa-chevron-up');
+        }
+    };
+
+    // ============ FUNÇÕES PARA ATRIBUIR COLABORADORES ============
+    window.mostrarModalAtribuirColaboradores = function() {
+        const modal = document.getElementById('modalAtribuirColaboradores');
+        modal.style.display = 'flex';
+        carregarColaboradoresDisponiveis();
+    };
+
+    window.fecharModalAtribuir = function() {
+        const modal = document.getElementById('modalAtribuirColaboradores');
+        modal.style.display = 'none';
+    };
+
+    function carregarColaboradoresDisponiveis() {
+        const container = document.getElementById('listaColaboradoresModal');
+        const colaboradoresAtribuidosIds = treinamentoAtual.colaboradoresAtribuidos?.map(c => c.id) || [];
+        
+        // Filtrar colaboradores já atribuídos
+        const colaboradoresDisponiveis = mockColaboradores.filter(colab => 
+            !colaboradoresAtribuidosIds.includes(colab.id)
+        );
+        
+        // Ordenar por data de admissão (mais recente primeiro)
+        colaboradoresDisponiveis.sort((a, b) => 
+            new Date(b.dataAdmissao) - new Date(a.dataAdmissao)
+        );
+        
+        if (colaboradoresDisponiveis.length === 0) {
+            container.innerHTML = `
+                <div style="text-align: center; padding: 3rem; color: #666; grid-column: 1 / -1;">
+                    <i class="fas fa-users-slash" style="font-size: 3rem; margin-bottom: 1rem; color: #ddd;"></i>
+                    <h4 style="margin: 0 0 0.5rem 0;">Todos os colaboradores já estão atribuídos</h4>
+                    <p style="margin: 0;">Não há colaboradores disponíveis para atribuição</p>
+                </div>
+            `;
+            return;
+        }
+        
+        let html = '';
+        colaboradoresDisponiveis.forEach(colab => {
+            const dataAdmissao = new Date(colab.dataAdmissao);
+            const hoje = new Date();
+            const mesesContratacao = Math.floor((hoje - dataAdmissao) / (1000 * 60 * 60 * 24 * 30));
             
-            // Filtro por mês de contratação
-            if (mes) {
-                const mesContratacao = dataText.match(/\d{2}\/\d{4}/)?.[0];
-                if (mesContratacao) {
-                    const mesNum = mesContratacao.split('/')[0];
-                    if (parseInt(mesNum) !== parseInt(mes)) {
+            html += `
+                <div class="colaborador-item-modal" data-colab-id="${colab.id}">
+                    <input type="checkbox" class="colaborador-checkbox" value="${colab.id}" 
+                           onchange="toggleColaboradorSelecionado(this)">
+                    <div class="colaborador-info-modal">
+                        <h4>${colab.nome}</h4>
+                        <p><strong>Cargo:</strong> ${colab.cargo}</p>
+                        <p><strong>Departamento:</strong> ${colab.departamento}</p>
+                        <p class="colaborador-data">
+                            <strong>Contratado:</strong> ${formatarData(dataAdmissao)} 
+                            (${mesesContratacao} meses)
+                        </p>
+                    </div>
+                    <i class="fas fa-user-circle" style="font-size: 2rem; color: #666;"></i>
+                </div>
+            `;
+        });
+        
+        container.innerHTML = html;
+        
+        // Configurar eventos de filtro
+        configurarFiltrosModal();
+    }
+
+    function configurarFiltrosModal() {
+        const filtroDepartamento = document.getElementById('filtroModalDepartamento');
+        const filtroContratacao = document.getElementById('filtroModalContratacao');
+        const filtroMes = document.getElementById('filtroModalMes');
+        const buscaInput = document.getElementById('buscaColaborador');
+        
+        if (!filtroDepartamento || !filtroContratacao || !filtroMes || !buscaInput) return;
+        
+        const aplicarFiltros = () => {
+            const departamento = filtroDepartamento.value;
+            const contratacao = filtroContratacao.value;
+            const mes = filtroMes.value;
+            const busca = buscaInput.value.toLowerCase();
+            
+            document.querySelectorAll('.colaborador-item-modal').forEach(item => {
+                const nome = item.querySelector('h4').textContent.toLowerCase();
+                const dept = item.querySelector('p:nth-child(2)').textContent.toLowerCase();
+                const dataText = item.querySelector('.colaborador-data').textContent;
+                
+                let mostrar = true;
+                
+                // Filtro por busca
+                if (busca && !nome.includes(busca)) {
+                    mostrar = false;
+                }
+                
+                // Filtro por departamento
+                if (departamento && !dept.includes(departamento.toLowerCase())) {
+                    mostrar = false;
+                }
+                
+                // Filtro por mês de contratação
+                if (mes) {
+                    const mesContratacao = dataText.match(/\d{2}\/\d{4}/)?.[0];
+                    if (mesContratacao) {
+                        const mesNum = mesContratacao.split('/')[0];
+                        if (parseInt(mesNum) !== parseInt(mes)) {
+                            mostrar = false;
+                        }
+                    }
+                }
+                
+                // Filtro por tempo de contratação
+                if (contratacao === 'recente') {
+                    // Já ordenado por mais recente
+                } else if (contratacao === 'antigo') {
+                    // Reverter ordem (seria melhor reordenar o array)
+                } else if (contratacao === 'ultimo-mes') {
+                    const meses = parseInt(dataText.match(/\((\d+)/)?.[1] || '0');
+                    if (meses > 1) {
+                        mostrar = false;
+                    }
+                } else if (contratacao === 'ultimos-3-meses') {
+                    const meses = parseInt(dataText.match(/\((\d+)/)?.[1] || '0');
+                    if (meses > 3) {
                         mostrar = false;
                     }
                 }
-            }
-            
-            // Filtro por tempo de contratação
-            if (contratacao === 'recente') {
-                // Já ordenado por mais recente
-            } else if (contratacao === 'antigo') {
-                // Reverter ordem (seria melhor reordenar o array)
-            } else if (contratacao === 'ultimo-mes') {
-                const meses = parseInt(dataText.match(/\((\d+)/)?.[1] || '0');
-                if (meses > 1) {
-                    mostrar = false;
-                }
-            } else if (contratacao === 'ultimos-3-meses') {
-                const meses = parseInt(dataText.match(/\((\d+)/)?.[1] || '0');
-                if (meses > 3) {
-                    mostrar = false;
-                }
-            }
-            
-            item.style.display = mostrar ? 'flex' : 'none';
-        });
-    };
-    
-    filtroDepartamento.addEventListener('change', aplicarFiltros);
-    filtroContratacao.addEventListener('change', aplicarFiltros);
-    filtroMes.addEventListener('change', aplicarFiltros);
-    buscaInput.addEventListener('input', aplicarFiltros);
-}
-
-function toggleColaboradorSelecionado(checkbox) {
-    const item = checkbox.closest('.colaborador-item-modal');
-    const colabId = checkbox.value;
-    
-    if (checkbox.checked) {
-        item.classList.add('selecionado');
-        adicionarSelecionado(colabId);
-    } else {
-        item.classList.remove('selecionado');
-        removerSelecionado(colabId);
-    }
-    
-    atualizarContadorSelecionados();
-}
-
-function adicionarSelecionado(colabId) {
-    const colaborador = mockColaboradores.find(c => c.id == colabId);
-    if (!colaborador) return;
-    
-    const lista = document.getElementById('listaSelecionadosModal');
-    const tagId = `selecionado-${colabId}`;
-    
-    if (!document.getElementById(tagId)) {
-        const tag = document.createElement('div');
-        tag.id = tagId;
-        tag.className = 'selecionado-tag';
-        tag.innerHTML = `
-            ${colaborador.nome}
-            <i class="fas fa-times" onclick="removerSelecionadoPorTag(${colabId})"></i>
-        `;
-        lista.appendChild(tag);
-    }
-}
-
-function removerSelecionado(colabId) {
-    const tag = document.getElementById(`selecionado-${colabId}`);
-    if (tag) {
-        tag.remove();
-    }
-    
-    const checkbox = document.querySelector(`.colaborador-checkbox[value="${colabId}"]`);
-    if (checkbox) {
-        checkbox.checked = false;
-        checkbox.closest('.colaborador-item-modal').classList.remove('selecionado');
-    }
-}
-
-function removerSelecionadoPorTag(colabId) {
-    removerSelecionado(colabId);
-    atualizarContadorSelecionados();
-}
-
-function atualizarContadorSelecionados() {
-    const contador = document.querySelectorAll('.selecionado-tag').length;
-    document.getElementById('contadorSelecionados').textContent = contador;
-}
-
-function atribuirColaboradoresSelecionados() {
-    const checkboxes = document.querySelectorAll('.colaborador-checkbox:checked');
-    
-    if (checkboxes.length === 0) {
-        alert('Selecione pelo menos um colaborador!');
-        return;
-    }
-    
-    checkboxes.forEach(checkbox => {
-        const colabId = parseInt(checkbox.value);
-        const colaborador = mockColaboradores.find(c => c.id === colabId);
+                
+                item.style.display = mostrar ? 'flex' : 'none';
+            });
+        };
         
-        if (colaborador && !treinamentoAtual.colaboradoresAtribuidos?.some(c => c.id === colabId)) {
-            if (!treinamentoAtual.colaboradoresAtribuidos) {
-                treinamentoAtual.colaboradoresAtribuidos = [];
-            }
+        filtroDepartamento.addEventListener('change', aplicarFiltros);
+        filtroContratacao.addEventListener('change', aplicarFiltros);
+        filtroMes.addEventListener('change', aplicarFiltros);
+        buscaInput.addEventListener('input', aplicarFiltros);
+    }
+
+    window.toggleColaboradorSelecionado = function(checkbox) {
+        const item = checkbox.closest('.colaborador-item-modal');
+        const colabId = checkbox.value;
+        
+        if (checkbox.checked) {
+            item.classList.add('selecionado');
+            adicionarSelecionado(colabId);
+        } else {
+            item.classList.remove('selecionado');
+            removerSelecionado(colabId);
+        }
+        
+        atualizarContadorSelecionados();
+    };
+
+    function adicionarSelecionado(colabId) {
+        const colaborador = mockColaboradores.find(c => c.id == colabId);
+        if (!colaborador) return;
+        
+        const lista = document.getElementById('listaSelecionadosModal');
+        const tagId = `selecionado-${colabId}`;
+        
+        if (!document.getElementById(tagId)) {
+            const tag = document.createElement('div');
+            tag.id = tagId;
+            tag.className = 'selecionado-tag';
+            tag.innerHTML = `
+                ${colaborador.nome}
+                <i class="fas fa-times" onclick="removerSelecionadoPorTag(${colabId})"></i>
+            `;
+            lista.appendChild(tag);
+        }
+    }
+
+    function removerSelecionado(colabId) {
+        const tag = document.getElementById(`selecionado-${colabId}`);
+        if (tag) {
+            tag.remove();
+        }
+        
+        const checkbox = document.querySelector(`.colaborador-checkbox[value="${colabId}"]`);
+        if (checkbox) {
+            checkbox.checked = false;
+            checkbox.closest('.colaborador-item-modal').classList.remove('selecionado');
+        }
+    }
+
+    window.removerSelecionadoPorTag = function(colabId) {
+        removerSelecionado(colabId);
+        atualizarContadorSelecionados();
+    };
+
+    function atualizarContadorSelecionados() {
+        const contador = document.querySelectorAll('.selecionado-tag').length;
+        const contadorElement = document.getElementById('contadorSelecionados');
+        if (contadorElement) {
+            contadorElement.textContent = contador;
+        }
+    }
+
+    window.atribuirColaboradoresSelecionados = function() {
+        const checkboxes = document.querySelectorAll('.colaborador-checkbox:checked');
+        
+        if (checkboxes.length === 0) {
+            alert('Selecione pelo menos um colaborador!');
+            return;
+        }
+        
+        checkboxes.forEach(checkbox => {
+            const colabId = parseInt(checkbox.value);
+            const colaborador = mockColaboradores.find(c => c.id === colabId);
             
-            treinamentoAtual.colaboradoresAtribuidos.push({
-                id: colabId,
-                nome: colaborador.nome,
-                cargo: colaborador.cargo,
-                departamento: colaborador.departamento,
-                progresso: 0,
-                concluido: false,
-                dataAtribuicao: new Date().toISOString(),
-                presencas: {} // Para registrar presença por aula
+            if (colaborador && !treinamentoAtual.colaboradoresAtribuidos?.some(c => c.id === colabId)) {
+                if (!treinamentoAtual.colaboradoresAtribuidos) {
+                    treinamentoAtual.colaboradoresAtribuidos = [];
+                }
+                
+                treinamentoAtual.colaboradoresAtribuidos.push({
+                    id: colabId,
+                    nome: colaborador.nome,
+                    cargo: colaborador.cargo,
+                    departamento: colaborador.departamento,
+                    progresso: 0,
+                    concluido: false,
+                    dataAtribuicao: new Date().toISOString(),
+                    presencas: {} // Para registrar presença por aula
+                });
+            }
+        });
+        
+        // Atualizar no localStorage
+        const index = treinamentos.findIndex(t => t.id === treinamentoAtual.id);
+        if (index !== -1) {
+            treinamentos[index] = treinamentoAtual;
+            localStorage.setItem('rh_treinamentos', JSON.stringify(treinamentos));
+        }
+        
+        // Fechar modal e atualizar visualização
+        fecharModalAtribuir();
+        carregarColaboradoresVisualizacao();
+        
+        alert(`✅ ${checkboxes.length} colaboradores atribuídos com sucesso!`);
+    };
+
+    // ============ FUNÇÕES PARA ABA DE COLABORADORES ============
+    function carregarColaboradoresVisualizacao() {
+        const container = document.getElementById('listaColaboradoresTreinamento');
+        if (!container) return;
+        
+        const colaboradores = treinamentoAtual.colaboradoresAtribuidos || [];
+        
+        if (colaboradores.length === 0) {
+            container.innerHTML = `
+                <div style="text-align: center; padding: 3rem; color: #666;">
+                    <i class="fas fa-users-slash" style="font-size: 3rem; margin-bottom: 1rem; color: #ddd;"></i>
+                    <h4 style="margin: 0 0 0.5rem 0;">Nenhum colaborador atribuído</h4>
+                    <p style="margin: 0;">Clique em "Adicionar Colaboradores" para convidar pessoas</p>
+                </div>
+            `;
+            return;
+        }
+        
+        let html = `
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: #f5f5f5;">
+                            <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #f09538;">Colaborador</th>
+                            <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #f09538;">Cargo</th>
+                            <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #f09538;">Progresso</th>
+                            <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #f09538;">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+        
+        colaboradores.forEach(colab => {
+            const colaboradorCompleto = mockColaboradores.find(c => c.id === colab.id) || colab;
+            const progresso = colab.progresso || 0;
+            const status = progresso === 100 ? 'Concluído' : progresso > 0 ? 'Em andamento' : 'Não iniciado';
+            const statusClass = status === 'Concluído' ? '#4CAF50' : 
+                               status === 'Em andamento' ? '#2196F3' : '#666';
+            
+            html += `
+                <tr>
+                    <td style="padding: 1rem; border-bottom: 1px solid #eee;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-user-circle" style="font-size: 1.5rem; color: #666;"></i>
+                            <div>
+                                <div style="font-weight: 600;">${colaboradorCompleto.nome}</div>
+                                <div style="font-size: 0.9rem; color: #666;">${colaboradorCompleto.departamento}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding: 1rem; border-bottom: 1px solid #eee;">${colaboradorCompleto.cargo}</td>
+                    <td style="padding: 1rem; border-bottom: 1px solid #eee;">
+                        <div style="width: 100px; height: 20px; background: #eee; border-radius: 10px; overflow: hidden; position: relative;">
+                            <div style="width: ${progresso}%; height: 100%; background: ${statusClass}; transition: width 0.3s;"></div>
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.8rem; font-weight: 600;">${progresso}%</div>
+                        </div>
+                    </td>
+                    <td style="padding: 1rem; border-bottom: 1px solid #eee;">
+                        <span style="background: ${statusClass}; color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">${status}</span>
+                    </td>
+                </tr>
+            `;
+        });
+        
+        html += `
+                    </tbody>
+                </table>
+            </div>
+        `;
+        
+        container.innerHTML = html;
+    }
+
+    // ============ FUNÇÕES PARA ABA DE PRESENÇA ============
+    function configurarFiltroAulasPresenca() {
+        const select = document.getElementById('filtroAulaPresenca');
+        if (!select) return;
+        
+        select.innerHTML = '<option value="">Todas as Aulas</option>';
+        
+        if (treinamentoAtual.modulos) {
+            treinamentoAtual.modulos.forEach((modulo, moduloIndex) => {
+                if (modulo.aulas) {
+                    modulo.aulas.forEach((aula, aulaIndex) => {
+                        const option = document.createElement('option');
+                        option.value = aula.id;
+                        option.textContent = `${moduloIndex + 1}.${aulaIndex + 1}. ${aula.titulo}`;
+                        select.appendChild(option);
+                    });
+                }
             });
         }
-    });
-    
-    // Atualizar no localStorage
-    const index = treinamentos.findIndex(t => t.id === treinamentoAtual.id);
-    if (index !== -1) {
-        treinamentos[index] = treinamentoAtual;
-        localStorage.setItem('rh_treinamentos', JSON.stringify(treinamentos));
     }
-    
-    // Fechar modal e atualizar visualização
-    fecharModalAtribuir();
-    carregarColaboradoresVisualizacao();
-    
-    alert(`✅ ${checkboxes.length} colaboradores atribuídos com sucesso!`);
-}
 
-// ============ FUNÇÕES AUXILIARES ============
-function calcularTotalAulas() {
-    if (!treinamentoAtual.modulos) return 0;
-    return treinamentoAtual.modulos.reduce((total, modulo) => 
-        total + (modulo.aulas?.length || 0), 0
-    );
-}
+    window.mudarAba = function(abaId) {
+        // Esconder todas as abas
+        document.querySelectorAll('.aba-conteudo-treinamento').forEach(aba => {
+            aba.style.display = 'none';
+        });
+        
+        // Remover active de todos os botões
+        document.querySelectorAll('.aba-treinamento').forEach(botao => {
+            botao.classList.remove('active');
+        });
+        
+        // Mostrar aba selecionada
+        const aba = document.getElementById(`aba-${abaId}`);
+        const botao = document.querySelector(`[data-aba="${abaId}"]`);
+        
+        if (aba) {
+            aba.style.display = 'block';
+            // Se for aba de colaboradores, carregar dados
+            if (abaId === 'colaboradores') {
+                carregarColaboradoresVisualizacao();
+            }
+            // Se for aba de presença, carregar tabela
+            if (abaId === 'presenca') {
+                carregarTabelaPresenca();
+            }
+        }
+        if (botao) botao.classList.add('active');
+    };
 
-function formatarData(data) {
-    return data.toLocaleDateString('pt-BR');
-}
+    function carregarTabelaPresenca() {
+        const container = document.getElementById('tabelaPresencaContainer');
+        if (!container || !treinamentoAtual) return;
+        
+        const colaboradores = treinamentoAtual.colaboradoresAtribuidos || [];
+        
+        if (colaboradores.length === 0) {
+            container.innerHTML = `
+                <div style="text-align: center; padding: 3rem; color: #666;">
+                    <i class="fas fa-clipboard-list" style="font-size: 3rem; margin-bottom: 1rem; color: #ddd;"></i>
+                    <h4 style="margin: 0 0 0.5rem 0;">Nenhum colaborador para controle de presença</h4>
+                    <p style="margin: 0;">Adicione colaboradores ao treinamento primeiro</p>
+                </div>
+            `;
+            return;
+        }
+        
+        let html = `
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: #f5f5f5;">
+                            <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #f09538;">Colaborador</th>
+        `;
+        
+        // Cabeçalhos das aulas
+        let totalAulas = 0;
+        if (treinamentoAtual.modulos) {
+            treinamentoAtual.modulos.forEach((modulo, i) => {
+                if (modulo.aulas) {
+                    modulo.aulas.forEach((aula, j) => {
+                        totalAulas++;
+                        html += `<th style="padding: 1rem; text-align: center; border-bottom: 2px solid #f09538;" title="${aula.titulo}">${i+1}.${j+1}</th>`;
+                    });
+                }
+            });
+        }
+        
+        html += `
+                            <th style="padding: 1rem; text-align: center; border-bottom: 2px solid #f09538;">Total</th>
+                            <th style="padding: 1rem; text-align: center; border-bottom: 2px solid #f09538;">%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+        
+        // Linhas dos colaboradores
+        colaboradores.forEach(colab => {
+            const colaboradorCompleto = mockColaboradores.find(c => c.id === colab.id) || colab;
+            
+            html += `
+                <tr>
+                    <td style="padding: 1rem; border-bottom: 1px solid #eee;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-user-circle" style="font-size: 1.5rem; color: #666;"></i>
+                            <div>
+                                <div style="font-weight: 600;">${colaboradorCompleto.nome}</div>
+                                <div style="font-size: 0.9rem; color: #666;">${colaboradorCompleto.cargo}</div>
+                            </div>
+                        </div>
+                    </td>
+            `;
+            
+            // Simular presenças
+            let presencas = 0;
+            for (let i = 0; i < totalAulas; i++) {
+                const presente = Math.random() > 0.3; // 70% de chance de estar presente
+                if (presente) presencas++;
+                
+                html += `
+                    <td style="padding: 1rem; border-bottom: 1px solid #eee; text-align: center;">
+                        <span style="display: inline-block; width: 25px; height: 25px; line-height: 25px; border-radius: 50%; background: ${presente ? '#4CAF50' : '#ff6b6b'}; color: white; font-weight: 600; cursor: pointer;" 
+                              onclick="alterarPresenca(this, ${colab.id}, ${i})" 
+                              title="${presente ? 'Presente - Clique para alterar' : 'Ausente - Clique para alterar'}">
+                            ${presente ? 'P' : 'A'}
+                        </span>
+                    </td>
+                `;
+            }
+            
+            const percentual = totalAulas > 0 ? Math.round((presencas / totalAulas) * 100) : 0;
+            const corPercentual = percentual >= 80 ? '#4CAF50' : percentual >= 60 ? '#ff9800' : '#ff6b6b';
+            
+            html += `
+                    <td style="padding: 1rem; border-bottom: 1px solid #eee; text-align: center; font-weight: 600;">${presencas}/${totalAulas}</td>
+                    <td style="padding: 1rem; border-bottom: 1px solid #eee; text-align: center;">
+                        <span style="background: ${corPercentual}; color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 600;">${percentual}%</span>
+                    </td>
+                </tr>
+            `;
+        });
+        
+        html += `
+                    </tbody>
+                </table>
+            </div>
+        `;
+        
+        container.innerHTML = html;
+    }
 
-function filtrarColaboradoresAtribuidos() {
-    const filtroDept = document.getElementById('filtroDepartamento').value;
-    const filtroStatus = document.getElementById('filtroStatus').value;
-    
-    // Em um sistema real, aqui você filtraria a lista
-    // Por enquanto, apenas recarregamos
-    carregarColaboradoresVisualizacao();
-}
+    window.alterarPresenca = function(elemento, colaboradorId, aulaIndex) {
+        const textoAtual = elemento.textContent;
+        const novoTexto = textoAtual === 'P' ? 'A' : 'P';
+        const novaCor = novoTexto === 'P' ? '#4CAF50' : '#ff6b6b';
+        
+        elemento.textContent = novoTexto;
+        elemento.style.background = novaCor;
+        elemento.title = novoTexto === 'P' ? 'Presente - Clique para alterar' : 'Ausente - Clique para alterar';
+        
+        console.log(`📝 Presença alterada: Colaborador ${colaboradorId}, Aula ${aulaIndex + 1} -> ${novoTexto === 'P' ? 'Presente' : 'Ausente'}`);
+        
+        // Em um sistema real, você salvaria no backend
+        if (treinamentoAtual) {
+            if (!treinamentoAtual.presencas) {
+                treinamentoAtual.presencas = [];
+            }
+            
+            // Atualizar no localStorage
+            const index = treinamentos.findIndex(t => t.id === treinamentoAtual.id);
+            if (index !== -1) {
+                treinamentos[index] = treinamentoAtual;
+                localStorage.setItem('rh_treinamentos', JSON.stringify(treinamentos));
+            }
+        }
+    };
 
-function exportarRelatorioPresenca() {
-    if (!treinamentoAtual) return;
-    
-    // Simular geração de relatório
-    const totalAulas = calcularTotalAulas();
-    const totalAlunos = treinamentoAtual.colaboradoresAtribuidos?.length || 0;
-    
-    alert(`📊 Relatório de presença gerado!\n\n` +
-          `Treinamento: ${treinamentoAtual.titulo}\n` +
-          `Total de aulas: ${totalAulas}\n` +
-          `Total de alunos: ${totalAlunos}\n\n` +
-          `O relatório foi salvo em formato PDF.`);
-}
+    window.filtrarAulaPresenca = function() {
+        const select = document.getElementById('filtroAulaPresenca');
+        if (!select) return;
+        
+        const aulaSelecionada = select.value;
+        if (aulaSelecionada) {
+            alert(`Filtrando pela aula: ${select.options[select.selectedIndex].text}`);
+            // Em um sistema real, aqui você filtraria a tabela
+        }
+    };
+
+    // ============ FUNÇÕES AUXILIARES ============
+    window.editarTreinamentoAtual = function() {
+        if (!treinamentoAtual) {
+            alert('❌ Nenhum treinamento selecionado!');
+            return;
+        }
+        editarTreinamento(treinamentoAtual.id);
+    };
+
+    window.solicitarTreinamentoAtual = function() {
+        mostrarModalAtribuirColaboradores();
+    };
+
+    function calcularTotalAulas() {
+        if (!treinamentoAtual.modulos) return 0;
+        return treinamentoAtual.modulos.reduce((total, modulo) => 
+            total + (modulo.aulas?.length || 0), 0
+        );
+    }
+
+    function formatarData(data) {
+        return data.toLocaleDateString('pt-BR');
+    }
+
+    window.filtrarColaboradoresAtribuidos = function() {
+        const filtroDept = document.getElementById('filtroDepartamento');
+        const filtroStatus = document.getElementById('filtroStatus');
+        
+        if (filtroDept && filtroStatus) {
+            // Em um sistema real, aqui você filtraria a lista
+            // Por enquanto, apenas recarregamos
+            carregarColaboradoresVisualizacao();
+        }
+    };
+
+    window.exportarRelatorioPresenca = function() {
+        if (!treinamentoAtual) return;
+        
+        // Simular geração de relatório
+        const totalAulas = calcularTotalAulas();
+        const totalAlunos = treinamentoAtual.colaboradoresAtribuidos?.length || 0;
+        
+        alert(`📊 Relatório de presença gerado!\n\n` +
+              `Treinamento: ${treinamentoAtual.titulo}\n` +
+              `Total de aulas: ${totalAulas}\n` +
+              `Total de alunos: ${totalAlunos}\n\n` +
+              `O relatório foi salvo em formato PDF.`);
+    };
+
+    function filtrarTreinamentos() {
+        const busca = document.getElementById('buscaTreinamento').value.toLowerCase();
+        const cards = document.querySelectorAll('.card_treinamento');
+        
+        cards.forEach(card => {
+            const titulo = card.querySelector('h3').textContent.toLowerCase();
+            const instrutor = card.querySelector('.card-info-item:nth-child(1) span').textContent.toLowerCase();
+            
+            if (busca && !titulo.includes(busca) && !instrutor.includes(busca)) {
+                card.style.display = 'none';
+            } else {
+                card.style.display = 'block';
+            }
+        });
+    }
+
     // ============ INICIAR SISTEMA ============
     inicializar();
     
