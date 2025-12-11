@@ -360,24 +360,22 @@
         </div>
     </div>
 </div>
-
 <!-- Modal para Atribuir Colaboradores -->
-<div class="atribuir-modal">
-    <div id="modalAtribuirColaboradores" class="modal" style="display: none;">
-    <div class=".visu">
+<div id="modalAtribuirColaboradores" class="modal" style="display: none;">
+    <div class="modal-content"> <!-- ADICIONE ESTA DIV -->
         <div class="modal-header">
             <h3>Atribuir Colaboradores ao Treinamento</h3>
             <button class="btn-fechar-modal" onclick="fecharModalAtribuir()">&times;</button>
         </div>
         
         <div class="modal-body">
-            <div class="inputs-label">
-                <div class="">
+            <div class="inputs-label filtros-modal">
+                <div class="input-search-filter">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" id="buscaColaborador" placeholder="Buscar por nome...">
                 </div>
                 
-                <div class="inputs-label">
+                <div class="filtros-avancados">
                     <select id="filtroModalDepartamento">
                         <option value="">Todos Departamentos</option>
                         <option value="TI">TI</option>
@@ -430,8 +428,6 @@
         </div>
     </div>
 </div>
-</div>
-
 
 <!-- controle-presenca-screen.html -->
 <div id="controle-presenca-screen" class="screen" style="display: none;">
