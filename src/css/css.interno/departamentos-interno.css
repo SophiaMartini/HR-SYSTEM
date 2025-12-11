@@ -1,0 +1,248 @@
+/* --- RESET ESPECÍFICO PARA A SCREEN --- */
+#departamentos-screen * {
+  box-sizing: border-box;
+}
+
+#departamentos-screen {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50px;
+}
+
+/* --- CONTEÚDO --- */
+.dt-content-area {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  top: -50px; /* Sobe um pouco mais para sobrepor o banner elegantemente */
+  z-index: 10;
+}
+
+/* BOTÃO ADICIONAR */
+.dt-top-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+
+/* BARRA DE PESQUISA */
+.dt-search-box {
+  position: relative;
+  margin-bottom: 40px;
+  background: white;
+  border-radius: 50px; /* Mais arredondado */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra mais suave */
+}
+
+.dt-search-box input {
+  width: 100%;
+  padding: 18px 25px 18px 55px;
+  border-radius: 50px;
+  border: 1px solid transparent; /* Remove borda padrão cinza */
+  outline: none;
+  font-size: 1rem;
+  transition: border 0.3s;
+}
+
+.dt-search-box input:focus {
+  border: 1px solid #ea9638; /* Borda laranja ao focar */
+}
+
+.dt-search-icon {
+  position: absolute;
+  left: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ea9638; /* Ícone laranja */
+  font-size: 1.2rem;
+}
+
+/* --- GRID --- */
+.dt-grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(350px, 1fr)
+  ); /* Cards um pouco mais largos */
+  gap: 30px;
+}
+
+/* --- CARD --- */
+.dt-unity-card {
+  background-color: #fff; /* Fundo branco fica mais limpo, mas pode manter o bege se preferir */
+  border-radius: 16px;
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+  transition: transform 0.2s;
+}
+
+.dt-unity-card:hover {
+  transform: translateY(-5px); /* Efeito hover no card */
+  border-color: #ea9638;
+}
+
+.dt-info-block {
+  flex-grow: 1;
+  margin-right: 15px;
+}
+
+.dt-info-block h3 {
+  margin-bottom: 8px;
+  color: #222;
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.dt-info-block p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+/* FERRAMENTAS DO CARD */
+.dt-tools-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-left: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 5px;
+}
+
+.dt-action-btn {
+  background: #f9f9f9;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #555;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.dt-action-btn:hover {
+  background-color: #ea9638;
+  color: white;
+}
+
+/* --- MODAL --- */
+.dt-modal-overlay {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px); /* Efeito de desfoque no fundo */
+  justify-content: center;
+  align-items: center;
+}
+
+.dt-modal-box {
+  background-color: white;
+  padding: 40px;
+  border-radius: 15px;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dt-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.dt-modal-header h2 {
+  margin: 0;
+  color: #ea9638;
+}
+
+/* FORMULÁRIO */
+.dt-input-group {
+  margin-bottom: 20px;
+}
+.dt-input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #444;
+}
+
+.dt-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+}
+.dt-btn-cancel {
+  background: #f0f0f0;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #666;
+}
+.dt-btn-save {
+  background: #ea9638;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.dt-btn-save:hover {
+  background: #d6852d;
+}
+
+/* --- RESPONSIVIDADE (Para telas menores) --- */
+@media (max-width: 768px) {
+  .dt-hero {
+    height: 200px; /* Reduz altura em telas pequenas */
+    min-height: 200px;
+    padding: 0 30px;
+  }
+  .dt-hero h1 {
+    font-size: 2rem;
+  }
+  .dt-hero img {
+    max-height: 150px;
+    opacity: 0.5; /* Deixa imagem mais discreta no mobile */
+  }
+  .dt-grid-wrapper {
+    grid-template-columns: 1fr; /* Um card por linha no mobile */
+  }
+}
