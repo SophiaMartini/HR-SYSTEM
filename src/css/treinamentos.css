@@ -1153,40 +1153,6 @@
     background-position: right 10px center;
     background-size: 16px;
 }
-
-/* Botões do modal */
-.btn-defaunt {
-    background-color: #f09538;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-defaunt:hover {
-    background-color: #e08427;
-}
-
-.btn-cancelar {
-    background: #666;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-cancelar:hover {
-    background: #555;
-}
-
 /* ============ BOTÕES DE AÇÃO VISUALIZAÇÃO ============ */
 .acoes-visualizacao {
     display: flex;
