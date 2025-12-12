@@ -1,0 +1,132 @@
+
+.departamento-info {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+}
+
+#nome-departamento {
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+#descricao-departamento {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.vaga-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eee;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.vaga-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.vaga-card h3 {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.salario {
+    color: #f0912f;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.vaga-card p {
+    color: #666;
+    line-height: 1.5;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.vaga-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid #eee;
+    padding-top: 0.8rem;
+}
+
+.candidatar-btn {
+    background: #f0912f;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.candidatar-btn:hover {
+    background-color: #db8229;
+    transform: scale(1.02);
+}
+
+.candidatar-btn.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.candidatar-btn.disabled:hover {
+    background-color: #ccc;
+    transform: none;
+}
+
+.vaga-detalhes {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.vaga-detalhes h4 {
+    color: #555;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.vaga-detalhes ul {
+    padding-left: 1.2rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    #departamento-screen {
+        padding: 1rem;
+    }
+    
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .vaga-meta {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+}

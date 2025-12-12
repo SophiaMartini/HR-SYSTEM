@@ -1,21 +1,627 @@
-// treinamentos-colaborador.js - Versão com mesma estrutura do interno
+// treinamentos-interno.js - Código atualizado com todas as funcionalidades
+
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Sistema de Treinamentos do Colaborador iniciado!');
+    console.log('🚀 Sistema de Treinamentos iniciado!');
     
-    // Usar os mesmos dados do sistema interno
+    // Dados iniciais
     let treinamentos = JSON.parse(localStorage.getItem('rh_treinamentos') || '[]');
-    let treinamentoAtualColaborador = null;
-    let colaboradorId = 1; // ID do colaborador logado (em produção, viria do login)
-    let aulaParaConcluir = null;
+    let instrutores = JSON.parse(localStorage.getItem('rh_instrutores') || '[]');
+    let treinamentoAtual = null;
+    let moduloEmEdicao = null;
+    let moduloEditIndex = null;
+    let instrutorSelecionado = null;
     
-    // ============ FUNÇÕES DE NAVEGAÇÃO (igual ao interno) ============
-    window.mostrarTelaColaborador = function(telaId) {
-        console.log('🔄 Mostrando tela:', telaId);
+    // ============ INICIALIZAÇÃO ============
+    function inicializarSistema() {
+        carregarInstrutores();
+        carregarGridTreinamentos();
+        configurarEventos();
         
-        document.querySelectorAll('.screen').forEach(screen => {
-            if (screen.id.includes('colaborador') || screen.id === telaId) {
-                screen.style.display = 'none';
+        // Se não houver instrutores, adicionar alguns exemplos
+        if (instrutores.length === 0) {
+            adicionarInstrutoresExemplo();
+        }
+    }
+    
+    function adicionarInstrutoresExemplo() {
+        const exemplos = [
+            {
+                id: '1',
+                nome: 'Carlos Silva',
+                email: 'carlos.silva@empresa.com',
+                especialidade: 'Liderança e Gestão',
+                bio: 'Especialista em desenvolvimento de líderes com 15 anos de experiência.'
+            },
+            {
+                id: '2',
+                nome: 'Ana Oliveira',
+                email: 'ana.oliveira@empresa.com',
+                especialidade: 'Tecnologia e Inovação',
+                bio: 'Engenheira de software com foco em transformação digital.'
+            },
+            {
+                id: '3',
+                nome: 'Roberto Santos',
+                email: 'roberto.santos@empresa.com',
+                especialidade: 'Compliance e RH',
+                bio: 'Consultor em compliance trabalhista e políticas de RH.'
             }
+        ];
+        
+        instrutores = exemplos;
+        localStorage.setItem('rh_instrutores', JSON.stringify(instrutores));
+        carregarInstrutores();
+    }
+    
+    // ============ CARREGAR INSTRUTORES ============
+    function carregarInstrutores() {
+        const select = document.getElementById('instrutorTreinamento');
+        if (!select) return;
+        
+        select.innerHTML = '<option value="">Selecione o instrutor</option>';
+        
+        instrutores.forEach(instrutor => {
+            const option = document.createElement('option');
+            option.value = instrutor.id;
+            option.textContent = instrutor.nome;
+            select.appendChild(option);
+        });
+        
+        // Adicionar opção para buscar mais instrutores
+        const optionBuscar = document.createElement('option');
+        optionBuscar.value = 'buscar';
+        optionBuscar.textContent = '➕ Buscar/Cadastrar Instrutor...';
+        select.appendChild(optionBuscar);
+        
+        select.addEventListener('change', function() {
+            if (this.value === 'buscar') {
+                this.value = '';
+                abrirModalSelecionarInstrutor();
+            }
+        });
+    }
+    
+    // ============ MODAL DE INSTRUTORES ============
+    window.abrirModalSelecionarInstrutor = function() {
+        carregarListaInstrutoresModal();
+        document.getElementById('modalSelecionarInstrutor').style.display = 'flex';
+    };
+    
+    window.fecharModalInstrutor = function() {
+        document.getElementById('modalSelecionarInstrutor').style.display = 'none';
+        instrutorSelecionado = null;
+    };
+    
+    function carregarListaInstrutoresModal() {
+        const container = document.getElementById('listaInstrutoresModal');
+        container.innerHTML = '';
+        
+        instrutores.forEach(instrutor => {
+            const div = document.createElement('div');
+            div.className = 'instrutor-item-modal';
+            div.dataset.id = instrutor.id;
+            div.onclick = () => selecionarInstrutorModal(instrutor.id);
+            
+            if (instrutorSelecionado && instrutorSelecionado.id === instrutor.id) {
+                div.classList.add('selecionado');
+            }
+            
+            div.innerHTML = `
+                <i class="fas fa-chalkboard-teacher"></i>
+                <div class="instrutor-info-modal">
+                    <h4>${instrutor.nome}</h4>
+                    <p>${instrutor.especialidade || 'Sem especialidade definida'}</p>
+                    <small>${instrutor.email || ''}</small>
+                </div>
+            `;
+            
+            container.appendChild(div);
+        });
+    }
+    
+    function selecionarInstrutorModal(id) {
+        instrutorSelecionado = instrutores.find(i => i.id === id);
+        
+        // Remover seleção anterior
+        document.querySelectorAll('.instrutor-item-modal').forEach(item => {
+            item.classList.remove('selecionado');
+        });
+        
+        // Adicionar seleção atual
+        const item = document.querySelector(`.instrutor-item-modal[data-id="${id}"]`);
+        if (item) {
+            item.classList.add('selecionado');
+        }
+    }
+    
+    window.filtrarInstrutores = function() {
+        const busca = document.getElementById('buscaInstrutor').value.toLowerCase();
+        const items = document.querySelectorAll('.instrutor-item-modal');
+        
+        items.forEach(item => {
+            const nome = item.querySelector('h4').textContent.toLowerCase();
+            const especialidade = item.querySelector('p').textContent.toLowerCase();
+            
+            if (nome.includes(busca) || especialidade.includes(busca)) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    };
+    
+    window.confirmarInstrutor = function() {
+        if (!instrutorSelecionado) {
+            alert('Por favor, selecione um instrutor.');
+            return;
+        }
+        
+        const select = document.getElementById('instrutorTreinamento');
+        select.value = instrutorSelecionado.id;
+        
+        fecharModalInstrutor();
+    };
+    
+    window.novoInstrutor = function() {
+        document.getElementById('modalSelecionarInstrutor').style.display = 'none';
+        document.getElementById('modalNovoInstrutor').style.display = 'flex';
+    };
+    
+    window.fecharModalNovoInstrutor = function() {
+        document.getElementById('modalNovoInstrutor').style.display = 'none';
+        abrirModalSelecionarInstrutor();
+    };
+    
+    window.salvarNovoInstrutor = function() {
+        const nome = document.getElementById('nomeInstrutor').value.trim();
+        const email = document.getElementById('emailInstrutor').value.trim();
+        const especialidade = document.getElementById('especialidadeInstrutor').value.trim();
+        const bio = document.getElementById('bioInstrutor').value.trim();
+        
+        if (!nome) {
+            alert('O nome do instrutor é obrigatório.');
+            return;
+        }
+        
+        const novoInstrutor = {
+            id: Date.now().toString(),
+            nome: nome,
+            email: email || '',
+            especialidade: especialidade || '',
+            bio: bio || ''
+        };
+        
+        instrutores.push(novoInstrutor);
+        localStorage.setItem('rh_instrutores', JSON.stringify(instrutores));
+        
+        // Selecionar o novo instrutor
+        instrutorSelecionado = novoInstrutor;
+        
+        // Atualizar o select
+        carregarInstrutores();
+        
+        // Fechar modais
+        fecharModalNovoInstrutor();
+        fecharModalInstrutor();
+        
+        // Selecionar o instrutor no formulário
+        document.getElementById('instrutorTreinamento').value = novoInstrutor.id;
+        
+        alert('Instrutor cadastrado com sucesso!');
+    };
+    
+    // ============ MODAL DE MÓDULOS ============
+    window.adicionarModulo = function() {
+        moduloEmEdicao = null;
+        moduloEditIndex = null;
+        
+        document.getElementById('tituloModalModulo').textContent = 'Adicionar Módulo';
+        document.getElementById('nomeModulo').value = '';
+        document.getElementById('descricaoModulo').value = '';
+        
+        // Limpar aulas
+        const container = document.getElementById('aulasModuloContainer');
+        container.innerHTML = '';
+        
+        // Adicionar uma aula inicial
+        adicionarAulaNoModal();
+        
+        document.getElementById('modalModulo').style.display = 'flex';
+    };
+    
+    window.editarModulo = function(index) {
+        if (!treinamentoAtual || !treinamentoAtual.modulos) return;
+        
+        moduloEmEdicao = treinamentoAtual.modulos[index];
+        moduloEditIndex = index;
+        
+        document.getElementById('tituloModalModulo').textContent = 'Editar Módulo';
+        document.getElementById('nomeModulo').value = moduloEmEdicao.titulo || '';
+        document.getElementById('descricaoModulo').value = moduloEmEdicao.descricao || '';
+        
+        // Carregar aulas
+        const container = document.getElementById('aulasModuloContainer');
+        container.innerHTML = '';
+        
+        if (moduloEmEdicao.aulas && moduloEmEdicao.aulas.length > 0) {
+            moduloEmEdicao.aulas.forEach((aula, aulaIndex) => {
+                adicionarAulaNoModal(aula);
+            });
+        } else {
+            adicionarAulaNoModal();
+        }
+        
+        document.getElementById('modalModulo').style.display = 'flex';
+    };
+    
+    window.fecharModalModulo = function() {
+        document.getElementById('modalModulo').style.display = 'none';
+        moduloEmEdicao = null;
+        moduloEditIndex = null;
+    };
+    
+    window.adicionarAulaNoModal = function(aulaExistente = null) {
+        const container = document.getElementById('aulasModuloContainer');
+        const aulaId = Date.now() + Math.random();
+        
+        const aulaItem = document.createElement('div');
+        aulaItem.className = 'aula-item-modal';
+        aulaItem.dataset.id = aulaId;
+        
+        aulaItem.innerHTML = `
+            <div class="aula-header-modal">
+                <h5>Aula ${container.children.length + 1}</h5>
+                <button type="button" class="btn-remover-aula-modal" onclick="removerAulaModal('${aulaId}')">
+                    <i class="fas fa-times"></i> Remover
+                </button>
+            </div>
+            
+            <div class="form-group-sm">
+                <label>Título da Aula *</label>
+                <input type="text" class="aula-titulo" placeholder="Ex: Introdução aos Conceitos" 
+                       value="${aulaExistente ? aulaExistente.titulo || '' : ''}" required>
+            </div>
+            
+            <div class="form-group-sm">
+                <label>Descrição</label>
+                <textarea class="aula-descricao" rows="2" placeholder="Descreva o conteúdo desta aula...">${aulaExistente ? aulaExistente.descricao || '' : ''}</textarea>
+            </div>
+            
+            <div class="form-group-sm">
+                <label>Tipo de Conteúdo *</label>
+                <select class="aula-tipo" onchange="mudarTipoAula(this)">
+                    <option value="">Selecione o tipo</option>
+                    <option value="texto" ${aulaExistente && aulaExistente.tipo === 'texto' ? 'selected' : ''}>Texto/Artigo</option>
+                    <option value="video" ${aulaExistente && aulaExistente.tipo === 'video' ? 'selected' : ''}>Vídeo</option>
+                    <option value="pdf" ${aulaExistente && aulaExistente.tipo === 'pdf' ? 'selected' : ''}>PDF/Documento</option>
+                    <option value="link" ${aulaExistente && aulaExistente.tipo === 'link' ? 'selected' : ''}>Link Externo</option>
+                    <option value="forms" ${aulaExistente && aulaExistente.tipo === 'forms' ? 'selected' : ''}>Formulário/Quiz</option>
+                </select>
+            </div>
+            
+            <div class="aula-conteudo-container" id="conteudoAula_${aulaId}">
+                ${gerarCamposConteudoAula(aulaExistente ? aulaExistente.tipo : '', aulaExistente ? aulaExistente.conteudo || '' : '', aulaExistente ? aulaExistente.url || '' : '')}
+            </div>
+        `;
+        
+        container.appendChild(aulaItem);
+    };
+    
+    window.removerAulaModal = function(aulaId) {
+        const aulaItem = document.querySelector(`.aula-item-modal[data-id="${aulaId}"]`);
+        if (aulaItem) {
+            aulaItem.remove();
+            
+            // Renumerar as aulas
+            const aulas = document.querySelectorAll('.aula-item-modal');
+            aulas.forEach((aula, index) => {
+                const titulo = aula.querySelector('h5');
+                titulo.textContent = `Aula ${index + 1}`;
+            });
+        }
+    };
+    
+    window.mudarTipoAula = function(select) {
+        const aulaItem = select.closest('.aula-item-modal');
+        const conteudoContainer = aulaItem.querySelector('.aula-conteudo-container');
+        const tipo = select.value;
+        
+        conteudoContainer.innerHTML = gerarCamposConteudoAula(tipo);
+    };
+    
+    function gerarCamposConteudoAula(tipo, conteudo = '', url = '') {
+        switch(tipo) {
+            case 'texto':
+                return `
+                    <div class="form-group-sm">
+                        <label>Conteúdo Textual</label>
+                        <textarea class="aula-conteudo-texto" rows="4" placeholder="Digite o conteúdo da aula...">${conteudo}</textarea>
+                    </div>
+                `;
+            case 'video':
+                return `
+                    <div class="form-group-sm">
+                        <label>URL do Vídeo (YouTube, Vimeo, etc.)</label>
+                        <input type="url" class="aula-url" placeholder="https://www.youtube.com/watch?v=..." value="${url}">
+                    </div>
+                `;
+            case 'pdf':
+                return `
+                    <div class="form-group-sm">
+                        <label>Upload do PDF</label>
+                        <input type="file" class="aula-arquivo" accept=".pdf">
+                        ${conteudo ? `<small>Arquivo atual: ${conteudo}</small>` : ''}
+                    </div>
+                `;
+            case 'link':
+                return `
+                    <div class="form-group-sm">
+                        <label>URL do Link</label>
+                        <input type="url" class="aula-url" placeholder="https://www.exemplo.com" value="${url}">
+                    </div>
+                `;
+            case 'forms':
+                return `
+                    <div class="form-group-sm">
+                        <label>URL do Formulário (Google Forms, etc.)</label>
+                        <input type="url" class="aula-url" placeholder="https://forms.google.com/..." value="${url}">
+                    </div>
+                `;
+            default:
+                return '<p class="text-muted">Selecione um tipo de conteúdo para ver as opções.</p>';
+        }
+    }
+    
+    window.salvarModulo = function() {
+        const nome = document.getElementById('nomeModulo').value.trim();
+        const descricao = document.getElementById('descricaoModulo').value.trim();
+        
+        if (!nome) {
+            alert('O nome do módulo é obrigatório.');
+            return;
+        }
+        
+        // Coletar aulas
+        const aulasItems = document.querySelectorAll('.aula-item-modal');
+        const aulas = [];
+        
+        let aulaValida = true;
+        aulasItems.forEach((item, index) => {
+            const titulo = item.querySelector('.aula-titulo').value.trim();
+            const descricaoAula = item.querySelector('.aula-descricao').value.trim();
+            const tipo = item.querySelector('.aula-tipo').value;
+            
+            if (!titulo || !tipo) {
+                aulaValida = false;
+                alert(`A aula ${index + 1} precisa de título e tipo.`);
+                return;
+            }
+            
+            let conteudo = '';
+            let url = '';
+            
+            if (tipo === 'texto') {
+                conteudo = item.querySelector('.aula-conteudo-texto').value.trim();
+            } else if (['video', 'link', 'forms'].includes(tipo)) {
+                url = item.querySelector('.aula-url').value.trim();
+            }
+            
+            aulas.push({
+                id: Date.now().toString() + index,
+                titulo: titulo,
+                descricao: descricaoAula,
+                tipo: tipo,
+                conteudo: conteudo,
+                url: url,
+                ordem: index + 1
+            });
+        });
+        
+        if (!aulaValida) return;
+        
+        const modulo = {
+            id: moduloEmEdicao ? moduloEmEdicao.id : Date.now().toString(),
+            titulo: nome,
+            descricao: descricao,
+            aulas: aulas,
+            ordem: moduloEditIndex !== null ? moduloEditIndex + 1 : (treinamentoAtual ? (treinamentoAtual.modulos ? treinamentoAtual.modulos.length + 1 : 1) : 1)
+        };
+        
+        if (!treinamentoAtual.modulos) {
+            treinamentoAtual.modulos = [];
+        }
+        
+        if (moduloEditIndex !== null) {
+            // Editar módulo existente
+            treinamentoAtual.modulos[moduloEditIndex] = modulo;
+        } else {
+            // Adicionar novo módulo
+            treinamentoAtual.modulos.push(modulo);
+        }
+        
+        // Atualizar lista de módulos no formulário
+        atualizarListaModulosFormulario();
+        
+        fecharModalModulo();
+    };
+    
+    function atualizarListaModulosFormulario() {
+        const container = document.getElementById('listaModulos');
+        if (!container || !treinamentoAtual.modulos) return;
+        
+        let html = '';
+        
+        treinamentoAtual.modulos.forEach((modulo, index) => {
+            const totalAulas = modulo.aulas ? modulo.aulas.length : 0;
+            
+            html += `
+                <div class="modulo-item" data-index="${index}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h4 style="margin: 0;">
+                            <i class="fas fa-folder"></i>
+                            Módulo ${index + 1}: ${modulo.titulo}
+                            <small style="color: #666; margin-left: 1rem;">
+                                (${totalAulas} ${totalAulas === 1 ? 'aula' : 'aulas'})
+                            </small>
+                        </h4>
+                        <div>
+                            <button type="button" class="btn-defaunt btn-sm" onclick="editarModulo(${index})">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                            <button type="button" class="btn-remover-modulo" onclick="removerModulo(${index})">
+                                <i class="fas fa-trash"></i> Remover
+                            </button>
+                        </div>
+                    </div>
+                    
+                    ${modulo.descricao ? `
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                            <p style="margin: 0; color: #555;">${modulo.descricao}</p>
+                        </div>
+                    ` : ''}
+                    
+                    ${modulo.aulas && modulo.aulas.length > 0 ? `
+                        <div class="aulas-container">
+                            <h5 style="margin: 1rem 0 0.5rem 0; color: #555;">Aulas:</h5>
+                            ${modulo.aulas.map((aula, aulaIndex) => `
+                                <div class="aula-item" style="margin-bottom: 1rem;">
+                                    <strong>${index + 1}.${aulaIndex + 1} ${aula.titulo}</strong>
+                                    <small style="color: #888; margin-left: 1rem;">
+                                        <i class="fas fa-${getIconeTipoAula(aula.tipo)}"></i> ${getNomeTipoAula(aula.tipo)}
+                                    </small>
+                                    ${aula.descricao ? `<p style="margin: 0.25rem 0; color: #666;">${aula.descricao}</p>` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        });
+        
+        container.innerHTML = html || '<p style="color: #666; text-align: center;">Nenhum módulo adicionado ainda.</p>';
+    }
+    
+    function getIconeTipoAula(tipo) {
+        switch(tipo) {
+            case 'texto': return 'file-alt';
+            case 'video': return 'video';
+            case 'pdf': return 'file-pdf';
+            case 'link': return 'external-link-alt';
+            case 'forms': return 'clipboard-list';
+            default: return 'file';
+        }
+    }
+    
+    function getNomeTipoAula(tipo) {
+        switch(tipo) {
+            case 'texto': return 'Texto';
+            case 'video': return 'Vídeo';
+            case 'pdf': return 'PDF';
+            case 'link': return 'Link';
+            case 'forms': return 'Formulário';
+            default: return 'Arquivo';
+        }
+    }
+    
+    window.removerModulo = function(index) {
+        if (confirm('Tem certeza que deseja remover este módulo? Todas as aulas serão perdidas.')) {
+            treinamentoAtual.modulos.splice(index, 1);
+            atualizarListaModulosFormulario();
+        }
+    };
+    
+    // ============ FORMULÁRIO DE TREINAMENTO ============
+    document.getElementById('cadastroTreinamentoForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        salvarTreinamento();
+    });
+    
+    function salvarTreinamento() {
+        const titulo = document.getElementById('tituloTreinamento').value.trim();
+        const cargaHoraria = document.getElementById('cargaHoraria').value;
+        const instrutorId = document.getElementById('instrutorTreinamento').value;
+        const categoria = document.getElementById('categoriaTreinamento').value;
+        const descricao = document.getElementById('descricaoTreinamento').value.trim();
+        const treinamentoId = document.getElementById('treinamentoId').value;
+        
+        if (!titulo || !cargaHoraria || !instrutorId || !descricao) {
+            alert('Por favor, preencha todos os campos obrigatórios.');
+            return;
+        }
+        
+        const instrutor = instrutores.find(i => i.id === instrutorId);
+        if (!instrutor) {
+            alert('Instrutor não encontrado.');
+            return;
+        }
+        
+        const treinamento = {
+            id: treinamentoId || Date.now().toString(),
+            titulo: titulo,
+            cargaHoraria: parseInt(cargaHoraria),
+            instrutorId: instrutorId,
+            instrutorNome: instrutor.nome,
+            categoria: categoria,
+            descricao: descricao,
+            modulos: treinamentoAtual?.modulos || [],
+            status: 'ativo',
+            dataCriacao: new Date().toISOString(),
+            colaboradoresAtribuidos: treinamentoAtual?.colaboradoresAtribuidos || []
+        };
+        
+        // Upload de imagem (simulação)
+        const imagemInput = document.getElementById('imagemTreinamento');
+        if (imagemInput.files && imagemInput.files[0]) {
+            // Em produção, aqui você faria o upload real
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                treinamento.capa = e.target.result;
+                finalizarSalvamento(treinamento);
+            };
+            reader.readAsDataURL(imagemInput.files[0]);
+        } else {
+            finalizarSalvamento(treinamento);
+        }
+    }
+    
+    function finalizarSalvamento(treinamento) {
+        if (treinamentoAtual && treinamentoAtual.id) {
+            // Editar existente
+            const index = treinamentos.findIndex(t => t.id === treinamentoAtual.id);
+            if (index !== -1) {
+                treinamentos[index] = treinamento;
+            }
+        } else {
+            // Novo treinamento
+            treinamentos.push(treinamento);
+        }
+        
+        localStorage.setItem('rh_treinamentos', JSON.stringify(treinamentos));
+        
+        alert('Treinamento salvo com sucesso!');
+        
+        // Limpar formulário
+        limparFormulario();
+        
+        // Voltar para a lista
+        document.getElementById('cadastro-treinamento-screen').style.display = 'none';
+        document.getElementById('treinamentos-screen').style.display = 'block';
+        
+        // Recarregar grid
+        carregarGridTreinamentos();
+    }
+    
+    function limparFormulario() {
+        document.getElementById('cadastroTreinamentoForm').reset();
+        document.getElementById('treinamentoId').value = '';
+        document.getElementById('listaModulos').innerHTML = '';
+        treinamentoAtual = null;
+    }
+    
+    // ============ FUNÇÕES DE NAVEGAÇÃO ============
+    window.navegarPara = function(telaId) {
+        document.querySelectorAll('.screen').forEach(screen => {
+            screen.style.display = 'none';
         });
         
         const tela = document.getElementById(telaId);
@@ -23,518 +629,60 @@ document.addEventListener('DOMContentLoaded', function() {
             tela.style.display = 'block';
             window.scrollTo(0, 0);
             
-            if (telaId === 'treinamentos-colaborador-screen') {
-                carregarGridTreinamentosColaborador();
-            } else if (telaId === 'visualizar-treinamento-colaborador-screen') {
-                if (treinamentoAtualColaborador) {
-                    carregarDadosVisualizacaoColaborador();
-                }
+            if (telaId === 'treinamentos-screen') {
+                carregarGridTreinamentos();
             }
         }
     };
     
-    // ============ CARREGAR GRID DE TREINAMENTOS (similar ao interno) ============
-    function carregarGridTreinamentosColaborador() {
-        const grid = document.getElementById('treinamentos_colaborador_grid');
-        if (!grid) return;
-        
-        // Filtrar apenas treinamentos atribuídos a este colaborador
-        const treinamentosColaborador = treinamentos.filter(treinamento => {
-            const colaboradores = treinamento.colaboradoresAtribuidos || [];
-            return colaboradores.some(colab => colab.id === colaboradorId);
-        });
-        
-        if (treinamentosColaborador.length === 0) {
-            grid.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 4rem; color: #666;">
-                    <i class="fas fa-graduation-cap" style="font-size: 4rem; margin-bottom: 1.5rem; color: #ddd;"></i>
-                    <h3 style="margin: 0 0 0.5rem 0;">Nenhum treinamento atribuído</h3>
-                    <p style="margin: 0 0 1.5rem 0;">Quando novos treinamentos forem atribuídos, eles aparecerão aqui.</p>
-                </div>
-            `;
-            return;
-        }
-        
-        let html = '';
-        treinamentosColaborador.forEach(treinamento => {
-            const colaboradorInfo = treinamento.colaboradoresAtribuidos?.find(c => c.id === colaboradorId);
-            const progresso = colaboradorInfo?.progresso || 0;
-            
-            // Calcular total de aulas
-            const totalAulas = treinamento.modulos ? 
-                treinamento.modulos.reduce((total, modulo) => total + (modulo.aulas?.length || 0), 0) : 0;
-            
-            html += `
-                <div class="card_treinamento" onclick="visualizarTreinamentoColaborador('${treinamento.id}')">
-                    <div class="capa_treinamento" style="height: 150px;">
-                        ${treinamento.capa ? 
-                            `<img src="${treinamento.capa}" alt="${treinamento.titulo}" style="width: 100%; height: 100%; object-fit: cover;">` : 
-                            `<i class="fas fa-graduation-cap" style="font-size: 3rem; color: white;"></i>`
-                        }
-                        <span style="position: absolute; top: 10px; right: 10px; background: ${progresso === 100 ? '#4CAF50' : progresso > 0 ? '#2196F3' : '#666'}; color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">
-                            ${progresso === 100 ? 'Concluído' : progresso > 0 ? 'Em andamento' : 'Não iniciado'}
-                        </span>
-                    </div>
-                    
-                    <div class="card-conteudo" style="padding: 1.5rem;">
-                        <h3 style="margin: 0 0 0.5rem 0; font-size: 1.4rem; color: #333;">${treinamento.titulo}</h3>
-                        <p style="color: #666; margin-bottom: 1rem; font-size: 0.95rem;">${treinamento.descricao ? (treinamento.descricao.substring(0, 100) + (treinamento.descricao.length > 100 ? '...' : '')) : 'Sem descrição'}</p>
-                        
-                        <div class="card-info" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin: 1rem 0;">
-                            <div class="card-info-item" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: #555;">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                                <span>${treinamento.instrutorNome}</span>
-                            </div>
-                            <div class="card-info-item" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: #555;">
-                                <i class="fas fa-clock"></i>
-                                <span>${treinamento.cargaHoraria}h</span>
-                            </div>
-                            <div class="card-info-item" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: #555;">
-                                <i class="fas fa-book-open"></i>
-                                <span>${totalAulas} aulas</span>
-                            </div>
-                            <div class="card-info-item" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: #555;">
-                                <i class="fas fa-percentage"></i>
-                                <span>${progresso}% concluído</span>
-                            </div>
-                        </div>
-                        
-                        <div class="card-acoes">
-                            <button class="btn-visualizar" onclick="visualizarTreinamentoColaborador('${treinamento.id}')">
-                                <i class="fas fa-eye"></i> Acessar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        });
-        
-        grid.innerHTML = html;
-    }
-    
-    // ============ VISUALIZAR TREINAMENTO (similar ao interno) ============
-    window.visualizarTreinamentoColaborador = function(treinamentoId) {
-        treinamentoAtualColaborador = treinamentos.find(t => t.id === treinamentoId);
-        if (!treinamentoAtualColaborador) {
-            alert('❌ Treinamento não encontrado!');
-            return;
-        }
-        
-        console.log('👁️ Visualizando treinamento como colaborador:', treinamentoAtualColaborador.titulo);
-        
-        // Verificar se o colaborador está atribuído a este treinamento
-        const colaboradorInfo = treinamentoAtualColaborador.colaboradoresAtribuidos?.find(c => c.id === colaboradorId);
-        if (!colaboradorInfo) {
-            alert('❌ Você não tem acesso a este treinamento!');
-            return;
-        }
-        
-        mostrarTelaColaborador('visualizar-treinamento-colaborador-screen');
+    // ============ OUTRAS FUNÇÕES ============
+    window.removerImagem = function() {
+        document.getElementById('previewContainer').style.display = 'none';
+        document.getElementById('uploadArea').style.display = 'flex';
+        document.getElementById('imagemTreinamento').value = '';
     };
     
-    // ============ CARREGAR DADOS DE VISUALIZAÇÃO (similar ao interno) ============
-    function carregarDadosVisualizacaoColaborador() {
-        if (!treinamentoAtualColaborador) return;
-        
-        // Preencher informações básicas (igual ao interno)
-        document.getElementById('tituloTreinamentoColaborador').textContent = treinamentoAtualColaborador.titulo;
-        document.getElementById('descricaoTreinamentoColaborador').textContent = treinamentoAtualColaborador.descricao || 'Sem descrição';
-        document.getElementById('cargaHorariaColaborador').textContent = treinamentoAtualColaborador.cargaHoraria;
-        document.getElementById('instrutorTreinamentoColaborador').textContent = treinamentoAtualColaborador.instrutorNome || 'Não definido';
-        
-        // Calcular total de aulas
-        const totalAulas = calcularTotalAulasTreinamento(treinamentoAtualColaborador);
-        document.getElementById('totalAulasColaborador').textContent = totalAulas;
-        
-        // Calcular progresso do colaborador
-        const colaboradorInfo = treinamentoAtualColaborador.colaboradoresAtribuidos?.find(c => c.id === colaboradorId);
-        const progressoAtual = colaboradorInfo?.progresso || 0;
-        document.getElementById('progressoGeral').textContent = `${progressoAtual}%`;
-        
-        // Carregar módulos e aulas
-        carregarModulosVisualizacaoColaborador();
-    }
-    
-    function calcularTotalAulasTreinamento(treinamento) {
-        if (!treinamento.modulos) return 0;
-        return treinamento.modulos.reduce((total, modulo) => 
-            total + (modulo.aulas?.length || 0), 0
-        );
-    }
-    
-    function carregarModulosVisualizacaoColaborador() {
-        const container = document.getElementById('listaModulosColaborador');
-        if (!container || !treinamentoAtualColaborador.modulos) {
-            container.innerHTML = '<p>Nenhum módulo disponível.</p>';
-            return;
-        }
-        
-        const colaboradorInfo = treinamentoAtualColaborador.colaboradoresAtribuidos?.find(c => c.id === colaboradorId);
-        const aulasConcluidas = colaboradorInfo?.aulasConcluidas || [];
-        
-        let html = '';
-        treinamentoAtualColaborador.modulos.forEach((modulo, moduloIndex) => {
-            const totalAulasModulo = modulo.aulas?.length || 0;
-            const aulasConcluidasModulo = modulo.aulas?.filter(aula => aulasConcluidas.includes(aula.id)).length || 0;
-            const moduloConcluido = aulasConcluidasModulo === totalAulasModulo && totalAulasModulo > 0;
-            
-            html += `
-                <div class="modulo-visualizacao ${moduloConcluido ? 'modulo-concluido' : ''}">
-                    <div class="modulo-header-visualizacao" onclick="toggleModuloColaborador(this)">
-                        <h4>
-                            <i class="fas fa-folder ${moduloConcluido ? 'text-success' : ''}"></i>
-                            Módulo ${moduloIndex + 1}: ${modulo.titulo}
-                            <span class="modulo-contador">${totalAulasModulo} aulas</span>
-                            ${moduloConcluido ? '<span style="background: #4CAF50; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; font-weight: 600; margin-left: 10px;">Concluído</span>' : ''}
-                        </h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    
-                    ${modulo.descricao ? `
-                        <div class="modulo-descricao-visualizacao">
-                            <p>${modulo.descricao}</p>
-                        </div>
-                    ` : ''}
-                    
-                    <div class="aulas-container-visualizacao">
-                        ${carregarAulasModuloColaborador(modulo, moduloIndex, aulasConcluidas)}
-                    </div>
-                </div>
-            `;
-        });
-        
-        container.innerHTML = html || '<p>Nenhum módulo disponível.</p>';
-    }
-    
-    function carregarAulasModuloColaborador(modulo, moduloIndex, aulasConcluidas) {
-        if (!modulo.aulas || modulo.aulas.length === 0) {
-            return '<p class="sem-aulas">Nenhuma aula neste módulo.</p>';
-        }
-        
-        let html = '';
-        modulo.aulas.forEach((aula, aulaIndex) => {
-            const aulaConcluida = aulasConcluidas.includes(aula.id);
-            
-            html += `
-                <div class="aula-visualizacao ${aulaConcluida ? 'aula-concluida' : ''}" data-aula-id="${aula.id}">
-                    <div class="aula-header-visualizacao">
-                        <h5>
-                            <i class="fas fa-play-circle ${aulaConcluida ? 'text-success' : 'text-warning'}"></i>
-                            Aula ${moduloIndex + 1}.${aulaIndex + 1}: ${aula.titulo}
-                            ${aulaConcluida ? '<span style="background: #4CAF50; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; font-weight: 600; margin-left: 10px;"><i class="fas fa-check"></i> Concluída</span>' : ''}
-                        </h5>
-                        <div class="aula-info">
-                            <span><i class="fas fa-file"></i> ${aula.tipo}</span>
-                        </div>
-                    </div>
-                    
-                    ${aula.descricao ? `
-                        <div class="aula-descricao-visualizacao">
-                            <p>${aula.descricao}</p>
-                        </div>
-                    ` : ''}
-                    
-                    <div class="aula-conteudo-visualizacao">
-                        ${gerarConteudoAulaColaborador(aula)}
-                    </div>
-                    
-                    ${!aulaConcluida ? `
-                        <div class="progresso-aula-alunos" style="margin-top: 1rem; border-top: 2px solid #e6e8d3; padding-top: 1rem;">
-                            <button class="btn-defaunt" onclick="abrirModalConclusaoAula('${aula.id}')">
-                                <i class="fas fa-check"></i> Marcar como Concluída
-                            </button>
-                        </div>
-                    ` : ''}
-                </div>
-            `;
-        });
-        
-        return html;
-    }
-    
-    function gerarConteudoAulaColaborador(aula) {
-        switch(aula.tipo) {
-            case 'texto':
-                return `<div class="conteudo-texto">${aula.conteudo || 'Sem conteúdo textual.'}</div>`;
-            case 'video':
-                return aula.url ? `
-                    <div class="conteudo-video">
-                        <a href="${aula.url}" target="_blank" class="material-link">
-                            <i class="fab fa-youtube"></i> Assistir vídeo
-                        </a>
-                    </div>
-                ` : '<p>URL do vídeo não disponível.</p>';
-            case 'pdf':
-                return `<div class="conteudo-pdf">
-                            <a href="#" class="material-link">
-                                <i class="fas fa-file-pdf"></i> Baixar PDF
-                            </a>
-                        </div>`;
-            case 'link':
-                return aula.url ? `
-                    <div class="conteudo-link">
-                        <a href="${aula.url}" target="_blank" class="material-link">
-                            <i class="fas fa-external-link-alt"></i> Acessar link
-                        </a>
-                    </div>
-                ` : '<p>URL não disponível.</p>';
-            case 'forms':
-                return aula.url ? `
-                    <div class="conteudo-forms">
-                        <a href="${aula.url}" target="_blank" class="material-link">
-                            <i class="fab fa-google"></i> Preencher formulário
-                        </a>
-                    </div>
-                ` : '<p>URL do formulário não disponível.</p>';
-            default:
-                return '<p>Tipo de conteúdo não reconhecido.</p>';
-        }
-    }
-    
-    // ============ FUNÇÕES PARA AS ABAS (igual ao interno) ============
-    window.mudarAbaColaborador = function(abaId) {
-        console.log(`📂 Mudando para aba: ${abaId}`);
-        
-        document.querySelectorAll('.aba-conteudo-treinamento').forEach(aba => {
-            aba.style.display = 'none';
-        });
-        
-        document.querySelectorAll('.aba-treinamento').forEach(botao => {
-            botao.classList.remove('active');
-        });
-        
-        const aba = document.getElementById(`aba-${abaId}-colaborador`);
-        const botao = document.querySelector(`[data-aba="${abaId}"]`);
-        
-        if (aba) {
-            aba.style.display = 'block';
-        }
-        
-        if (botao) {
-            botao.classList.add('active');
-        }
-    };
-    
-    // ============ TOGGLE MODULO (igual ao interno) ============
-    window.toggleModuloColaborador = function(element) {
-        const modulo = element.closest('.modulo-visualizacao');
-        const aulasContainer = modulo.querySelector('.aulas-container-visualizacao');
-        const icone = element.querySelector('.fa-chevron-down');
-        
-        if (aulasContainer.style.display === 'block') {
-            aulasContainer.style.display = 'none';
-            icone.classList.remove('fa-chevron-up');
-            icone.classList.add('fa-chevron-down');
-        } else {
-            aulasContainer.style.display = 'block';
-            icone.classList.remove('fa-chevron-down');
-            icone.classList.add('fa-chevron-up');
-        }
-    };
-    
-    // ============ SISTEMA DE CONCLUSÃO DE AULAS ============
-    window.abrirModalConclusaoAula = function(aulaId) {
-        if (!treinamentoAtualColaborador) return;
-        
-        // Encontrar a aula
-        let aulaEncontrada = null;
-        let moduloEncontrado = null;
-        
-        for (const modulo of treinamentoAtualColaborador.modulos) {
-            if (modulo.aulas) {
-                const aula = modulo.aulas.find(a => a.id === aulaId);
-                if (aula) {
-                    aulaEncontrada = aula;
-                    moduloEncontrado = modulo;
-                    break;
-                }
+    // Configurar preview da imagem
+    const imagemInput = document.getElementById('imagemTreinamento');
+    if (imagemInput) {
+        imagemInput.addEventListener('change', function(e) {
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('previewImage').src = e.target.result;
+                    document.getElementById('uploadArea').style.display = 'none';
+                    document.getElementById('previewContainer').style.display = 'block';
+                };
+                reader.readAsDataURL(this.files[0]);
             }
-        }
-        
-        if (!aulaEncontrada) {
-            alert('❌ Aula não encontrada!');
-            return;
-        }
-        
-        aulaParaConcluir = {
-            id: aulaId,
-            titulo: aulaEncontrada.titulo,
-            descricao: aulaEncontrada.descricao || `Concluir aula: ${aulaEncontrada.titulo}`
-        };
-        
-        // Preencher modal
-        document.getElementById('tituloAulaModal').textContent = aulaEncontrada.titulo;
-        document.getElementById('descricaoAulaModal').textContent = 
-            `Deseja marcar esta aula como concluída?`;
-        
-        // Resetar checkbox
-        document.getElementById('confirmarConclusao').checked = false;
-        document.getElementById('btnConcluirAula').disabled = true;
-        
-        // Mostrar modal
-        document.getElementById('modalConclusaoAula').style.display = 'flex';
-    };
-    
-    window.fecharModalConclusao = function() {
-        document.getElementById('modalConclusaoAula').style.display = 'none';
-        aulaParaConcluir = null;
-    };
-    
-    window.concluirAulaConfirmada = function() {
-        if (!aulaParaConcluir || !treinamentoAtualColaborador) return;
-        
-        // Atualizar progresso no treinamento atual
-        const colaboradorInfo = treinamentoAtualColaborador.colaboradoresAtribuidos?.find(c => c.id === colaboradorId);
-        
-        if (!colaboradorInfo) {
-            alert('❌ Erro: Informações do colaborador não encontradas!');
-            return;
-        }
-        
-        // Inicializar array de aulas concluídas se não existir
-        if (!colaboradorInfo.aulasConcluidas) {
-            colaboradorInfo.aulasConcluidas = [];
-        }
-        
-        // Adicionar aula ao array (se ainda não estiver)
-        if (!colaboradorInfo.aulasConcluidas.includes(aulaParaConcluir.id)) {
-            colaboradorInfo.aulasConcluidas.push(aulaParaConcluir.id);
-            
-            // Calcular novo progresso
-            const totalAulas = calcularTotalAulasTreinamento(treinamentoAtualColaborador);
-            const progresso = Math.round((colaboradorInfo.aulasConcluidas.length / totalAulas) * 100);
-            
-            // Atualizar progresso
-            colaboradorInfo.progresso = progresso;
-            
-            // Atualizar status se necessário
-            if (progresso === 100) {
-                colaboradorInfo.status = 'Concluído';
-                colaboradorInfo.dataConclusao = new Date().toISOString();
-            } else if (progresso > 0 && colaboradorInfo.status === 'Inscrito') {
-                colaboradorInfo.status = 'Em andamento';
-            }
-            
-            // Salvar no localStorage
-            const index = treinamentos.findIndex(t => t.id === treinamentoAtualColaborador.id);
-            if (index !== -1) {
-                treinamentos[index] = treinamentoAtualColaborador;
-                localStorage.setItem('rh_treinamentos', JSON.stringify(treinamentos));
-            }
-            
-            console.log(`✅ Aula "${aulaParaConcluir.titulo}" concluída! Progresso: ${progresso}%`);
-            
-            // Fechar modal e recarregar visualização
-            fecharModalConclusao();
-            
-            // Recarregar a visualização do treinamento
-            carregarDadosVisualizacaoColaborador();
-            
-            alert(`✅ Aula concluída com sucesso!\n\nProgresso atual: ${progresso}%`);
-        } else {
-            alert('ℹ️ Esta aula já foi marcada como concluída anteriormente.');
-            fecharModalConclusao();
-        }
-    };
-    
-    // ============ FILTRAR TREINAMENTOS (igual ao interno) ============
-    function filtrarTreinamentosColaborador() {
-        const busca = document.getElementById('buscaTreinamentoColaborador').value.toLowerCase();
-        const status = document.getElementById('statusFiltroColaborador').value;
-        
-        const cards = document.querySelectorAll('#treinamentos_colaborador_grid .card_treinamento');
-        
-        cards.forEach(card => {
-            const titulo = card.querySelector('h3').textContent.toLowerCase();
-            const statusBadge = card.querySelector('.card-acoes span')?.textContent.toLowerCase() || '';
-            
-            let mostrar = true;
-            
-            if (busca && !titulo.includes(busca)) {
-                mostrar = false;
-            }
-            
-            if (status) {
-                if (status === 'concluido' && !statusBadge.includes('concluído')) mostrar = false;
-                if (status === 'andamento' && !statusBadge.includes('andamento')) mostrar = false;
-                if (status === 'nao-iniciado' && !statusBadge.includes('não iniciado')) mostrar = false;
-            }
-            
-            card.style.display = mostrar ? 'block' : 'none';
         });
     }
     
-    // ============ INICIALIZAÇÃO ============
-    function inicializarColaborador() {
-        // Configurar eventos
-        const buscaInput = document.getElementById('buscaTreinamentoColaborador');
-        if (buscaInput) {
-            buscaInput.addEventListener('input', filtrarTreinamentosColaborador);
-        }
-        
-        const statusFiltro = document.getElementById('statusFiltroColaborador');
-        if (statusFiltro) {
-            statusFiltro.addEventListener('change', filtrarTreinamentosColaborador);
-        }
-        
-        // Configurar checkbox de confirmação
-        const confirmarCheckbox = document.getElementById('confirmarConclusao');
-        if (confirmarCheckbox) {
-            confirmarCheckbox.addEventListener('change', function() {
-                const btnConcluir = document.getElementById('btnConcluirAula');
-                btnConcluir.disabled = !this.checked;
-            });
-        }
-        
-        // Se a tela atual for a de treinamentos, carregar o grid
-        if (document.getElementById('treinamentos-colaborador-screen').style.display !== 'none') {
-            carregarGridTreinamentosColaborador();
-        }
-    }
-    
-    // Inicializar quando o DOM estiver pronto
-    inicializarColaborador();
+    // Inicializar o sistema
+    inicializarSistema();
 });
 
-// Funções globais para o HTML
-function abrirModalConclusaoAula(aulaId) {
-    if (typeof window.abrirModalConclusaoAula === 'function') {
-        window.abrirModalConclusaoAula(aulaId);
+// Funções globais
+function mostrarTela(telaId) {
+    document.querySelectorAll('.screen').forEach(screen => {
+        screen.style.display = 'none';
+    });
+    
+    const tela = document.getElementById(telaId);
+    if (tela) {
+        tela.style.display = 'block';
+        window.scrollTo(0, 0);
     }
 }
 
-function fecharModalConclusao() {
-    if (typeof window.fecharModalConclusao === 'function') {
-        window.fecharModalConclusao();
-    }
+function editarTreinamento(treinamentoId) {
+    // Implementação para editar treinamento
+    console.log('Editar treinamento:', treinamentoId);
 }
 
-function concluirAulaConfirmada() {
-    if (typeof window.concluirAulaConfirmada === 'function') {
-        window.concluirAulaConfirmada();
-    }
-}
-
-function mostrarTelaColaborador(telaId) {
-    if (typeof window.mostrarTelaColaborador === 'function') {
-        window.mostrarTelaColaborador(telaId);
-    }
-}
-
-function mudarAbaColaborador(abaId) {
-    if (typeof window.mudarAbaColaborador === 'function') {
-        window.mudarAbaColaborador(abaId);
-    }
-}
-
-function toggleModuloColaborador(element) {
-    if (typeof window.toggleModuloColaborador === 'function') {
-        window.toggleModuloColaborador(element);
-    }
-}
-
-function visualizarTreinamentoColaborador(treinamentoId) {
-    if (typeof window.visualizarTreinamentoColaborador === 'function') {
-        window.visualizarTreinamentoColaborador(treinamentoId);
+function excluirTreinamento(treinamentoId) {
+    if (confirm('Tem certeza que deseja excluir este treinamento?')) {
+        // Implementação para excluir treinamento
+        console.log('Excluir treinamento:', treinamentoId);
     }
 }

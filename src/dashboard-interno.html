@@ -182,7 +182,7 @@
         </div>
 
         <div class="filtros-treinamentos">
-          <div class="dt-search-box">
+          <div class="input-search-filter">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input
               type="text"
@@ -674,7 +674,7 @@
       </section>
     </div>
 
-  <div id="departamentos-screen" class="screen">
+    <div id="departamentos-screen" class="screen">
         <section class="hero-section">
             <h1>Departamentos (Interno)</h1>
             <img src="/src/assets/imgs/homemdashboard.png" alt="Homem da dashboard">
@@ -682,14 +682,14 @@
 
         <div class="dt-content-area">
             <div class="dt-top-actions">
-                <button class="btn-defaunt" onclick="window.openModal()">
+                <button class="btn-defaunt" id="dt-btn-adicionar-departamento">
                     <i class="fas fa-plus"></i> Adicionar novo departamento
                 </button>
             </div>
 
             <div class="dt-search-box">
                 <i class="fa-solid fa-magnifying-glass dt-search-icon"></i>
-                <input type="text" id="searchInput" placeholder="Pesquisar por nome" onkeyup="window.filterDepartments()">
+                <input type="text" id="searchInput" placeholder="Pesquisar por nome">
             </div>
 
             <div class="dt-grid-wrapper" id="cardsContainer">
@@ -703,7 +703,7 @@
         <div class="dt-modal">
             <div class="dt-modal-header">
                 <h3 class="dt-modal-title" id="dt-modal-title">Novo Departamento</h3>
-                <button class="dt-modal-close" onclick="window.closeModal()">&times;</button>
+                <button class="dt-modal-close" id="dt-modal-close">&times;</button>
             </div>
             <div class="dt-modal-body">
                 <form id="dt-form-departamento">
@@ -730,238 +730,10 @@
                 </form>
             </div>
             <div class="dt-modal-footer">
-                <button class="dt-btn-secondary" onclick="window.closeModal()">Cancelar</button>
-                <button class="btn-defaunt" onclick="window.saveDepartamento()">Salvar Departamento</button>
+                <button type="button" class="dt-btn-secondary" id="dt-btn-cancelar">Cancelar</button>
+                <button type="button" class="btn-defaunt" id="dt-btn-salvar">Salvar Departamento</button>
             </div>
         </div>
-    </div>
-
-    <!-- Modal para visualizar departamento -->
-    <div id="dt-modal-view-departamento" class="dt-modal-overlay">
-        <div class="dt-modal dt-modal-large">
-            <div class="dt-modal-header">
-                <h3 class="dt-modal-title" id="dt-view-departamento-title">Visualizar Departamento</h3>
-                <button class="dt-modal-close" onclick="window.closeViewModal()">&times;</button>
-            </div>
-            <div class="dt-modal-body">
-                <!-- Abas -->
-                <div class="dt-tabs">
-                    <button class="dt-tab-btn active" onclick="window.openTab('info')">Informações Gerais</button>
-                    <button class="dt-tab-btn" onclick="window.openTab('colaboradores')">Colaboradores</button>
-                    <button class="dt-tab-btn" onclick="window.openTab('cargos')">Cargos</button>
-                </div>
-
-                <!-- Aba de Informações Gerais -->
-                <div id="dt-tab-info" class="dt-tab-content active">
-                    <div class="dt-info-line">
-                        <span class="dt-info-label">Nome:</span>
-                        <span class="dt-info-value" id="dt-view-nome"></span>
-                    </div>
-                    <div class="dt-info-line">
-                        <span class="dt-info-label">Sigla:</span>
-                        <span class="dt-info-value" id="dt-view-sigla"></span>
-                    </div>
-                    <div class="dt-info-line">
-                        <span class="dt-info-label">Gerente:</span>
-                        <span class="dt-info-value" id="dt-view-gerente"></span>
-                    </div>
-                    <div class="dt-info-line">
-                        <span class="dt-info-label">Telefone:</span>
-                        <span class="dt-info-value" id="dt-view-telefone"></span>
-                    </div>
-                    <div class="dt-info-line">
-                        <span class="dt-info-label">Localização:</span>
-                        <span class="dt-info-value" id="dt-view-local"></span>
-                    </div>
-                    <div class="dt-info-line">
-                        <span class="dt-info-label">Colaboradores:</span>
-                        <span class="dt-info-value" id="dt-view-colaboradores"></span>
-                    </div>
-                    <div class="dt-info-line">
-                        <span class="dt-info-label">Descrição:</span>
-                        <span class="dt-info-value" id="dt-view-descricao"></span>
-                    </div>
-                    <div class="dt-info-line">
-                        <span class="dt-info-label">Cargos no departamento:</span>
-                        <span class="dt-info-value" id="dt-view-cargos"></span>
-                    </div>
-                    
-                    <div style="margin-top: 30px;">
-                        <button class="btn-defaunt" onclick="window.openAdvancedEdit()">
-                            <i class="fas fa-edit"></i> Edição Avançada
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Aba de Colaboradores -->
-                <div id="dt-tab-colaboradores" class="dt-tab-content">
-                    <div class="dt-filters">
-                        <select class="dt-filter-select" id="dt-filter-mes">
-                            <option value="">Mês de Contratação</option>
-                            <option value="1">Janeiro</option>
-                            <option value="2">Fevereiro</option>
-                            <!-- Mais meses -->
-                        </select>
-                        <select class="dt-filter-select" id="dt-filter-ano">
-                            <option value="">Ano de Contratação</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                        </select>
-                        <select class="dt-filter-select" id="dt-filter-ordem">
-                            <option value="az">Ordem A-Z</option>
-                            <option value="za">Ordem Z-A</option>
-                        </select>
-                        <input type="text" class="dt-form-input" style="flex: 1; max-width: 300px;" id="dt-search-colaborador" placeholder="Buscar por nome">
-                    </div>
-                    
-                    <table class="dt-table" id="dt-table-colaboradores">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Cargo</th>
-                                <th>Data de Admissão</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody id="dt-table-colaboradores-body">
-                            <!-- Dados dos colaboradores serão inseridos aqui -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Aba de Cargos -->
-                <div id="dt-tab-cargos" class="dt-tab-content">
-                    <div style="margin-bottom: 20px;">
-                        <button class="btn-defaunt" onclick="window.openNovoCargo()">
-                            <i class="fas fa-plus"></i> Novo Cargo
-                        </button>
-                    </div>
-                    
-                    <table class="dt-table" id="dt-table-cargos">
-                        <thead>
-                            <tr>
-                                <th>Título</th>
-                                <th>Descrição</th>
-                                <th>Vagas Abertas</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody id="dt-table-cargos-body">
-                            <!-- Dados dos cargos serão inseridos aqui -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="dt-modal-footer">
-                <button class="dt-btn-secondary" onclick="window.closeViewModal()">Fechar</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para visualizar colaborador detalhado -->
-    <div id="dt-modal-colaborador-detalhado" class="dt-modal-overlay">
-        <div class="dt-modal dt-modal-large">
-            <div class="dt-modal-header">
-                <h3 class="dt-modal-title">Detalhes do Colaborador</h3>
-                <button class="dt-modal-close" onclick="window.closeColaboradorModal()">&times;</button>
-            </div>
-            <div class="dt-modal-body">
-                <div class="dt-colaborador-detalhado">
-                    <div class="dt-colaborador-header">
-                        <h3 class="dt-colaborador-nome" id="dt-colaborador-nome">Fulano da Silva</h3>
-                        <span class="dt-department-sigla" id="dt-colaborador-cargo">Analista de RH</span>
-                    </div>
-                    
-                    <div class="dt-info-grid">
-                        <div class="dt-info-box">
-                            <h4 class="dt-info-box-title">Informações Pessoais</h4>
-                            <div class="dt-info-line">
-                                <span class="dt-info-label">CPF:</span>
-                                <span class="dt-info-value" id="dt-colaborador-cpf">000.000.000-00</span>
-                            </div>
-                            <div class="dt-info-line">
-                                <span class="dt-info-label">Data de Nascimento:</span>
-                                <span class="dt-info-value" id="dt-colaborador-nascimento">01/01/1990</span>
-                            </div>
-                            <div class="dt-info-line">
-                                <span class="dt-info-label">Gênero:</span>
-                                <span class="dt-info-value" id="dt-colaborador-genero">Masculino</span>
-                            </div>
-                            <div class="dt-info-line">
-                                <span class="dt-info-label">Estado Civil:</span>
-                                <span class="dt-info-value" id="dt-colaborador-estado-civil">Casado</span>
-                            </div>
-                        </div>
-                        
-                        <div class="dt-info-box">
-                            <h4 class="dt-info-box-title">Informações Profissionais</h4>
-                            <div class="dt-info-line">
-                                <span class="dt-info-label">Departamento:</span>
-                                <span class="dt-info-value" id="dt-colaborador-departamento">Recursos Humanos</span>
-                            </div>
-                            <div class="dt-info-line">
-                                <span class="dt-info-label">Cargo:</span>
-                                <span class="dt-info-value" id="dt-colaborador-cargo-info">Analista de RH</span>
-                            </div>
-                            <div class="dt-info-line">
-                                <span class="dt-info-label">Data de Admissão:</span>
-                                <span class="dt-info-value" id="dt-colaborador-admissao">15/03/2022</span>
-                            </div>
-                            <div class="dt-info-line">
-                                <span class="dt-info-label">Salário:</span>
-                                <span class="dt-info-value" id="dt-colaborador-salario">R$ 5.500,00</span>
-                            </div>
-                            <div class="dt-info-line">
-                                <span class="dt-info-label">Tipo de Contrato:</span>
-                                <span class="dt-info-value" id="dt-colaborador-contrato">CLT</span>
-                            </div>
-                        </div>
-                        
-                        <div class="dt-info-box">
-                            <h4 class="dt-info-box-title">Contato</h4>
-                            <div class="dt-info-line">
-                                <span class="dt-info-label">Email:</span>
-                                <span class="dt-info-value" id="dt-colaborador-email">fulano@empresa.com</span>
-                            </div>
-                            <div class="dt-info-line">
-                                <span class="dt-info-label">Celular:</span>
-                                <span class="dt-info-value" id="dt-colaborador-celular">(11) 99999-9999</span>
-                            </div>
-                        </div>
-                        
-                        <div class="dt-info-box">
-                            <h4 class="dt-info-box-title">Endereço</h4>
-                            <div class="dt-info-line">
-                                <span class="dt-info-label">Endereço:</span>
-                                <span class="dt-info-value" id="dt-colaborador-endereco">Rua Exemplo, 123</span>
-                            </div>
-                            <div class="dt-info-line">
-                                <span class="dt-info-label">Bairro:</span>
-                                <span class="dt-info-value" id="dt-colaborador-bairro">Centro</span>
-                            </div>
-                            <div class="dt-info-line">
-                                <span class="dt-info-label">Cidade/UF:</span>
-                                <span class="dt-info-value" id="dt-colaborador-cidade">São Paulo/SP</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="dt-modal-footer">
-                <button class="dt-btn-secondary" onclick="window.closeColaboradorModal()">Fechar</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="colaboradores-screen" class="screen" style="display: none">
-      <section class="hero-section">
-        <h1>Colaboradores</h1>
-        <img
-          src="/src/assets/imgs/Homem Dashboard.png"
-          alt="Homem da dashboard"
-        />
-      </section>
     </div>
 
     <div id="folha-screen" class="screen" style="display: none">

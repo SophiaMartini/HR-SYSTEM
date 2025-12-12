@@ -87,6 +87,10 @@ footer .menu-content {
 
 
 @media screen and (max-width: 1200px) {
+  .hero-section img {
+    display: none;
+  }
+
   .dashboard-content {
     grid-template-columns: auto auto;
     margin: 20px;

@@ -1,3 +1,369 @@
 #candidaturas-btn, #colaboradores-btn, #folha-btn {
     display: none;
 }
+
+#departamentos-screen {
+    margin-top: 90px;
+    min-height: calc(100vh - 90px);
+    background: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.departamento-container {
+    padding: 50px;
+    width: 100%;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.departamento-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.departamento-header h1 {
+    font-family: "Momo Trust Display", sans-serif;
+    font-size: 48px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.departamento-header .sigla {
+    display: inline-block;
+    background: linear-gradient(135deg, #f0912f 0%, #e26a1d 100%);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+.departamento-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.info-card {
+    background: #f8f9fa;
+    padding: 25px;
+    border-left: 5px solid #f0912f;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.info-card h3 i {
+    color: #f0912f;
+    font-size: 22px;
+}
+
+.info-card .valor {
+    font-size: 24px;
+    color: #222;
+    font-weight: 600;
+    margin: 10px 0;
+    min-height: 36px;
+}
+
+.info-card .label {
+    font-size: 14px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+/* Seção do gerente */
+.gerente-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 40px 0;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.gerente-foto {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.gerente-info h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.gerente-info p {
+    color: #666;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.gerente-info p i {
+    color: #f0912f;
+}
+
+/* Botão de suporte */
+.suporte-section {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.suporte-section h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.suporte-section p {
+    color: #666;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.btn-suporte {
+    background: #f0912f;
+    color: white;
+    border: none;
+    padding: 18px 45px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease-out;
+    box-shadow: 0 2px 4px rgba(240, 145, 47, 0.2);
+}
+
+.btn-suporte:hover {
+    transform: scale(102%);
+    background-color: #e26a1d;
+}
+
+.btn-suporte:active {
+    transform: translateY(-1px);
+}
+
+/* Modal de Suporte */
+.modal-suporte {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-suporte-content {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    animation: modalAppear 0.3s ease;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-suporte-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-suporte-header h3 {
+    font-size: 24px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-suporte-fechar {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.modal-suporte-fechar:hover {
+    color: #333;
+    background: #f5f5f5;
+}
+
+.modal-suporte-body .inputs-label {
+    margin: 20px 0;
+}
+
+.modal-suporte-body textarea {
+    min-height: 150px;
+    font-family: "Roboto", sans-serif;
+    padding: 15px 12px 8px 12px;
+}
+
+.modal-suporte-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-suporte-enviar {
+    background: #f0912f;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-suporte-enviar:hover {
+    background: #e26a1d;
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #f0912f;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #departamentos-screen {
+        padding: 20px;
+    }
+    
+    .departamento-container {
+        padding: 30px 20px;
+    }
+    
+    .departamento-header h1 {
+        font-size: 36px;
+    }
+    
+    .departamento-info-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .gerente-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .suporte-section h2 {
+        font-size: 28px;
+    }
+    
+    .btn-suporte {
+        padding: 15px 30px;
+        font-size: 18px;
+    }
+    
+    .modal-suporte-content {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .departamento-header h1 {
+        font-size: 28px;
+    }
+    
+    .info-card .valor {
+        font-size: 20px;
+    }
+    
+    .suporte-section h2 {
+        font-size: 24px;
+    }
+    
+    .gerente-foto {
+        width: 100px;
+        height: 100px;
+    }
+}

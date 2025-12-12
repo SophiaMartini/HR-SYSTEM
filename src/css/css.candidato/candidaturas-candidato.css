@@ -1,0 +1,182 @@
+/* candidaturas-candidato.css */
+
+#filter-status:focus, #filter-date:focus {
+    outline: none;
+    border-color: #f0912f;
+}
+
+.candidaturas-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.candidatura-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid #f0912f;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.candidatura-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.candidatura-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.candidatura-header h3 {
+    color: #333;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    flex-grow: 1;
+}
+
+.candidatura-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.status.recebido {
+    background-color: #e3f2fd;
+    color: #1565c0;
+}
+
+.status.triagem {
+    background-color: #fff3e0;
+    color: #ef6c00;
+}
+
+.status.entrevista {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status.aprovado {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+}
+
+.status.reprovado {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.candidatura-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.candidatura-info p {
+    margin: 0;
+}
+
+.candidatura-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.detalhes-btn, .cancelar-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.detalhes-btn {
+    background: #f0912f;
+    color: white;
+}
+
+.detalhes-btn:hover {
+    background-color: #db8229;
+}
+
+.cancelar-btn {
+    background: transparent;
+    color: #f44336;
+    border: 1px solid #f44336;
+}
+
+.cancelar-btn:hover {
+    background-color: #ffebee;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #777;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.empty-state i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: #ddd;
+}
+
+.empty-state p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+#explorar-vagas-from-empty {
+    background: #f0912f;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+#explorar-vagas-from-empty:hover {
+    background-color: #db8229;
+}
+
+@media (max-width: 768px) {
+    #candidaturas-screen {
+        padding: 1rem;
+    }
+    
+    #filters-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    #filter-status, #filter-date {
+        width: 100%;
+    }
+    
+    .candidatura-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .candidatura-actions {
+        flex-direction: column;
+    }
+}

@@ -1,95 +1,176 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <link
-      rel="icon"
-      type="image/png"
-      href="/src/assets/logos/logo-sozinha.png"
-    />
-
+    <title>Dashboard Candidato - HR System</title>
+    <link rel="icon" type="image/png" href="/src/assets/logos/logo-sozinha.png" />
+    
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Open+Sans:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-
-    <!--bibliotecas-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!--css-->
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/dashboard.css">
-
-
-    <link rel="stylesheet" href="./css/perfil.css">
-        <link rel="stylesheet" href="./css/css.candidato/dashboard-candidato.css">
-
-
-    <!--js-->
-    <script src="/src/js/js_candidato/dashboard-candidato.js" defer></script>
-        <script src="/src/js/js_interno/candidaturas-interno.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap" rel="stylesheet" />
+    
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/src/css/reset.css">
+    <link rel="stylesheet" href="/src/css/dashboard.css">
+    <link rel="stylesheet" href="/src/css/perfil.css">
+    <link rel="stylesheet" href="/src/css/css.candidato/dashboard-candidato.css">
+    <link rel="stylesheet" href="/src/css/css.candidato/vagas-candidato.css">
+    <link rel="stylesheet" href="/src/css/css.candidato/departamento-candidato.css">
+    <link rel="stylesheet" href="/src/css/css.candidato/candidaturas-candidato.css">
+    
+    <!-- JS -->
     <script src="/src/js/all.js" defer></script>
-
-    <script src="./js/"></script>
-    <script src="./js/perfil.js"></script>
-    <script src="./js/treinamentos-interno.js"></script>
-    <script src="./js/departamentos-interno.js"></script>
-    <script src="./js/folha-de-pagamento.js"></script>
-
+    <script src="/src/js/js_interno/dashboard-interno.js" defer></script>
+    <script src="/src/js/js_candidato/vagas-candidato.js" defer></script>
+    <script src="/src/js/js_candidato/departamento-candidato.js" defer></script>
+    <script src="/src/js/js_candidato/candidaturas-candidato.js" defer></script>
+    <script src="/src/js/perfil.js" defer></script>
 </head>
 <body>
     <header id="header-dash-intcolab"></header>
+    
+    <!-- DASHBOARD -->
     <main id="dashboard-screen" class="screen">
         <section class="hero-section">
             <h1>HR System</h1>
             <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
         </section>
 
-      <section class="dashboard-content">
-        <div class="item">
-          <i class="fa-solid fa-briefcase"></i>
-          <h3>Vagas</h3>
-          <button id="vagas-btn">Explore nossa vagas disponíveis</button>
-        </div>
+        <section class="dashboard-content">
+            <div class="item">
+                <i class="fa-solid fa-briefcase"></i>
+                <h3>Vagas</h3>
+                <button id="vagas-btn">Explore nossas vagas disponíveis</button>
+            </div>
 
-        <div class="divisor"></div>
-          <div class="item">
-          <i class="fa-solid fa-list-check"></i>
-          <h3>Candidaturas</h3>
-          <button id="candidaturas-btn">Acesse suas Candidaturas</button>
-        </div>
+            <div class="divisor"></div>
+            
+            <div class="item">
+                <i class="fa-solid fa-list-check"></i>
+                <h3>Candidaturas</h3>
+                <button id="candidaturas-btn">Acesse suas Candidaturas</button>
+            </div>
 
-        <div class="divisor"></div>
+            <div class="divisor"></div>
 
-        <div class="item">
-          <i class="fa-solid fa-user"></i>
-          <h3>Perfil</h3>
-          <button id="perfil-btn">Acessar perfil</button>
-        </div>
+            <div class="item">
+                <i class="fa-solid fa-user"></i>
+                <h3>Perfil</h3>
+                <button id="perfil-btn">Acessar perfil</button>
+            </div>
         </section>
     </main>
 
+    <!-- SCREEN VAGAS -->
+    <section id="vagas-screen" class="screen">
+      <section class="hero-section">
+            <h1>Vagas
+            </h1>
+            <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
+        </section>  
+      
+      <div class="screen-header">
+            <button class="back-button" id="voltar-dashboard-vagas">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </button>
+            <h2>Vagas Disponíveis por Departamento</h2>
+            <div class="input-search-filter">
+                <i class="fas fa-search"></i>
+                <input type="text" id="busca-departamentos" placeholder="Buscar departamento..." />
+            </div>
+        </div>
+        
+        <div id="departamentos-grid" class="grid-container">
+            <!-- Departamentos serão carregados aqui via JS -->
+        </div>
+    </section>
+
+    <!-- SCREEN DEPARTAMENTO -->
+    <section id="departamento-screen" class="screen">
+      <section class="hero-section">
+            <h1>Departamentos</h1>
+            <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
+        </section>  
+      
+      <div class="screen-header">
+            <button class="back-button" id="voltar-vagas">
+                <i class="fas fa-arrow-left"></i> Voltar para Departamentos
+            </button>
+            <div class="departamento-info">
+                <h2 id="nome-departamento">Nome do Departamento</h2>
+                <p id="descricao-departamento">Descrição do departamento...</p>
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="busca-vagas" placeholder="Buscar vagas neste departamento..." />
+                </div>
+            </div>
+        </div>
+        
+        <div id="vagas-grid" class="grid-container">
+            <!-- Vagas serão carregadas aqui via JS -->
+        </div>
+    </section>
+
+    <!-- SCREEN CANDIDATURAS -->
+    <section id="candidaturas-screen" class="screen">
+      <section class="hero-section">
+            <h1>Minhas Candidaturas</h1>
+            <img src="/src/assets/imgs/Homem Dashboard.png" alt="Homem da dashboard">
+        </section>
+      
+      <div class="screen-header">
+            <button class="back-button" id="voltar-dashboard-candidaturas">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </button>
+        </div>
+        
+        <div id="filters-container">
+            <div class="inputs-label">
+            <label for="">Status</label>
+              <select id="filter-status">
+                  <option value="">Todos os status</option>
+                  <option value="Recebido">Recebido</option>
+                  <option value="Triagem">Triagem</option>
+                  <option value="Entrevista">Entrevista</option>
+                  <option value="Aprovado">Aprovado</option>
+                  <option value="Reprovado">Reprovado</option>
+              </select>
+            </div>
+            
+            <div class="inputs-label">
+              <label for="">Data</label>
+            <input type="date" id="filter-date" placeholder="Filtrar por data" />
+            </div>
+            
+        </div>
+        
+        <div id="candidaturas-list" class="candidaturas-container">
+            <!-- Candidaturas serão carregadas aqui via JS -->
+            <div class="empty-state">
+                <i class="fas fa-file-alt"></i>
+                <p>Você ainda não possui candidaturas</p>
+                <button id="explorar-vagas-from-empty">Explorar Vagas</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCREEN PERFIL -->
     <div id="perfil-screen" class="screen">
         <section class="info-section personal-info">
-        <div class="topo">
+            <div class="topo">
                 <h2>Informações Pessoais</h2>
                 <button class="edit-button" id="edit-save-button">
                     <i class="fas fa-edit"></i> Editar
                 </button>
-        </div>
+            </div>
             
             <!-- Foto de perfil -->
             <div class="profile-picture-section">
@@ -129,8 +210,6 @@
             <!-- As formações serão carregadas dinamicamente aqui -->
         </section>
     </div>
-
-
 
     <footer id="footer-RHFoot"></footer>
 </body>

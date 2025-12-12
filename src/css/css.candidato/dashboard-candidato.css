@@ -1,3 +1,29 @@
-#treinamentos-btn, #colaboradores-btn, #folha-btn, #departamentos-btn {
-    display: none;
+#treinamentos-btn, 
+#colaboradores-btn, 
+#folha-btn, 
+#departamentos-btn {
+    display: none !important;
+}
+
+.input-search-filter {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    min-width: 300px;
+}
+
+.input-search-filter i {
+    color: #000;
+    margin-right: 0.5rem;
+}
+
+.input-search-filter input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    background: transparent;
 }

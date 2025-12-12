@@ -41,11 +41,10 @@
     <script src="/src/js/js_interno/dashboard-interno.js" defer></script>
     <script src="/src/js/all.js" defer></script>
 
-    <script src="./js/js_colaborador/"></script>
+    <script src="./js/js_colaborador/dashboard-colaborador.js"></script>
     <script src="./js/perfil.js"></script>
-    <script src="./js/js_colaborador/"></script>
-    <script src="./js/js_colaborador/"></script>
-    <script src="./js/js_colaborador/"></script>
+    <script src="./js/js_colaborador/departamentos-colaborador.js"></script>
+
 
 </head>
 <body>
@@ -80,141 +79,136 @@
         </section>
     </main>
 
-<!-- Tela de Treinamentos do Colaborador -->
-<!-- Tela de Treinamentos do Colaborador - MESMA ESTRUTURA DO INTERNO -->
-<div id="treinamentos-screen" class="screen" style="display: none">
-  <section class="hero-section">
-    <h1>Meus Treinamentos</h1>
-    <img
-      src="/src/assets/imgs/Homem Dashboard.png"
-      alt="Homem da dashboard"
-    />
-  </section>
+  <div id="treinamentos-screen" class="screen" style="display: none">
+    <section class="hero-section">
+      <h1>Meus Treinamentos</h1>
+      <img
+        src="/src/assets/imgs/Homem Dashboard.png"
+        alt="Homem da dashboard"
+      />
+    </section>
 
-  <div class="treinamentos-content">
-    <div class="topo-treinamentos">
-      <h2>Treinamentos Atribuídos</h2>
-    </div>
-
-    <!-- MESMOS FILTROS DO INTERNO -->
-    <div class="filtros-treinamentos">
-      <div class="input-search-filter">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input
-          type="text"
-          id="buscaTreinamentoColaborador"
-          placeholder="Buscar treinamento..."
-        />
+    <div class="treinamentos-content">
+      <div class="topo-treinamentos">
+        <h2>Treinamentos Atribuídos</h2>
       </div>
 
-      <div class="filtros">
-        <div class="inputs-label">
-          <select id="statusFiltroColaborador">
-            <option value="">Todos Status</option>
-            <option value="andamento">Em andamento</option>
-            <option value="concluido">Concluído</option>
-            <option value="nao-iniciado">Não iniciado</option>
-          </select>
+      <!-- MESMOS FILTROS DO INTERNO -->
+      <div class="filtros-treinamentos">
+        <div class="input-search-filter">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="text"
+            id="buscaTreinamentoColaborador"
+            placeholder="Buscar treinamento..."
+          />
         </div>
-      </div>
-    </div>
 
-    <!-- MESMO GRID DO INTERNO -->
-    <div id="treinamentos_colaborador_grid"></div>
-  </div>
-</div>
-
-<!-- Tela de Visualização do Treinamento para Colaborador - MESMA ESTRUTURA DO INTERNO -->
-<div id="visualizar-treinamento-colaborador-screen" class="screen" style="display: none">
-  <div class="conteudo-treinamento-container">
-    <div class="cabecalho-visualizacao">
-      <div class="hero-content-visualizacao">
-        <div class="hero-text-visualizacao">
-          <div class="cabeca">
-            <button class="btn-voltar" onclick="mostrarTelaColaborador('treinamentos-screen')">
-              <i class="fas fa-arrow-left"></i> Voltar
-            </button>
-            <h1 id="tituloTreinamentoColaborador">Treinamento</h1>
-          </div>
-          <div class="hero-info">
-            <span>
-              <i class="fas fa-chalkboard-teacher"></i>
-              <span id="instrutorTreinamentoColaborador"></span>
-            </span>
-            <span>
-              <i class="fas fa-clock"></i>
-              <span id="cargaHorariaColaborador"></span> horas
-            </span>
-            <span>
-              <i class="fas fa-book"></i>
-              <span id="totalAulasColaborador">0</span> aulas
-            </span>
-            <span>
-              <i class="fas fa-check-circle"></i>
-              <span id="progressoGeral">0%</span> concluído
-            </span>
+        <div class="filtros">
+          <div class="inputs-label">
+            <select id="statusFiltroColaborador">
+              <option value="">Todos Status</option>
+              <option value="andamento">Em andamento</option>
+              <option value="concluido">Concluído</option>
+              <option value="nao-iniciado">Não iniciado</option>
+            </select>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- MESMAS ABAS DO INTERNO (mas só a primeira) -->
-    <div class="abas-treinamento">
-      <button class="aba-treinamento active" data-aba="conteudo" onclick="mudarAbaColaborador('conteudo')">
-        <i class="fas fa-book"></i> Conteúdo
-      </button>
+      <!-- MESMO GRID DO INTERNO -->
+      <div id="treinamentos_colaborador_grid"></div>
     </div>
+  </div>
 
-    <!-- CONTEÚDO DAS AULAS (igual ao interno) -->
-    <div id="aba-conteudo-colaborador" class="aba-conteudo-treinamento active">
-      <div class="descricao-treinamento">
-        <h2>Descrição</h2>
-        <p id="descricaoTreinamentoColaborador"></p>
+  <div id="visualizar-treinamento-colaborador-screen" class="screen" style="display: none">
+    <div class="conteudo-treinamento-container">
+      <div class="cabecalho-visualizacao">
+        <div class="hero-content-visualizacao">
+          <div class="hero-text-visualizacao">
+            <div class="cabeca">
+              <button class="btn-voltar" onclick="mostrarTelaColaborador('treinamentos-screen')">
+                <i class="fas fa-arrow-left"></i> Voltar
+              </button>
+              <h1 id="tituloTreinamentoColaborador">Treinamento</h1>
+            </div>
+            <div class="hero-info">
+              <span>
+                <i class="fas fa-chalkboard-teacher"></i>
+                <span id="instrutorTreinamentoColaborador"></span>
+              </span>
+              <span>
+                <i class="fas fa-clock"></i>
+                <span id="cargaHorariaColaborador"></span> horas
+              </span>
+              <span>
+                <i class="fas fa-book"></i>
+                <span id="totalAulasColaborador">0</span> aulas
+              </span>
+              <span>
+                <i class="fas fa-check-circle"></i>
+                <span id="progressoGeral">0%</span> concluído
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="modulos-treinamento">
-        <h3>Conteúdo do Treinamento</h3>
-        <div id="listaModulosColaborador"></div>
+      <!-- MESMAS ABAS DO INTERNO (mas só a primeira) -->
+      <div class="abas-treinamento">
+        <button class="aba-treinamento active" data-aba="conteudo" onclick="mudarAbaColaborador('conteudo')">
+          <i class="fas fa-book"></i> Conteúdo
+        </button>
+      </div>
+
+      <!-- CONTEÚDO DAS AULAS (igual ao interno) -->
+      <div id="aba-conteudo-colaborador" class="aba-conteudo-treinamento active">
+        <div class="descricao-treinamento">
+          <h2>Descrição</h2>
+          <p id="descricaoTreinamentoColaborador"></p>
+        </div>
+
+        <div class="modulos-treinamento">
+          <h3>Conteúdo do Treinamento</h3>
+          <div id="listaModulosColaborador"></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Modal de Confirmação (igual ao modal de colaboradores do interno) -->
-<div id="modalConclusaoAula" class="modal-colaboradores" style="display: none">
-  <div class="modal-colaboradores-content" style="max-width: 500px;">
-    <div class="modal-colaboradores-header">
-      <h3><i class="fas fa-check-circle"></i> Concluir Aula</h3>
-      <button class="modal-colaboradores-fechar" onclick="fecharModalConclusao()">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    
-    <div class="modal-colaboradores-body" style="text-align: center; padding: 2rem;">
-      <i class="fas fa-graduation-cap" style="font-size: 3rem; color: #4CAF50; margin-bottom: 1rem;"></i>
-      <h4 id="tituloAulaModal">Título da Aula</h4>
-      <p id="descricaoAulaModal">Você está prestes a marcar esta aula como concluída.</p>
+  <div id="modalConclusaoAula" class="modal-colaboradores" style="display: none">
+    <div class="modal-colaboradores-content" style="max-width: 500px;">
+      <div class="modal-colaboradores-header">
+        <h3><i class="fas fa-check-circle"></i> Concluir Aula</h3>
+        <button class="modal-colaboradores-fechar" onclick="fecharModalConclusao()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
       
-      <div class="confirmacao-conclusao" style="margin: 2rem 0;">
-        <label style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer;">
-          <input type="checkbox" id="confirmarConclusao" style="width: 18px; height: 18px;">
-          <span>Confirmo que assisti/compreendi todo o conteúdo</span>
-        </label>
+      <div class="modal-colaboradores-body" style="text-align: center; padding: 2rem;">
+        <i class="fas fa-graduation-cap" style="font-size: 3rem; color: #4CAF50; margin-bottom: 1rem;"></i>
+        <h4 id="tituloAulaModal">Título da Aula</h4>
+        <p id="descricaoAulaModal">Você está prestes a marcar esta aula como concluída.</p>
+        
+        <div class="confirmacao-conclusao" style="margin: 2rem 0;">
+          <label style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer;">
+            <input type="checkbox" id="confirmarConclusao" style="width: 18px; height: 18px;">
+            <span>Confirmo que assisti/compreendi todo o conteúdo</span>
+          </label>
+        </div>
+      </div>
+      
+      <div class="modal-colaboradores-footer">
+        <button class="btn-defaunt" onclick="fecharModalConclusao()">
+          <i class="fas fa-times"></i> Cancelar
+        </button>
+        <button class="btn-salvar" id="btnConcluirAula" onclick="concluirAulaConfirmada()" disabled>
+          <i class="fas fa-check"></i> Concluir Aula
+        </button>
       </div>
     </div>
-    
-    <div class="modal-colaboradores-footer">
-      <button class="btn-defaunt" onclick="fecharModalConclusao()">
-        <i class="fas fa-times"></i> Cancelar
-      </button>
-      <button class="btn-salvar" id="btnConcluirAula" onclick="concluirAulaConfirmada()" disabled>
-        <i class="fas fa-check"></i> Concluir Aula
-      </button>
-    </div>
   </div>
-</div>
 
-    <!-- Modal de Confirmação de Conclusão -->
     <div id="modalConclusaoAula" class="modal-colaboradores" style="display: none">
       <div class="modal-colaboradores-content" style="max-width: 500px;">
         <div class="modal-colaboradores-header">
@@ -302,9 +296,156 @@
       <section class="info-section academic-education">
         <h2 class="topo">Formação Acadêmica</h2>
       </section>
+    </div>  
+
+        <div id="departamentos-screen" class="screen" style="display: none">
+        
+        <section class="hero-section">
+          <h1>Departamento</h1>
+          <img
+            src="/src/assets/imgs/Homem Dashboard.png"
+            alt="Homem da dashboard"
+          />
+        </section>
+
+        <div class="departamento-container">
+            <div class="departamento-header">
+                <h1 id="departamento-nome">Carregando...</h1>
+                <div class="sigla" id="departamento-sigla">SIGLA</div>
+            </div>
+            
+            <div class="departamento-info-grid">
+                <div class="info-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Localização</h3>
+                    <div class="valor" id="departamento-localizacao">Carregando...</div>
+                    <div class="label">Onde nosso departamento está localizado</div>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-briefcase"></i> Meu Cargo</h3>
+                    <div class="valor" id="colaborador-cargo">Carregando...</div>
+                    <div class="label">Posição que você ocupa</div>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-phone"></i> Contato</h3>
+                    <div class="valor" id="departamento-telefone">Carregando...</div>
+                    <div class="label">Telefone do departamento</div>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-users"></i> Status</h3>
+                    <div class="valor" id="departamento-status">ATIVO</div>
+                    <div class="label">Status do departamento</div>
+                </div>
+            </div>
+            
+            <div class="gerente-section" id="gerente-section">
+                <img src="/src/assets/imgs/default-avatar.png" alt="Gerente" class="gerente-foto" id="gerente-foto">
+                <div class="gerente-info">
+                    <h3 id="gerente-nome">Gerente do Departamento</h3>
+                    <p><i class="fas fa-envelope"></i> <span id="gerente-email">carregando...</span></p>
+                    <p><i class="fas fa-phone"></i> <span id="gerente-telefone">carregando...</span></p>
+                    <p><i class="fas fa-user-tie"></i> Gerente Responsável</p>
+                </div>
+            </div>
+            
+            <div class="suporte-section">
+                <h2>Precisa de Ajuda?</h2>
+                <p>Encontrou algum problema ou precisa de suporte relacionado ao departamento? Entre em contato conosco clicando no botão abaixo.</p>
+                <button class="btn-suporte" onclick="abrirModalSuporte()">
+                    <i class="fas fa-headset"></i> Pedir Suporte
+                </button>
+            </div>
+        </div>
+        
+        <!-- Modal de Suporte -->
+        <div id="modalSuporte" class="modal-suporte">
+            <div class="modal-suporte-content">
+                <div class="modal-suporte-header">
+                    <h3><i class="fas fa-headset"></i> Pedido de Suporte</h3>
+                    <button class="modal-suporte-fechar" onclick="fecharModalSuporte()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="modal-suporte-body">
+                    <div class="inputs-label">
+                        <input type="text" id="suporte-assunto" placeholder=" " required>
+                        <label for="suporte-assunto">Assunto</label>
+                    </div>
+                    
+                    <div class="inputs-label">
+                        <select id="suporte-tipo">
+                            <option value="">Selecione o tipo de suporte</option>
+                            <option value="tecnico">Problema Técnico</option>
+                            <option value="procedimento">Procedimento Interno</option>
+                            <option value="recurso">Solicitação de Recurso</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                        <label for="suporte-tipo">Tipo de Suporte</label>
+                    </div>
+                    
+                    <div class="inputs-label">
+                        <textarea id="suporte-mensagem" placeholder=" " required></textarea>
+                        <label for="suporte-mensagem">Descreva sua solicitação</label>
+                    </div>
+                </div>
+                
+                <div class="modal-suporte-footer">
+                    <button class="btn-defaunt" onclick="fecharModalSuporte()">Cancelar</button>
+                    <button class="btn-suporte-enviar" onclick="enviarSolicitacaoSuporte()">
+                        <i class="fas fa-paper-plane"></i> Enviar Solicitação
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="departamentos-screen" class="screen">
+    <!-- Tela de Perfil -->
+    <div id="perfil-screen" class="screen" style="display: none">
+        <section class="info-section personal-info">
+            <div class="topo">
+                <h2>Informações Pessoais</h2>
+                <button class="edit-button" id="edit-save-button">
+                    <i class="fas fa-edit"></i> Editar
+                </button>
+            </div>
+
+            <div class="profile-picture-section">
+                <img src="/src/assets/imgs/default-avatar.png" alt="Foto de Perfil" class="profile-picture" id="profile-main-picture" />
+                <span id="change-photo-trigger">Mudar foto de perfil</span>
+            </div>
+
+            <input type="file" id="photo-upload-input" accept="image/*" style="display: none" />
+
+            <div class="info-grid" id="personal-info-container">
+                <div class="info-item">
+                    <label>Nome Completo</label>
+                    <p data-field="nome-completo" class="display-mode">Carregando...</p>
+                </div>
+                <div class="info-item">
+                    <label>E-mail</label>
+                    <p data-field="email" class="display-mode">Carregando...</p>
+                </div>
+                <div class="info-item">
+                    <label>Telefone</label>
+                    <p data-field="telefone" class="display-mode">Carregando...</p>
+                </div>
+                <div class="info-item">
+                    <label>Localização</label>
+                    <p data-field="localizacao" class="display-mode">Carregando...</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section professional-experience">
+            <h2 class="topo">Experiência Profissional</h2>
+        </section>
+
+        <section class="info-section academic-education">
+            <h2 class="topo">Formação Acadêmica</h2>
+        </section>
     </div>
 
     <footer id="footer-RHFoot"></footer>
