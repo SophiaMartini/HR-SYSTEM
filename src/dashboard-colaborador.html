@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="/src/assets/logos/logo-sozinha.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--bibliotecas-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--css-->
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+
+    <link rel="stylesheet" href="./css/css.colaborador/dashboard-colaborador.css">
+    <link rel="stylesheet" href="./css/css.interno/treinamentos.css">
+    <link rel="stylesheet" href="./css/perfil.css">
+
+    <!--js-->
+    <script src="/src/js/js_interno/dashboard-interno.js" defer></script>
+    <script src="/src/js/all.js" defer></script>
+
+    <script src="./js/js_colaborador/"></script>
+    <script src="./js/perfil.js"></script>
+    <script src="./js/js_colaborador/"></script>
+    <script src="./js/js_colaborador/"></script>
+    <script src="./js/js_colaborador/"></script>
+
+</head>
+<body>
+    <header id="header-dash-intcolab"></header>
+    <main id="dashboard-screen" class="screen">
+        <section class="hero-section">
+            <h1>HR System</h1>
+            <img
+            src="/src/assets/imgs/Homem Dashboard.png"
+            alt="Homem da dashboard"
+            />
+        </section>
+
+        <section class="dashboard-content">
+            <div class="item">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h3>Treinamentos</h3>
+                <button id="treinamentos-btn">Ver Treinamentos</button>
+            </div>
+            <div class="divisor"></div>
+                <div class="item">
+                <i class="fa-solid fa-user"></i>
+                <h3>Perfil</h3>
+                <button id="perfil-btn">Ver Perfil</button>
+            </div>
+            <div class="divisor"></div>
+            <div class="item">
+                <i class="fa-solid fa-people-group"></i>
+                <h3>Departamento</h3>
+                <button id="departamentos-btn">Ver Departamento</button>
+            </div>
+        </section>
+    </main>
+
+<!-- Tela de Treinamentos do Colaborador -->
+<!-- Tela de Treinamentos do Colaborador - MESMA ESTRUTURA DO INTERNO -->
+<div id="treinamentos-screen" class="screen" style="display: none">
+  <section class="hero-section">
+    <h1>Meus Treinamentos</h1>
+    <img
+      src="/src/assets/imgs/Homem Dashboard.png"
+      alt="Homem da dashboard"
+    />
+  </section>
+
+  <div class="treinamentos-content">
+    <div class="topo-treinamentos">
+      <h2>Treinamentos Atribuídos</h2>
+    </div>
+
+    <!-- MESMOS FILTROS DO INTERNO -->
+    <div class="filtros-treinamentos">
+      <div class="input-search-filter">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input
+          type="text"
+          id="buscaTreinamentoColaborador"
+          placeholder="Buscar treinamento..."
+        />
+      </div>
+
+      <div class="filtros">
+        <div class="inputs-label">
+          <select id="statusFiltroColaborador">
+            <option value="">Todos Status</option>
+            <option value="andamento">Em andamento</option>
+            <option value="concluido">Concluído</option>
+            <option value="nao-iniciado">Não iniciado</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- MESMO GRID DO INTERNO -->
+    <div id="treinamentos_colaborador_grid"></div>
+  </div>
+</div>
+
+<!-- Tela de Visualização do Treinamento para Colaborador - MESMA ESTRUTURA DO INTERNO -->
+<div id="visualizar-treinamento-colaborador-screen" class="screen" style="display: none">
+  <div class="conteudo-treinamento-container">
+    <div class="cabecalho-visualizacao">
+      <div class="hero-content-visualizacao">
+        <div class="hero-text-visualizacao">
+          <div class="cabeca">
+            <button class="btn-voltar" onclick="mostrarTelaColaborador('treinamentos-screen')">
+              <i class="fas fa-arrow-left"></i> Voltar
+            </button>
+            <h1 id="tituloTreinamentoColaborador">Treinamento</h1>
+          </div>
+          <div class="hero-info">
+            <span>
+              <i class="fas fa-chalkboard-teacher"></i>
+              <span id="instrutorTreinamentoColaborador"></span>
+            </span>
+            <span>
+              <i class="fas fa-clock"></i>
+              <span id="cargaHorariaColaborador"></span> horas
+            </span>
+            <span>
+              <i class="fas fa-book"></i>
+              <span id="totalAulasColaborador">0</span> aulas
+            </span>
+            <span>
+              <i class="fas fa-check-circle"></i>
+              <span id="progressoGeral">0%</span> concluído
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MESMAS ABAS DO INTERNO (mas só a primeira) -->
+    <div class="abas-treinamento">
+      <button class="aba-treinamento active" data-aba="conteudo" onclick="mudarAbaColaborador('conteudo')">
+        <i class="fas fa-book"></i> Conteúdo
+      </button>
+    </div>
+
+    <!-- CONTEÚDO DAS AULAS (igual ao interno) -->
+    <div id="aba-conteudo-colaborador" class="aba-conteudo-treinamento active">
+      <div class="descricao-treinamento">
+        <h2>Descrição</h2>
+        <p id="descricaoTreinamentoColaborador"></p>
+      </div>
+
+      <div class="modulos-treinamento">
+        <h3>Conteúdo do Treinamento</h3>
+        <div id="listaModulosColaborador"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Confirmação (igual ao modal de colaboradores do interno) -->
+<div id="modalConclusaoAula" class="modal-colaboradores" style="display: none">
+  <div class="modal-colaboradores-content" style="max-width: 500px;">
+    <div class="modal-colaboradores-header">
+      <h3><i class="fas fa-check-circle"></i> Concluir Aula</h3>
+      <button class="modal-colaboradores-fechar" onclick="fecharModalConclusao()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="modal-colaboradores-body" style="text-align: center; padding: 2rem;">
+      <i class="fas fa-graduation-cap" style="font-size: 3rem; color: #4CAF50; margin-bottom: 1rem;"></i>
+      <h4 id="tituloAulaModal">Título da Aula</h4>
+      <p id="descricaoAulaModal">Você está prestes a marcar esta aula como concluída.</p>
+      
+      <div class="confirmacao-conclusao" style="margin: 2rem 0;">
+        <label style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer;">
+          <input type="checkbox" id="confirmarConclusao" style="width: 18px; height: 18px;">
+          <span>Confirmo que assisti/compreendi todo o conteúdo</span>
+        </label>
+      </div>
+    </div>
+    
+    <div class="modal-colaboradores-footer">
+      <button class="btn-defaunt" onclick="fecharModalConclusao()">
+        <i class="fas fa-times"></i> Cancelar
+      </button>
+      <button class="btn-salvar" id="btnConcluirAula" onclick="concluirAulaConfirmada()" disabled>
+        <i class="fas fa-check"></i> Concluir Aula
+      </button>
+    </div>
+  </div>
+</div>
+
+    <!-- Modal de Confirmação de Conclusão -->
+    <div id="modalConclusaoAula" class="modal-colaboradores" style="display: none">
+      <div class="modal-colaboradores-content" style="max-width: 500px;">
+        <div class="modal-colaboradores-header">
+          <h3><i class="fas fa-check-circle"></i> Concluir Aula</h3>
+          <button class="modal-colaboradores-fechar" onclick="fecharModalConclusao()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <div class="modal-colaboradores-body" style="text-align: center; padding: 2rem;">
+          <i class="fas fa-graduation-cap" style="font-size: 3rem; color: #4CAF50; margin-bottom: 1rem;"></i>
+          <h4 id="tituloAulaModal">Título da Aula</h4>
+          <p id="descricaoAulaModal">Você está prestes a marcar esta aula como concluída.</p>
+          
+          <div class="confirmacao-conclusao" style="margin: 2rem 0;">
+            <label style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer;">
+              <input type="checkbox" id="confirmarConclusao" style="width: 18px; height: 18px;">
+              <span>Confirmo que assisti/compreendi todo o conteúdo desta aula</span>
+            </label>
+          </div>
+        </div>
+        
+        <div class="modal-colaboradores-footer">
+          <button class="btn-defaunt" onclick="fecharModalConclusao()">
+            <i class="fas fa-times"></i> Cancelar
+          </button>
+          <button class="btn-salvar" id="btnConcluirAula" onclick="concluirAulaConfirmada()" disabled>
+            <i class="fas fa-check"></i> Concluir Aula
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="perfil-screen" class="screen" style="display: none">
+      <section class="info-section personal-info">
+        <div class="topo">
+          <h2>Informações Pessoais</h2>
+          <button class="edit-button" id="edit-save-button">
+            <i class="fas fa-edit"></i> Editar
+          </button>
+        </div>
+
+        <div class="profile-picture-section">
+          <img
+            src="/src/assets/imgs/images.jpg"
+            alt="Foto de Perfil"
+            class="profile-picture"
+            id="profile-main-picture"
+          />
+          <span id="change-photo-trigger">Mudar foto de perfil</span>
+        </div>
+
+        <input
+          type="file"
+          id="photo-upload-input"
+          accept="image/*"
+          style="display: none"
+        />
+
+        <div class="info-grid" id="personal-info-container">
+          <div class="info-item">
+            <label>Nome Completo</label>
+            <p data-field="nome-completo" class="display-mode">Carregando...</p>
+          </div>
+          <div class="info-item">
+            <label>E-mail</label>
+            <p data-field="email" class="display-mode">Carregando...</p>
+          </div>
+          <div class="info-item">
+            <label>Telefone</label>
+            <p data-field="telefone" class="display-mode">Carregando...</p>
+          </div>
+          <div class="info-item">
+            <label>Localização</label>
+            <p data-field="localizacao" class="display-mode">Carregando...</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="info-section professional-experience">
+        <h2 class="topo">Experiência Profissional</h2>
+      </section>
+
+      <section class="info-section academic-education">
+        <h2 class="topo">Formação Acadêmica</h2>
+      </section>
+    </div>
+
+    <div id="departamentos-screen" class="screen">
+    </div>
+
+    <footer id="footer-RHFoot"></footer>
+</body>
+</html>

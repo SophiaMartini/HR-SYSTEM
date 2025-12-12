@@ -1,3 +1,7 @@
+#vagas-btn {
+    display: none;
+}
+
 .treinamentos-content {
     padding: 2rem;
     margin: 0 auto;
@@ -1512,4 +1516,33 @@
         width: 100%;
         justify-content: center;
     }
+}
+
+/* Estilos específicos para as modificações do colaborador */
+.aula-visualizacao.aula-concluida {
+    border-color: #4CAF50;
+    background: #f8fff9;
+}
+
+.aula-visualizacao.aula-concluida::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: #4CAF50;
+    border-radius: 3px 0 0 3px;
+}
+
+.modulo-visualizacao.modulo-concluido .modulo-header-visualizacao {
+    background: #f0fff4;
+}
+
+.text-success {
+    color: #4CAF50 !important;
+}
+
+.text-warning {
+    color: #ff9800 !important;
 }

@@ -40,15 +40,14 @@
     <link rel="stylesheet" href="./css/folha-de-pagamento.css">
 
     <!--js-->
-    <script src="/src/js/dashboard-interno.js" defer></script>
+    <script src="/src/js/js_interno/dashboard-interno.js" defer></script>
     <script src="/src/js/all.js" defer></script>
 
-    <script src="./js/candidaturas-interno.js" defer></script>
+    <script src="./js/js_interno/candidaturas-interno.js" defer></script>
     <script src="./js/perfil.js" defer></script>
-    <script src="./js/treinamentos-interno.js" defer></script>
-    <script src="./js/folha-de-pagamento.js" defer></script>
-
-    <script src="./js/departamentos-interno.js" defer></script>
+    <script src="./js/js_interno/treinamentos-interno.js" defer></script>
+    <script src="./js/js_interno/folha-de-pagamento.js" defer></script>
+    <script src="./js/js_interno/departamentos-interno.js" defer></script>
   </head>
   <body>
     <header id="header-dash-intcolab"></header>
@@ -183,7 +182,7 @@
         </div>
 
         <div class="filtros-treinamentos">
-          <div class="input-search-filter">
+          <div class="dt-search-box">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input
               type="text"
@@ -193,7 +192,7 @@
           </div>
 
           <div class="filtros">
-            <div class="inputs-search-filter">
+            <div class="inputs-label">
               <select id="categoriaFiltro">
                 <option value="">Todas Categorias</option>
                 <option value="tecnologia">Tecnologia</option>
@@ -371,201 +370,166 @@
       </div>
     </div>
 
-    <div id="visualizar-treinamento-screen"
-      class="screen"
-      style="display: none"
-    >
-      <div class="conteudo-treinamento-container">
-        <div class="cabecalho-visualizacao">
-          <div class="hero-content-visualizacao">
-            <div class="hero-text-visualizacao">
-              <div class="cabeca">
-                <button
-                  class="btn-voltar"
-                  onclick="mostrarTela('treinamentos-screen')"
-                >
-                  <i class="fas fa-arrow-left"></i> Voltar
+ <div id="visualizar-treinamento-screen" class="screen" style="display: none">
+        <div class="conteudo-treinamento-container">
+            <div class="cabecalho-visualizacao">
+                <div class="hero-content-visualizacao">
+                    <div class="hero-text-visualizacao">
+                        <div class="cabeca">
+                            <button class="btn-voltar" onclick="mostrarTela('treinamentos-screen')">
+                                <i class="fas fa-arrow-left"></i> Voltar
+                            </button>
+                            <h1 id="tituloTreinamentoVisualizar">Treinamento</h1>
+                        </div>
+                        <div class="hero-info">
+                            <span>
+                                <i class="fas fa-chalkboard-teacher"></i>
+                                <span id="instrutorTreinamentoVisualizar"></span>
+                            </span>
+                            <span>
+                                <i class="fas fa-clock"></i>
+                                <span id="cargaHorariaVisualizar"></span> horas
+                            </span>
+                            <span>
+                                <i class="fas fa-book"></i>
+                                <span id="totalMateriaisVisualizar">0</span> materiais
+                            </span>
+                            <span>
+                                <i class="fas fa-users"></i>
+                                <span id="totalAlunosVisualizar">0</span> alunos
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="abas-treinamento">
+                <button class="aba-treinamento active" data-aba="conteudo" onclick="mudarAba('conteudo')">
+                    <i class="fas fa-book"></i> Conteúdo
                 </button>
-                <h1 id="tituloTreinamentoVisualizar">Treinamento</h1>
-              </div>
-              <div class="hero-info">
-                <span
-                  ><i class="fas fa-chalkboard-teacher"></i>
-                  <span id="instrutorTreinamentoVisualizar"></span
-                ></span>
-                <span
-                  ><i class="fas fa-clock"></i>
-                  <span id="cargaHorariaVisualizar"></span> horas</span
-                >
-                <span
-                  ><i class="fas fa-book"></i>
-                  <span id="totalMateriaisVisualizar">0</span> materiais</span
-                >
-                <span
-                  ><i class="fas fa-users"></i>
-                  <span id="totalAlunosVisualizar">0</span> alunos</span
-                >
-              </div>
+                <button class="aba-treinamento" data-aba="colaboradores" onclick="mudarAba('colaboradores')">
+                    <i class="fas fa-users"></i> Colaboradores
+                </button>
+                <button class="aba-treinamento" data-aba="conclusao" onclick="mudarAba('conclusao')">
+                    <i class="fas fa-clipboard-check"></i> Controle de Conclusão
+                </button>
             </div>
-          </div>
-        </div>
 
-        <div class="abas-treinamento">
-          <button
-            class="aba-treinamento active"
-            data-aba="conteudo"
-            onclick="mudarAba('conteudo')"
-          >
-            <i class="fas fa-book"></i> Conteúdo
-          </button>
-          <button
-            class="aba-treinamento"
-            data-aba="colaboradores"
-            onclick="mudarAba('colaboradores')"
-          >
-            <i class="fas fa-users"></i> Colaboradores
-          </button>
-          <button
-            class="aba-treinamento"
-            data-aba="presenca"
-            onclick="mudarAba('presenca')"
-          >
-            <i class="fas fa-clipboard-check"></i> Controle de Presença
-          </button>
-        </div>
+            <div id="aba-conteudo" class="aba-conteudo-treinamento active">
+                <div class="descricao-treinamento">
+                    <h2>Descrição</h2>
+                    <p id="descricaoTreinamentoVisualizar"></p>
+                </div>
 
-        <div id="aba-conteudo" class="aba-conteudo-treinamento active">
-          <div class="descricao-treinamento">
-            <h3>Descrição</h3>
-            <p id="descricaoTreinamentoVisualizar"></p>
-          </div>
+                <div class="modulos-treinamento">
+                    <h3>Conteúdo do Treinamento</h3>
+                    <div id="listaModulosVisualizar"></div>
+                </div>
 
-          <div class="modulos-treinamento">
-            <h3>Conteúdo do Treinamento</h3>
-            <div id="listaModulosVisualizar"></div>
-          </div>
-
-          <div class="acoes-visualizacao">
-            <button
-              class="btn-editar-treinamento"
-              onclick="editarTreinamentoAtual()"
-            >
-              <i class="fas fa-edit"></i> Editar Treinamento
-            </button>
-            <button
-              class="btn-atribuir-treinamento"
-              onclick="mostrarModalAtribuirColaboradores()"
-            >
-              <i class="fas fa-user-plus"></i> Atribuir Colaboradores
-            </button>
-          </div>
-        </div>
-
-        <div id="aba-colaboradores" class="aba-conteudo-treinamento">
-          <div class="cabecalho-colaboradores">
-            <h2>Colaboradores Atribuídos</h2>
-            <button
-              class="btn-defaunt"
-              onclick="mostrarModalAtribuirColaboradores()"
-            >
-              <i class="fas fa-user-plus"></i> Adicionar Colaboradores
-            </button>
-          </div>
-
-          <div id="listaColaboradoresTreinamento"></div>
-        </div>
-
-        <div id="aba-presenca" class="aba-conteudo-treinamento">
-          <div class="cabecalho-presenca">
-            <h2>Controle de Presença</h2>
-            <div class="controles-presenca">
-              <select id="filtroAulaPresenca" onchange="filtrarAulaPresenca()">
-                <option value="">Todas as Aulas</option>
-              </select>
-              <button
-                class="btn-exportar-presenca"
-                onclick="exportarRelatorioPresenca()"
-              >
-                <i class="fas fa-download"></i> Exportar Relatório
-              </button>
+                <div class="acoes-visualizacao">
+                    <button class="btn-defaunt" onclick="editarTreinamentoAtual()">
+                        <i class="fas fa-edit"></i> Editar Treinamento
+                    </button>
+                    <button class="btn-defaunt" onclick="mostrarModalAtribuirColaboradores()">
+                        <i class="fas fa-user-plus"></i> Atribuir Colaboradores
+                    </button>
+                </div>
             </div>
-          </div>
 
-          <div id="tabelaPresencaContainer"></div>
-        </div>
-    </div>
-</div>
-<!-- Modal para Atribuir Colaboradores -->
-<div id="modalAtribuirColaboradores" class="modal" style="display: none;">
-    <div class="modal-content"> <!-- ADICIONE ESTA DIV -->
-        <div class="modal-header">
-            <h3>Atribuir Colaboradores ao Treinamento</h3>
-            <button class="btn-fechar-modal" onclick="fecharModalAtribuir()">&times;</button>
-        </div>
-        
-        <div class="modal-body">
-            <div class="inputs-label">
-                <div class="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="buscaColaborador" placeholder="Buscar por nome...">
+            <div id="aba-colaboradores" class="aba-conteudo-treinamento">
+                <div class="cabecalho-colaboradores">
+                    <h2>Colaboradores Atribuídos</h2>
+                    <button class="btn-defaunt" onclick="mostrarModalAtribuirColaboradores()">
+                        <i class="fas fa-user-plus"></i> Adicionar Colaboradores
+                    </button>
+                </div>
+
+                <div id="listaColaboradoresTreinamento"></div>
+            </div>
+
+            <div id="aba-conclusao" class="aba-conteudo-treinamento">
+                <div class="cabecalho-conclusao">
+                    <h2>Controle de Conclusão</h2>
+                    <div class="controles-conclusao">
+                        <button class="btn-defaunt" onclick="exportarRelatorioConclusao()">
+                            <i class="fas fa-download"></i> Exportar Relatório
+                        </button>
+                    </div>
                 </div>
                 
-                <div class="inputs-label">
-                    <select id="filtroModalDepartamento">
-                        <option value="">Todos Departamentos</option>
-                        <option value="TI">TI</option>
-                        <option value="RH">RH</option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="Financeiro">Financeiro</option>
-                    </select>
-                    
-                    <select id="filtroModalContratacao">
-                        <option value="">Tempo de Contratação</option>
-                        <option value="recente">Mais Recente</option>
-                        <option value="antigo">Mais Antigo</option>
-                        <option value="ultimo-mes">Último Mês</option>
-                        <option value="ultimos-3-meses">Últimos 3 Meses</option>
-                    </select>
-                    
-                    <select id="filtroModalMes">
-                        <option value="">Mês de Contratação</option>
-                        <option value="1">Janeiro</option>
-                        <option value="2">Fevereiro</option>
-                        <option value="3">Março</option>
-                        <option value="4">Abril</option>
-                        <option value="5">Maio</option>
-                        <option value="6">Junho</option>
-                        <option value="7">Julho</option>
-                        <option value="8">Agosto</option>
-                        <option value="9">Setembro</option>
-                        <option value="10">Outubro</option>
-                        <option value="11">Novembro</option>
-                        <option value="12">Dezembro</option>
-                    </select>
-                </div>
+                <div id="tabelaConclusaoContainer"></div>
             </div>
-
-            <div
-              class="lista-colaboradores-modal"
-              id="listaColaboradoresModal"
-            ></div>
-
-            <div class="selecionados-info">
-              <h4>
-                Selecionados:
-                <span id="contadorSelecionados">0</span> colaboradores
-              </h4>
-              <div id="listaSelecionadosModal"></div>
-            </div>
-        </div>
-        
-        <div class="modal-footer">
-            <button class="btn-cancelar" onclick="fecharModalAtribuir()">Cancelar</button>
-            <button class="btn-defaunt" onclick="atribuirColaboradoresSelecionados()">Atribuir Colaboradores</button>
         </div>
     </div>
-</div>
-</div>
+
+    <!-- Modal para atribuir colaboradores -->
+    <div id="modalAtribuirColaboradores" class="modal-colaboradores" style="display: none;">
+        <div class="modal-colaboradores-content">
+            <div class="modal-colaboradores-header">
+                <h3>Atribuir Colaboradores ao Treinamento</h3>
+                <button class="modal-colaboradores-fechar" onclick="fecharModalAtribuir()">&times;</button>
+            </div>
+            
+            <div class="modal-colaboradores-body">
+                <div class="modal-colaboradores-filtros">
+                    <div class="modal-colaboradores-busca">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="buscaColaborador" placeholder="Buscar por nome...">
+                    </div>
+                    
+                    <div class="modal-colaboradores-filtros-avancados">
+                        <select id="filtroModalDepartamento">
+                            <option value="">Todos Departamentos</option>
+                            <option value="TI">TI</option>
+                            <option value="RH">RH</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Financeiro">Financeiro</option>
+                        </select>
+                        
+                        <select id="filtroModalContratacao">
+                            <option value="">Tempo de Contratação</option>
+                            <option value="recente">Mais Recente</option>
+                            <option value="antigo">Mais Antigo</option>
+                            <option value="ultimo-mes">Último Mês</option>
+                            <option value="ultimos-3-meses">Últimos 3 Meses</option>
+                        </select>
+                        
+                        <select id="filtroModalMes">
+                            <option value="">Mês de Contratação</option>
+                            <option value="1">Janeiro</option>
+                            <option value="2">Fevereiro</option>
+                            <option value="3">Março</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Maio</option>
+                            <option value="6">Junho</option>
+                            <option value="7">Julho</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Setembro</option>
+                            <option value="10">Outubro</option>
+                            <option value="11">Novembro</option>
+                            <option value="12">Dezembro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="modal-colaboradores-lista" id="listaColaboradoresModal">
+                    <!-- Lista de colaboradores disponíveis -->
+                </div>
+                
+                <div class="modal-colaboradores-selecionados">
+                    <h4>Selecionados: <span id="contadorSelecionados">0</span> colaboradores</h4>
+                    <div id="listaSelecionadosModal">
+                        <!-- Colaboradores selecionados aparecerão aqui -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-colaboradores-footer">
+                <button class="btn-cancelar" onclick="fecharModalAtribuir()">Cancelar</button>
+                <button class="btn-defaunt" onclick="atribuirColaboradoresSelecionados()">Atribuir Colaboradores</button>
+            </div>
+        </div>
+    </div>
 
 
 <!-- controle-presenca-screen.html -->
@@ -710,105 +674,284 @@
       </section>
     </div>
 
-    <div id="departamentos-screen" class="screen" style="display: none">
-      <section class="hero-section">
-        <h1>Departamentos (Interno)</h1>
-        <img
-          src="/src/assets/imgs/homemdashboard.png"
-          alt="Homem da dashboard"
-        />
-      </section>
+  <div id="departamentos-screen" class="screen">
+        <section class="hero-section">
+            <h1>Departamentos (Interno)</h1>
+            <img src="/src/assets/imgs/homemdashboard.png" alt="Homem da dashboard">
+        </section>
 
-      <div class="dt-content-area">
-        <div class="dt-top-actions">
-          <button class="btn-defaunt" onclick="window.openModal()">
-            Adicionar novo departamento
-          </button>
+        <div class="dt-content-area">
+            <div class="dt-top-actions">
+                <button class="btn-defaunt" onclick="window.openModal()">
+                    <i class="fas fa-plus"></i> Adicionar novo departamento
+                </button>
+            </div>
+
+            <div class="dt-search-box">
+                <i class="fa-solid fa-magnifying-glass dt-search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Pesquisar por nome" onkeyup="window.filterDepartments()">
+            </div>
+
+            <div class="dt-grid-wrapper" id="cardsContainer">
+                <!-- Cards de departamentos serão gerados aqui -->
+            </div>
         </div>
-
-        <div class="dt-search-box">
-          <i class="fa-solid fa-magnifying-glass dt-search-icon"></i>
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Pesquisar por nome"
-            onkeyup="window.filterDepartments()"
-          />
-        </div>
-
-        <div class="dt-grid-wrapper" id="cardsContainer"></div>
-      </div>
     </div>
 
-    <div id="departmentModal" class="dt-modal-overlay">
-      <div class="dt-modal-box">
-        <div class="dt-modal-header">
-          <h2 id="modalTitle">Novo Departamento</h2>
-          <span
-            style="cursor: pointer; font-size: 1.5rem"
-            onclick="window.closeModal()"
-            >&times;</span
-          >
+    <!-- Modal para adicionar/editar departamento -->
+    <div id="dt-modal-departamento" class="dt-modal-overlay">
+        <div class="dt-modal">
+            <div class="dt-modal-header">
+                <h3 class="dt-modal-title" id="dt-modal-title">Novo Departamento</h3>
+                <button class="dt-modal-close" onclick="window.closeModal()">&times;</button>
+            </div>
+            <div class="dt-modal-body">
+                <form id="dt-form-departamento">
+                    <div class="dt-form-group">
+                        <label class="dt-form-label" for="dt-nome">Nome do Departamento *</label>
+                        <input type="text" class="dt-form-input" id="dt-nome" required>
+                    </div>
+                    <div class="dt-form-group">
+                        <label class="dt-form-label" for="dt-sigla">Sigla *</label>
+                        <input type="text" class="dt-form-input" id="dt-sigla" required maxlength="10">
+                    </div>
+                    <div class="dt-form-group">
+                        <label class="dt-form-label" for="dt-telefone">Telefone *</label>
+                        <input type="text" class="dt-form-input" id="dt-telefone" required>
+                    </div>
+                    <div class="dt-form-group">
+                        <label class="dt-form-label" for="dt-local">Localização</label>
+                        <input type="text" class="dt-form-input" id="dt-local" placeholder="Ex: Prédio A, Bloco B, Sala 205">
+                    </div>
+                    <div class="dt-form-group">
+                        <label class="dt-form-label" for="dt-descricao">Descrição</label>
+                        <textarea class="dt-form-textarea" id="dt-descricao" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="dt-modal-footer">
+                <button class="dt-btn-secondary" onclick="window.closeModal()">Cancelar</button>
+                <button class="btn-defaunt" onclick="window.saveDepartamento()">Salvar Departamento</button>
+            </div>
         </div>
-        <form id="deptForm" onsubmit="window.saveDepartment(event)">
-          <input type="hidden" id="deptId" />
+    </div>
 
-          <div class="inputs-label">
-            <label for="nome">Nome do Departamento</label>
-            <input
-              type="text"
-              id="nome"
-              required
-              placeholder="Ex: Tecnologia"
-            />
-          </div>
+    <!-- Modal para visualizar departamento -->
+    <div id="dt-modal-view-departamento" class="dt-modal-overlay">
+        <div class="dt-modal dt-modal-large">
+            <div class="dt-modal-header">
+                <h3 class="dt-modal-title" id="dt-view-departamento-title">Visualizar Departamento</h3>
+                <button class="dt-modal-close" onclick="window.closeViewModal()">&times;</button>
+            </div>
+            <div class="dt-modal-body">
+                <!-- Abas -->
+                <div class="dt-tabs">
+                    <button class="dt-tab-btn active" onclick="window.openTab('info')">Informações Gerais</button>
+                    <button class="dt-tab-btn" onclick="window.openTab('colaboradores')">Colaboradores</button>
+                    <button class="dt-tab-btn" onclick="window.openTab('cargos')">Cargos</button>
+                </div>
 
-          <div class="inputs-label">
-            <label for="sigla">Sigla</label>
-            <input type="text" id="sigla" required placeholder="Ex: TI" />
-          </div>
+                <!-- Aba de Informações Gerais -->
+                <div id="dt-tab-info" class="dt-tab-content active">
+                    <div class="dt-info-line">
+                        <span class="dt-info-label">Nome:</span>
+                        <span class="dt-info-value" id="dt-view-nome"></span>
+                    </div>
+                    <div class="dt-info-line">
+                        <span class="dt-info-label">Sigla:</span>
+                        <span class="dt-info-value" id="dt-view-sigla"></span>
+                    </div>
+                    <div class="dt-info-line">
+                        <span class="dt-info-label">Gerente:</span>
+                        <span class="dt-info-value" id="dt-view-gerente"></span>
+                    </div>
+                    <div class="dt-info-line">
+                        <span class="dt-info-label">Telefone:</span>
+                        <span class="dt-info-value" id="dt-view-telefone"></span>
+                    </div>
+                    <div class="dt-info-line">
+                        <span class="dt-info-label">Localização:</span>
+                        <span class="dt-info-value" id="dt-view-local"></span>
+                    </div>
+                    <div class="dt-info-line">
+                        <span class="dt-info-label">Colaboradores:</span>
+                        <span class="dt-info-value" id="dt-view-colaboradores"></span>
+                    </div>
+                    <div class="dt-info-line">
+                        <span class="dt-info-label">Descrição:</span>
+                        <span class="dt-info-value" id="dt-view-descricao"></span>
+                    </div>
+                    <div class="dt-info-line">
+                        <span class="dt-info-label">Cargos no departamento:</span>
+                        <span class="dt-info-value" id="dt-view-cargos"></span>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <button class="btn-defaunt" onclick="window.openAdvancedEdit()">
+                            <i class="fas fa-edit"></i> Edição Avançada
+                        </button>
+                    </div>
+                </div>
 
-          <div class="inputs-label">
-            <label for="telefone">Telefone</label>
-            <input
-              type="text"
-              id="telefone"
-              required
-              placeholder="(XX) XXXX-XXXX"
-            />
-          </div>
+                <!-- Aba de Colaboradores -->
+                <div id="dt-tab-colaboradores" class="dt-tab-content">
+                    <div class="dt-filters">
+                        <select class="dt-filter-select" id="dt-filter-mes">
+                            <option value="">Mês de Contratação</option>
+                            <option value="1">Janeiro</option>
+                            <option value="2">Fevereiro</option>
+                            <!-- Mais meses -->
+                        </select>
+                        <select class="dt-filter-select" id="dt-filter-ano">
+                            <option value="">Ano de Contratação</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                        </select>
+                        <select class="dt-filter-select" id="dt-filter-ordem">
+                            <option value="az">Ordem A-Z</option>
+                            <option value="za">Ordem Z-A</option>
+                        </select>
+                        <input type="text" class="dt-form-input" style="flex: 1; max-width: 300px;" id="dt-search-colaborador" placeholder="Buscar por nome">
+                    </div>
+                    
+                    <table class="dt-table" id="dt-table-colaboradores">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Cargo</th>
+                                <th>Data de Admissão</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dt-table-colaboradores-body">
+                            <!-- Dados dos colaboradores serão inseridos aqui -->
+                        </tbody>
+                    </table>
+                </div>
 
-          <div class="inputs-label">
-            <label for="localizacao">Localização</label>
-            <input
-              type="text"
-              id="localizacao"
-              placeholder="Ex: Bloco A - 2º Andar"
-            />
-          </div>
+                <!-- Aba de Cargos -->
+                <div id="dt-tab-cargos" class="dt-tab-content">
+                    <div style="margin-bottom: 20px;">
+                        <button class="btn-defaunt" onclick="window.openNovoCargo()">
+                            <i class="fas fa-plus"></i> Novo Cargo
+                        </button>
+                    </div>
+                    
+                    <table class="dt-table" id="dt-table-cargos">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Descrição</th>
+                                <th>Vagas Abertas</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dt-table-cargos-body">
+                            <!-- Dados dos cargos serão inseridos aqui -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="dt-modal-footer">
+                <button class="dt-btn-secondary" onclick="window.closeViewModal()">Fechar</button>
+            </div>
+        </div>
+    </div>
 
-          <div class="inputs-label">
-            <label for="descricao">Descrição</label>
-            <textarea
-              id="descricao"
-              rows="4"
-              required
-              placeholder="Descrição das atividades..."
-            ></textarea>
-          </div>
-
-          <div class="dt-modal-footer">
-            <button
-              type="button"
-              class="dt-btn-cancel"
-              onclick="window.closeModal()"
-            >
-              Cancelar
-            </button>
-            <button type="submit" class="dt-btn-save">Salvar</button>
-          </div>
-        </form>
-      </div>
+    <!-- Modal para visualizar colaborador detalhado -->
+    <div id="dt-modal-colaborador-detalhado" class="dt-modal-overlay">
+        <div class="dt-modal dt-modal-large">
+            <div class="dt-modal-header">
+                <h3 class="dt-modal-title">Detalhes do Colaborador</h3>
+                <button class="dt-modal-close" onclick="window.closeColaboradorModal()">&times;</button>
+            </div>
+            <div class="dt-modal-body">
+                <div class="dt-colaborador-detalhado">
+                    <div class="dt-colaborador-header">
+                        <h3 class="dt-colaborador-nome" id="dt-colaborador-nome">Fulano da Silva</h3>
+                        <span class="dt-department-sigla" id="dt-colaborador-cargo">Analista de RH</span>
+                    </div>
+                    
+                    <div class="dt-info-grid">
+                        <div class="dt-info-box">
+                            <h4 class="dt-info-box-title">Informações Pessoais</h4>
+                            <div class="dt-info-line">
+                                <span class="dt-info-label">CPF:</span>
+                                <span class="dt-info-value" id="dt-colaborador-cpf">000.000.000-00</span>
+                            </div>
+                            <div class="dt-info-line">
+                                <span class="dt-info-label">Data de Nascimento:</span>
+                                <span class="dt-info-value" id="dt-colaborador-nascimento">01/01/1990</span>
+                            </div>
+                            <div class="dt-info-line">
+                                <span class="dt-info-label">Gênero:</span>
+                                <span class="dt-info-value" id="dt-colaborador-genero">Masculino</span>
+                            </div>
+                            <div class="dt-info-line">
+                                <span class="dt-info-label">Estado Civil:</span>
+                                <span class="dt-info-value" id="dt-colaborador-estado-civil">Casado</span>
+                            </div>
+                        </div>
+                        
+                        <div class="dt-info-box">
+                            <h4 class="dt-info-box-title">Informações Profissionais</h4>
+                            <div class="dt-info-line">
+                                <span class="dt-info-label">Departamento:</span>
+                                <span class="dt-info-value" id="dt-colaborador-departamento">Recursos Humanos</span>
+                            </div>
+                            <div class="dt-info-line">
+                                <span class="dt-info-label">Cargo:</span>
+                                <span class="dt-info-value" id="dt-colaborador-cargo-info">Analista de RH</span>
+                            </div>
+                            <div class="dt-info-line">
+                                <span class="dt-info-label">Data de Admissão:</span>
+                                <span class="dt-info-value" id="dt-colaborador-admissao">15/03/2022</span>
+                            </div>
+                            <div class="dt-info-line">
+                                <span class="dt-info-label">Salário:</span>
+                                <span class="dt-info-value" id="dt-colaborador-salario">R$ 5.500,00</span>
+                            </div>
+                            <div class="dt-info-line">
+                                <span class="dt-info-label">Tipo de Contrato:</span>
+                                <span class="dt-info-value" id="dt-colaborador-contrato">CLT</span>
+                            </div>
+                        </div>
+                        
+                        <div class="dt-info-box">
+                            <h4 class="dt-info-box-title">Contato</h4>
+                            <div class="dt-info-line">
+                                <span class="dt-info-label">Email:</span>
+                                <span class="dt-info-value" id="dt-colaborador-email">fulano@empresa.com</span>
+                            </div>
+                            <div class="dt-info-line">
+                                <span class="dt-info-label">Celular:</span>
+                                <span class="dt-info-value" id="dt-colaborador-celular">(11) 99999-9999</span>
+                            </div>
+                        </div>
+                        
+                        <div class="dt-info-box">
+                            <h4 class="dt-info-box-title">Endereço</h4>
+                            <div class="dt-info-line">
+                                <span class="dt-info-label">Endereço:</span>
+                                <span class="dt-info-value" id="dt-colaborador-endereco">Rua Exemplo, 123</span>
+                            </div>
+                            <div class="dt-info-line">
+                                <span class="dt-info-label">Bairro:</span>
+                                <span class="dt-info-value" id="dt-colaborador-bairro">Centro</span>
+                            </div>
+                            <div class="dt-info-line">
+                                <span class="dt-info-label">Cidade/UF:</span>
+                                <span class="dt-info-value" id="dt-colaborador-cidade">São Paulo/SP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dt-modal-footer">
+                <button class="dt-btn-secondary" onclick="window.closeColaboradorModal()">Fechar</button>
+            </div>
+        </div>
     </div>
 
     <div id="colaboradores-screen" class="screen" style="display: none">
