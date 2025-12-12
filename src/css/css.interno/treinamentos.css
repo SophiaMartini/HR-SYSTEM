@@ -482,6 +482,14 @@
     background-position: center;
 }
 
+.cabecalho-conclusao {
+    margin: 25px;
+}
+
+.cabecalho-conclusao .btn-defaunt {
+    margin: 15px auto;
+}
+
 .cabeca {
     display: flex;
     align-items: center;
@@ -522,8 +530,10 @@
     font-size: 1.5rem;
 }
 
+.descricao-treinamento,.acoes-visualizacao {
+    margin: 30px;
+}
 
-/* ============ ABAS ============ */
 .abas-treinamento {
     display: flex;
     border-bottom: 3px solid #e6e8d3;
@@ -579,7 +589,6 @@
 
 .aba-conteudo-treinamento {
     display: none;
-    animation: fadeIn 0.5s ease;
 }
 
 .aba-conteudo-treinamento.active {
@@ -594,7 +603,7 @@
     justify-content: space-between;
 }
 
-/* ============ MÓDULOS VISUALIZAÇÃO ============ */
+
 .modulos-treinamento {
     background: white;
     border-radius: 15px;
@@ -639,11 +648,10 @@
 .modulo-visualizacao:hover {
     border-color: #f09538;
     box-shadow: 0 8px 25px rgba(240, 149, 56, 0.15);
-    transform: translateY(-5px);
 }
 
 .modulo-header-visualizacao {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: #e9ecef;
     padding: 1.8rem;
     display: flex;
     justify-content: space-between;
@@ -655,7 +663,7 @@
 }
 
 .modulo-header-visualizacao:hover {
-    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+    background:  #dee2e6;
 }
 
 .modulo-header-visualizacao h4 {
@@ -785,12 +793,6 @@
     border: 1px solid #e6e8d3;
 }
 
-.aula-info span:hover {
-    background: #e9ecef;
-    transform: translateY(-3px);
-    border-color: #f09538;
-}
-
 .aula-descricao-visualizacao {
     margin-bottom: 1.8rem;
     padding: 1.5rem;
@@ -814,11 +816,6 @@
     border-radius: 12px;
     border: 2px solid #e6e8d3;
     transition: all 0.3s ease;
-}
-
-.aula-conteudo-visualizacao:hover {
-    border-color: #f09538;
-    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
 }
 
 .conteudo-texto {
@@ -855,7 +852,10 @@
     font-size: 1.4rem;
 }
 
-/* ============ PROGRESSO DOS ALUNOS ============ */
+#aba-colaboradores .btn-defaunt {
+    margin: auto 40px 20px;
+}
+
 .progresso-aula-alunos {
     margin-top: 2.5rem;
     padding-top: 2.5rem;
@@ -882,7 +882,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem;
+    padding: 15px;
     background: white;
     border-radius: 12px;
     border: 2px solid #e6e8d3;
@@ -904,16 +904,6 @@
     transition: opacity 0.3s ease;
 }
 
-.aluno-aula-item:hover::before {
-    opacity: 1;
-}
-
-.aluno-aula-item:hover {
-    border-color: #f09538;
-    box-shadow: 0 8px 25px rgba(240, 149, 56, 0.15);
-    transform: translateX(8px);
-}
-
 .aluno-info {
     display: flex;
     align-items: center;
@@ -929,13 +919,6 @@
     border-radius: 50%;
     transition: all 0.3s ease;
     border: 2px solid #e6e8d3;
-}
-
-.aluno-aula-item:hover .aluno-info i {
-    color: #f09538;
-    background: #fff9f0;
-    border-color: #f09538;
-    transform: scale(1.1) rotate(5deg);
 }
 
 .aluno-nome {
@@ -1037,38 +1020,35 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* ============ MODAL ============ */
-/* CORREÇÕES NO MODAL */
-.modal {
+.modal-colaboradores {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    display: none; /* Começa oculto */
+    display: none;
     align-items: center;
     justify-content: center;
-    z-index: 2000;
+    z-index: 9999;
     backdrop-filter: blur(8px);
     animation: fadeIn 0.3s ease;
 }
 
-.modal-content {
+.modal-colaboradores-content {
     background: white;
     width: 90%;
     max-width: 1200px;
     max-height: 90vh;
-    border-radius: 20px;
+    border-radius: 12px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-    border: 2px solid #e6e8d3;
     animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.modal-header {
+.modal-colaboradores-header {
     padding: 1.5rem 2rem;
     background: linear-gradient(135deg, #f09538 0%, #edab62 100%);
     border-bottom: 2px solid rgba(255, 255, 255, 0.3);
@@ -1079,52 +1059,80 @@
     overflow: hidden;
 }
 
-.modal-body {
-    padding: 2rem;
+.modal-colaboradores-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="white" opacity="0.15"/></svg>');
+    background-size: cover;
+    background-position: center;
+}
+
+.modal-colaboradores-header h3 {
+    margin: 0;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+    position: relative;
+    z-index: 1;
+}
+
+.modal-colaboradores-fechar {
+    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+}
+
+
+.modal-colaboradores-body {
+    padding: 1.5rem;
     overflow-y: auto;
     flex: 1;
     background: #f8f9fa;
 }
 
-.modal-footer {
-    padding: 1.5rem 2rem;
-    background: #f5f5f5;
-    border-top: 2px solid #e6e8d3;
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-}
-
-/* Estilos para os inputs de filtro */
-.inputs-label {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.filtros-modal {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+/* Filtros do modal */
+.modal-colaboradores-filtros {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
     margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e6e8d3;
 }
 
-.input-search-filter {
+.modal-colaboradores-busca {
     display: flex;
     align-items: center;
     background: white;
     border: 1px solid #000;
     border-radius: 8px;
     padding: 0.8rem 1rem;
-    width: 100%;
+    margin-bottom: 1rem;
 }
 
-.input-search-filter i {
+.modal-colaboradores-busca i {
     color: #000;
     margin-right: 0.5rem;
 }
 
-.input-search-filter input {
+.modal-colaboradores-busca input {
     border: none;
     outline: none;
     width: 100%;
@@ -1132,16 +1140,17 @@
     background: transparent;
 }
 
-.filtros-avancados {
+.modal-colaboradores-filtros-avancados {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
 }
 
-.filtros-avancados select {
+.modal-colaboradores-filtros-avancados select {
     padding: 0.8rem 1rem;
-    border: 2px solid #000;
-    border-radius: 10px;
+    border: 1px solid #000;
+    justify-self: center;
+    border-radius: 8px;
     font-size: 1rem;
     background: white;
     cursor: pointer;
@@ -1152,56 +1161,205 @@
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 16px;
-}
-/* ============ BOTÕES DE AÇÃO VISUALIZAÇÃO ============ */
-.acoes-visualizacao {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    margin-top: 3rem;
-    padding-top: 3rem;
-    border-top: 2px solid #e6e8d3;
+    padding-right: 35px;
 }
 
-.btn-editar-treinamento,
-.btn-atribuir-treinamento {
-    padding: 1.3rem 3rem;
-    border: none;
+
+/* Lista de colaboradores */
+.modal-colaboradores-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    overflow-y: auto;
+    padding: 1rem;
+    background: white;
+    border: 2px solid #e6e8d3;
     border-radius: 12px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.4s ease;
+    max-height: 400px;
+    scrollbar-width: thin;
+    scrollbar-color: #f09538 #f0f0f0;
+}
+
+.modal-colaboradores-lista::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-colaboradores-lista::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+.modal-colaboradores-lista::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #f09538, #edab62);
+    border-radius: 4px;
+}
+
+.modal-colaboradores-lista::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #edab62, #f09538);
+}
+
+/* itens de colaborador */
+.colaborador-item-modal {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    border: 2px solid transparent;
+    gap: 1rem;
+    padding: 1.2rem;
+    border: 2px solid #e6e8d3;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+    position: relative;
+    overflow: hidden;
 }
 
-.btn-editar-treinamento {
-    background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+.colaborador-item-modal:hover {
+    border-color: #f09538;
+    background: #fff9f0;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(240, 149, 56, 0.1);
+}
+
+.colaborador-item-modal.selecionado {
+    border-color: #4CAF50;
+    background: #f0fff4;
+}
+
+.colaborador-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #f09538;
+}
+
+.colaborador-info-modal {
+    flex: 1;
+}
+
+.colaborador-info-modal h4 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.colaborador-info-modal p {
+    margin: 0 0 0.25rem 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.colaborador-info-modal p strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.colaborador-data {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #e6e8d3;
+}
+
+.colaborador-item-modal i.fa-user-circle {
+    font-size: 2rem;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.colaborador-item-modal:hover i.fa-user-circle {
+    color: #f09538;
+    transform: scale(1.1);
+}
+
+/* area de selecionados */
+.modal-colaboradores-selecionados {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e6e8d3;
+}
+
+.modal-colaboradores-selecionados h4 {
+    margin: 0 0 1rem 0;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#contadorSelecionados {
+    background: #f09538;
     color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
 }
 
-.btn-editar-treinamento:hover {
-    background: linear-gradient(135deg, #F57C00 0%, #FF9800 100%);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(245, 124, 0, 0.3);
-    border-color: #F57C00;
+#listaSelecionadosModal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
 }
 
-.btn-atribuir-treinamento {
-    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+.selecionado-tag {
+    background: linear-gradient(135deg, #f09538, #edab62);
     color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: all 0.3s ease;
+    border: 2px solid #f09538;
+    box-shadow: 0 2px 8px rgba(240, 149, 56, 0.2);
 }
 
-.btn-atribuir-treinamento:hover {
-    background: linear-gradient(135deg, #45a049 0%, #4CAF50 100%);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
-    border-color: #45a049;
+.selecionado-tag:hover {
+    transform: scale(102%);
 }
+
+.selecionado-tag i {
+    cursor: pointer;
+    font-size: 0.9rem;}
+
+/* footer do modal */
+.modal-colaboradores-footer {
+    padding: 1.5rem;
+    background: #f5f5f5;
+    border-top: 2px solid #e6e8d3;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.btn-concluir {
+    background: #888;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 0.2s ease-in;
+}
+
+.trash {
+    margin: auto 15px ;
+    padding: 8px;
+    border-radius: 20px;
+    background-color: #721c24;
+    color: #fff;
+}
+
+
+
 
 /* ============ RESPONSIVIDADE ============ */
 @media (max-width: 1200px) {
