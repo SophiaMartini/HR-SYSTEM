@@ -12,43 +12,69 @@ document.addEventListener("DOMContentLoaded", () => {
     cpfInput.addEventListener('input', (e) => e.target.value = maskCPF(e.target.value));
 
   const form = document.getElementById("login-form");
+  
+  // Elementos de visualização de senha (opcional)
+  const togglePassword = document.getElementById("togglePassword");
+  const senhaInput = document.getElementById("senha");
+  
+  if (togglePassword && senhaInput) {
+    togglePassword.addEventListener("click", () => {
+      const type = senhaInput.getAttribute("type") === "password" ? "text" : "password";
+      senhaInput.setAttribute("type", type);
+      togglePassword.classList.toggle("fa-eye");
+      togglePassword.classList.toggle("fa-eye-slash");
+    });
+  }
 
   form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const data = {
-      email: form.email.value.trim(),
-      senha: form.senha.value.trim(),
-    };
+  // remove máscara do CPF
+  const cpfLimpo = cpfInput.value.replace(/\D/g, "");
 
-    if (!data.email || !data.senha) {
-      alert("Por favor, preencha todos os campos.");
-      return;
+  const data = {
+    cpf: cpfLimpo,
+    senha: senhaInput.value.trim(),
+  };
+
+  if (!data.cpf || !data.senha) {
+    alert("Por favor, preencha todos os campos.");
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:8000/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.message || "Falha no login.");
     }
 
-    try {
-      const response = await fetch("http://localhost:3000/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+    alert("Login realizado com sucesso!");
 
-      if (!response.ok) {
-        const err = await response.json();
-        throw new Error(err.message || "Falha no login.");
-      }
-
-      const result = await response.json();
-      alert("Login realizado com sucesso!");
-
-      if (result.token) {
-        localStorage.setItem("token", result.token);
-      }
-
-      window.location.href = "dashboard.html";
-    } catch (error) {
-      console.error("Erro ao fazer login:", error);
-      alert("Erro: " + error.message);
+    // Redirecionar baseado no tipo de usuário
+    switch (result.tipo) {
+      case "interno":
+        window.location.href = "dashboard-interno.html";
+        break;
+      case "candidato":
+        window.location.href = "dashboard-candidato.html";
+        break;
+      case "colaborador":
+        window.location.href = "dashboard-colaborador.html";
+        break;
+      default:
+        alert("Tipo de usuário inválido");
     }
-  });
+
+  } catch (error) {
+    console.error("Erro ao fazer login:", error);
+    alert("Erro: " + error.message);
+  }
+});
 });

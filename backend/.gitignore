@@ -1,0 +1,26 @@
+# Dependências do Composer
+/vendor/
+
+# Arquivo de ambiente - NUNCA versionar!
+.env
+.env.local
+.env.*.local
+
+# Arquivos de log e uploads
+/Storage/Uploads/Resumes
+/Storage/Uploads/Contratos
+/Storage/Generated/
+/storage/Logs/
+*.log
+
+# Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de IDEs e editores
+.idea/
+.vscode/
+*.swp
+*~
+*.bak
+*.tmp
