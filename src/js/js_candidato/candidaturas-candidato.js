@@ -8,11 +8,8 @@ async function loadCandidaturas() {
     try {
         const userId = getUserId();
         
-        // Simulação de API - substitua pelo seu endpoint real
-        const response = await fetch(`/api/candidaturas?candidato_id=${userId}`);
-        if (!response.ok) throw new Error('Erro ao carregar candidaturas');
-        
-        candidaturas = await response.json();
+        // Usar API fake
+        candidaturas = await window.API.getCandidaturasByCandidato(userId);
         filteredCandidaturas = [...candidaturas];
         
         renderCandidaturas();
@@ -146,11 +143,8 @@ function toggleEmptyState(forceShow = false) {
 // Função para ver detalhes da vaga
 async function verDetalhesVaga(vagaId) {
     try {
-        // Simulação de API - substitua pelo seu endpoint real
-        const response = await fetch(`/api/vagas/${vagaId}`);
-        if (!response.ok) throw new Error('Erro ao carregar detalhes');
-        
-        const vaga = await response.json();
+        // Usar API fake
+        const vaga = await window.API.getVagaById(vagaId);
         
         // Mostra modal com detalhes (implementação básica)
         const detalhes = `
@@ -178,15 +172,10 @@ async function cancelarCandidatura(candidaturaId, vagaTitulo) {
     }
     
     try {
-        // Simulação de API - substitua pelo seu endpoint real
-        const response = await fetch(`/api/candidaturas/${candidaturaId}`, {
-            method: 'DELETE'
-        });
-        
-        if (!response.ok) throw new Error('Erro ao cancelar candidatura');
-        
+        // Usar API fake
+        const res = await window.API.deleteCandidatura(candidaturaId);
+        if (!res || !res.success) throw new Error('Erro ao cancelar candidatura');
         alert('Candidatura cancelada com sucesso!');
-        
         // Recarrega as candidaturas
         loadCandidaturas();
         
@@ -210,6 +199,10 @@ function formatDate(dateString) {
 
 // Função para obter ID do usuário
 function getUserId() {
+    if (window.AuthLocal && typeof AuthLocal.getCurrentUser === 'function'){
+        const u = AuthLocal.getCurrentUser();
+        if (u && u.id) return u.id;
+    }
     return localStorage.getItem('user_id') || 1;
 }
 

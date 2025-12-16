@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const selected = tempDiv.querySelector(`#${type}`);
         if (selected) {
           target.innerHTML = selected.innerHTML;
+          // Notifica que o componente foi inserido
+          document.dispatchEvent(new CustomEvent('componentLoaded', { detail: { selector: selector, target } }));
         }
       })
       .catch(error => console.error(error));
@@ -25,6 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadComponent("header[id^='header-']", "/src/components/footer-header.html");
   loadComponent("footer[id^='footer-']", "/src/components/footer-header.html");
+
+  // Carregar e aplicar máscaras globais (se ainda não carregado)
+  if (!window._masksInjected) {
+    const s = document.createElement('script');
+    s.src = '/src/js/masks.js';
+    s.defer = true;
+    document.head.appendChild(s);
+    window._masksInjected = true;
+  }
 });
 
 document.addEventListener("click", (ev) => {

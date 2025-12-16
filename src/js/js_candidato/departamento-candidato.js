@@ -9,11 +9,8 @@ async function loadVagasDepartamento(departamentoId) {
     try {
         currentDepartamentoId = departamentoId;
         
-        // Simulação de API - substitua pelo seu endpoint real
-        const response = await fetch(`/api/departamentos/${departamentoId}/vagas`);
-        if (!response.ok) throw new Error('Erro ao carregar vagas');
-        
-        vagas = await response.json();
+        // Usar API fake
+        vagas = await window.API.getVagasByDepartamento(departamentoId);
         filteredVagas = [...vagas];
         
         renderVagas();
@@ -112,19 +109,7 @@ async function candidatarVaga(vagaId, vagaTitulo) {
         }
         
         // Simulação de API - substitua pelo seu endpoint real
-        const response = await fetch('/api/candidaturas', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                id_vaga: vagaId,
-                id_candidato: getUserId() // Função para pegar ID do usuário logado
-            })
-        });
-        
-        if (!response.ok) throw new Error('Erro ao enviar candidatura');
-        
+        await window.API.createCandidatura({ id_vaga: vagaId, id_candidato: getUserId() });
         alert('Candidatura enviada com sucesso!');
         
         // Atualiza o botão
@@ -144,8 +129,7 @@ async function candidatarVaga(vagaId, vagaTitulo) {
 // Verifica se já existe candidatura para a vaga
 async function verificarCandidatura(vagaId) {
     try {
-        const response = await fetch(`/api/candidaturas/verificar?vaga_id=${vagaId}&candidato_id=${getUserId()}`);
-        const data = await response.json();
+        const data = await window.API.verificarCandidatura(vagaId, getUserId());
         return data.jaCandidatado;
     } catch (error) {
         return false;
@@ -154,7 +138,12 @@ async function verificarCandidatura(vagaId) {
 
 // Função para obter ID do usuário (substitua pela sua lógica de autenticação)
 function getUserId() {
-    // Exemplo: pega do localStorage
+    // Preferir AuthLocal se disponível
+    if (window.AuthLocal && typeof AuthLocal.getCurrentUser === 'function'){
+        const u = AuthLocal.getCurrentUser();
+        if (u && u.id) return u.id;
+    }
+    // Exemplo legado: pega do localStorage
     return localStorage.getItem('user_id') || 1;
 }
 

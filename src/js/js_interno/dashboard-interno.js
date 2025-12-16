@@ -244,30 +244,66 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!tbody) return;
     tbody.innerHTML = "";
 
-    listaCandidatos.forEach((c) => {
+    // Se AuthLocal disponível, buscar candidatos reais do localStorage
+    const candidatos = window.AuthLocal ? AuthLocal.getPendingCandidates() : listaCandidatos;
+
+    if (!candidatos || candidatos.length === 0) {
+      tbody.innerHTML = "<tr><td colspan='4' style='text-align:center;padding:20px;color:#666;'>Nenhuma candidatura/pendente encontrada.</td></tr>";
+      return;
+    }
+
+    candidatos.forEach((c) => {
       const tr = document.createElement("tr");
       tr.innerHTML = `
                 <td>${c.nome}</td>
-                <td>${c.cpf}</td>
-                <td>${c.codigo}</td>
+                <td>${(c.cpf||'')}</td>
+                <td>${c.id || ''}</td>
                 <td>
                     <div class="cand-actions">
                         <button class="c-btn btn-yellow btn-ver-detalhe" data-nome="${c.nome}">
                             <i class="fa fa-eye"></i> Ver
                         </button>
-                        <button class="c-btn btn-blue"><i class="fa fa-download"></i> Baixar</button>
-                        <button class="c-btn btn-red"><i class="fa fa-times"></i></button>
+                        <button class="c-btn btn-green btn-approve" data-cpf="${c.cpf}"><i class="fa fa-check"></i> Aprovar</button>
+                        <button class="c-btn btn-red btn-reject" data-cpf="${c.cpf}"><i class="fa fa-times"></i> Rejeitar</button>
                     </div>
                 </td>
             `;
       tbody.appendChild(tr);
     });
 
-    // Adiciona evento aos botões "Ver" recém criados
+    // Eventos
     document.querySelectorAll(".btn-ver-detalhe").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const nomeCandidato = btn.getAttribute("data-nome");
         abrirDetalhesCandidato(nomeCandidato);
+      });
+    });
+
+    document.querySelectorAll('.btn-approve').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const cpf = btn.getAttribute('data-cpf');
+        if (confirm('Aprovar candidato e torná-lo colaborador?')) {
+          if (window.AuthLocal) {
+            AuthLocal.approveCandidate(cpf);
+            initCandidaturasTable();
+            alert('Candidato aprovado e convertido em colaborador.');
+          }
+        }
+      });
+    });
+
+    document.querySelectorAll('.btn-reject').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const cpf = btn.getAttribute('data-cpf');
+        if (confirm('Remover candidato?')) {
+          if (window.AuthLocal) {
+            // simples remoção
+            const users = AuthLocal.getUsers().filter(u => (u.cpf||'').replace(/\D/g,'') !== (cpf||'').replace(/\D/g,''));
+            AuthLocal.saveUsers(users);
+            initCandidaturasTable();
+            alert('Candidato removido.');
+          }
+        }
       });
     });
 

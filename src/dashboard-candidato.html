@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="/src/css/css.candidato/candidaturas-candidato.css">
     
     <!-- JS -->
+    <script src="/src/js/auth-local.js" defer></script>
+    <script src="/src/js/database-simulacao.js" defer></script>
+    <script src="/src/js/api-fake.js" defer></script>
     <script src="/src/js/all.js" defer></script>
     <script src="/src/js/js_interno/dashboard-interno.js" defer></script>
     <script src="/src/js/js_candidato/vagas-candidato.js" defer></script>
@@ -212,5 +215,18 @@
     </div>
 
     <footer id="footer-RHFoot"></footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        AuthLocal.init();
+        // proteger página para candidato
+        AuthLocal.protectPage(['candidato']);
+        const user = AuthLocal.getCurrentUser();
+        if (user) {
+          document.querySelectorAll('[data-field="nome-completo"]').forEach(el => el.textContent = user.nome || '');
+          document.querySelectorAll('[data-field="email"]').forEach(el => el.textContent = user.email || '');
+        }
+      });
+    </script>
 </body>
 </html>

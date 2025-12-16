@@ -76,11 +76,17 @@
 
         <div class="profile">
             <img src="" alt="Foto do Usuário" id="profile-btn">
+            <span class="user-name-header"></span>
+            <button id="mobile-logout-btn" class="mobile-logout-btn">Sair</button>
 
             <div class="dropdown" id="dropdown-menu">
-                <a href="#"><i class="fa-solid fa-user"></i> Meu Perfil</a>
-                <a href="#"><i class="fa-solid fa-gear"></i> Configurações</a>
-                <a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sair</a>
+                <div class="dropdown-header">
+                    <strong class="dropdown-user-name"></strong><br>
+                    <small class="dropdown-user-email"></small>
+                </div>
+                <a href="#" id="profile-link"><i class="fa-solid fa-user"></i> Meu Perfil</a>
+                <a href="#" id="settings-link"><i class="fa-solid fa-gear"></i> Configurações</a>
+                <a href="#" id="header-logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a>
             </div>
         </div>
 

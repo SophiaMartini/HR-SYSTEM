@@ -6,11 +6,8 @@ let filteredDepartamentos = [];
 // Função principal para carregar departamentos
 async function loadDepartamentos() {
     try {
-        // Simulação de API - substitua pelo seu endpoint real
-        const response = await fetch('/api/departamentos');
-        if (!response.ok) throw new Error('Erro ao carregar departamentos');
-        
-        departamentos = await response.json();
+        // Usar API fake
+        departamentos = await window.API.getDepartamentos();
         filteredDepartamentos = [...departamentos];
         
         renderDepartamentos();

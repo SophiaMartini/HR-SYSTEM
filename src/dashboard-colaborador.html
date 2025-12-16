@@ -38,6 +38,9 @@
     <link rel="stylesheet" href="./css/perfil.css">
 
     <!--js-->
+    <script src="/src/js/auth-local.js" defer></script>
+    <script src="/src/js/database-simulacao.js" defer></script>
+    <script src="/src/js/api-fake.js" defer></script>
     <script src="/src/js/js_interno/dashboard-interno.js" defer></script>
     <script src="/src/js/all.js" defer></script>
 
@@ -80,6 +83,18 @@
     </main>
 
   <div id="treinamentos-screen" class="screen" style="display: none">
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        AuthLocal.init();
+        AuthLocal.protectPage(['colaborador']);
+        const user = AuthLocal.getCurrentUser();
+        if (user) {
+          const el = document.querySelector('.user-name-header');
+          if (el) el.textContent = user.nome;
+        }
+      });
+    </script>
     <section class="hero-section">
       <h1>Meus Treinamentos</h1>
       <img

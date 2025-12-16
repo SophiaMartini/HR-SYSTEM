@@ -1,103 +1,354 @@
-
-
-.topics {
-    width: 90%;
-    box-sizing: border-box;
-    margin: 25px auto;
-    border-radius: 6px;
-    border: 1px solid #c1c1c1;
-    padding: 2rem;
-    background-color: #ffffff; 
+/* --- Layout Geral da Tela --- */
+#folha-screen #content {
+    max-width: 1200px; 
+    margin: 0 auto;
 }
 
-.topics-title {
-    color: #191919;
-    display: flex;
-    margin-left: 4%;
-    margin-top: 2%;
-    margin-bottom: 6%;
+.colab-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 20px;
+    padding-top: 20px;
 }
 
-.input-group {
-    font-size: 23px;
+.div-de-organizacao {
     display: flex;
-    background-color: #e6e6e6;
-    padding: 4px 4px 8px 8px;
-    border-radius: 26px;
-    z-index: 1;
-    width: 90%;
-    margin: 25px auto;
-    gap: 5px;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    padding: 20px;
+    border: 1px solid #e6e8d3;
 }
 
-.input-icon {
+.div-de-organizacao:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Informações do Perfil e Cargo --- */
+.fp-perfil-info {
     display: flex;
-    color: #888888;
-    min-width: 32px;
-    min-height: 32px;
     align-items: center;
-    justify-content: center;
+    gap: 15px;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 15px;
 }
 
-.input-field {
-    font-size: 16px;
+.fp-profile-pic {
+    width: 60px;
+    height: 60px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    border: 2px solid var(--laranja-claro, #ffc099);
+}
+
+.fp-profile-pic img {
     width: 100%;
-    border: none;
-    background-color: transparent;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
 }
 
-.input-field:focus {
-    outline: none;
+.fp-textos .fp-nome {
+    font-weight: bold;
+    color: var(--cor-principal, #333); 
+    font-size: 1.1rem;
 }
 
-.button-default_02 {
-    border: none;
-    color: white;
+.fp-textos .fp-cargo {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* --- Botões de Ação (Compactados) --- */
+.fp-botoes-acao {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+
+/* --- Status de Pagamento (Visualização Única) --- */
+.fp-status-pagamento {
+    padding-top: 15px;
+    border-top: 1px dashed #eee;
+    margin-top: 15px;
+}
+
+.fp-status-titulo {
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    color: var(--cor-principal, #333);
+}
+
+.fp-status-lista {
+    display: flex;
+    gap: 20px;
+}
+
+/* Oculta o item de status que não está selecionado */
+.fp-status-item {
+    display: none; 
+}
+
+.fp-status-item:has(input[type="radio"]:checked) {
+    display: block; 
+}
+
+.fp-status-item input[type="radio"] {
+    display: none; 
+}
+
+.fp-status-item label {
     font-weight: 500;
-    border-radius: 6px; 
-    margin: 25px auto 0 auto;
-    margin-top: 25px;
-    padding: 10px 50px;
-    background: #f28c28;
-    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 22px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    display: block;
+    cursor: default;
+}
+
+/* Cores do Status */
+.status-pendente {
+    color: var(--laranja, #ff6b00);
+    background-color: #fff0e0;
+    border-color: var(--laranja, #ff6b00); 
+}
+
+.status-emitido {
+    color: var(--verde-sucesso, #28a745); 
+    background-color: #e0fff0;
+    border-color: transparent; /* Sem borda, mais clean */
+}
+
+/* Destaque do status checked */
+.fp-status-item input[type="radio"]:checked + label {
+    font-weight: bold;
+    box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.3); 
+}
+
+.fp-status-item input[type="radio"]:checked + .status-emitido {
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.3); 
+}
+
+/* --- Botão Global de Exportar --- */
+.acoes-globais-folha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.acoes-globais-folha .input-search-filter {
     display: flex;
     align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 5px 10px;
+    width: 300px;
+}
+
+.acoes-globais-folha .input-search-filter input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    width: 100%;
+}
+
+.acoes-globais-folha .input-search-filter i {
+    color: #999;
+    margin-right: 5px;
+}
+
+.fp-botoes-acao .btn-defaunt {
+    background: #82856c;
+    padding: 8px 6px;
+    margin: 10px 25px auto;
+}
+
+.fp-botoes-acao .btn-defaunt:hover {
+    background: #6b6d5b;
+    padding: 8px 6px;
+    margin: 10px 25px auto;
+}
+
+.modal-overlay {
+    display: none; /* Inicia oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
     justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Garante que fique acima de todo o conteúdo */
+}
+
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-content.small {
+    width: 90%;
+    max-width: 350px;
     text-align: center;
 }
 
-.button-default_02:hover {
-    background-color: #f27228;
-    transform:scale(101%);
+.modal-content.large {
+    width: 90%;
+    max-width: 800px; /* Aumentado para caber a tabela */
 }
 
-.pagination {
-    margin: 20px auto;
-    width: 20px;
+.modal-header {
     display: flex;
-    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
 }
-  
 
-.page-number {
-    padding: 10px 15px;
-    background-color: #eee;
-    border-radius: 6px;
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--cor-principal, #333);
+}
+
+.btn-fechar {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #999;
     cursor: pointer;
-    transition: 0.3s;
-    user-select: none;
+    transition: color 0.2s;
+}
+
+.btn-fechar:hover {
+    color: var(--laranja, #ff6b00);
+}
+
+.modal-titulo-sucesso {
+    color: var(--verde-sucesso, #28a745);
+}
+
+.modal-fechar {
+    margin-top: 20px;
+}
+
+/* --- ESTILOS ESPECÍFICOS DO CONTRATRACHEQUE --- */
+.modal-body h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: var(--laranja, #ff6b00);
+    border-bottom: 2px solid var(--laranja-claro, #ffc099);
+    padding-bottom: 5px;
+}
+
+.detalhes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px 20px;
+    font-size: 0.95rem;
+}
+
+.detalhes-grid p {
+    margin: 0;
+}
+
+.detalhes-grid strong {
     font-weight: 600;
+    color: #333;
 }
 
-.page-number:hover {
-    background-color: #f28c28;
-    color: white;
+/* Tabela de Lançamentos */
+.tabela-contracheque {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.9rem;
 }
 
-.page-number.active {
-    background-color: #f28c28;
-    color: white;
+.tabela-contracheque th, .tabela-contracheque td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.tabela-contracheque th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+    color: #555;
+}
+
+.tabela-contracheque tfoot td {
+    font-weight: bold;
+    background-color: #f0f0f0;
+}
+
+.tabela-contracheque .valor-provento {
+    color: var(--verde-sucesso, #28a745);
+    font-weight: 600;
+    text-align: right;
+}
+
+.tabela-contracheque .valor-desconto {
+    color: #dc3545;
+    font-weight: 600;
+    text-align: right;
+}
+
+/* Resumo Financeiro */
+.resumo-financeiro {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.resumo-financeiro h5 {
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.valor-bruto {
+    color: #007bff;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.valor-descontos {
+    color: #dc3545;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.valor-liquido {
+    color: var(--verde-sucesso, #28a745);
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.modal-footer {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    text-align: right;
 }

@@ -1,257 +1,414 @@
-#candidaturas-screen {
-  --bg-body-cand: #ea9641;
-  --header-bg-cand: #e8cba5;
-  background-color: var(--bg-body-cand);
-  min-height: 100vh;
-  width: 100%;
-  font-family: "Open Sans", sans-serif;
-  padding-bottom: 50px;
+.status-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+.status-reprovado {
+    background-color: #c0392b; /* btn-red */
+}
+.status-aprovado {
+    background-color: #27ae60; /* Verde */
+}
+.status-pendente {
+    background-color: #f1c40f; /* btn-yellow */
+    color: #333; /* Ajuste para melhor contraste no amarelo */
 }
 
-/* Header da tela de candidaturas */
-.candidaturas-top-section {
-  background: linear-gradient(to right, #eacda3, #d6ae7b);
-  background-color: var(--header-bg-cand);
-  height: 350px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-  margin-bottom: 60px;
-}
-
-.cand-header-content {
-  width: 100%;
-  max-width: 1200px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 40px;
-}
-
-.cand-title h1 {
-  font-family: "Roboto", sans-serif;
-  font-size: 3.5rem;
-  color: #333;
-  line-height: 1.2;
-  margin: 0;
-}
-
-.cand-img-area img {
-  margin-top: 50px;
-  border-radius: 20px 20px 0 0;
-  border: 5px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  max-height: 300px;
-  object-fit: cover;
-}
-
-/* Container Principal */
-.cand-container {
-  max-width: 1100px;
-  margin: -80px auto 0;
-  position: relative;
-  z-index: 10;
-  padding: 0 20px;
-}
-
-/* Cards */
-.cand-card {
-  background: white;
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  margin-bottom: 20px;
-}
-
-/* Filtros */
-.cand-search-row {
-  position: relative;
-  margin-bottom: 15px;
-}
-.cand-search-row input {
-  width: 100%;
-  padding: 10px 10px 10px 35px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  height: 40px;
-  outline: none;
-}
-.cand-search-icon {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #999;
-}
+/* Arquivo: candidaturas-interno.css */
 
 .cand-filters {
-  display: flex;
-  gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: stretch; 
+    width: 100%;
 }
-.cand-filter-group {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.cand-filter-group label {
-  font-size: 0.8rem;
-  color: #666;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-.cand-filter-group select {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+.select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
-/* Tabela */
+.select-wrapper i {
+    position: absolute;
+    right: 12px;
+    pointer-events: none;
+    color: #999;
+    font-size: 0.8rem;
+}
+
+/* Modificadores de cor (Necessário definir essas classes no seu arquivo CSS geral ou base) */
+.btn-defaunt-yellow { background-color: #f1c40f; color: #333; }
+.btn-defaunt-blue { background-color: #5680e9; color: white; }
+.btn-defaunt-red { background-color: #c0392b; color: white; }
+.btn-defaunt-green { background-color: #27ae60; color: white; }
+
+.btn-defaunt:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.cabecalho {
+    display: flex;
+    width: 100%;
+    margin: 20px;
+}
+/* --- ESTILOS DA TABELA --- */
+
 .cand-table-wrap {
-  background: #f4f4f4;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+    overflow-x: auto; /* Adicionado para responsividade em telas maiores que 768px */
 }
+
 .cand-table-header {
-  padding: 10px 15px;
-  font-weight: 600;
-  color: #333;
-  border-bottom: 1px solid #ddd;
-  background: #f9f9f9;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #fafafa;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
 }
 
-#candidaturas-screen table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-}
-#candidaturas-screen th {
-  padding: 12px 15px;
-  text-align: left;
-  color: #333;
-}
-#candidaturas-screen td {
-  padding: 12px 15px;
-  vertical-align: middle;
-  color: #444;
+table {
+    width: 100%;
+    min-width: 700px; 
+    border-collapse: collapse;
+    font-family: "Open Sans", sans-serif;
+    table-layout: auto;
 }
 
-/* Cores alternadas da tabela */
-#candidaturas-screen tbody tr {
-  background-color: #e0e0e0;
-  border-bottom: 2px solid #f4f4f4;
-}
-#candidaturas-screen tbody tr:nth-child(odd) {
-  background-color: #dcdcdc;
-}
-#candidaturas-screen tbody tr:nth-child(even) {
-  background-color: #ececec;
+table thead {
+    background-color: #f5f5f5;
 }
 
-/* Botões */
+table thead tr {
+    border-bottom: 2px solid #e0e0e0;
+}
+
+table thead th {
+    padding: 14px 24px;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    white-space: nowrap;
+}
+
+table tbody tr {
+    background-color: #ffffff;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+    height: auto;
+}
+
+table tbody tr:hover {
+    background-color: #fafafa;
+}
+
+table tbody tr:last-child {
+    border-bottom: none;
+}
+
+table tbody td {
+    padding: 16px 24px;
+    font-size: 0.95rem;
+    color: #333;
+    vertical-align: middle;
+    word-break: break-word;
+}
+
+table tbody td:nth-child(1) {
+    font-weight: 500;
+    color: #222;
+    min-width: 160px;
+}
+
+table tbody td:nth-child(2) {
+    font-family: "Courier New", monospace;
+    font-size: 0.9rem;
+    color: #666;
+    min-width: 130px;
+}
+
+table tbody td:nth-child(3) {
+    font-family: "Courier New", monospace;
+    font-size: 0.9rem;
+    color: #666;
+    min-width: 110px;
+}
+
+table tbody td:nth-child(4) {
+    text-align: center;
+    min-width: 280px;
+}
+
+/* --- ESTILOS DE AÇÕES --- */
+
 .cand-actions {
-  display: flex;
-  gap: 8px;
-  justify-content: flex-end;
-}
-.c-btn {
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  color: #333;
-  font-size: 0.75rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.c-btn:hover {
-  opacity: 0.8;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.btn-yellow {
-  background-color: #f1c40f;
-}
-.btn-blue {
-  background-color: #5680e9;
-  color: white;
-}
-.btn-red {
-  background-color: #c0392b;
-  color: white;
-}
-
-/* Decoração */
-.cand-dots {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 5px;
-  opacity: 0.6;
-}
-.c-dot {
-  width: 4px;
-  height: 4px;
-  background: white;
-  border-radius: 50%;
+.cand-actions .btn-defaunt {
+    padding: 7px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    height: 32px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Paginação */
+.cand-actions .btn-defaunt i {
+    font-size: 0.8rem;
+}
+
+/* --- PAGINAÇÃO --- */
+
 .cand-pagination {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 0;
-  color: #333;
-  font-size: 0.85rem;
-}
-.cand-pages span {
-  margin: 0 3px;
-  cursor: pointer;
-  color: #5680e9;
-}
-.cand-pages .active {
-  color: #333;
-  font-weight: bold;
-  text-decoration: underline;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
-/* Botão Voltar (Estilo Extra) */
+.cand-pages {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cand-pages span {
+    padding: 7px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    font-weight: 500;
+    user-select: none;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    color: #666;
+}
+
+.cand-pages span:hover:not(.active) {
+    background-color: #f5f5f5;
+    border-color: #bbb;
+}
+
+.cand-pages span.active {
+    background-color: #f1c40f;
+    color: #333;
+    font-weight: 600;
+    border-color: #f1c40f;
+}
+
+.cand-pages span:first-child,
+.cand-pages span:last-child {
+    font-weight: 600;
+    color: #555;
+}
+
+.cand-page-info {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.cand-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- ESTILOS DE DETALHES DO CANDIDATO (Tela Secundária) --- */
+
+#candidato-candidaturas-screen {
+    background: #ffffff; 
+    min-height: 100vh;
+    width: 100%;
+    font-family: "Open Sans", sans-serif;
+    padding-bottom: 50px;
+}
+#candidato-candidaturas-screen .candidaturas-top-section {
+    background: #ffffff; 
+    height: 350px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+
+/* Sobrescritas para tabela de detalhes */
+#candidato-candidaturas-screen table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+#candidato-candidaturas-screen tbody tr {
+    background-color: white !important;
+    border-bottom: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+#candidato-candidaturas-screen tbody tr:nth-child(odd),
+#candidato-candidaturas-screen tbody tr:nth-child(even) {
+    background-color: white !important;
+}
+#candidato-candidaturas-screen td {
+    padding: 15px 15px;
+    border: none;
+}
+#candidato-candidaturas-screen thead tr {
+    background-color: transparent !important;
+}
+#candidato-candidaturas-screen .cand-table-wrap {
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+#candidato-candidaturas-screen table th {
+    padding-bottom: 15px;
+}
 .btn-voltar {
-  background: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-  display: inline-block;
-  color: #333;
-  transition: transform 0.2s;
+    background-color: #f5f5f5;
+    color: #555;
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
 }
 .btn-voltar:hover {
-  transform: scale(1.05);
+    background-color: #eee;
 }
 
-/* Responsividade */
+
+/* --- RESPONSIVIDADE (CANDIDATURAS) --- */
+
+@media (max-width: 1024px) {
+    .cand-filters {
+        gap: 16px;
+    }
+    .cand-table-wrap {
+        overflow-x: auto;
+    }
+}
+
 @media (max-width: 768px) {
-  .cand-header-content {
-    flex-direction: column;
-    text-align: center;
-  }
-  .cand-filters {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .cand-actions {
-    flex-direction: column;
-  }
-  .c-btn {
-    width: 100%;
-    justify-content: center;
-  }
+    .cand-filters {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .cand-filters-card {
+        padding: 16px;
+    }
+
+    table thead th {
+        padding: 10px 12px;
+        font-size: 0.7rem;
+    }
+
+    table tbody td {
+        padding: 12px 12px;
+        font-size: 0.85rem;
+    }
+
+    .cand-actions {
+        gap: 6px;
+    }
+
+    .cand-actions .btn-defaunt {
+        padding: 6px 10px;
+        font-size: 0.65rem;
+        height: 28px;
+    }
+    
+    .cand-pagination {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .cand-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .cand-filters-card {
+        padding: 12px;
+    }
+
+    table {
+        font-size: 0.75rem;
+    }
+
+    table thead th {
+        padding: 8px 10px;
+        font-size: 0.6rem;
+    }
+
+    table tbody td {
+        padding: 10px 10px;
+        font-size: 0.8rem;
+    }
+
+    .cand-actions {
+        flex-direction: column;
+        gap: 4px;
+        width: 100%;
+    }
+
+    .cand-actions .btn-defaunt {
+        width: 100%;
+        justify-content: center;
+        padding: 6px 8px;
+        font-size: 0.6rem;
+        height: 26px;
+    }
+
+    .cand-pagination {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cand-pages {
+        width: 100%;
+        justify-content: center;
+    }
 }

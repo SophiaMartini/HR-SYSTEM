@@ -400,8 +400,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("Dados enviados:", data);
 
+    // Primeiro, tenta salvar localmente (localStorage) usando AuthLocal
     try {
-      // Enviar dados para a API de cadastro
+      if (window.AuthLocal) {
+        const cpfLimpo = (data.cpf || '').replace(/\D/g, '');
+        if (AuthLocal.findByCpf(cpfLimpo)) {
+          alert('Já existe um usuário cadastrado com este CPF. Faça login ou recupere a senha.');
+          return;
+        }
+
+        const newUser = {
+          id: 'u-' + Date.now(),
+          nome: data.nome,
+          email: data.email,
+          cpf: cpfLimpo,
+          senha: data.senha,
+          role: 'candidato',
+          autorizado: false,
+          createdAt: new Date().toISOString()
+        };
+
+        AuthLocal.addUser(newUser);
+        alert('Cadastro realizado localmente! Aguardar aprovação interna para virar colaborador.');
+        window.location.href = 'login.html';
+        return;
+      }
+
+      // Se AuthLocal não disponível, tenta enviar para a API
       const response = await fetch("http://localhost:3000/api/cadastro", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

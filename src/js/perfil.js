@@ -57,6 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
         INICIALIZAÇÃO
     -------------------------------------------------------------------------- */
     function initProfilePage() {
+        // Merge dados do AuthLocal (se existir) para substituir os mocks
+        mergeAuthUserData();
+
         // Carrega dados do usuário
         loadUserData();
         
@@ -68,6 +71,40 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Configura eventos
         setupEventListeners();
+
+    }
+
+    // Integração com AuthLocal / fakeDB: se houver um usuário logado, usa esses dados
+    function mergeAuthUserData(){
+        try{
+            if (window.AuthLocal && typeof AuthLocal.getCurrentUser === 'function'){
+                const cu = AuthLocal.getCurrentUser();
+                if (cu){
+                    // Prioriza nome/email vindo do AuthLocal
+                    mockUserData.nome = cu.nome || mockUserData.nome;
+                    mockUserData.email = cu.email || mockUserData.email;
+                    // Tentativa de mapear telefone/endereço a partir do fakeDB se disponível
+                    try{
+                        if (window.fakeDB && typeof fakeDB.getUsuarios === 'function'){
+                            const cleaned = (cu.cpf||'').replace(/\D/g,'');
+                            const udb = fakeDB.getUsuarios().find(u => (u.cpf||'').replace(/\D/g,'') === cleaned);
+                            if (udb){
+                                // pode conter telefone, localizacao, data_nascimento
+                                if (udb.telefone) mockUserData.telefone = udb.telefone;
+                                if (udb.endereco) mockUserData.localizacao = udb.endereco;
+                                if (udb.data_nascimento) mockUserData.dataNascimento = udb.data_nascimento;
+                                // também atualiza CPF apresentável
+                                mockUserData.cpf = udb.cpf || cu.cpf || mockUserData.cpf;
+                            } else {
+                                // se não tem no fakeDB, usa o CPF do AuthLocal
+                                if (cu.cpf) mockUserData.cpf = cu.cpf;
+                            }
+                        }
+                    }catch(e){/* ignore */}
+                }
+            }
+        }catch(e){ console.warn('mergeAuthUserData error', e); }
+    }
     }
 
     /* --------------------------------------------------------------------------
@@ -252,7 +289,35 @@ document.addEventListener('DOMContentLoaded', () => {
             mockUserData.email = updatedData['email'] || mockUserData.email;
             mockUserData.telefone = updatedData['telefone'] || mockUserData.telefone;
             mockUserData.localizacao = updatedData['localizacao'] || mockUserData.localizacao;
-            
+
+            // Persistir alterações no AuthLocal (se houver)
+            try{
+                if (window.AuthLocal && typeof AuthLocal.getCurrentUser === 'function'){
+                    const cu = AuthLocal.getCurrentUser();
+                    if (cu && cu.cpf){
+                        const cleaned = (cu.cpf||'').replace(/\D/g,'');
+                        const updates = { nome: mockUserData.nome, email: mockUserData.email };
+                        if (mockUserData.telefone) updates.telefone = mockUserData.telefone;
+                        try{ AuthLocal.updateUserByCpf(cleaned, updates); }catch(e){ console.warn('AuthLocal update failed', e); }
+                        try{ AuthLocal.initHeaderUI(); }catch(e){}
+                    }
+                }
+            }catch(e){ console.warn('persist profile to AuthLocal error', e); }
+
+            // Também tenta persistir no fakeDB se existir
+            try{
+                if (window.fakeDB && typeof fakeDB.getUsuarios === 'function'){
+                    const cu = AuthLocal.getCurrentUser ? AuthLocal.getCurrentUser() : null;
+                    const cleaned = cu && cu.cpf ? (cu.cpf||'').replace(/\D/g,'') : null;
+                    if (cleaned){
+                        const udb = fakeDB.getUsuarios().find(u => (u.cpf||'').replace(/\D/g,'') === cleaned);
+                        if (udb){
+                            try{ fakeDB.update('usuarios', udb.id, { nome: mockUserData.nome, email: mockUserData.email, telefone: mockUserData.telefone || udb.telefone }); }catch(e){/* ignore */}
+                        }
+                    }
+                }
+            }catch(e){/* ignore */}
+
             // Esconder botões de ação
             document.querySelectorAll('.experience-actions, .education-actions').forEach(actions => {
                 actions.style.display = 'none';
